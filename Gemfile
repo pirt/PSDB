@@ -12,6 +12,7 @@ gem 'ruby-plsql'
 
 # Gems for the local environment only. 
 group :development, :test do
+  gem 'rspec'
   gem 'rspec-rails'  # Use Rspec as testing framework
   gem 'faker'        # Use generator for sample data
 end

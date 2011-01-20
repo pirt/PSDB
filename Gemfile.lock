@@ -95,6 +95,7 @@ DEPENDENCIES
   gnuplot
   rails (= 3.0.3)
   rmagick
+  rspec
   rspec-rails
   ruby-oci8
   ruby-plsql
