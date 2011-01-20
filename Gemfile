@@ -12,7 +12,8 @@ gem 'ruby-plsql'
 
 # Gems for the local environment only. 
 group :development, :test do
-  gem 'faker'   # Use generator for sample data
+  gem 'rspec-rails'  # Use Rspec as testing framework
+  gem 'faker'        # Use generator for sample data
 end
  
 # gem 'capistrano' # Deploy with Capistrano
