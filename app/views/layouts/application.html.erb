@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PSDB</title>
+  <title>PHELIX shot database</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->  
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+
+  <!--[if lt IE 8]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <div id="header" class="span-24 last">
+      <h1>
+        <%= image_tag("Phelix-logo.png", :alt => "PHELIX", :class => "round") %>
+        Shot database
+      </h1>
+    </div>
+    <hr />
+    <section class="round">
+      <%= yield %>
+    </section>
+  </div>
+<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

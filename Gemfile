@@ -14,6 +14,7 @@ gem 'ruby-plsql'
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'  # Use Rspec as testing framework
+  gem 'webrat'       # Acceptance testing for webpages
   gem 'faker'        # Use generator for sample data
 end
  

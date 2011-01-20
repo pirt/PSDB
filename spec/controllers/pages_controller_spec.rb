@@ -11,7 +11,7 @@ describe PagesController do
     it "should have the right title" do
       get 'contact'
       response.should have_selector("title",
-        :content => "PHELIX shot database")
+        :content => "PHELIX shot database | Contact")
     end
   end
 
@@ -23,7 +23,7 @@ describe PagesController do
     it "should have the right title" do
       get 'contact'
       response.should have_selector("title",
-        :content => "PHELIX shot database")
+        :content => "PHELIX shot database | About")
     end
   end
 end
