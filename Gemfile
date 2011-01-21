@@ -13,9 +13,10 @@ gem 'ruby-plsql'
 # Gems for the local environment only. 
 group :development, :test do
   gem 'rspec'
-  gem 'rspec-rails'  # Use Rspec as testing framework
-  gem 'webrat'       # Acceptance testing for webpages
-  gem 'faker'        # Use generator for sample data
+  gem 'rspec-rails'     # Use Rspec as testing framework
+  gem 'webrat'          # Acceptance testing for webpages
+  gem 'faker'           # Use generator for sample data
+  gem 'annotate-models' # Annotate models with the fields of the database
 end
  
 # gem 'capistrano' # Deploy with Capistrano
