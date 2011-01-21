@@ -1,4 +1,5 @@
 PSDB::Application.routes.draw do
+  resources :experiments
   get "pages/contact"
 
   # The priority is based upon order of creation:
