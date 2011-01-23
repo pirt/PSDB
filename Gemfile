@@ -9,10 +9,12 @@ gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
 gem 'ruby-oci8'
 gem 'activerecord-oracle_enhanced-adapter'
 gem 'ruby-plsql'
+gem 'mysql2'          # Support for mySQL database (development only)
 
 # Gems for the local environment only. 
 group :development, :test do
-  gem 'rspec'
+  
+  gem 'rspec'		# Use Rspec as testing framework
   gem 'rspec-rails'     # Use Rspec as testing framework
   gem 'webrat'          # Acceptance testing for webpages
   gem 'faker'           # Use generator for sample data
