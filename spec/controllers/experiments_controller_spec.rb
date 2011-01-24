@@ -15,6 +15,25 @@ describe ExperimentsController do
     end
   end
 
+  describe "GET 'show'" do
+    before(:each) do
+      @experiment = Factory(:experiment)
+    end
+    it "should be successful" do
+      get :show,:id => @experiment
+      response.should be_success
+    end
+    it "should find the right user" do
+      get :show, :id => @experiment
+      assigns(:experiment).should == @experiment
+    end
+    it "should have the right title" do
+      get :show, :id => @experiment
+      response.should have_selector("title",
+        :content => "Experiment 1")
+    end
+  end
+
   describe "GET 'new'" do
     it "should be successful" do
       get :new
@@ -24,19 +43,6 @@ describe ExperimentsController do
       get :new
       response.should have_selector("title",
         :content => "Add new experiment")
-    end
-  end
-
-  describe "GET 'show'" do
-    it "should be successful" do
-      get :show,:id => 1
-      response.should be_success
-    end
-    it "should find the right user"
-    it "should have the right title" do
-      get :show, :id => 1
-      response.should have_selector("title",
-        :content => "Experiment 1")
     end
   end
 
