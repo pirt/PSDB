@@ -15,11 +15,10 @@ describe Experiment do
     no_name_experiment.should_not be_valid
   end
 
-  it "should have a unique name" do
+  it "should have a unique (case insensitive) name" do
     Experiment.create!(@attr)
-    experiment_with_duplicate_name = Experiment.new(@attr.merge(:description => "Another description"))
+    experiment_with_duplicate_name = Experiment.new(@attr.merge(:name => "p0038", :description => "Another description"))
     experiment_with_duplicate_name.should_not be_valid
-
   end
 
   it "should reject names that are longer than 30 characters" do
@@ -39,5 +38,15 @@ describe Experiment do
    long_description_experiment.should_not be_valid
   end
 
-  it "cannot be deleted if still referenced by shots"
+  describe "shot associations" do
+
+    before(:each) do
+      @experiment = Experiment.create(@attr)
+    end
+
+    it "should have a shots attribute" do
+      @experiments.should respond_to(:shots)
+    end
+    it "cannot be deleted if still referenced by shots"
+  end
 end
