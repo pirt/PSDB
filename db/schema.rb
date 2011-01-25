@@ -12,7 +12,11 @@
 
 ActiveRecord::Schema.define(:version => 20110121104008) do
 
-# Could not dump table "experiments" because of following NoMethodError
-#   undefined method `type' for #<ActiveRecord::ConnectionAdapters::IndexDefinition:0xacc3ddc>
+  create_table "experiments", :force => true do |t|
+    t.string   "name",        :limit => 30, :null => false
+    t.string   "description",               :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

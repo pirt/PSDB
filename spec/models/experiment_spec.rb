@@ -15,6 +15,8 @@ describe Experiment do
     no_name_experiment.should_not be_valid
   end
 
+  it "should have a unique index on name column"
+ 
   it "should have a unique (case insensitive) name" do
     Experiment.create!(@attr)
     experiment_with_duplicate_name = Experiment.new(@attr.merge(:name => "p0038", :description => "Another description"))
