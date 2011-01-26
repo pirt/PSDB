@@ -14,6 +14,7 @@ class Experiment < ActiveRecord::Base
   attr_accessible :name, :description
 
   has_many :shots
+  has_many :experiment_attachments
 
   validates :name, :presence => true,
                    :length => { :maximum => 30 },
