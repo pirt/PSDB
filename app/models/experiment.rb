@@ -1,13 +1,13 @@
 # == Schema Information
-# Schema version: 20110121104008
+# Schema version: 20110127161802
 #
 # Table name: experiments
 #
 #  id          :integer(38)     not null, primary key
 #  name        :string(30)      not null
 #  description :string(255)     not null
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
 #
 
 class Experiment < ActiveRecord::Base

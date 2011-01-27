@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110121104008) do
+ActiveRecord::Schema.define(:version => 20110127161802) do
+
+  create_table "attachments", :force => true do |t|
+    t.string   "filename",    :null => false
+    t.string   "filetype",    :null => false
+    t.string   "description"
+    t.binary   "content",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachments", ["filename"], :name => "index_attachments_on_filename", :unique => true
 
   create_table "experiments", :force => true do |t|
     t.string   "name",        :limit => 30, :null => false
