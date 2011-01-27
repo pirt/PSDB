@@ -1,7 +1,7 @@
 <% if @experiment.errors.any? %>
   <div id="error_explanation">
     <h3><%= pluralize(@experiment.errors.count, "error") %> 
-        prohibited this user from being saved:</h3>
+        prohibited this experiment from being created:</h3>
     <p>There were problems with the following fields:</p>
     <ul>
     <% @experiment.errors.full_messages.each do |msg| %>

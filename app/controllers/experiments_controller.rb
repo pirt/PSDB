@@ -18,7 +18,8 @@ class ExperimentsController < ApplicationController
   def create
     @experiment = Experiment.new(params[:experiment])
     if @experiment.save
-      # Handle a successful save.
+      flash[:success] = "Experiment successfully created"
+      redirect_to experiments_path
     else
       @pageTitle = "Add new experiment"
       render 'new'
@@ -26,9 +27,20 @@ class ExperimentsController < ApplicationController
   end
 
   def edit
+    @experiment=Experiment.find(params[:id])
+    @pageTitle="Edit experiment "+@experiment.name
   end
 
   def update
+    @experiment = Experiment.find(params[:id])
+    if @experiment.update_attributes(params[:experiment])
+      flash[:success] = "Experiment successfully updated"
+      redirect_to experiments_path
+    else
+      @experiment.reload
+      @pageTitle="Edit experiment "+@experiment.name
+      render 'edit'
+    end
   end
 
   def destroy

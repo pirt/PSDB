@@ -1,2 +1,15 @@
-<h1>Experiments#edit</h1>
-<p>Find me in app/views/experiments/edit.html.erb</p>
+<h2>Experiment <%= @experiment.name %></h1>
+<%= form_for(@experiment) do |e| %>
+  <%= render 'shared/error_messages' %>
+  <div class="field">
+    <%= e.label :name %><br />
+    <%= e.text_field :name %>
+  </div>
+  <div class="field">
+    <%= e.label :description %><br />
+    <%= e.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= e.submit "Update Experiment" %>
+  </div>
+<% end %>
