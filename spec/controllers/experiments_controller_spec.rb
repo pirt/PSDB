@@ -34,8 +34,18 @@ describe ExperimentsController do
     end
     it "should include the experiment's name" do
       get :show, :id => @experiment
-      response.should have_selector("h1", :content => @experiment.name)
+      response.should have_selector("h2", :content => @experiment.name)
     end
+    it "should show created_at field" do
+      get :show, :id => @experiment
+      response.should contain("Created at:")
+    end
+    it "should show updated_at field" do
+      get :show, :id => @experiment
+      response.should contain("Updated at:")
+    end
+    it "should show # of associated shots"
+    it "should show first and last date of asscociated shots"
   end
 
   describe "GET 'new'" do
@@ -55,15 +65,29 @@ describe ExperimentsController do
       before(:each) do
         @attr = { :name => "", :description => "" }
       end
-      it "should not create an experiment"
-      it "should have the right title"
-      it "should render the 'new' page"
+      it "should not create an experiment" do
+        lambda do
+          post :create, :user => @attr
+        end.should_not change(Experiment, :count)
+      end
+      it "should have the right title" do
+        post :create, :experiment => @attr
+        response.should have_selector("title", :content => "Add new experiment")
+      end
+      it "should render the 'new' page" do
+        post :create, :experiment => @attr
+        response.should render_template('new')
+      end
     end
     describe "success" do
       before(:each) do
         @attr = { :name => "P0010", :description => "Experiment description" }
       end
-      it "should create new experiment"
+      it "should create new experiment" do
+        lambda do
+          post :create, :user => @attr
+        end.should change(Experiment, :count),by(1)
+      end
       it "should redirect to 'index' page" do
         post :create, :experiment => @attr
         response.should redirect_to(experiments_path)

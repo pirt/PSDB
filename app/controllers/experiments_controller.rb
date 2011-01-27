@@ -16,6 +16,13 @@ class ExperimentsController < ApplicationController
   end
 
   def create
+    @experiment = Experiment.new(params[:experiment])
+    if @experiment.save
+      # Handle a successful save.
+    else
+      @pageTitle = "Add new experiment"
+      render 'new'
+    end
   end
 
   def edit
