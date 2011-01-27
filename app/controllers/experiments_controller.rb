@@ -1,6 +1,7 @@
 class ExperimentsController < ApplicationController
   def index
-    @experiments=Experiment.all
+    @experiments = Experiment.select([:id, :name, :description]).paginate(:page => params[:page], 
+                                                                          :per_page => Experiment.per_page)
     @pageTitle="Experiments"
   end
 

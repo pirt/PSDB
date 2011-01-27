@@ -3,7 +3,7 @@
 #
 # Table name: experiments
 #
-#  id          :integer(4)      not null, primary key
+#  id          :integer(38)     not null, primary key
 #  name        :string(30)      not null
 #  description :string(255)     not null
 #  created_at  :datetime
@@ -12,6 +12,10 @@
 
 class Experiment < ActiveRecord::Base
   attr_accessible :name, :description
+
+  # paginate results
+  cattr_reader :per_page
+  @@per_page = 15
 
   has_many :shots
   has_many :experiment_attachments

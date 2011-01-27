@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(:version => 20110121104008) do
   create_table "experiments", :force => true do |t|
     t.string   "name",        :limit => 30, :null => false
     t.string   "description",               :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
+
+  add_index "experiments", ["name"], :name => "index_experiments_on_name", :unique => true
 
 end

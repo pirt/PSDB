@@ -1,2 +1,19 @@
-<h1>Experiments#index</h1>
-<p>Find me in app/views/experiments/index.html.erb</p>
+<h2>Available Experiments</h2>
+<%= will_paginate @experiments %>
+<table border=0>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+
+  <% @experiments.each do |experiment| %>
+    <tr>
+      <td><%= link_to experiment.name, experiment %></td>
+      <td><%= experiment.description %></td>
+      <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @experiments %>
+
