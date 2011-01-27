@@ -54,5 +54,11 @@ class ExperimentsController < ApplicationController
   end
 
   def destroy
+    if Experiment.find(params[:id]).destroy
+      flash[:success] = "Experiment successfully deleted"
+    else
+      flash[:error] = "Error while deleting experiment"
+    end
+    redirect_to experiments_path
   end
 end

@@ -1,4 +1,5 @@
 <h2>Available Experiments</h2>
+<%= link_to 'Add new experiment', new_experiment_path %>
 <%= will_paginate @experiments %>
 <table border=0>
   <tr>
@@ -11,7 +12,11 @@
     <tr>
       <td><%= link_to experiment.name, experiment %></td>
       <td><%= experiment.description %></td>
-      <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+      <td><%= link_to 'Edit', edit_experiment_path(experiment) %> 
+          <%= link_to "Delete", experiment, :method => :delete, :confirm => "Are You sure?",
+                                :title => "Delete #{experiment.name}" %>
+
+      </td>
     </tr>
   <% end %>
 </table>

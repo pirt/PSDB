@@ -197,20 +197,18 @@ describe ExperimentsController do
         end.should change(Experiment, :count).by(-1)
       end
       it "should have a success flash message" do
+        delete :destroy, :id => @experiment
         flash[:success].should =~ /Experiment successfully deleted/i
       end
     end
     describe "for experiment with associated shots" do
        # TODO: add a shot associated to @experiment
       it "should not delete the experiment"
-      it "should have an error flash message" do
-        flash[:error].should =~ /Experiment not deleted, because of associated shots/i
-      end
+      it "should have an error flash message"
     end
-    it "should be successful" do
-      get :destroy, :id => @experiment
-      response.should be_success
+    it "should redirect to experiments index" do
+      delete :destroy, :id => @experiment
+      response.should redirect_to(experiments_path)
     end
-    it "should redirect to experiments index"
   end
 end
