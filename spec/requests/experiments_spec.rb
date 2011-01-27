@@ -18,11 +18,11 @@ describe "Experiment" do
       it "should create a new experiment" do
         lambda do
           visit new_experiment_path
-          fill_in "Name",        :width => "P0010"
-          fill_in "Description", :width => "The Description"
+          fill_in "Name",        :with => "P0010"
+          fill_in "Description", :with => "The Description"
           click_button
-          responde.should have_selector("div.flash.success", :content => "created")
-          response.should render_template('users')
+          response.should have_selector("div.flash.success", :content => "created")
+          response.should render_template('experiments')
         end.should change(Experiment, :count).by(1)
       end
     end

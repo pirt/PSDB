@@ -3,13 +3,14 @@
   <%= render 'shared/error_messages' %>
   <div class="field">
     <%= e.label :name %><br />
-    <%= e.text_field :name %>
+    <%= e.text_field :name, :size => 30 %>
   </div>
   <div class="field">
     <%= e.label :description %><br />
-    <%= e.text_field :description %>
+    <%= e.text_field :description, :size => 75 %>
   </div>
   <div class="actions">
     <%= e.submit "Add Experiment" %>
+    <%= e.submit "Cancel", :name => "cancel" %>
   </div>
 <% end %>

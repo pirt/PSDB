@@ -61,13 +61,28 @@ describe ExperimentsController do
   end
 
   describe "POST 'create'" do
+    describe "cancel" do
+      it "should not create an experiment" do
+        lambda do
+          post :create, :cancel => "1"
+        end.should_not change(Experiment, :count)
+      end
+      it "should redirect to the experiments index" do
+        post :create, :cancel => "1"
+        response.should redirect_to(experiments_path)
+      end
+      it "should have a flash message" do
+        post :create, :cancel => "1"
+        flash[:info].should =~ /Experiment creation canceled/i
+      end
+    end
     describe "failure" do
       before(:each) do
         @attr = { :name => "", :description => "" }
       end
       it "should not create an experiment" do
         lambda do
-          post :create, :user => @attr
+          post :create, :experiment => @attr
         end.should_not change(Experiment, :count)
       end
       it "should have the right title" do
@@ -108,7 +123,7 @@ describe ExperimentsController do
       get :edit, :id => @experiment
       response.should be_success
     end
-    it "should find the right user" do
+    it "should find the right experiment" do
       get :edit, :id => @experiment
       assigns(:experiment).should == @experiment
     end
@@ -121,6 +136,21 @@ describe ExperimentsController do
   describe "PUT 'update'" do
     before(:each) do
       @experiment = Factory(:experiment)
+    end
+    describe "cancel" do
+      it "should not change the experiment" do
+        lambda do
+          put :update, :id => @experiment, :cancel => "1"
+        end.should_not change(Experiment, :all)
+      end
+      it "should redirect to the experiments index" do
+        put :update, :id => @experiment, :cancel => "1"
+        response.should redirect_to(experiments_path)
+      end
+      it "should have a flash message" do
+        put :update, :id => @experiment, :cancel => "1"
+        flash[:info].should =~ /Experiment update canceled/i
+      end
     end
     describe "failure" do
       before(:each) do

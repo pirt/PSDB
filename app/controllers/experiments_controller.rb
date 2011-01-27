@@ -16,13 +16,18 @@ class ExperimentsController < ApplicationController
   end
 
   def create
-    @experiment = Experiment.new(params[:experiment])
-    if @experiment.save
-      flash[:success] = "Experiment successfully created"
+    if params[:cancel]
+      flash[:info] = "Experiment creation canceled"
       redirect_to experiments_path
-    else
-      @pageTitle = "Add new experiment"
-      render 'new'
+    elsif
+      @experiment = Experiment.new(params[:experiment])
+      if @experiment.save
+        flash[:success] = "Experiment successfully created"
+        redirect_to experiments_path
+      else
+        @pageTitle = "Add new experiment"
+        render 'new'
+      end
     end
   end
 
@@ -32,14 +37,19 @@ class ExperimentsController < ApplicationController
   end
 
   def update
-    @experiment = Experiment.find(params[:id])
-    if @experiment.update_attributes(params[:experiment])
-      flash[:success] = "Experiment successfully updated"
+    if params[:cancel]
+      flash[:info] = "Experiment update canceled"
       redirect_to experiments_path
-    else
-      @experiment.reload
-      @pageTitle="Edit experiment "+@experiment.name
-      render 'edit'
+    elsif
+      @experiment = Experiment.find(params[:id])
+      if @experiment.update_attributes(params[:experiment])
+        flash[:success] = "Experiment successfully updated"
+        redirect_to experiments_path
+      else
+        @experiment.reload
+        @pageTitle="Edit experiment "+@experiment.name
+        render 'edit'
+      end
     end
   end
 
