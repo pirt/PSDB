@@ -190,20 +190,25 @@ describe ExperimentsController do
      before(:each) do
       @experiment = Factory(:experiment)
     end
-    describe "for experiment with no associated shots" do
-      it "should delete the experiment" do
-      lambda do
-        delete :destroy, :id => @experiment
-        end.should change(Experiment, :count).by(-1)
+    describe "for existing experiment" do
+      describe "with no associated shots" do
+        it "should delete the experiment" do
+        lambda do
+          delete :destroy, :id => @experiment
+          end.should change(Experiment, :count).by(-1)
+        end
+        it "should have a success flash message" do
+          delete :destroy, :id => @experiment
+          flash[:success].should =~ /Experiment successfully deleted/i
+        end
       end
-      it "should have a success flash message" do
-        delete :destroy, :id => @experiment
-        flash[:success].should =~ /Experiment successfully deleted/i
+      describe "for experiment with associated shots" do
+        # TODO: add a shot associated to @experiment
+        it "should not delete the experiment"
+        it "should have an error flash message"
       end
     end
-    describe "for experiment with associated shots" do
-       # TODO: add a shot associated to @experiment
-      it "should not delete the experiment"
+    describe "for non-existing experiment" do
       it "should have an error flash message"
     end
     it "should redirect to experiments index" do
