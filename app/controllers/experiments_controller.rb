@@ -6,8 +6,13 @@ class ExperimentsController < ApplicationController
   end
 
   def show
-    @experiment=Experiment.find(params[:id])
-    @pageTitle=@experiment.name
+    @experiment=Experiment.find_by_id(params[:id])
+    if @experiment
+        @pageTitle=@experiment.name
+    else
+      flash[:error] = "Experiment not found"
+      redirect_to experiments_path
+    end
   end
 
   def new
@@ -32,23 +37,33 @@ class ExperimentsController < ApplicationController
   end
 
   def edit
-    @experiment=Experiment.find(params[:id])
-    @pageTitle="Edit experiment "+@experiment.name
+    @experiment=Experiment.find_by_id(params[:id])
+    if @experiment
+      @pageTitle="Edit experiment "+@experiment.name
+    elsif
+      flash[:error] = "Experiment not found"
+      redirect_to experiments_path
+    end
   end
 
   def update
     if params[:cancel]
       flash[:info] = "Experiment update canceled"
       redirect_to experiments_path
-    elsif
-      @experiment = Experiment.find(params[:id])
-      if @experiment.update_attributes(params[:experiment])
-        flash[:success] = "Experiment successfully updated"
-        redirect_to experiments_path
+    else
+      @experiment = Experiment.find_by_id(params[:id])
+      if @experiment 
+        if @experiment.update_attributes(params[:experiment])
+          flash[:success] = "Experiment successfully updated"
+          redirect_to experiments_path
+        else
+          @experiment.reload
+          @pageTitle="Edit experiment "+@experiment.name
+          render 'edit'
+        end
       else
-        @experiment.reload
-        @pageTitle="Edit experiment "+@experiment.name
-        render 'edit'
+        flash[:error] = "Experiment not found"
+        redirect_to experiments_path
       end
     end
   end

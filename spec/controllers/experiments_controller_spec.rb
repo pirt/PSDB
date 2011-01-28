@@ -19,35 +19,49 @@ describe ExperimentsController do
     before(:each) do
       @experiment = Factory(:experiment)
     end
-    it "should be successful" do
-      get :show,:id => @experiment
-      response.should be_success
+    describe "for existing shot" do
+      it "should be successful" do
+        get :show,:id => @experiment
+        response.should be_success
+      end
+      it "should find the right user" do
+        get :show, :id => @experiment
+        assigns(:experiment).should == @experiment
+      end
+      it "should have the right title" do
+        get :show, :id => @experiment
+        response.should have_selector("title",
+          :content => @experiment.name)
+      end
+      it "should include the experiment's name" do
+        get :show, :id => @experiment
+        response.should have_selector("h2", :content => @experiment.name)
+      end
+      it "should show created_at field" do
+        get :show, :id => @experiment
+        response.should contain("Created at:")
+      end
+      it "should show updated_at field" do
+        get :show, :id => @experiment
+        response.should contain("Updated at:")
+      end
+      it "should show # of associated shots"
+      it "should show first and last date of asscociated shots"
     end
-    it "should find the right user" do
-      get :show, :id => @experiment
-      assigns(:experiment).should == @experiment
+    describe "for non-existing shot" do
+      before(:each) do
+        @nonExistingIndex=Experiment.last.id+1
+      end
+      it "should have a flash error message" do
+        get :show, :id => @nonExistingIndex
+        flash[:error].should =~ /Experiment not found/i
+      end
+      it "should redirect to the experiments index" do
+        get :show, :id => @nonExistingIndex
+        response.should redirect_to(experiments_path)
+      end
     end
-    it "should have the right title" do
-      get :show, :id => @experiment
-      response.should have_selector("title",
-        :content => @experiment.name)
-    end
-    it "should include the experiment's name" do
-      get :show, :id => @experiment
-      response.should have_selector("h2", :content => @experiment.name)
-    end
-    it "should show created_at field" do
-      get :show, :id => @experiment
-      response.should contain("Created at:")
-    end
-    it "should show updated_at field" do
-      get :show, :id => @experiment
-      response.should contain("Updated at:")
-    end
-    it "should show # of associated shots"
-    it "should show first and last date of asscociated shots"
   end
-
   describe "GET 'new'" do
     it "should be successful" do
       get :new
@@ -118,18 +132,32 @@ describe ExperimentsController do
     before(:each) do
       @experiment = Factory(:experiment)
     end
-
-    it "should be successful" do
-      get :edit, :id => @experiment
-      response.should be_success
+    describe "for existing experiment" do
+      it "should be successful" do
+        get :edit, :id => @experiment
+        response.should be_success
+      end
+      it "should find the right experiment" do
+        get :edit, :id => @experiment
+        assigns(:experiment).should == @experiment
+      end
+      it "should have the right title" do
+        get :edit, :id => @experiment
+        response.should have_selector("title", :content => @experiment.name)
+      end
     end
-    it "should find the right experiment" do
-      get :edit, :id => @experiment
-      assigns(:experiment).should == @experiment
-    end
-    it "should have the right title" do
-      get :edit, :id => @experiment
-      response.should have_selector("title", :content => @experiment.name)
+    describe "for non-existing experiment" do
+      before(:each) do
+        @nonExistingIndex=Experiment.last.id+1
+      end
+      it "should have a flash error message" do
+        get :edit, :id => @nonExistingIndex
+        flash[:error].should =~ /Experiment not found/i
+      end
+      it "should redirect to the experiments index" do
+        get :edit, :id => @nonExistingIndex
+        response.should redirect_to(experiments_path)
+      end
     end
   end
 
@@ -137,51 +165,66 @@ describe ExperimentsController do
     before(:each) do
       @experiment = Factory(:experiment)
     end
-    describe "cancel" do
-      it "should not change the experiment" do
-        lambda do
+    describe "for existing experiment" do
+      describe "cancel" do
+        it "should not change the experiment" do
+          lambda do
+            put :update, :id => @experiment, :cancel => "1"
+          end.should_not change(Experiment, :all)
+        end
+        it "should redirect to the experiments index" do
           put :update, :id => @experiment, :cancel => "1"
-        end.should_not change(Experiment, :all)
+          response.should redirect_to(experiments_path)
+        end
+        it "should have a flash message" do
+          put :update, :id => @experiment, :cancel => "1"
+          flash[:info].should =~ /Experiment update canceled/i
+        end
+      end
+      describe "failure" do
+        before(:each) do
+          @attr = { :name => "", :description => "" }
+        end
+        it "should render the 'edit' page" do
+          put :update, :id => @experiment, :experiment => @attr
+          response.should render_template('edit')
+        end
+        it "should have the right title" do
+          put :update, :id => @experiment, :experiment => @attr
+          response.should have_selector("title", :content => @experiment.name)
+        end
+      end
+      describe "success" do
+        before(:each) do
+          @attr = { :name => "P0010", :description => "New description" }
+        end
+        it "should change the experiment's attributes" do
+          put :update, :id => @experiment, :experiment => @attr
+          @experiment.reload
+          @experiment.name.should  == @attr[:name]
+          @experiment.description.should  == @attr[:description]
+        end
+        it "should redirect to the experiment show page" do
+          put :update, :id => @experiment, :experiment => @attr
+          response.should redirect_to(experiments_path)
+        end
+        it "should have a flash message" do
+          put :update, :id => @experiment, :experiment => @attr
+          flash[:success].should =~ /Experiment successfully updated/i
+        end
+      end
+    end
+    describe "for non-existing experiment" do
+      before(:each) do
+        @nonExistingIndex=Experiment.last.id+1
+      end
+      it "should have a flash error message" do
+        put :update, :id => @nonExistingIndex
+        flash[:error].should =~ /Experiment not found/i
       end
       it "should redirect to the experiments index" do
-        put :update, :id => @experiment, :cancel => "1"
+        put :update, :id => @nonExistingIndex
         response.should redirect_to(experiments_path)
-      end
-      it "should have a flash message" do
-        put :update, :id => @experiment, :cancel => "1"
-        flash[:info].should =~ /Experiment update canceled/i
-      end
-    end
-    describe "failure" do
-      before(:each) do
-        @attr = { :name => "", :description => "" }
-      end
-      it "should render the 'edit' page" do
-        put :update, :id => @experiment, :experiment => @attr
-        response.should render_template('edit')
-      end
-      it "should have the right title" do
-        put :update, :id => @experiment, :experiment => @attr
-        response.should have_selector("title", :content => @experiment.name)
-      end
-    end
-    describe "success" do
-      before(:each) do
-        @attr = { :name => "P0010", :description => "New description" }
-      end
-      it "should change the experiment's attributes" do
-        put :update, :id => @experiment, :experiment => @attr
-        @experiment.reload
-        @experiment.name.should  == @attr[:name]
-        @experiment.description.should  == @attr[:description]
-      end
-      it "should redirect to the experiment show page" do
-        put :update, :id => @experiment, :experiment => @attr
-        response.should redirect_to(experiments_path)
-      end
-      it "should have a flash message" do
-        put :update, :id => @experiment, :experiment => @attr
-        flash[:success].should =~ /Experiment successfully updated/i
       end
     end
   end
