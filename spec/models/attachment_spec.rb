@@ -9,16 +9,44 @@ describe Attachment do
     Attachment.create!(@attr)
   end
 
-  it "should require a filename"
-  it "should require a filetype"
-  it "should require a content"
-
-  it "should have a unique (case insensitive) name"
+  it "should require a filename" do
+    no_filename_attachment = Attachment.new(@attr.merge(:filename => ""))
+    no_filename_attachment.should_not be_valid
+  end
+  it "should require a filetype" do
+    no_filetype_attachment = Attachment.new(@attr.merge(:filetype => ""))
+    no_filetype_attachment.should_not be_valid
+  end
+  it "should require a content" do
+    no_content_attachment = Attachment.new(@attr.merge(:content => ""))
+    no_content_attachment.should_not be_valid
+  end
+  it "should have a unique (case insensitive) filename" do
+    Attachment.create!(@attr)
+    attachment_with_duplicate_filename = Experiment.new(@attr.merge(:filename => "HALLO.DOC", 
+                                                                    :description => "Another description"))
+    attachment_with_duplicate_filename.should_not be_valid
+  end
   it "should have a unique index on filename column"
 
-  it "should reject filenames that are longer than 255 characters"
-  it "should reject descriptions that are longer than 255 characters"
-  it "should reject filetypes that are longer than 255 characters"
-  it "should reject content larger than 50 megabytes"
-
+  it "should reject filenames that are longer than 255 characters" do
+    longFilename="a"*256
+    no_longFilename_attachment = Attachment.new(@attr.merge(:filename => longFilename))
+    no_longFilename_attachment.should_not be_valid
+  end
+  it "should reject descriptions that are longer than 255 characters" do
+    longDescription="a"*256
+    no_longDescription_attachment = Attachment.new(@attr.merge(:description => longDescription))
+    no_longDescription_attachment.should_not be_valid
+  end
+  it "should reject filetypes that are longer than 255 characters" do
+    longFiletype="a"*256
+    no_longFiletype_attachment = Attachment.new(@attr.merge(:filetype => longFiletype))
+    no_longFiletype_attachment.should_not be_valid
+  end
+  it "should reject content larger than 100 kilobytes" do
+    largeContent="a"*(100.kilobytes+1)
+    no_largeContent_attachment = Attachment.new(@attr.merge(:content => largeContent))
+    no_largeContent_attachment.should_not be_valid
+  end
 end
