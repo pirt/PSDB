@@ -187,7 +187,7 @@ describe ExperimentsController do
   end
 
   describe "DELETE 'destroy'" do
-     before(:each) do
+    before(:each) do
       @experiment = Factory(:experiment)
     end
     describe "for existing experiment" do
@@ -202,18 +202,24 @@ describe ExperimentsController do
           flash[:success].should =~ /Experiment successfully deleted/i
         end
       end
-      describe "for experiment with associated shots" do
+      describe "with associated shots" do
         # TODO: add a shot associated to @experiment
         it "should not delete the experiment"
         it "should have an error flash message"
       end
     end
     describe "for non-existing experiment" do
-      it "should have an error flash message"
-    end
-    it "should redirect to experiments index" do
-      delete :destroy, :id => @experiment
-      response.should redirect_to(experiments_path)
+      before(:each) do
+        @nonExistingIndex=(Experiment.last).id+1
+      end
+      it "should have an error flash message" do
+        delete :destroy, :id => @nonExistingIndex
+        flash[:error].should =~ /Experiment not found/i
+      end
+      it "should redirect to experiments index" do
+        delete :destroy, :id => @nonExistingIndex
+        response.should redirect_to(experiments_path)
+      end
     end
   end
 end
