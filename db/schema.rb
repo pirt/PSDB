@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(:version => 20110127161802) do
 
   create_table "attachments", :force => true do |t|
-    t.string   "filename",    :null => false
-    t.string   "filetype",    :null => false
+    t.string   "filename",                  :null => false
+    t.string   "filetype",    :limit => 50, :null => false
     t.string   "description"
-    t.binary   "content",     :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.binary   "content",                   :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "attachments", ["filename"], :name => "index_attachments_on_filename", :unique => true

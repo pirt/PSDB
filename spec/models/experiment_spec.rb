@@ -55,5 +55,6 @@ describe Experiment do
     end
 
     it "cannot be deleted if still referenced by shots"
+    it "cannot be deleted if still referenced by experiment_attachments"
   end
 end
