@@ -4,7 +4,7 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :filename, :null => false, :limit => 255, :comment => "A unique filename"
       t.string :filetype, :null => false, :limit => 50, :comment => "The MIME type of the file"
       t.string :description, :limit => 255, :comment => "A description of the file"
-      t.binary :content, :null => false, :comment => "the actual (binary) content"
+      # t.binary :content, :null => false, :comment => "the actual (binary) content"
       t.timestamps :null => false
     end
 

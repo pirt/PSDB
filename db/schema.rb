@@ -10,36 +10,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110129085129) do
-
-  create_table "attachments", :force => true do |t|
-    t.string   "filename",                  :null => false
-    t.string   "filetype",    :limit => 50, :null => false
-    t.string   "description"
-    t.binary   "content",                   :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-  end
-
-  add_index "attachments", ["filename"], :name => "index_attachments_on_filename", :unique => true
-
-  create_table "experiment_attachments", :force => true do |t|
-    t.integer  "experiment_id", :precision => 38, :scale => 0, :null => false
-    t.integer  "attachment_id", :precision => 38, :scale => 0, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "experiments", :force => true do |t|
-    t.string   "name",        :limit => 30, :null => false
-    t.string   "description",               :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-  end
-
-  add_index "experiments", ["name"], :name => "index_experiments_on_name", :unique => true
-
-  add_foreign_key "experiment_attachments", "attachments", :name => "sys_c00249360"
-  add_foreign_key "experiment_attachments", "experiments", :name => "sys_c00249359"
+ActiveRecord::Schema.define(:version => 0) do
 
 end
