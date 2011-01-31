@@ -4,4 +4,20 @@
 <b>Created at: </b> <%= @experiment.created_at %><br>
 <b>Updated at: </b> <%= @experiment.updated_at %><br>
 <hr>
+<h3>Attached documents</h3>
+<table border=0>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Date added</th>
+  </tr>
+  <% @experiment.attachments.each do |attachment| %>
+    <td><%= link_to attachment.filename, attachment_path(attachment) %></td>
+    <td><%= attachment.description %></td>
+    <td><%= attachment.created_at %></td>
+    <td><%= link_to "Delete", "#" %>
+  <% end %>
+</table>
+<%= link_to "Add document", "#" %>
+<hr>
 <%= link_to "Back to experiments", experiments_path %>
