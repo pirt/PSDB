@@ -40,18 +40,22 @@ describe Experiment do
    long_description_experiment.should_not be_valid
   end
 
-  describe "shot associations" do
+  describe "associations" do
 
     before(:each) do
       @experiment = Experiment.create(@attr)
     end
 
     it "should have a shots attribute" do
-      @experiments.should respond_to(:shots)
+      @experiment.should respond_to(:shots)
     end
 
-    it "should have a experiment_attachments attribute" do
-      @experiments.should respond_to(:experiment_attachments)
+    it "should have a experimentattachments attribute" do
+      @experiment.should respond_to(:experiment_attachments)
+    end
+    
+    it "should have an attachments attribute" do
+      @experiment.should respond_to(:attachments)
     end
 
     it "cannot be deleted if still referenced by shots"

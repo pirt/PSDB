@@ -9,8 +9,6 @@ describe Attachment do
     Attachment.create!(@attr)
   end
 
-  it "should have a description field (do we need to test this?)"
-
   it "should require a filename" do
     no_filename_attachment = Attachment.new(@attr.merge(:filename => ""))
     no_filename_attachment.should_not be_valid

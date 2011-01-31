@@ -19,7 +19,7 @@ class Experiment < ActiveRecord::Base
 
   has_many :shots
   has_many :experiment_attachments
-  has_many :attachments, :through => :experiment_attachments, :uniq => true 
+  has_many :attachments, :through => :experiment_attachments #do not add :uniq => true since it is not supported by Oracle 
 
   validates :name, :presence => true,
                    :length => { :maximum => 30 },
