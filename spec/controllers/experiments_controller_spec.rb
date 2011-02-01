@@ -265,4 +265,34 @@ describe ExperimentsController do
       end
     end
   end
+
+  describe "GET 'newAttachment'" do
+    before(:each) do
+      @experiment = Factory(:experiment)
+    end
+    describe "for existing experiment" do
+      it "should be successful" do
+        get :newAttachment, :id => @experiment
+        response.should be_success
+      end
+      it "should have the right title" do
+        get :newAttachment, :id => @experiment
+        response.should have_selector("title",
+        :content => "Add attachment")
+      end
+    end
+    describe "for non-existing experiment" do
+      before(:each) do
+        @nonExistingIndex=(Experiment.last).id+1
+      end
+      it "should have an error flash message" do
+        get :newAttachment, :id => @nonExistingIndex
+        flash[:error].should =~ /Experiment not found/i
+      end
+      it "should redirect to experiments index" do
+        get :newAttachment, :id => @nonExistingIndex
+        response.should redirect_to(experiments_path)
+      end
+    end
+  end
 end
