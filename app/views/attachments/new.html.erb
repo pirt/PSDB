@@ -1,5 +1,5 @@
 <h3>Add attachment</h3>
-<%= form_for @attachment, :html => {:multipart => true} do |a| %>
+<%= form_for [:experiment, @attachment], :html => {:multipart => true} do |a| %>
   <div class="field">
     <%= a.label :filename %><br />
     <%= a.file_field :content %>
