@@ -9,13 +9,22 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Type</th>
     <th>Date added</th>
+    <th></th>
   </tr>
   <% @experiment.attachments.each do |attachment| %>
-    <td><%= link_to attachment.filename, attachment_path(attachment) %></td>
-    <td><%= attachment.description %></td>
-    <td><%= attachment.created_at %></td>
-    <td><%= link_to "Delete", "#" %>
+    <tr>
+      <td><%= link_to attachment.filename, experiment_attachment_path(@experiment,attachment) %></td>
+      <td><%= attachment.description %></td>
+      <td><%= attachment.filetype %></td>
+      <td><%= attachment.created_at %></td>
+      <td>
+        <%= link_to "Delete", experiment_attachment_path(@experiment,attachment),
+                             :method => :delete, :confirm => "Are You sure?",
+                             :title => "Delete #{attachment.filename}" %>
+      </td>
+    </tr>
   <% end %>
 </table>
 <%= link_to "Add document", new_experiment_attachment_path(@experiment) %>
