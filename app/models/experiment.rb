@@ -18,8 +18,7 @@ class Experiment < ActiveRecord::Base
   @@per_page = 15
 
   has_many :shots
-  has_many :experiment_attachments
-  has_many :attachments, :through => :experiment_attachments #do not add :uniq => true since it is not supported by Oracle 
+  has_many :attachments, :as => :attachable, :dependent => :destroy 
 
   validates :name, :presence => true,
                    :length => { :maximum => 30 },

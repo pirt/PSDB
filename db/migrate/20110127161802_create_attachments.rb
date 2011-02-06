@@ -5,10 +5,11 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :filetype, :null => false, :limit => 50, :comment => "The MIME type of the file"
       t.string :description, :limit => 255, :comment => "A description of the file"
       t.binary :content, :null => false, :comment => "the actual (binary) content"
+
+      t.references :attachable, :polymorphic => true
+
       t.timestamps :null => false
     end
-
-      add_index :attachments, :filename, :unique => true
   end
 
   def self.down

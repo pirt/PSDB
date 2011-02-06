@@ -2,7 +2,7 @@ class AttachmentsController < ApplicationController
   def show
     #TODO: check presence of attachment
     attachment=Attachment.find(params[:id])
-    send_data attachment.content, :type => attachment.filetype
+    send_data attachment.content, :type => attachment.filetype, :filename => attachment.filename
   end
   def new
     @attachment=Attachment.new
@@ -13,14 +13,18 @@ class AttachmentsController < ApplicationController
     if params[:experiment_id]
       @parent=Experiment.find_by_id(params[:experiment_id])
       uploaded_content=params[:attachment][:content]
-      @parent.attachments.create! (
+      attachment=@parent.attachments.new(
         :filename => uploaded_content.original_filename,
         :filetype => uploaded_content.content_type,
         :description => params[:attachment][:description],
         :content => uploaded_content.read
       )
-      flash[:success]="Attachment created"
-      redirect_to experiment_path(@parent)
+      if attachment.save
+        flash[:success]="Attachment created"
+      else
+        flash[:error]="Error creating attachment"
+      end
+        redirect_to experiment_path(@parent)
     else
       flash[:error]="No experiment / shot selected."
       redirect_to :experiments
