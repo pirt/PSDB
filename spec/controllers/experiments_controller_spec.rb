@@ -234,6 +234,9 @@ describe ExperimentsController do
       @experiment = Factory(:experiment)
     end
     describe "for existing experiment" do
+      describe "with associated attachments"
+        it "should not delete the experiment"
+      end
       describe "with no associated shots" do
         it "should delete the experiment" do
         lambda do

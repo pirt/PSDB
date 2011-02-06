@@ -50,15 +50,11 @@ describe Experiment do
       @experiment.should respond_to(:shots)
     end
 
-    it "should have a experimentattachments attribute" do
-      @experiment.should respond_to(:experiment_attachments)
-    end
-    
     it "should have an attachments attribute" do
       @experiment.should respond_to(:attachments)
     end
 
     it "cannot be deleted if still referenced by shots"
-    it "cannot be deleted if still referenced by experiment_attachments"
+    it "cannot be deleted if still referenced attachments"
   end
 end
