@@ -20,6 +20,7 @@
       <td><%= attachment.filetype %></td>
       <td><%= attachment.created_at %></td>
       <td>
+        <%= link_to "Edit", edit_experiment_attachment_path(@experiment,attachment) %>
         <%= link_to "Delete", experiment_attachment_path(@experiment,attachment),
                              :method => :delete, :confirm => "Are You sure?",
                              :title => "Delete #{attachment.filename}" %>

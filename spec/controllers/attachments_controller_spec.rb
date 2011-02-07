@@ -1,25 +1,84 @@
 require 'spec_helper'
 
 describe AttachmentsController do
-  describe "POST 'create'" do
-    describe "failure" do
-      it "should not create an attachment"
+  describe "GET 'show'" do
+    before(:each) do
+      @attachment = Factory(:attachment)
     end
-    describe "success" do
-      it "should create an attachment"
+    it "should be successful" do
+      get :show,:id => @attachment
+      response.should be_success
+    end
+    it "should have the right title"
+  end
+  describe "GET 'new'" do
+    describe "for existing experiment" do
+      it "should be successful"
+      it "should have the right title"
+    end
+    describe "for non-existing experiment" do
+      it "should have an error flash"
+      it "should redirect to experiments index"
+    end
+  end
+  describe "POST 'create'" do
+    describe "for existing experiment" do
+      describe "cancel" do
+        it "should not create an attachment"
+        it "should have an info flash"
+        it "should redirect to experiment"
+      end
+      describe "failure" do
+        it "should not create an attachment"
+        it "should have an error flash"
+        it "should redirect to the 'new' action"
+      end
+      describe "success" do
+        it "should create an attachment"
+        it "should have a succes flash"
+        it "should redirect to experiment"
+      end
+    end
+    describe "for non-existing experiment" do
+      it "should have an error flash"
+      it "should redirect to experiments index"
+    end
+  end
+  describe "GET 'edit" do
+    describe "for existing experiment" do
+      it "should be successful"
+      it "should have the right title"
+    end
+    describe "for non-existing experiment" do
+      it "should have an error flash"
+      it "should redirect to experiments index"
     end
   end
   describe "PUT 'update'" do
-    describe "failure" do
-      it "should not update an attachment"
+    describe "existing attachment" do
+      describe "cancel" do
+        it "should not update an attachment"
+        it "should have an info flash"
+      end
+      describe "failure" do
+        it "should not update an attachment"
+        it "should have an error flash"
+      end
+      describe "success" do
+        it "should update an attachment"
+        it "should have a success flash"
+      end
+      it "should redirect to experiment"
     end
-    describe "success" do
-      it "should update an attachment"
+    describe "non-existing attachment" do
+      it "should have an error flash"
+      it "should redirect to experiments index"
     end
   end
   describe "DELETE 'destroy'" do
     describe "existing attachment" do
       it "should delete attachment"
+      it "should have a success flash"
       it "should redirect to experiment"
     end
     describe "non-existing attachment" do

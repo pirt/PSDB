@@ -1,10 +1,10 @@
-<% if @experiment.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
-    <h3><%= pluralize(@experiment.errors.count, "error") %> 
+    <h3><%= pluralize(object.errors.count, "error") %> 
         prohibited this experiment from being created:</h3>
     <p>There were problems with the following fields:</p>
     <ul>
-    <% @experiment.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>

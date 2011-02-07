@@ -13,18 +13,19 @@ class AttachmentsController < ApplicationController
     if params[:experiment_id]
       @parent=Experiment.find_by_id(params[:experiment_id])
       uploaded_content=params[:attachment][:content]
-      attachment=@parent.attachments.new(
-        :filename => uploaded_content.original_filename,
-        :filetype => uploaded_content.content_type,
-        :description => params[:attachment][:description],
-        :content => uploaded_content.read
-      )
-      if attachment.save
-        flash[:success]="Attachment created"
-      else
-        flash[:error]="Error creating attachment"
+      @attachment=@parent.attachments.new
+      if (uploaded_content)
+        @attachment.filename=uploaded_content.original_filename
+        @attachment.filetype=uploaded_content.content_type
+        @attachment.content=uploaded_content.read
       end
+      @attachment.description=params[:attachment][:description]
+      if @attachment.save
+        flash[:success]="Attachment created"
         redirect_to experiment_path(@parent)
+      else
+        render 'new'
+      end
     else
       flash[:error]="No experiment / shot selected."
       redirect_to :experiments
@@ -32,9 +33,50 @@ class AttachmentsController < ApplicationController
     
   end
   def edit
+    @attachment=Attachment.find_by_id(params[:id])
+    if @attachment
+      @pageTitle="Edit attachment"
+    else
+      flash[:error]="Attachment not found"
+      redirect_to experiment_path(params[:experiment_id])
+    end
   end
   def update
+    @attachment=Attachment.find_by_id(params[:id])
+    if @attachment
+      updated_content=params[:attachment][:content]
+      if (updated_content)
+        @attachment.filename=updated_content.original_filename
+        @attachment.filetype=updated_content.content_type
+        @attachment.content=updated_content.read
+      else
+        @attachment.content=""
+      end
+      @attachment.description=params[:attachment][:description]
+      if @attachment.save
+        flash[:success]="Attachment updated"
+        redirect_to experiment_path(@attachment.attachable_id)
+      else
+        @attachment.reload
+        @pageTitle="Edit attachment"
+        render 'edit'
+      end
+    else
+      flash[:error]="Attachment not found"
+      redirect_to experiment_path(@attachment.attachable_id)
+    end
   end
   def destroy
+    attachment=Attachment.find_by_id(params[:id])
+    if attachment
+      if attachment.destroy
+        flash[:success] = "Attachment successfully deleted"
+      else
+        flash[:error] = "Error while deleting attachment"
+      end
+    else
+      flash[:error] = "Attachment not found"
+    end
+    redirect_to experiment_path(params[:experiment_id])
   end
 end

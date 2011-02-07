@@ -1,6 +1,6 @@
 <h2>Experiment <%= @experiment.name %></h1>
 <%= form_for(@experiment) do |e| %>
-  <%= render 'shared/error_messages' %>
+  <%= render 'shared/error_messages', :object => e.object %>
   <div class="field">
     <%= e.label :name %><br />
     <%= e.text_field :name %>

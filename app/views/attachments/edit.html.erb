@@ -1,4 +1,4 @@
-<h3>Add attachment</h3>
+<h3>Edit attachment</h3>
 <%= form_for [:experiment, @attachment], :html => {:multipart => true} do |a| %>
   <%= render 'shared/error_messages', :object => a.object %>
   <div class="field">
@@ -10,7 +10,7 @@
     <%= a.text_field :description, :size => 75 %>
   </div>
   <div class="actions">
-    <%= a.submit "Add Attachment" %>
+    <%= a.submit "Update Attachment" %>
     <%= a.submit "Cancel", :name => "cancel" %>
   </div>
 <% end %>
