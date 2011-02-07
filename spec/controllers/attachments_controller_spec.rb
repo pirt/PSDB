@@ -1,12 +1,15 @@
 require 'spec_helper'
 
 describe AttachmentsController do
+  before(:each) do
+    @experiment = Factory(:experiment)
+  end
   describe "GET 'show'" do
     before(:each) do
-      @attachment = Factory(:attachment)
+      @attachment = @experiment.attachments.create!(Factory.attributes_for(:attachment))
     end
     it "should be successful" do
-      get :show,:id => @attachment
+      get :show, :id => @attachment
       response.should be_success
     end
     it "should have the right title"
