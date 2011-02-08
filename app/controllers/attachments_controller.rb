@@ -5,30 +5,35 @@ class AttachmentsController < ApplicationController
     send_data attachment.content, :type => attachment.filetype, :filename => attachment.filename
   end
   def new
-    @attachment=Attachment.new
-    @pageTitle="Add attachment"
+      @attachment=Attachment.new
+      @pageTitle="Add attachment"
   end
   def create
     #TODO: check presence of experiment and validity of posted data
     if params[:experiment_id]
       @parent=Experiment.find_by_id(params[:experiment_id])
-      uploaded_content=params[:attachment][:content]
-      @attachment=@parent.attachments.new
-      if (uploaded_content)
-        @attachment.filename=uploaded_content.original_filename
-        @attachment.filetype=uploaded_content.content_type
-        @attachment.content=uploaded_content.read
-      end
-      @attachment.description=params[:attachment][:description]
-      if @attachment.save
-        flash[:success]="Attachment created"
+      if params[:cancel]
+        flash[:info]="Attachment creation cancelled"
         redirect_to experiment_path(@parent)
+      elsif
+        uploaded_content=params[:attachment][:content]
+        @attachment=@parent.attachments.new
+        if (uploaded_content)
+          @attachment.filename=uploaded_content.original_filename
+          @attachment.filetype=uploaded_content.content_type
+          @attachment.content=uploaded_content.read
+        end
+        @attachment.description=params[:attachment][:description]
+        if @attachment.save
+          flash[:success]="Attachment created"
+          redirect_to experiment_path(@parent)
+        else
+          render 'new'
+        end
       else
-        render 'new'
+        flash[:error]="No experiment / shot selected."
+        redirect_to :experiments
       end
-    else
-      flash[:error]="No experiment / shot selected."
-      redirect_to :experiments
     end
     
   end

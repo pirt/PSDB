@@ -87,7 +87,7 @@ describe ExperimentsController do
       end
       it "should have a flash message" do
         post :create, :cancel => "1"
-        flash[:info].should =~ /Experiment creation canceled/i
+        flash[:info].should =~ /Experiment creation cancelled/i
       end
     end
     describe "failure" do
