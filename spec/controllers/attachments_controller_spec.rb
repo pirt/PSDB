@@ -2,18 +2,25 @@ require 'spec_helper'
 
 # define a mock object representing an uploaded file
 class Mockfile
+  def initialize(filename="test.png",content="abcd")
+    @filename=filename
+    @content=content
+  end
+
   def original_filename
-    'test.png'
+    @filename
   end
   def content_type
     'image'
   end
   def read
-    'abcd'
+    @content
   end
 end
 
 describe AttachmentsController do
+  render_views
+
   before(:all) do
     @experiment = Factory(:experiment)
     @nonExistingId=@experiment.id+1
@@ -41,7 +48,7 @@ describe AttachmentsController do
       end
       it "should redirect to experiment" do
         get :show, :experiment_id => @experiment, :id => @nonExistingAttachmentId
-        response.should redirect_to(@experiment)
+        response.should redirect_to experiment_path(:experiment_id)
       end
     end
   end
@@ -187,7 +194,7 @@ describe AttachmentsController do
       end
       describe "success" do
         before(:each) do
-          @attr = {:content => Mockfile.new, :description => ""}
+          @attr = {:content => Mockfile.new("test2.png","fghij"), :description => ""}
         end
         it "should update an attachment" do
           put :update, :experiment_id => @experiment, :id => @attachment, :attachment => @attr
@@ -197,6 +204,7 @@ describe AttachmentsController do
           @attachment.filetype.should == mockfile.content_type
           @attachment.content.should == mockfile.read
           @attachment.description.should  == @attr[:description]
+          @attachment.attachable_id == @experiment.id
         end
         it "should have a success flash" do
           put :update, :experiment_id => @experiment, :id => @attachment, :attachment => @attr
@@ -218,7 +226,7 @@ describe AttachmentsController do
       end
       it "should redirect to experiments index" do
         put :update, :experiment_id => @experiment, :id => @nonExistingAttachmentId
-        response.should redirect_to(experiment_path(@experiment))
+        response.should redirect_to experiment_path(@experiment)
       end
     end
   end

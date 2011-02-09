@@ -20,8 +20,9 @@ class Attachment < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
  
   validates :filename, :presence => true,
-                        :length => { :maximum => 255 },
-                        :uniqueness => { :case_sensitive => false }
+                       :length => { :maximum => 255 },
+                       :uniqueness => { :scope => [:attachable_id, :attachable_type] }
+
   validates :filetype, :presence => true,
                        :length => { :maximum => 50 }
 

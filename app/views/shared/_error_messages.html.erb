@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <h3><%= pluralize(object.errors.count, "error") %> 
-        prohibited this experiment from being created:</h3>
+        prohibited this <%= object.class %> from being created:</h3>
     <p>There were problems with the following fields:</p>
     <ul>
     <% object.errors.full_messages.each do |msg| %>

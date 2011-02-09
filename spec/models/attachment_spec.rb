@@ -8,7 +8,7 @@ describe Attachment do
   it "should create a new instance given valid attributes" do
     Attachment.create!(@attr)
   end
-
+  it "should have a unique filename per attachable"
   it "should require a filename" do
     no_filename_attachment = Attachment.new(@attr.merge(:filename => ""))
     no_filename_attachment.should_not be_valid

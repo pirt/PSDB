@@ -234,19 +234,14 @@ describe ExperimentsController do
       @experiment = Factory(:experiment)
     end
     describe "for existing experiment" do
-      describe "with associated attachments" do
-        it "should not delete the experiment"
-      end
-      describe "with no associated shots" do
-        it "should delete the experiment" do
+      it "should delete the experiment" do
         lambda do
           delete :destroy, :id => @experiment
-          end.should change(Experiment, :count).by(-1)
-        end
-        it "should have a success flash message" do
-          delete :destroy, :id => @experiment
-          flash[:success].should =~ /Experiment successfully deleted/i
-        end
+        end.should change(Experiment, :count).by(-1)
+      end
+      it "should have a success flash message" do
+        delete :destroy, :id => @experiment
+        flash[:success].should =~ /Experiment successfully deleted/i
       end
       describe "with associated shots" do
         # TODO: add a shot associated to @experiment

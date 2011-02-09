@@ -22,7 +22,7 @@ class ExperimentsController < ApplicationController
 
   def create
     if params[:cancel]
-      flash[:info] = "Experiment creation canceled"
+      flash[:info] = "Experiment creation cancelled"
       redirect_to experiments_path
     elsif
       @experiment = Experiment.new(params[:experiment])
