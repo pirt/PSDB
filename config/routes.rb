@@ -4,6 +4,10 @@ PSDB::Application.routes.draw do
     resources :attachments
   end
 
+  resources :shots do
+    resources :attachments
+  end
+
   get "pages/contact"
   get "pages/about"
   # The priority is based upon order of creation:
@@ -58,8 +62,4 @@ PSDB::Application.routes.draw do
   root :to => "experiments#index"
 
   # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end

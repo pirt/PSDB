@@ -1,0 +1,74 @@
+<h2>Shot list</h2>
+<div class="span-24 last" id="search filters">
+  <div class="span-12" id="date filter">
+   <h4 class="caps">Filter by date</h4>
+    <div class="box">
+      <%= form_tag({:controller => "shots", :action => "index"}, :method => "get") do %>
+        <%= label_tag(:startDate, "Start date:") %>
+        <%= select_date Date.today-1.month, :prefix => :startDate %><br>
+        <%= label_tag(:endDate, "End date:") %>
+        <%= select_date Date.today, :prefix => :endDate %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span-12 last" id="experiment filter">
+    <h4 class="caps">Filter by experiment</h4>
+    <div class="box">
+      <%= form_tag({:controller => "shots", :action => "index"}, :method => "get") do %>
+        <%= label_tag(:experiment, "Experiment:") %>
+        <% possibleExp=options_from_collection_for_select(Experiment.all, :id, :name) %>
+        <%= select_tag(:selectedExp,possibleExp) %> 
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= page_entries_info @shots %>
+
+<%= will_paginate %>
+<table border=0>
+  <tr>
+    <th width=1px>Shot#</th>
+    <th>Date</th>
+    <th>fsFE WP</th>
+    <th>19_1</th>
+    <th>19_2</th>
+    <th>45</th>
+    <th>Amp1</th>
+    <th>Amp2</th>
+    <th>Amp3</th>
+    <th>Amp4</th>
+    <th>Amp5</th>
+    <th>FR</th>
+    <th>PA Energy</th>
+    <th>MA Energy</th>
+    <th>Comment</th>
+    <th></th>
+  </tr>
+
+  <% @shots.each do |shot| %>
+    <tr>
+      <td><%= link_to shot.id, shot %></td>
+      <td><%= shot.created_at.localtime().strftime("%d.%m.%Y %X")%></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%= shot.comment %></td>
+      <td><% if shot.attachments.count!=0 %>
+            <%= image_tag 'paperclip.png' %>
+          <% end %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate %>

@@ -4,41 +4,28 @@ namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
     #
-    nrOfExperiments=35
-    maxNrOfShotsPerExperiment=100
+    nrOfExperiments=2
+    maxNrOfShotsPerExperiment=10
     #
-    #Rake::Task['db:reset'].invoke
-    # generate shot types (Table: shottypes)
-=begin
-    puts "Generate shot types:"
-    shottypes=["experiment shot","test shot","snapshot","other"]
-    shottypes.each do |shottype|
-      puts "Generate shot type <#{shottype}>"
-      Shottype.create!(:name => shottype)
-    end
-=end
-    # generate experiments
-    (1..nrOfExperiments).each do |n|
-      puts "Create Experiment #{n}"
-      name  = "Experiment Nr.#{n}"
-      active = true
-      description = Faker::Lorem.sentence(1)
-      experiment=Experiment.create!(:name => name, :description => description, :active => true)
-    end
-=begin
+    Rake::Task['db:reset'].invoke
+   
+    createExperiments(nrOfExperiments)
+
+    #createShottypes
+
     # generate shots
-    shotcount=1
     Experiment.find_each do |experiment|
       nrOfShots=1+rand(maxNrOfShotsPerExperiment)
       (1..nrOfShots).each do |s|
         comment= Faker::Lorem.sentence(4)
-        shottypeName=shottypes[rand(Shottype.count)]
-	shottypeId=Shottype.find_by_name(shottypeName).id
-        puts "Create Shot #{shotcount}"
-        experiment.shots.create!(:comment => comment, :shottype_id => shottypeId)
-        shotcount=shotcount+1
+        # shottypeName=shottypes[rand(Shottype.count)]
+	      # shottypeId=Shottype.find_by_name(shottypeName).id
+        
+        shot=experiment.shots.create!(:comment => comment , :shottype_id => 1)
+        puts "Created Shot #{shot.id}"
       end
     end
+=begin
     # generate data types
     puts "Generate data types:"
     datatypes=["numeric","string","image","spectrum","voltage"]
@@ -108,7 +95,22 @@ namespace :db do
 =end
   end
 end
-
+def createShottypes
+  puts "Generate shot types:"
+  shottypes=["experiment shot","test shot","snapshot","other"]
+  shottypes.each do |shottype|
+    puts "Generate shot type <#{shottype}>"
+    Shottype.create!(:name => shottype)
+  end
+end
+def createExperiments(nrOfExperiments)
+  (1..nrOfExperiments).each do |n|
+    name  = "P#{n}"
+    description = Faker::Lorem.sentence(1)
+    experiment=Experiment.create!(:name => name, :description => description)
+    puts "Created Experiment #{experiment.id}"
+  end
+end
 def fillImageData
   imageNr=rand(1000)
   image=File.open("#{:Rails.root.to_s}/lib/tasks/test_images/#{imageNr}.jpg",'rb').read

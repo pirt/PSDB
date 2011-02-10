@@ -3,7 +3,8 @@
 <%= will_paginate @experiments %>
 <table border=0>
   <tr>
-    <th>Name</th>
+    <th width=1>Name</th>
+    <th width=1></th>
     <th>Description</th>
     <th></th>
   </tr>
@@ -11,7 +12,11 @@
   <% @experiments.each do |experiment| %>
     <tr>
       <td><%= link_to experiment.name, experiment %></td>
+      <td><% if experiment.attachments.count!=0 %>
+            <%= image_tag 'paperclip.png' %>
+          <% end %></td>
       <td><%= experiment.description %></td>
+      
       <td><%= link_to 'Edit', edit_experiment_path(experiment) %>
           <% if experiment.attachments.count!=0
             @confirmation="There are documents attached to the experiment, which WILL BE LOST if the experiment is deleted. Are You sure you want to do this?"

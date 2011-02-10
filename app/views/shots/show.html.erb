@@ -1,0 +1,41 @@
+<h2>Shot #<%= params[:id] %></h2>
+<div class="span-24 last" id="topbox">
+  <div class="span-12" id="general">
+    <div class="box">
+      Timestamp: <%= @shot.created_at %><br />
+      Experiment: <%= Experiment.find(@shot.experiment_id).name %> <br />
+      Comment: <%= @shot.comment %><br />
+      <%= link_to "Edit", edit_shot_path(@shot) %>
+    </div>
+  </div>
+  <div class="span-12 last" id="attachments">
+    <div class="box">
+      <h3>Attachments</h3>
+      <%= link_to "Add document", new_shot_attachment_path(@shot) %>
+    </div>
+  </div>
+</div>
+<div class="span-24 last" id="databox">
+  <div class="span-6 id="sidebar">
+    <div id="subsystems">
+      <h3 class="caps">Subsystems</h3>  
+      <div class="box">
+        <%= link_to 'All', shot_path(@shot) %><br />
+      </div>
+    </div>
+    <div id="class types">
+      <h3 class="caps">Class types</h3>
+      <div class="box">
+         <%= link_to 'All', shot_path(@shot) %><br />
+      </div>
+    </div>
+  </div>
+  <div class="span-18 last" id="instancedata">
+    <table border=0>
+      <tr>
+        <th>Device</th>
+        <th>Result</th>
+      </tr>
+    </table>
+  </div>
+</div>

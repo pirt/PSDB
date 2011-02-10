@@ -15,6 +15,7 @@ class Shot < ActiveRecord::Base
   belongs_to :experiment
   belongs_to :shottype
   has_many :instancedatas
+  has_many :attachments, :as => :attachable, :dependent => :destroy 
 
   validates :comment, :length => { :maximum => 255 }
  
