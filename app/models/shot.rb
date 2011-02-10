@@ -12,4 +12,15 @@
 #
 
 class Shot < ActiveRecord::Base
+  belongs_to :experiment
+  belongs_to :shottype
+  has_many :instancedatas
+
+  validates :comment, :length => { :maximum => 255 }
+ 
+  # check for reference to an existing experiment / shottype
+  # this also checks the presence of experiment_id and shottype_id
+
+  validates :experiment, :presence => true
+  # validates :shottype, :presence => true
 end
