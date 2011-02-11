@@ -1,5 +1,5 @@
 <h3>Add attachment</h3>
-<%= form_for [:experiment, @attachment], :html => {:multipart => true} do |a| %>
+<%= form_for [@parent, @attachment], :html => {:multipart => true} do |a| %>
   <%= render 'shared/error_messages', :object => a.object %>
   <div class="field">
     <%= a.label :filename %><br />

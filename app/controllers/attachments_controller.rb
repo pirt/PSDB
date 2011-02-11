@@ -9,23 +9,32 @@ class AttachmentsController < ApplicationController
       send_data attachment.content, :type => attachment.filetype, :filename => attachment.filename     
   end
   def new
+      if params[:experiment_id]
+        @parent=Experiment.find_by_id(params[:experiment_id])
+      elsif params[:shot_id]
+        @parent=Shot.find_by_id(params[:shot_id])
+      end
       @attachment=Attachment.new
       @pageTitle="Add attachment"
   end
   def create
-    if !params[:experiment_id]
+    if params[:experiment_id]
+      @parent=Experiment.find_by_id(params[:experiment_id])
+    elsif params[:shot_id]
+       @parent=Shot.find_by_id(params[:shot_id])
+    else
       flash[:error]="No experiment / shot selected."
       redirect_to :experiments
     end
-    @parent=Experiment.find_by_id(params[:experiment_id])
+    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     if !@parent
-      flash[:error]="Experiment not found"
+      flash[:error]="Experiment / shot not found"
       redirect_to experiments_path
       return
     end
     if params[:cancel]
       flash[:info]="Attachment creation cancelled"
-      redirect_to experiment_path(@parent)
+      redirect_to parentPath
       return
     end
     @attachment=@parent.attachments.new
@@ -44,31 +53,43 @@ class AttachmentsController < ApplicationController
     end
     if @attachment.save
       flash[:success]="Attachment created"
-      redirect_to experiment_path(@parent)
+      redirect_to parentPath
     else
       @pageTitle="Add attachment"
       render 'new'
     end
   end
   def edit
+    if params[:experiment_id]
+      @parent=Experiment.find_by_id(params[:experiment_id])
+    elsif params[:shot_id]
+       @parent=Shot.find_by_id(params[:shot_id])
+    end
+    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     @attachment=Attachment.find_by_id(params[:id])
     if !@attachment
       flash[:error]="Attachment not found"
-      redirect_to experiment_path(params[:experiment_id])
+      redirect_to parentPath
       return
     end
     @pageTitle="Edit attachment"     
   end
   def update
+    if params[:experiment_id]
+      @parent=Experiment.find_by_id(params[:experiment_id])
+    elsif params[:shot_id]
+       @parent=Shot.find_by_id(params[:shot_id])
+    end
+    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     @attachment=Attachment.find_by_id(params[:id])
     if !@attachment
       flash[:error]="Attachment not found"
-      redirect_to experiment_path(params[:experiment_id])
+      redirect_to parentPath
       return
     end
     if params[:cancel]
       flash[:info]="Attachment update cancelled"
-      redirect_to experiment_path(@attachment.attachable_id)
+      redirect_to parentPath
       return
     end
     @attachment.description=params[:attachment][:description]
@@ -89,7 +110,7 @@ class AttachmentsController < ApplicationController
     end
     if @attachment.save
       flash[:success]="Attachment updated"
-      redirect_to experiment_path(@attachment.attachable_id)
+      redirect_to parentPath
     else
       @attachment.reload
       @pageTitle="Edit attachment"
@@ -97,6 +118,12 @@ class AttachmentsController < ApplicationController
     end
   end
   def destroy
+    if params[:experiment_id]
+      @parent=Experiment.find_by_id(params[:experiment_id])
+    elsif params[:shot_id]
+       @parent=Shot.find_by_id(params[:shot_id])
+    end
+    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     attachment=Attachment.find_by_id(params[:id])
     if !attachment
       flash[:error] = "Attachment not found"
@@ -107,6 +134,6 @@ class AttachmentsController < ApplicationController
         flash[:error] = "Error while deleting attachment"
       end
     end
-    redirect_to experiment_path(params[:experiment_id])
+    redirect_to parentPath
   end
 end

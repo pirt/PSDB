@@ -12,6 +12,8 @@
 #
 
 class Shot < ActiveRecord::Base
+  attr_accessible :comment, :experiment_id, :shottype_id
+
   belongs_to :experiment
   belongs_to :shottype
   has_many :instancedatas

@@ -10,8 +10,7 @@
   </div>
   <div class="span-12 last" id="attachments">
     <div class="box">
-      <h3>Attachments</h3>
-      <%= link_to "Add document", new_shot_attachment_path(@shot) %>
+      <%= render :partial => "attachments/index", :locals => { :parent => @shot } %>
     </div>
   </div>
 </div>

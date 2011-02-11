@@ -4,30 +4,6 @@
 <b>Created at: </b> <%= @experiment.created_at %><br>
 <b>Updated at: </b> <%= @experiment.updated_at %><br>
 <hr>
-<h3>Attached documents</h3>
-<table border=0>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Date added</th>
-    <th></th>
-  </tr>
-  <% @experiment.attachments.each do |attachment| %>
-    <tr>
-      <td><%= link_to attachment.filename, experiment_attachment_path(@experiment,attachment) %></td>
-      <td><%= attachment.description %></td>
-      <td><%= attachment.filetype %></td>
-      <td><%= attachment.created_at %></td>
-      <td>
-        <%= link_to "Edit", edit_experiment_attachment_path(@experiment,attachment) %>
-        <%= link_to "Delete", experiment_attachment_path(@experiment,attachment),
-                             :method => :delete, :confirm => "Are You sure?",
-                             :title => "Delete #{attachment.filename}" %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-<%= link_to "Add document", new_experiment_attachment_path(@experiment) %>
+<%= render :partial => "attachments/index", :locals => { :parent => @experiment } %>
 <hr>
 <%= link_to "Back to experiments", experiments_path %>
