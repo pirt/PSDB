@@ -10,6 +10,8 @@ class ShotsController < ApplicationController
   end
 
   def edit
+    @shot=Shot.find_by_id(params[:id])
+    @pageTitle="Edit shot #{@shot.id}"
   end
 
 end

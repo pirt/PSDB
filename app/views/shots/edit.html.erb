@@ -1,2 +1,20 @@
-<h1>Shots#edit</h1>
-<p>Find me in app/views/shots/edit.html.erb</p>
+<h3>Edit Shot <%= @shot.id %></h3>
+<%= form_for(@shot) do |shot| %>
+  <%= render 'shared/error_messages', :object => shot.object %>
+  <div class="field">
+    <%= shot.label :experiment_id %>
+    <%= shot.collection_select(:experiment_id,Experiment.all, :id, :name) %>  
+  </div>
+  <div class="field">
+    <%= shot.label :shottype %>
+    <%= shot.text_field :shottype_id %>
+  </div>
+  <div class="field">
+    <%= shot.label :comment %><br />
+    <%= shot.text_field :comment %>
+  </div>
+  <div class="actions">
+    <%= shot.submit "Update Shot" %>
+    <%= shot.submit "Cancel", :name => "cancel" %>
+  </div>
+<% end %>
