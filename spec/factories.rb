@@ -8,7 +8,9 @@ Factory.define :attachment do |attachment|
   attachment.description "attachment description"
   attachment.content     "abcdefghijklmnopqrstuvwxyz"
 end
+Factory.define :shottype do |shottype|
+  shottype.name          "experiment shot"
+end
 Factory.define :shot do |shot|
   shot.comment           "test shot comment"
-  shot.shottype_id       1
 end

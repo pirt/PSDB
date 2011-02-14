@@ -11,17 +11,19 @@ namespace :db do
    
     createExperiments(nrOfExperiments)
 
-    #createShottypes
+    shotTypes=["experiment shot","test shot","snapshot","other"]
+    createShottypes(shotTypes)
 
     # generate shots
+
     Experiment.find_each do |experiment|
       nrOfShots=1+rand(maxNrOfShotsPerExperiment)
       (1..nrOfShots).each do |s|
         comment= Faker::Lorem.sentence(4)
-        # shottypeName=shottypes[rand(Shottype.count)]
-	      # shottypeId=Shottype.find_by_name(shottypeName).id
+        shottypeName=shotTypes[rand(shotTypes.length)]
+	      shottypeId=Shottype.find_by_name(shottypeName).id
         
-        shot=experiment.shots.create!(:comment => comment , :shottype_id => 1)
+        shot=experiment.shots.create!(:comment => comment , :shottype_id => shottypeId)
         puts "Created Shot #{shot.id}"
       end
     end
@@ -95,10 +97,9 @@ namespace :db do
 =end
   end
 end
-def createShottypes
+def createShottypes(shotTypes)
   puts "Generate shot types:"
-  shottypes=["experiment shot","test shot","snapshot","other"]
-  shottypes.each do |shottype|
+  shotTypes.each do |shottype|
     puts "Generate shot type <#{shottype}>"
     Shottype.create!(:name => shottype)
   end

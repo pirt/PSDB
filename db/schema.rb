@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110209132953) do
+ActiveRecord::Schema.define(:version => 20110214092343) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(:version => 20110209132953) do
     t.integer  "shottype_id",   :precision => 38, :scale => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "shottypes", :force => true do |t|
+    t.string "name", :limit => 30, :null => false
   end
 
 end

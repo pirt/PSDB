@@ -1,14 +1,15 @@
 <h2>Shot #<%= params[:id] %></h2>
 <div class="span-24 last" id="topbox">
-  <div class="span-12" id="general">
+  <div class="span-11" id="general">
     <div class="box">
       Timestamp: <%= @shot.created_at %><br />
-      Experiment: <%= Experiment.find(@shot.experiment_id).name %> <br />
+      Experiment: <%= @shot.experiment.name %><br />
+      Shot type: <%= @shot.shottype.name %><br />
       Comment: <%= @shot.comment %><br />
       <%= link_to "Edit", edit_shot_path(@shot) %>
     </div>
   </div>
-  <div class="span-12 last" id="attachments">
+  <div class="span-13 last" id="attachments">
     <div class="box">
       <%= render :partial => "attachments/index", :locals => { :parent => @shot } %>
     </div>

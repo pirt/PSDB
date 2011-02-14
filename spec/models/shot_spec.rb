@@ -3,7 +3,9 @@ require 'spec_helper'
 describe Shot do
   before(:each) do
     @experiment=Factory(:experiment)
+    @shottype=Factory(:shottype)
     @attr=Factory.attributes_for(:shot)
+    @attr=@attr.merge(:shottype_id => @shottype.id)
   end
   it "should create instance given valid attributes" do
     shot=@experiment.shots.new(@attr)
@@ -32,13 +34,16 @@ describe Shot do
   end
   it "should have a shottype association" do
     shot=Shot.new(@attr)
-    shot.should respond_to(:shottype_id)
+    shot.should respond_to(:shottype)
   end
-  it "requires an existing shottype id"
-  
+  it "requires an existing shottype id" do
+    nonExistingShottypeId=@shottype.id+1
+    shot=Shot.new(@attr.merge(:shottype_id => nonExistingShottypeId))
+    shot.should_not be_valid
+  end
   it "should have an experiment reference" do
     shot=Shot.new(@attr)
-    shot.should respond_to(:experiment_id)
+    shot.should respond_to(:experiment)
   end
   it "requires an existing experiment id" do
     nonExistingExperimentId=@experiment.id+1

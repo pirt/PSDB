@@ -25,5 +25,5 @@ class Shot < ActiveRecord::Base
   # this also checks the presence of experiment_id and shottype_id
 
   validates :experiment, :presence => true
-  # validates :shottype, :presence => true
+  validates :shottype, :presence => true
 end
