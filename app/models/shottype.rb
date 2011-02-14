@@ -1,3 +1,12 @@
+# == Schema Information
+# Schema version: 20110214103313
+#
+# Table name: shottypes
+#
+#  id   :integer(38)     not null, primary key
+#  name :string(30)      not null
+#
+
 class Shottype < ActiveRecord::Base
   attr_accessible :name
 

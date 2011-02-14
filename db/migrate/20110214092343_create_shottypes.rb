@@ -1,7 +1,7 @@
 class CreateShottypes < ActiveRecord::Migration
   def self.up
-    create_table :shottypes do |t|
-      t.string :name, :null => false, :limit => 30
+    create_table :shottypes, :comment => "List of available shot types" do |t|
+      t.string :name, :null => false, :limit => 30, :comment => "Name of a shot type"
     end
   end
 

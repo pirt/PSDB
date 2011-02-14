@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110214092343) do
+ActiveRecord::Schema.define(:version => 20110214103313) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(:version => 20110214092343) do
   end
 
   add_index "experiments", ["name"], :name => "index_experiments_on_name", :unique => true
+
+  create_table "instancedatas", :force => true do |t|
+    t.integer  "shot_id",      :precision => 38, :scale => 0, :null => false
+    t.integer  "instance_id",  :precision => 38, :scale => 0, :null => false
+    t.integer  "datatype_id",  :precision => 38, :scale => 0, :null => false
+    t.string   "name",                                        :null => false
+    t.decimal  "data_numeric"
+    t.string   "data_string"
+    t.binary   "data_binary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "shots", :force => true do |t|
     t.string   "comment"
