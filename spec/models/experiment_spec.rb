@@ -54,7 +54,12 @@ describe Experiment do
       @experiment.should respond_to(:attachments)
     end
 
-    it "cannot be deleted if still referenced by shots"
-    it "cannot be deleted if still referenced attachments"
+    it "cannot be deleted if still referenced by shots" do
+      @shot=Factory(:shot)
+      @experiment=@shot.experiment
+      lambda do
+         @experiment.destroy
+      end.should_not change(Experiment, :count)
+    end
   end
 end

@@ -4,8 +4,7 @@ describe Shot do
   before(:each) do
     @experiment=Factory(:experiment)
     @shottype=Factory(:shottype)
-    @attr=Factory.attributes_for(:shot)
-    @attr=@attr.merge(:shottype_id => @shottype.id)
+    @attr= {:comment => "test comment", :shottype_id => @shottype.id}
   end
   it "should create instance given valid attributes" do
     shot=@experiment.shots.new(@attr)
@@ -50,4 +49,5 @@ describe Shot do
     shot=Shot.new(@attr.merge(:experiment_id => nonExistingExperimentId))
     shot.should_not be_valid
   end
+  it "should not be destroyed if instancedatas associated"
 end

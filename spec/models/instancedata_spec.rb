@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Instancedata do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @experiment=Factory(:experiment)
+    @shottype=Factory(:shottype)
+    @attr=Factory.attributes_for(:shot)
+    @attr=@attr.merge(:shottype_id => @shottype.id)
+  end
 end

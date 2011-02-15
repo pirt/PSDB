@@ -13,4 +13,16 @@ Factory.define :shottype do |shottype|
 end
 Factory.define :shot do |shot|
   shot.comment           "test shot comment"
+  shot.experiment {Factory(:experiment)}
+  shot.shottype {Factory(:shottype)}
+end
+Factory.define :datatype do |datatype|
+  datatype.name   "numeric"
+end
+Factory.define :instancedata do |instancedata|
+  instancedata.shot {Factory(:shot)}
+  #instancedata.instance {Factory(:instance)}
+  instancedata.datatype {Factory(:datatype)}
+  instancedata.name "Test parameter"
+  instancedata.data_numeric 47.11
 end

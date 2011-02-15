@@ -24,8 +24,8 @@ class Instancedata < ActiveRecord::Base
   
   validates :name, :presence => true,
                    :length => { :maximum => 255 }
-  validates 
+
   validates :shot, :presence => true
   #validates :instance, :presence => true
-  #validates :datatype, :presence => true
+  validates :datatype, :presence => true
 end

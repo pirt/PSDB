@@ -29,6 +29,12 @@ describe Shottype do
     it "should have a 'shots' attribute" do
       @shottype.should respond_to(:shots)
     end
-    it "cannot be deleted if referenced by shots"
+    it "cannot be deleted if referenced by shots" do
+      @shot=Factory(:shot)
+      @shotttype=@shot.shottype
+      lambda do
+         @shottype.destroy
+      end.should_not change(Shottype, :count)
+    end
   end
 end
