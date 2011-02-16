@@ -5,36 +5,18 @@ namespace :db do
   task :populate => :environment do
     #
     nrOfExperiments=2
-    maxNrOfShotsPerExperiment=10
+    maxNrOfShotsPerExperiment=2
     #
     Rake::Task['db:reset'].invoke
-   
+      
     createExperiments(nrOfExperiments)
 
     shotTypes=["experiment shot","test shot","snapshot","other"]
     createShottypes(shotTypes)
 
-    # generate shots
+    createShots(maxNrOfShotsPerExperiment,shotTypes)
 
-    Experiment.find_each do |experiment|
-      nrOfShots=1+rand(maxNrOfShotsPerExperiment)
-      (1..nrOfShots).each do |s|
-        comment= Faker::Lorem.sentence(4)
-        shottypeName=shotTypes[rand(shotTypes.length)]
-	      shottypeId=Shottype.find_by_name(shottypeName).id
-        
-        shot=experiment.shots.create!(:comment => comment , :shottype_id => shottypeId)
-        puts "Created Shot #{shot.id}"
-      end
-    end
-=begin
-    # generate data types
-    puts "Generate data types:"
-    datatypes=["numeric","string","image","spectrum","voltage"]
-    datatypes.each do |datatype|
-      puts "Generate data type <#{datatype}>"
-      Datatype.create!(:name => datatype)
-    end
+    createDataTypes
 
     # generate instances, subsystems and classtypes (typically 100)
 
@@ -45,16 +27,9 @@ namespace :db do
                "PPMA_1_PU", "PPMA_2_PU", "PPMA_3_PU", "PPMA_4_PU", "PPMA_5_PU",
                "MAS_Powermeter", "MAS_Spectrometer", "MAS_Filt1_BB", "MAS_Filt2_BB", "MAS_Filt3_BB",
                "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB", ]
+
+    createInstances(instances)
     
-    instances.each do |instance|
-      instanceParts=instance.split("_")
-      subsystemName=instanceParts.first
-      classtypeName=instanceParts.last
-      subsystem=Subsystem.find_or_create_by_name(subsystemName)
-      classtype=Classtype.find_or_create_by_name(classtypeName)     
-      puts "Create Instance #{instance}"
-      Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id)
-    end
     
     # generate instance data (typically 10 per instance)
     classParams={'Cam' => ["brightness_n","shutter_n","gain_n","image_i","serial_s","paramA_s", "paramB_n", "paramC_n"], 
@@ -67,13 +42,12 @@ namespace :db do
     Shot.find_each do |shot|
       puts "Creating measurement data for shot #{shot.id}"
       Instance.find_each do |instance|
-	probabilityInstanceExists=rand()
-	if (probabilityInstanceExists>0.1)
+	      probabilityInstanceExists=rand()
+	      if (probabilityInstanceExists>0.1)
           classType=Classtype.find(instance.classtype_id).name
-	  classParams[classType].each do |classParam|
+	        classParams[classType].each do |classParam|
             classParamType=classParam.split("_").last
             classParamName=classParam.split("_").first
-            #puts "Instance: #{instance.name} Parameter: #{classParamName} Type: #{classParamType}"
             case classParamType
               when "s"
                 data_string=fillStringData()
@@ -82,19 +56,25 @@ namespace :db do
                 data_numeric=fillNumericData()
                 dataTypeId=Datatype.find_by_name("numeric").id
               when "i"
-                data_binary=fillImageData()
-                dataTypeId=Datatype.find_by_name("image").id
-	      when "sp"
+                #data_binary=fillImageData()
+                #dataTypeId=Datatype.find_by_name("image").id
+                data_binary=fillNumericData()
+                dataTypeId=Datatype.find_by_name("numeric").id
+	            when "sp"
                 data_binary=fillSpectrumData()
                 dataTypeId=Datatype.find_by_name("spectrum").id
             end
-            Instancedata.create!(:shot_id => shot.id, :instance_id => instance.id, :name => classParamName, :datatype_id => dataTypeId,
-                               :data_string => data_string, :data_numeric => data_numeric, :data_binary => data_binary)
+            Instancedata.create!(:shot_id => shot.id, 
+                                 :instance_id => instance.id,
+                                 :name => classParamName,
+                                 :datatype_id => dataTypeId,
+                                 :data_string => data_string,
+                                 :data_numeric => data_numeric,
+                                 :data_binary => data_binary)
           end
-	end
+	      end
       end
     end
-=end
   end
 end
 def createShottypes(shotTypes)
@@ -102,6 +82,29 @@ def createShottypes(shotTypes)
   shotTypes.each do |shottype|
     puts "Generate shot type <#{shottype}>"
     Shottype.create!(:name => shottype)
+  end
+end
+def createShots(maxNrOfShotsPerExperiment,shotTypes)
+  Experiment.find_each do |experiment|
+    nrOfShots=1+rand(maxNrOfShotsPerExperiment)
+    (1..nrOfShots).each do |s|
+      comment= Faker::Lorem.sentence(4)
+      shottypeName=shotTypes[rand(shotTypes.length)]
+	    shottypeId=Shottype.find_by_name(shottypeName).id
+      shot=experiment.shots.create!(:comment => comment , :shottype_id => shottypeId)
+      puts "Created Shot #{shot.id}"
+    end
+  end
+end
+def createInstances(instances)
+  instances.each do |instance|
+    instanceParts=instance.split("_")
+    subsystemName=instanceParts.first
+    classtypeName=instanceParts.last
+    subsystem=Subsystem.find_or_create_by_name(subsystemName)
+    classtype=Classtype.find_or_create_by_name(classtypeName)     
+    puts "Create Instance #{instance}"
+    Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id)
   end
 end
 def createExperiments(nrOfExperiments)
@@ -112,11 +115,21 @@ def createExperiments(nrOfExperiments)
     puts "Created Experiment #{experiment.id}"
   end
 end
+def createDataTypes
+  datatypes=["numeric","string","image","spectrum","voltage"]
+  datatypes.each do |datatype|
+    puts "Generate data type <#{datatype}>"
+    Datatype.create!(:name => datatype)
+  end
+end
+
+=begin
 def fillImageData
   imageNr=rand(1000)
   image=File.open("#{:Rails.root.to_s}/lib/tasks/test_images/#{imageNr}.jpg",'rb').read
   return image
 end
+=end
 def fillSpectrumData
   spectrum="" 
   (1..100).each do |dataPoint|
