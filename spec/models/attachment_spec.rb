@@ -3,12 +3,29 @@ require 'spec_helper'
 describe Attachment do
   before(:each) do
     @attr = { :filename => "hallo.doc", :filetype => "app/word",
-              :description => "Experiment proposal", :content => "a"*10000}
+              :description => "Experiment proposal", :content => "a"*10000,
+              :attachable_id => "1", :attachable_type => "testparent"}
   end
   it "should create a new instance given valid attributes" do
     Attachment.create!(@attr)
   end
-  it "should have a unique filename per attachable"
+  describe "unique filename" do
+    it "should have a unique filename per attachable" do
+      Attachment.create!(@attr)
+      duplicate_attachment=Attachment.new(@attr)
+      duplicate_attachment.should_not be_valid
+    end
+    it "should allow double filenames with different attachment id" do
+      Attachment.create!(@attr)
+      duplicate_attachment=Attachment.new(@attr.merge(:attachable_id => "2"))
+      duplicate_attachment.should be_valid
+    end
+    it "should allow double filenames with different attachment type" do
+      Attachment.create!(@attr)
+      duplicate_attachment=Attachment.new(@attr.merge(:attachable_type => "other parent"))
+      duplicate_attachment.should be_valid
+    end
+  end
   it "should require a filename" do
     no_filename_attachment = Attachment.new(@attr.merge(:filename => ""))
     no_filename_attachment.should_not be_valid

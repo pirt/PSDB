@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Shot do
   before(:each) do
-    @experiment=Factory(:experiment)
-    @shottype=Factory(:shottype)
-    @attr= {:comment => "test comment", :shottype_id => @shottype.id}
+    @experiment=Factory(:experiment, :name => "other")
+    @shottype=Factory(:shottype, :name => "other")
+    @attr= {:comment => "test comment", :shottype_id => @shottype.id, :experiment_id => @experiment.id}
   end
   it "should create instance given valid attributes" do
-    shot=@experiment.shots.new(@attr)
+    shot=Shot.new(@attr)
     shot.should be_valid
   end
   it "should have a timestamp" do
@@ -49,5 +49,11 @@ describe Shot do
     shot=Shot.new(@attr.merge(:experiment_id => nonExistingExperimentId))
     shot.should_not be_valid
   end
-  it "should not be destroyed if instancedatas associated"
+  it "should not be destroyed if instancedatas associated" do
+    @instancedata=Factory(:instancedata)
+    @shot=@instancedata.shot
+    lambda do
+       @shot.destroy
+    end.should_not change(Shot, :count)
+  end
 end

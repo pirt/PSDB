@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110214103313
+# Schema version: 20110216123146
 #
 # Table name: instancedatas
 #
@@ -7,7 +7,7 @@
 #  shot_id      :integer(38)     not null
 #  instance_id  :integer(38)     not null
 #  datatype_id  :integer(38)     not null
-#  name         :string(255)     not null
+#  name         :string(256)     not null
 #  data_numeric :decimal(, )
 #  data_string  :string(255)
 #  data_binary  :binary
@@ -29,6 +29,6 @@ class Instancedata < ActiveRecord::Base
   #validates_presence_of_at_least_one_field :data_numeric, :data_string, :data_binary
 
   validates :shot, :presence => true
-  #validates :instance, :presence => true
+  validates :instance, :presence => true
   validates :datatype, :presence => true
 end

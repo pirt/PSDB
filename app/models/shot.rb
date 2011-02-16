@@ -26,4 +26,15 @@ class Shot < ActiveRecord::Base
 
   validates :experiment, :presence => true
   validates :shottype, :presence => true
+
+  before_destroy :check_if_instancedatas_associated
+  
+  def check_if_instancedatas_associated
+    if (!instancedatas.empty?)
+      errors.add(:base, "cannot be deleted with instancedatas associated")
+      return false
+    else
+      return true
+    end
+  end
 end

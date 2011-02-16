@@ -26,8 +26,8 @@ describe Datatype do
       @datatype = Datatype.create(@attr)
       @datatype.should respond_to(:instancedatas)
     end
-    it "cannot be deleted if referenced by shots" do
-      @instancedata=Factory(:instancedata, :instance_id => 1)
+    it "cannot be deleted if referenced by instancedatas" do
+      @instancedata=Factory(:instancedata)
       @datatype=@instancedata.datatype
       lambda do
          @datatype.destroy

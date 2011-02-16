@@ -4,11 +4,11 @@ describe Instancedata do
   before(:each) do
     @shot=Factory(:shot)
     @datatype=Factory(:datatype)
-    #@instance=Factory(:instance)
+    @instance=Factory(:instance)
     @attr={:name => "test parameter",
            :shot_id => @shot.id,
            :datatype_id => @datatype.id,
-           :instance_id => 1,
+           :instance_id => @instance.id,
            :data_numeric => 1234 }
   end
   it "should create an instance given valid attributes" do
@@ -43,7 +43,7 @@ describe Instancedata do
     end
   end
   describe "association" do
-    it "should have a belong to a shot" do
+    it "should belong to a shot" do
       instancedata=Instancedata.new(@attr)
       instancedata.should respond_to(:shot)
     end
@@ -67,7 +67,7 @@ describe Instancedata do
     end
     it "should reference an existing instance" do
       nonExistingInstanceId=@instance.id + 1
-      corrupted_instancedata=Instancedata.new(@attr.merge(:instancee_id => nonExistingInstanceId))
+      corrupted_instancedata=Instancedata.new(@attr.merge(:instance_id => nonExistingInstanceId))
       corrupted_instancedata.should_not be_valid
     end
   end

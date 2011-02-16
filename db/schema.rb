@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215070042) do
+ActiveRecord::Schema.define(:version => 20110216123146) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20110215070042) do
     t.string   "attachable_type"
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
+  end
+
+  create_table "classtypes", :force => true do |t|
+    t.string "name", :limit => 256, :null => false
   end
 
   create_table "datatypes", :force => true do |t|
@@ -37,13 +41,21 @@ ActiveRecord::Schema.define(:version => 20110215070042) do
   add_index "experiments", ["name"], :name => "index_experiments_on_name", :unique => true
 
   create_table "instancedatas", :force => true do |t|
-    t.integer  "shot_id",      :precision => 38, :scale => 0, :null => false
-    t.integer  "instance_id",  :precision => 38, :scale => 0, :null => false
-    t.integer  "datatype_id",  :precision => 38, :scale => 0, :null => false
-    t.string   "name",                                        :null => false
+    t.integer  "shot_id",                     :precision => 38, :scale => 0, :null => false
+    t.integer  "instance_id",                 :precision => 38, :scale => 0, :null => false
+    t.integer  "datatype_id",                 :precision => 38, :scale => 0, :null => false
+    t.string   "name",         :limit => 256,                                :null => false
     t.decimal  "data_numeric"
     t.string   "data_string"
     t.binary   "data_binary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "instances", :force => true do |t|
+    t.integer  "classtype_id", :precision => 38, :scale => 0, :null => false
+    t.integer  "subsystem_id", :precision => 38, :scale => 0, :null => false
+    t.string   "name",                                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,6 +70,10 @@ ActiveRecord::Schema.define(:version => 20110215070042) do
 
   create_table "shottypes", :force => true do |t|
     t.string "name", :limit => 30, :null => false
+  end
+
+  create_table "subsystems", :force => true do |t|
+    t.string "name", :null => false
   end
 
 end
