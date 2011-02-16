@@ -22,12 +22,16 @@ describe Datatype do
     longname_datatype.should_not be_valid
   end
   describe "association" do
-    before(:each) do
-      @datatype = Datatype.create(@attr)
-    end
     it "should have a 'instancedatas' attribute" do
+      @datatype = Datatype.create(@attr)
       @datatype.should respond_to(:instancedatas)
     end
-    it "cannot be deleted if referenced by shots"
+    it "cannot be deleted if referenced by shots" do
+      @instancedata=Factory(:instancedata, :instance_id => 1)
+      @datatype=@instancedata.datatype
+      lambda do
+         @datatype.destroy
+      end.should_not change(Datatype, :count)
+    end
   end
 end

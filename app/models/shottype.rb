@@ -15,4 +15,15 @@ class Shottype < ActiveRecord::Base
   validates :name, :presence => true,
                    :uniqueness => { :case_sensitive => false },
                    :length => { :maximum => 30 }
+
+  before_destroy :check_if_shots_associated
+
+  def check_if_shots_associated
+    if (!shots.empty?)
+      errors.add(:base, "cannot be deleted with shots associated")
+      return false
+    else
+      return true
+    end
+  end
 end

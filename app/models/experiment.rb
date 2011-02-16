@@ -32,8 +32,8 @@ class Experiment < ActiveRecord::Base
   
   
   def check_if_shots_associated
-    if (shots.count!=0)
-      errors.add(:base, "Cannot delete experiment with shots")
+    if (!shots.empty?)
+      errors.add(:base, "cannot be deleted with shots associated")
       return false
     else
       return true

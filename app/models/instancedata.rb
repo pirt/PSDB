@@ -16,7 +16,8 @@
 #
 
 class Instancedata < ActiveRecord::Base
-  attr_accessible :name, :data_numeric, :data_binary, :data_string, :data_binary
+  attr_accessible :name, :data_numeric, :data_binary, :data_string, :data_binary, 
+                  :shot_id, :datatype_id, :instance_id
 
   belongs_to :shot
   belongs_to :instance
@@ -24,6 +25,8 @@ class Instancedata < ActiveRecord::Base
   
   validates :name, :presence => true,
                    :length => { :maximum => 255 }
+
+  #validates_presence_of_at_least_one_field :data_numeric, :data_string, :data_binary
 
   validates :shot, :presence => true
   #validates :instance, :presence => true

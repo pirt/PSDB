@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Shottype do
   before(:each) do
-    @attr = { :name => "experiment shot" }
+    @attr = { :name => "test shot" }
   end
 
   it "should create a new instance given valid attributes" do
@@ -14,7 +14,7 @@ describe Shottype do
   end
   it "should have a unique (case insensitive) name" do
     Shottype.create!(@attr)
-    duplicate_name_shottype = Shottype.new(@attr.merge(:name => "Experiment Shot"))
+    duplicate_name_shottype = Shottype.new(@attr.merge(:name => "Test Shot"))
     duplicate_name_shottype.should_not be_valid
   end
   it "should reject name longer than 30 characters" do
@@ -31,7 +31,7 @@ describe Shottype do
     end
     it "cannot be deleted if referenced by shots" do
       @shot=Factory(:shot)
-      @shotttype=@shot.shottype
+      @shottype=@shot.shottype
       lambda do
          @shottype.destroy
       end.should_not change(Shottype, :count)
