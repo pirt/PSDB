@@ -9,7 +9,8 @@ class ShotsController < ApplicationController
     availableInstanceDatas=@shot.instancedatas
     groupedInstanceDatas=availableInstanceDatas.select(:instance_id).group(:instance_id).includes(:instance)
     @instanceDatas=groupedInstanceDatas.paginate(:page => params[:page])
-@usedClasses=availableInstanceDatas.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
+    @usedClasses=availableInstanceDatas.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
+    @usedSubsystems=availableInstanceDatas.joins(:instance => :subsystem).select("subsystems.name").group("subsystems.name")
     @pageTitle="Shot #{@shot.id}"
   end
 

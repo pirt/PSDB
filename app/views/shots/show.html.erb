@@ -16,13 +16,13 @@
   </div>
 </div>
 <div class="span-24 last" id="databox">
-  <div class="span-6 id="sidebar">
+  <div class="span-6" id="sidebar">
     <div id="subsystems">
       <h3 class="caps">Subsystems</h3>  
       <div class="box">
         <%= link_to 'All', shot_path(@shot) %><br />
-        <% Subsystem.find_each do |subsystem| %>
-          <%= subsystem.name %><br />
+        <% @usedSubsystems.each do |usedSubsystem| %>
+          <%= usedSubsystem.name %><br />
         <% end %>
       </div>
     </div>
