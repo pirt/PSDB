@@ -21,21 +21,34 @@
       <h3 class="caps">Subsystems</h3>  
       <div class="box">
         <%= link_to 'All', shot_path(@shot) %><br />
+        <% Subsystem.find_each do |subsystem| %>
+          <%= subsystem.name %><br />
+        <% end %>
       </div>
     </div>
     <div id="class types">
       <h3 class="caps">Class types</h3>
       <div class="box">
-         <%= link_to 'All', shot_path(@shot) %><br />
+        <%= link_to 'All', shot_path(@shot) %><br />
+        <% @usedClasses.each do |usedClass| %>
+          <%= usedClass.name %><br />
+        <% end %>
       </div>
     </div>
   </div>
   <div class="span-18 last" id="instancedata">
+    <% will_paginate @instanceDatas %>
     <table border=0>
       <tr>
         <th>Device</th>
         <th>Result</th>
-      </tr>
+      </tr>  
+      <% @instanceDatas.each do |instancedata| %>
+        <tr>
+          <td><%= instancedata.instance.name %></td>
+          <td></td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

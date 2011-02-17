@@ -6,6 +6,10 @@ class ShotsController < ApplicationController
 
   def show
     @shot=Shot.find_by_id(params[:id])
+    availableInstanceDatas=@shot.instancedatas
+    groupedInstanceDatas=availableInstanceDatas.select(:instance_id).group(:instance_id).includes(:instance)
+    @instanceDatas=groupedInstanceDatas.paginate(:page => params[:page])
+@usedClasses=availableInstanceDatas.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
     @pageTitle="Shot #{@shot.id}"
   end
 
@@ -13,5 +17,4 @@ class ShotsController < ApplicationController
     @shot=Shot.find_by_id(params[:id])
     @pageTitle="Edit shot #{@shot.id}"
   end
-
 end
