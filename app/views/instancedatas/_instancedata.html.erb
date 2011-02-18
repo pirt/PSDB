@@ -1,0 +1,7 @@
+<% dataType=instancedata.datatype.name %>
+<% partialName="instancedata_#{dataType}" %>
+<% partialFileName=::Rails.root.to_s+"/app/views/instancedatas/_"+partialName+".html.erb" %>
+<% if !File.exists?(partialFileName) %>
+  <% partialName="instancedata_unknown" %>
+<% end %>
+<%= render :partial => "instancedatas/#{partialName}", :locals => { :instancedata => instancedata } %>
