@@ -1,0 +1,16 @@
+<h3>Instances</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Subsystem</th>
+    <th>Classtype</th>
+  </td>
+  <% @instances.each do |instance| %>
+    <tr>
+      <td><%= instance.name %></td>
+      <td><%= instance.subsystem.name %></td>
+      <td><%= instance.classtype.name %></td>
+    </tr>
+  <% end %>
+</table>
+

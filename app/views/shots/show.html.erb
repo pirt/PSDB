@@ -45,7 +45,7 @@
       </tr>  
       <% @instanceDatas.each do |instancedata| %>
         <tr>
-          <td><%= instancedata.instance.name %></td>
+          <td><%= link_to instancedata.instance.name, instance_path(instancedata.instance, :shot_id => @shot) %></td>
           <td></td>
         </tr>
       <% end %>

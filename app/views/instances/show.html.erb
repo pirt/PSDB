@@ -1,0 +1,20 @@
+<h2>
+  <%= @instance.name %>
+  <% if params[:shot_id] %>
+    Shot# <%= params[:shot_id] %>
+  <% end %>
+</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Value</th>
+  </td>
+  <% @instancedatas.each do |instancedata| %>
+    <tr>
+      <td><%= instancedata.name %></td>
+      <td><%= instancedata.datatype.name %></td>
+      <td>Value</td>
+    </tr>
+  <% end %>
+</table>

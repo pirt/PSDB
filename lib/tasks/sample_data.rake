@@ -5,7 +5,7 @@ namespace :db do
   task :populate => :environment do
     #
     nrOfExperiments=2
-    maxNrOfShotsPerExperiment=2
+    maxNrOfShotsPerExperiment=10
     #
     Rake::Task['db:reset'].invoke
       
@@ -43,8 +43,8 @@ namespace :db do
       puts "Creating measurement data for shot #{shot.id}"
       Instance.find_each do |instance|
 	      probabilityInstanceExists=rand()
-	      if (probabilityInstanceExists>0.1)
-          classType=Classtype.find(instance.classtype_id).name
+	      if (probabilityInstanceExists>0.5)
+          classType=instance.classtype.name
 	        classParams[classType].each do |classParam|
             classParamType=classParam.split("_").last
             classParamName=classParam.split("_").first
