@@ -5,7 +5,7 @@
       Timestamp: <%= @shot.created_at %><br />
       Experiment: <%= @shot.experiment.name %><br />
       Shot type: <%= @shot.shottype.name %><br />
-      Comment: <%= @shot.comment %><br />
+      Comment: <%= @shot.description %><br />
       <%= link_to "Edit", edit_shot_path(@shot) %>
     </div>
   </div>

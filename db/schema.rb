@@ -60,8 +60,11 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.datetime "updated_at"
   end
 
+# Could not dump table "quest_sl_temp_explain1" because of following StandardError
+#   Unknown type 'LONG' for column 'other'
+
   create_table "shots", :force => true do |t|
-    t.string   "comment"
+    t.string   "description"
     t.integer  "experiment_id", :precision => 38, :scale => 0, :null => false
     t.integer  "shottype_id",   :precision => 38, :scale => 0, :null => false
     t.datetime "created_at"

@@ -12,14 +12,14 @@
 #
 
 class Shot < ActiveRecord::Base
-  attr_accessible :comment, :experiment_id, :shottype_id
+  attr_accessible :description, :experiment_id, :shottype_id
 
   belongs_to :experiment
   belongs_to :shottype
   has_many :instancedatas
   has_many :attachments, :as => :attachable, :dependent => :destroy 
 
-  validates :comment, :length => { :maximum => 255 }
+  validates :description, :length => { :maximum => 255 }
  
   # check for reference to an existing experiment / shottype
   # this also checks the presence of experiment_id and shottype_id

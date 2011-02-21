@@ -12,7 +12,7 @@ Factory.define :shottype do |shottype|
   shottype.name          "experiment shot"
 end
 Factory.define :shot do |shot|
-  shot.comment           "test shot comment"
+  shot.description       "test shot description"
   shot.experiment {Factory(:experiment)}
   shot.shottype {Factory(:shottype)}
 end

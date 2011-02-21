@@ -91,7 +91,7 @@ def createShots(maxNrOfShotsPerExperiment,shotTypes)
       comment= Faker::Lorem.sentence(4)
       shottypeName=shotTypes[rand(shotTypes.length)]
 	    shottypeId=Shottype.find_by_name(shottypeName).id
-      shot=experiment.shots.create!(:comment => comment , :shottype_id => shottypeId)
+      shot=experiment.shots.create!(:description => comment , :shottype_id => shottypeId)
       puts "Created Shot #{shot.id}"
     end
   end

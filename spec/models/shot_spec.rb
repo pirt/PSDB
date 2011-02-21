@@ -4,7 +4,7 @@ describe Shot do
   before(:each) do
     @experiment=Factory(:experiment, :name => "other")
     @shottype=Factory(:shottype, :name => "other")
-    @attr= {:comment => "test comment", :shottype_id => @shottype.id, :experiment_id => @experiment.id}
+    @attr= {:description => "test comment", :shottype_id => @shottype.id, :experiment_id => @experiment.id}
   end
   it "should create instance given valid attributes" do
     shot=Shot.new(@attr)
@@ -15,12 +15,12 @@ describe Shot do
     shot.should respond_to(:created_at)
     shot.should respond_to(:updated_at)
   end
-  it "should have a comment field" do
+  it "should have a description field" do
     shot=Shot.new(@attr)
-    shot.should respond_to(:comment)
+    shot.should respond_to(:description)
   end
-  it "should reject comments longer than 255 characters" do
-    shotWithLongComment=@experiment.shots.new(@attr.merge(:comment => "a"*256))
+  it "should reject descriptions longer than 255 characters" do
+    shotWithLongComment=@experiment.shots.new(@attr.merge(:description => "a"*256))
     shotWithLongComment.should_not be_valid
   end
   it "should have an attachment association" do
