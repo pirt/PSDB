@@ -7,7 +7,7 @@ namespace :db do
     nrOfExperiments=2
     maxNrOfShotsPerExperiment=10
     #
-    Rake::Task['db:reset'].invoke
+    #Rake::Task['db:reset'].invoke
       
     createExperiments(nrOfExperiments)
 

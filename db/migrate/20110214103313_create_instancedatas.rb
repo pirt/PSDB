@@ -1,6 +1,7 @@
 class CreateInstancedatas < ActiveRecord::Migration
   def self.up
-    create_table :instancedatas, :comment => "Actual measurement data of the PCS instances" do |t|
+    create_table :instancedatas, :primary_key_trigger => true,
+                 :comment => "Actual measurement data of the PCS instances" do |t|
       t.references :shot, :null => false #, :foreign_key => true
       t.references :instance, :null => false #,:foreign_key => true
       t.references :datatype, :null => false #,:foreign_key => true

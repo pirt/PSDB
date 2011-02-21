@@ -1,6 +1,7 @@
 class CreateDatatypes < ActiveRecord::Migration
   def self.up
-    create_table :datatypes, :comment => "List of available data types (numeric, string, image,...)" do |t|
+    create_table :datatypes, :primary_key_trigger => true,
+                 :comment => "List of available data types (numeric, string, image,...)" do |t|
       t.string :name, :null => false, :limit => 30, :comment => "Name of the data type"
     end
   end

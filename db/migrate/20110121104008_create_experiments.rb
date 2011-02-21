@@ -1,6 +1,7 @@
 class CreateExperiments < ActiveRecord::Migration
   def self.up
-    create_table :experiments, :comment => "Available PHELIX Experiments" do |t|
+    create_table :experiments, :primary_key_trigger => true,
+                 :comment => "Available PHELIX Experiments" do |t|
       t.string :name, :comment => "Short name of experiment (such as P039)", :null => false, :limit => 30
       t.string :description,  :comment => "Description or title of the experiment", :null => false, :limit => 255
 

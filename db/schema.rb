@@ -27,9 +27,13 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.string "name", :limit => 256, :null => false
   end
 
+  add_primary_key_trigger "classtypes"
+
   create_table "datatypes", :force => true do |t|
     t.string "name", :limit => 30, :null => false
   end
+
+  add_primary_key_trigger "datatypes"
 
   create_table "experiments", :force => true do |t|
     t.string   "name",        :limit => 30, :null => false
@@ -39,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
   end
 
   add_index "experiments", ["name"], :name => "index_experiments_on_name", :unique => true
+
+  add_primary_key_trigger "experiments"
 
   create_table "instancedatas", :force => true do |t|
     t.integer  "shot_id",                     :precision => 38, :scale => 0, :null => false
@@ -52,6 +58,8 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.datetime "updated_at"
   end
 
+  add_primary_key_trigger "instancedatas"
+
   create_table "instances", :force => true do |t|
     t.integer  "classtype_id", :precision => 38, :scale => 0, :null => false
     t.integer  "subsystem_id", :precision => 38, :scale => 0, :null => false
@@ -60,8 +68,7 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.datetime "updated_at"
   end
 
-# Could not dump table "quest_sl_temp_explain1" because of following StandardError
-#   Unknown type 'LONG' for column 'other'
+  add_primary_key_trigger "instances"
 
   create_table "shots", :force => true do |t|
     t.string   "description"
@@ -71,12 +78,18 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.datetime "updated_at"
   end
 
+  add_primary_key_trigger "shots"
+
   create_table "shottypes", :force => true do |t|
     t.string "name", :limit => 30, :null => false
   end
 
+  add_primary_key_trigger "shottypes"
+
   create_table "subsystems", :force => true do |t|
     t.string "name", :null => false
   end
+
+  add_primary_key_trigger "subsystems"
 
 end
