@@ -24,13 +24,17 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
   end
 
   create_table "classtypes", :force => true do |t|
-    t.string "name", :limit => 256, :null => false
+    t.string   "name",       :limit => 256, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_primary_key_trigger "classtypes"
 
   create_table "datatypes", :force => true do |t|
-    t.string "name", :limit => 30, :null => false
+    t.string   "name",       :limit => 30, :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_primary_key_trigger "datatypes"
@@ -54,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.decimal  "data_numeric"
     t.string   "data_string"
     t.binary   "data_binary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
   end
 
   add_primary_key_trigger "instancedatas"
@@ -64,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.integer  "classtype_id", :precision => 38, :scale => 0, :null => false
     t.integer  "subsystem_id", :precision => 38, :scale => 0, :null => false
     t.string   "name",                                        :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   add_primary_key_trigger "instances"
@@ -74,20 +78,24 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.string   "description"
     t.integer  "experiment_id", :precision => 38, :scale => 0, :null => false
     t.integer  "shottype_id",   :precision => 38, :scale => 0, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   add_primary_key_trigger "shots"
 
   create_table "shottypes", :force => true do |t|
-    t.string "name", :limit => 30, :null => false
+    t.string   "name",       :limit => 30, :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_primary_key_trigger "shottypes"
 
   create_table "subsystems", :force => true do |t|
-    t.string "name", :null => false
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_primary_key_trigger "subsystems"

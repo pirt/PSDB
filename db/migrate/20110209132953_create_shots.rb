@@ -5,7 +5,7 @@ class CreateShots < ActiveRecord::Migration
       t.string :description, :limit => 255, :comment => "Description of a PHELIX shot"
       t.references :experiment, :null => false
       t.references :shottype, :null => false
-      t.timestamps
+      t.timestamps :null => false
     end
   end
 
