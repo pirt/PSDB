@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
   end
 
   create_table "classtypes", :force => true do |t|
-    t.string "name", :limit => 256, :null => false
+    t.string   "name",       :limit => 256, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_primary_key_trigger "classtypes"
