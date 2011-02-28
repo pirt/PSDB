@@ -9,7 +9,7 @@ class CreateInstancedatas < ActiveRecord::Migration
       t.float :data_numeric, :comment => "Numeric data value"
       t.string :data_string, :comment => "String data value"
       t.binary :data_binary, :comment => "Binary data value"
-      t.timestamps
+      t.timestamps :null => false
     end
   end
 

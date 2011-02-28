@@ -4,8 +4,8 @@ namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
     #
-    nrOfExperiments=2
-    maxNrOfShotsPerExperiment=10
+    nrOfExperiments=1
+    maxNrOfShotsPerExperiment=2
     #
     #Rake::Task['db:reset'].invoke
       
@@ -20,13 +20,13 @@ namespace :db do
 
     # generate instances, subsystems and classtypes (typically 100)
 
-    instances=["fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB",
-               "PA_Input_FF_Cam", "PA_Input_NF_Cam", "PA_Exit_FF_Cam", "PA_Exit_Powermeter",
-               "PPPA_19_1_PU", "PPPA_19_2_PU", "PPPA_45_PU", 
-               "MA_InjectIn_Cam", "MA_InjectOut_Cam", "MA_CH1_BB", "MA_CH2_BB", "MA_CH3_BB", "MA_CH4_BB",
-               "PPMA_1_PU", "PPMA_2_PU", "PPMA_3_PU", "PPMA_4_PU", "PPMA_5_PU",
-               "MAS_Powermeter", "MAS_Spectrometer", "MAS_Filt1_BB", "MAS_Filt2_BB", "MAS_Filt3_BB",
-               "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB", ]
+    instances=["fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB" ]#,
+    #           "PA_Input_FF_Cam", "PA_Input_NF_Cam", "PA_Exit_FF_Cam", "PA_Exit_Powermeter",
+    #           "PPPA_19_1_PU", "PPPA_19_2_PU", "PPPA_45_PU", 
+    #           "MA_InjectIn_Cam", "MA_InjectOut_Cam", "MA_CH1_BB", "MA_CH2_BB", "MA_CH3_BB", "MA_CH4_BB",
+    #           "PPMA_1_PU", "PPMA_2_PU", "PPMA_3_PU", "PPMA_4_PU", "PPMA_5_PU",
+    #           "MAS_Powermeter", "MAS_Spectrometer", "MAS_Filt1_BB", "MAS_Filt2_BB", "MAS_Filt3_BB",
+    #           "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB", ]
 
     createInstances(instances)
     
@@ -38,31 +38,33 @@ namespace :db do
                  'BB' => ["in_n","out_n","direction_n", "param18_n", "param19_n"],
                  'Spectrometer' => ["integrationtime_n","spectrum_sp","serial_s", "param20_s", "param21_n", "param22_n"]
                 }
-
+    dataTypes=Datatype.all.map {|t| [t.name , t.id]}
+    dataTypeList=Hash[dataTypes]
     Shot.find_each do |shot|
       puts "Creating measurement data for shot #{shot.id}"
       Instance.find_each do |instance|
-	      probabilityInstanceExists=rand()
-	      if (probabilityInstanceExists>0.5)
+        probabilityInstanceExists=rand()
+        if (probabilityInstanceExists>0.5)
           classType=instance.classtype.name
-	        classParams[classType].each do |classParam|
+=begin
+	  classParams[classType].each do |classParam|
             classParamType=classParam.split("_").last
             classParamName=classParam.split("_").first
             case classParamType
               when "s"
                 data_string=fillStringData()
-                dataTypeId=Datatype.find_by_name("string").id
+                dataTypeId=dataTypeList["string"]
               when "n"
                 data_numeric=fillNumericData()
-                dataTypeId=Datatype.find_by_name("numeric").id
+                dataTypeId=dataTypeList["numeric"]
               when "i"
                 #data_binary=fillImageData()
-                #dataTypeId=Datatype.find_by_name("image").id
+                #dataTypeId=dataTypeList["image"]
                 data_binary=fillNumericData()
-                dataTypeId=Datatype.find_by_name("numeric").id
-	            when "sp"
+                dataTypeId=dataTypeList["numeric"]
+	      when "sp"
                 data_binary=fillSpectrumData()
-                dataTypeId=Datatype.find_by_name("spectrum").id
+                dataTypeId=dataTypeList["spectrum"]
             end
             Instancedata.create!(:shot_id => shot.id, 
                                  :instance_id => instance.id,
@@ -72,7 +74,8 @@ namespace :db do
                                  :data_numeric => data_numeric,
                                  :data_binary => data_binary)
           end
-	      end
+=end
+	end
       end
     end
   end
