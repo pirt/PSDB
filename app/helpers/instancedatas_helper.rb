@@ -1,4 +1,6 @@
 require "gnuplot"
+require "RMagick"
+
 
 module InstancedatasHelper
   def trimBlob(blob)
@@ -41,6 +43,11 @@ module InstancedatasHelper
     imageOptions={:width => 320, :height =>200}
     imageOptions=imageOptions.merge(options)
     imageData=trimBlob(instancedata.data_binary)
-    "displayImage Helper...to be implemented"
+    myImage=Magick::Image.from_blob(imageData)
+    myImage=myImage[0]
+    paletteImg=Magick::Image.read("public/images/Rainbow.png")
+    myImage=myImage.clut_channel(paletteImg[0])
+    myImage=myImage.resize_to_fit(imageOptions[:width],imageOptions[:height])
+    myImage.write "public/images/tmp/image"+instancedata.id.to_s+".png"
   end
 end
