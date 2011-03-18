@@ -1,0 +1,16 @@
+<h3>No specific view for class < <%= instancedata.first.instance.classtype.name %> > defined..showing generic data</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Value</th>
+  </td>
+  <% @instancedatas.each do |instancedata| %>
+    <tr>
+      <td><%= instancedata.name %></td>
+      <td><%= instancedata.datatype.name %></td>
+      <td><%= render instancedata %></td>
+    </tr>
+  <% end %>
+</table>
+

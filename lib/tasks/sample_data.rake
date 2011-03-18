@@ -46,8 +46,7 @@ namespace :db do
         probabilityInstanceExists=rand()
         if (probabilityInstanceExists>0.5)
           classType=instance.classtype.name
-=begin
-	  classParams[classType].each do |classParam|
+      	  classParams[classType].each do |classParam|
             classParamType=classParam.split("_").last
             classParamName=classParam.split("_").first
             case classParamType
@@ -74,8 +73,7 @@ namespace :db do
                                  :data_numeric => data_numeric,
                                  :data_binary => data_binary)
           end
-=end
-	end
+      	end
       end
     end
   end

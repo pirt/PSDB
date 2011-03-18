@@ -4,17 +4,6 @@
     Shot# <%= params[:shot_id] %>
   <% end %>
 </h2>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Value</th>
-  </td>
-  <% @instancedatas.each do |instancedata| %>
-    <tr>
-      <td><%= instancedata.name %></td>
-      <td><%= instancedata.datatype.name %></td>
-      <td><%= render instancedata %></td>
-    </tr>
-  <% end %>
-</table>
+<%= render :partial => "instances/instance_detailed", :locals => { :instancedata => @instancedatas } %>
+
+
