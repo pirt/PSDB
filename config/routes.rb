@@ -1,5 +1,7 @@
 PSDB::Application.routes.draw do
 
+  get "instancedatas/exportImage"
+
   resources :instances
 
   resources :experiments do

@@ -1,0 +1,8 @@
+<% classType=instancedata.instance.classtype.name %>
+<% partialName="instance_short_#{classType}" %>
+<% partialFileName=::Rails.root.to_s+"/app/views/instances/_"+partialName+".html.erb" %>
+<% if !File.exists?(partialFileName) %>
+  <% partialName="instance_short_unknown" %>
+<% end %>
+<% fullInstanceData=Instancedata.where("instance_id = ? AND shot_id = ?",instancedata.instance_id, shot_id) %>
+<%= render :partial => "instances/#{partialName}", :locals => { :instancedatas => fullInstanceData } %>

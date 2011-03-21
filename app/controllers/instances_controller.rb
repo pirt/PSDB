@@ -13,5 +13,4 @@ class InstancesController < ApplicationController
       @instancedatas=@instance.instancedatas
     end
   end
-
 end

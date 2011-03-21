@@ -4,5 +4,5 @@
 <% if !File.exists?(partialFileName) %>
   <% partialName="instance_detailed_unknown" %>
 <% end %>
-<%= render :partial => "instances/#{partialName}", :locals => { :instancedata => instancedata } %>
+<%= render :partial => "instances/#{partialName}", :locals => { :instancedatas => instancedata } %>
 

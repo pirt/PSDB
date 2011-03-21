@@ -4,4 +4,9 @@
 <% if !File.exists?(partialFileName) %>
   <% partialName="instancedata_unknown" %>
 <% end %>
-<%= render :partial => "instancedatas/#{partialName}", :locals => { :instancedata => instancedata } %>
+<% localoptions = {} %>
+<% if defined?(options) %>
+  <% localoptions=localoptions.merge(options) %>
+<% end %>
+<%= render :partial => "instancedatas/#{partialName}", 
+    :locals => { :instancedata => instancedata, :options => localoptions } %>
