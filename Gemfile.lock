@@ -95,7 +95,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
-    will_paginate (2.3.15)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -114,4 +114,4 @@ DEPENDENCIES
   ruby-oci8
   ruby-plsql
   webrat
-  will_paginate
+  will_paginate (= 3.0.pre2)

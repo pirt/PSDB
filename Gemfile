@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', "3.0.4"
 gem 'gnuplot'       # Use plot package
-gem 'will_paginate' # Paginate result lists
+gem 'will_paginate', '3.0.pre2' # Paginate result lists
 gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
 
 # Add support for oracle database
