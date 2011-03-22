@@ -28,4 +28,26 @@ class ShotsController < ApplicationController
     @shot=Shot.find_by_id(params[:id])
     @pageTitle="Edit shot #{@shot.id}"
   end
+
+  def update
+    if params[:cancel]
+      flash[:info] = "Shot update canceled"
+      redirect_to shot_path(@shot)
+    else
+      @shot = Shot.find_by_id(params[:id])
+      if @shot 
+        if @shot.update_attributes(params[:shot])
+          flash[:success] = "Shot successfully updated"
+          redirect_to shot_path(@shot)
+        else
+          @experiment.reload
+          @pageTitle="Edit shot #{@shot.id}"
+          render 'edit'
+        end
+      else
+        flash[:error] = "Shot not found"
+        redirect_to shot_path(@shot)
+      end
+    end
+  end
 end

@@ -7,7 +7,7 @@
   </div>
   <div class="field">
     <%= shot.label :shottype %>
-    <%= shot.text_field :shottype_id %>
+    <%= shot.collection_select(:shottype_id,Shottype.all, :id, :name) %>
   </div>
   <div class="field">
     <%= shot.label :description %><br />
