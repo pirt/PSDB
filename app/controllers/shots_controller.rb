@@ -1,6 +1,17 @@
 class ShotsController < ApplicationController
   def index
-    @shots=Shot.order("created_at DESC").paginate(:page => params[:page])
+    if (params[:selectedExp])
+      selectedShots=Shot.where(:experiment_id => params[:selectedExp].to_i)
+    elsif (params[:startDate] and params[:endDate])
+      startDate=Date.civil(params[:startDate][:year].to_i, params[:startDate][:month].to_i, params[:startDate][:day].to_i)
+      endDate=Date.civil(params[:endDate][:year].to_i, params[:endDate][:month].to_i, params[:endDate][:day].to_i,23)
+      startDate=startDate.to_s+" 00:00:00"
+      endDate=endDate.to_s+" 23:59:59"
+      selectedShots=Shot.where("created_at >= ? AND created_at <= ?", startDate, endDate)
+    else
+      selectedShots=Shot
+    end
+    @shots=selectedShots.order("created_at DESC").paginate(:page => params[:page])
     @pageTitle="Shot list"
   end
 
