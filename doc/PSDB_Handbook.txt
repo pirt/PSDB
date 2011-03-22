@@ -68,6 +68,22 @@ PHELIX Shot database (PSDB) documentation
 		(takes a while....)
 
 
+--------------------------------
+Install Phusion Passenger (the webserver application in combination with Apache2)
+
+sudo gem install passenger (takes a while...)
+sudo passenger-install-apache2-module (follow the instructions)
+    apache config file is /etc/apache2/apache2.conf
+    apache is restarted with "sudo service apache2 restart"
+
+    site config file is /etc/apache2/sites-available/psdb
+    add the following line after <VirtualHost...>
+    
+    SetEnv ORACLE_HOME /home/udo/oracle/client
+    
+    create link in /etc/apache2/sites_enabled : sudo ln -s ../sites-available/psdb 001-psdb
+    remove link 000-default
+
 
 
 

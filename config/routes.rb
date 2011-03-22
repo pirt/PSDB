@@ -52,7 +52,7 @@ PSDB::Application.routes.draw do
   #     resources :products
   #   end
 
-  root :to => "experiments#index"
+  root :to => "shots#index"
 
   # See how all your routes lay out with "rake routes"
 end
