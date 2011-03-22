@@ -1,6 +1,6 @@
 class ShotsController < ApplicationController
   def index
-    @shots=Shot.all.paginate(:page => params[:page])
+    @shots=Shot.order("created_at DESC").paginate(:page => params[:page])
     @pageTitle="Shot list"
   end
 

@@ -21,6 +21,10 @@
         Shot database
       </h1>
     </div>
+    <div id="menu" class="prepend-21">
+      <%= link_to "Experiments",experiments_path %>
+      <%= link_to "Shots",shots_path %>
+    </div>
     <hr />
     <section class="round">
       <% flash.each do |key, value| %>
