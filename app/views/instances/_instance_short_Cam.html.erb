@@ -1,3 +1,1 @@
-<% imagedata=instancedatas.find_by_name("image") %>
-<%= render :partial => "instancedatas/instancedata", 
-    :locals => { :instancedata => imagedata, :options => {:width=>100, :height=>100}} %>
+<%= displayParameter(instancedatas,"image",{:width=>100, :height=>100}) %>

@@ -22,7 +22,7 @@
       <div class="box">
         <%= link_to 'All', shot_path(@shot) %><br />
         <% @usedSubsystems.each do |usedSubsystem| %>
-          <%= usedSubsystem.name %><br />
+          <%= link_to usedSubsystem.name, shot_path(@shot, :subsystemName => usedSubsystem.name) %><br />
         <% end %>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <div class="box">
         <%= link_to 'All', shot_path(@shot) %><br />
         <% @usedClasses.each do |usedClass| %>
-          <%= usedClass.name %><br />
+           <%= link_to usedClass.name, shot_path(@shot, :classtypeName => usedClass.name) %><br />
         <% end %>
       </div>
     </div>
