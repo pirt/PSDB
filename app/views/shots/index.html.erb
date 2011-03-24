@@ -27,30 +27,32 @@
 
 <%= page_entries_info @shots %>
 <%= will_paginate @shots %>
-<table border=0>
-  <tr>
-    <th width=1px>Shot#</th>
-    <th>Date</th>
-    <th>fsFE WP</th>
-    <th>19_1</th>
-    <th>19_2</th>
-    <th>45</th>
-    <th>Amp1</th>
-    <th>Amp2</th>
-    <th>Amp3</th>
-    <th>Amp4</th>
-    <th>Amp5</th>
-    <th>FR</th>
-    <th>PA Energy</th>
-    <th>MA Energy</th>
-    <th>Comment</th>
-    <th></th>
-  </tr>
-
+<table border="0" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th class="span-1">Shot#</th>
+      <th class="span-2">Date</th>
+      <th class="span-1">fsFE WP</th>
+      <th class="span-1">19_1</th>
+      <th class="span-1">19_2</th>
+      <th class="span-1">45</th>
+      <th class="span-1">Amp1</th>
+      <th class="span-1">Amp2</th>
+      <th class="span-1">Amp3</th>
+      <th class="span-1">Amp4</th>
+      <th class="span-1">Amp5</th>
+      <th class="span-1">FR</th>
+      <th class="span-1">PA Energy</th>
+      <th class="span-1">MA Energy</th>
+      <th class="span-8">Comment</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
   <% @shots.each do |shot| %>
     <tr>
       <td><%= link_to shot.id, shot %></td>
-      <td><%= shot.created_at.localtime().strftime("%d.%m.%Y %X")%></td>
+      <td><%= formatDate(shot.created_at) %></td>
       <td></td>
       <td></td>
       <td></td>
@@ -69,5 +71,6 @@
           <% end %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 <%= will_paginate %>

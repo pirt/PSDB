@@ -3,6 +3,7 @@
 <b>Description: </b> <%= @experiment.description %><br>
 <b>Created at: </b> <%= @experiment.created_at %><br>
 <b>Updated at: </b> <%= @experiment.updated_at %><br>
+<b>Number of shots: </b> <%= @experiment.shots.count %><br>
 <hr>
 <%= render :partial => "attachments/index", :locals => { :parent => @experiment } %>
 <hr>

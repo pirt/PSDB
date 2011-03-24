@@ -8,4 +8,8 @@ module ApplicationHelper
       "#{base_title} | #{@pageTitle}"
     end
   end
+
+  def formatDate(date)
+    return date.localtime().strftime("%d.%m.%Y %X")
+  end
 end

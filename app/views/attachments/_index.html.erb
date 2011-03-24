@@ -1,19 +1,21 @@
 <h3>Attached documents</h3>
-<table border=0>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Date added</th>
-    <th></th>
-  </tr>
-  <% linkPath = "/#{parent.class.to_s.downcase}s/#{parent.id}/attachments/" %>
+<table border="0" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th class="span-3">Type</th>
+      <th>Date added</th>
+      <th></th>
+    </tr>
+  </thead>
+    <% linkPath = "/#{parent.class.to_s.downcase}s/#{parent.id}/attachments/" %>
   <% parent.attachments.each do |attachment| %>
     <tr>
       <td><%= link_to attachment.filename, linkPath+attachment.id.to_s %></td>
       <td><%= attachment.description %></td>
       <td><%= attachment.filetype %></td>
-      <td><%= attachment.created_at %></td>
+      <td><%= formatDate(attachment.created_at) %></td>
       <td>
         <%= link_to "Edit", linkPath+attachment.id.to_s+"/edit" %>
         <%= link_to "Delete", [parent,attachment],

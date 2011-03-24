@@ -1,15 +1,15 @@
 <h2>Shot #<%= params[:id] %></h2>
 <div class="span-24 last" id="topbox">
-  <div class="span-11" id="general">
+  <div class="span-8" id="general">
     <div class="box">
-      Timestamp: <%= @shot.created_at %><br />
-      Experiment: <%= @shot.experiment.name %><br />
-      Shot type: <%= @shot.shottype.name %><br />
-      Comment: <%= @shot.description %><br />
+      <strong>Timestamp:</strong> <%= formatDate(@shot.created_at) %><br />
+      <strong>Experiment:</strong> <%= @shot.experiment.name %><br />
+      <strong>Shot type:</strong> <%= @shot.shottype.name %><br />
+      <strong>Comment:</strong> <%= @shot.description %><br />
       <%= link_to "Edit", edit_shot_path(@shot) %>
     </div>
   </div>
-  <div class="span-13 last" id="attachments">
+  <div class="span-16 last" id="attachments">
     <div class="box">
       <%= render :partial => "attachments/index", :locals => { :parent => @shot } %>
     </div>
@@ -38,17 +38,22 @@
   </div>
   <div class="span-18 last" id="instancedata">
     <% will_paginate @instanceDatas %>
-    <table border=0>
-      <tr>
-        <th>Device</th>
-        <th>Result</th>
-      </tr>  
-      <% @instanceDatas.each do |instancedata| %>
-        <tr>
-          <td><%= link_to instancedata.instance.name, instance_path(instancedata.instance, :shot_id => @shot) %></td>
-          <td><%= render :partial => "instances/instance_short", :locals => { :instancedata => instancedata, :shot_id => @shot } %></td>
-        </tr>
-      <% end %>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <thead>
+       <tr>
+          <th>Device</th>
+          <th>Result</th>
+       </tr>
+      </thead>
+      <tbody> 
+        <% @instanceDatas.each do |instancedata| %>
+          <tr>
+            <td><%= link_to instancedata.instance.name, instance_path(instancedata.instance, :shot_id => @shot) %></td>
+            <td><%= render :partial => "instances/instance_short", 
+                          :locals => { :instancedata => instancedata, :shot_id => @shot } %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
