@@ -1,9 +1,9 @@
 <h2>Experiment <%= @experiment.name %></h2>
 <hr>
-<b>Description: </b> <%= @experiment.description %><br>
-<b>Created at: </b> <%= @experiment.created_at %><br>
-<b>Updated at: </b> <%= @experiment.updated_at %><br>
-<b>Number of shots: </b> <%= @experiment.shots.count %><br>
+<strong>Description: </strong> <%= @experiment.description %><br>
+<strong>Created at: </strong> <%= formatDate(@experiment.created_at) %><br>
+<strong>Updated at: </strong> <%= formatDate(@experiment.updated_at) %><br>
+<strong>Number of shots: </strong> <%= @experiment.shots.count %><br>
 <hr>
 <%= render :partial => "attachments/index", :locals => { :parent => @experiment } %>
 <hr>
