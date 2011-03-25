@@ -33,7 +33,7 @@
       <tbody> 
         <% @instances.each do |instance| %>
         <tr>
-          <td><%= instance.name %></td>
+          <td><%= link_to instance.name, instance %></td>
           <td><%= instance.subsystem.name %></td>
           <td><%= instance.classtype.name %></td>
         </tr>
