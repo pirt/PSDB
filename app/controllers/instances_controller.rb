@@ -1,6 +1,8 @@
 class InstancesController < ApplicationController
   def index
-    @instances=Instance.all
+    @instances=Instance.order("name ASC").paginate(:page => params[:page])
+    @availableClasstypes=Classtype.all
+    @availableSubsystems=Subsystem.all
   end
 
   def show

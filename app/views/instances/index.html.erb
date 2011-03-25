@@ -1,16 +1,45 @@
-<h3>Instances</h3>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Subsystem</th>
-    <th>Classtype</th>
-  </td>
-  <% @instances.each do |instance| %>
-    <tr>
-      <td><%= instance.name %></td>
-      <td><%= instance.subsystem.name %></td>
-      <td><%= instance.classtype.name %></td>
-    </tr>
+<h2>Available Instances</h2>
+<div class="span-24 last" id="databox">
+  <div class="span-6" id="sidebar">
+    <div id="subsystems">
+      <h3 class="caps">Subsystems</h3>  
+      <div class="box">
+        <%= link_to 'All', instances_path %><br />
+        <% @availableSubsystems.each do |subsystem| %>
+          <%= link_to subsystem.name, instances_path(:subsystemName => subsystem.name) %><br />
+        <% end %>
+      </div>
+    </div>
+    <div id="class types">
+      <h3 class="caps">Class types</h3>
+      <div class="box">
+        <%= link_to 'All', instances_path %><br />
+        <% @availableClasstypes.each do |classtype| %>
+          <%= link_to classtype.name, instances_path(:classtypeName => classtype.name) %><br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="span-18 last" id="instances">
+    <%= will_paginate @instances %>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <thead>
+       <tr>
+          <th>Name</th>
+          <th>Subsystem</th>
+          <th>Classtype</th>
+       </tr>
+      </thead>
+      <tbody> 
+        <% @instances.each do |instance| %>
+        <tr>
+          <td><%= instance.name %></td>
+          <td><%= instance.subsystem.name %></td>
+          <td><%= instance.classtype.name %></td>
+        </tr>
   <% end %>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
 
