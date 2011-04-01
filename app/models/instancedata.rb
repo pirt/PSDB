@@ -8,11 +8,11 @@
 #  instance_id  :integer(38)     not null
 #  datatype_id  :integer(38)     not null
 #  name         :string(256)     not null
-#  data_numeric :integer(38)
+#  data_numeric :decimal(, )
 #  data_string  :string(255)
 #  data_binary  :binary
-#  created_at   :datetime
-#  updated_at   :datetime
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
 #
 
 class Instancedata < ActiveRecord::Base

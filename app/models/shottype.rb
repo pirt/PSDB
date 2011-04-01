@@ -1,10 +1,12 @@
 # == Schema Information
-# Schema version: 20110214103313
+# Schema version: 20110216123146
 #
 # Table name: shottypes
 #
-#  id   :integer(38)     not null, primary key
-#  name :string(30)      not null
+#  id         :integer(38)     not null, primary key
+#  name       :string(30)      not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 
 class Shottype < ActiveRecord::Base

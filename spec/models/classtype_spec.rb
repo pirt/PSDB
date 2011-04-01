@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Classtype do
   before(:each) do
-    @attr = { :name => "test class" }
+    @attr = { :name => "test class", :version => 1 }
   end
   it "should create a new instance given valid attributes" do
     Classtype.create!(@attr)
@@ -11,10 +11,22 @@ describe Classtype do
     no_name_classtype = Classtype.new(@attr.merge(:name => ""))
     no_name_classtype.should_not be_valid
   end
-  it "should have a unique (case insensitive) name" do
-    Classtype.create!(@attr)
-    duplicate_name_classtype = Classtype.new(@attr.merge(:name => "Test Class"))
-    duplicate_name_classtype.should_not be_valid
+  it "should require a version" do
+    no_version_classtype = Classtype.new(@attr.merge(:version => nil))
+    no_version_classtype.should_not be_valid
+  end
+  describe "unique name/version combination" do
+    before(:each) do
+      Classtype.create!(@attr)
+    end
+    it "with duplicate (case insensitive) name and same version should not be valid" do
+      duplicate_name_classtype = Classtype.new(@attr.merge(:name => "Test Class"))
+      duplicate_name_classtype.should_not be_valid
+    end
+    it "with duplicate name but different version should be valid" do
+      duplicate_name_classtype = Classtype.new(@attr.merge(:name => "Test Class", :version => 2))
+      duplicate_name_classtype.should be_valid
+    end
   end
   it "should reject name longer than 255 characters" do
     longname = "a" * 256

@@ -1,14 +1,14 @@
 # == Schema Information
-# Schema version: 20110209132953
+# Schema version: 20110216123146
 #
 # Table name: shots
 #
 #  id            :integer(38)     not null, primary key
-#  comment       :string(255)
+#  description   :string(255)
 #  experiment_id :integer(38)     not null
 #  shottype_id   :integer(38)     not null
-#  created_at    :datetime
-#  updated_at    :datetime
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
 #
 
 class Shot < ActiveRecord::Base

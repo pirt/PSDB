@@ -3,18 +3,23 @@
 #
 # Table name: classtypes
 #
-#  id   :integer(38)     not null, primary key
-#  name :string(256)     not null
+#  id         :integer(38)     not null, primary key
+#  name       :string(256)     not null
+#  version    :integer(38)     not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 
 class Classtype < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :version
 
   has_many :instances
 
   validates :name, :presence => true,
                    :length => { :maximum => 255 },
-                   :uniqueness => { :case_sensitive => false}
+                   :uniqueness => { :case_sensitive => false, :scope => [:version]}
+
+  validates :version, :presence => true
 
   before_destroy :check_if_instances_associated
   

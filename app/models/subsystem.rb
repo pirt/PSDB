@@ -3,8 +3,10 @@
 #
 # Table name: subsystems
 #
-#  id   :integer(38)     not null, primary key
-#  name :string(255)     not null
+#  id         :integer(38)     not null, primary key
+#  name       :string(255)     not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 
 class Subsystem < ActiveRecord::Base

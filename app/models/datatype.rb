@@ -1,10 +1,12 @@
 # == Schema Information
-# Schema version: 20110215070042
+# Schema version: 20110216123146
 #
 # Table name: datatypes
 #
-#  id   :integer(38)     not null, primary key
-#  name :string(30)      not null
+#  id         :integer(38)     not null, primary key
+#  name       :string(30)      not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 
 class Datatype < ActiveRecord::Base

@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
   end
 
   create_table "classtypes", :force => true do |t|
-    t.string   "name",       :limit => 256, :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "name",       :limit => 256,                                :null => false
+    t.integer  "version",                   :precision => 38, :scale => 0, :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
   end
 
   add_primary_key_trigger "classtypes"
@@ -98,6 +99,6 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
     t.datetime "updated_at", :null => false
   end
 
-  add_primary_key_trigger "subsystems"
+   add_primary_key_trigger "subsystems"
 
 end

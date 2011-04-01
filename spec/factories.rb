@@ -18,6 +18,7 @@ Factory.define :shot do |shot|
 end
 Factory.define :classtype do |classtype|
   classtype.name "test classtype"
+  classtype.version 1
 end
 Factory.define :subsystem do |subsystem|
   subsystem.name "test subsystem"
