@@ -26,16 +26,18 @@
       <thead>
        <tr>
           <th>Name</th>
-          <th>Subsystem</th>
           <th>Classtype</th>
+          <th>Subsystem</th>
+          <th></th>
        </tr>
       </thead>
       <tbody> 
         <% @instances.each do |instance| %>
         <tr>
-          <td><%= link_to instance.name, instance %></td>
-          <td><%= instance.subsystem.name %></td>
+          <td><%= instance.name %></td>
           <td><%= instance.classtype.name %></td>
+          <td><%= instance.subsystem.name %></td>
+          <td><%= link_to "Details", details_instances_path(:instanceName => instance.name) %></td>
         </tr>
   <% end %>
       </tbody>

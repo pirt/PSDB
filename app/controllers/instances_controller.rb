@@ -9,7 +9,7 @@ class InstancesController < ApplicationController
     else
       selectedInstances=Instance.order("name ASC")
     end
-    @instances=selectedInstances.includes(:classtype, :subsystem).paginate(:page => params[:page])
+    @instances=selectedInstances.select("name, classtype_id, subsystem_id").group("name, classtype_id, subsystem_id").paginate(:page => params[:page])
     @availableClasstypes=Classtype.all
     @availableSubsystems=Subsystem.all
   end
@@ -23,5 +23,8 @@ class InstancesController < ApplicationController
       #show short view of instance for a list of shots
       @instancedatas=@instance.instancedatas
     end
+  end
+  def details
+    @instances=Instance.where(:name => params[:instanceName])
   end
 end

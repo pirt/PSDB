@@ -103,9 +103,10 @@ def createInstances(instances)
     subsystemName=instanceParts.first
     classtypeName=instanceParts.last
     subsystem=Subsystem.find_or_create_by_name(subsystemName)
-    classtype=Classtype.find_or_create_by_name(classtypeName)     
+    classtype=Classtype.find_or_create_by_name(classtypeName)
     puts "Create Instance #{instance}"
-    Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id)
+    Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id, :version => 0)
+    Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id, :version => 1)
   end
 end
 def createExperiments(nrOfExperiments)

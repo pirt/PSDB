@@ -5,21 +5,20 @@
 #
 #  id         :integer(38)     not null, primary key
 #  name       :string(256)     not null
-#  version    :integer(38)     not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
 
 class Classtype < ActiveRecord::Base
-  attr_accessible :name, :version
+  attr_accessible :name
 
   has_many :instances
 
   validates :name, :presence => true,
                    :length => { :maximum => 255 },
-                   :uniqueness => { :case_sensitive => false, :scope => [:version]}
+                   :uniqueness => { :case_sensitive => false}
 
-  validates :version, :presence => true
+ 
 
   before_destroy :check_if_instances_associated
   
