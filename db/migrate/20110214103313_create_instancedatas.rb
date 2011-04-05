@@ -2,8 +2,7 @@ class CreateInstancedatas < ActiveRecord::Migration
   def self.up
     create_table :instancedatas, :primary_key_trigger => true,
                  :comment => "Actual measurement data of the PCS instances" do |t|
-      t.references :shot, :null => false #, :foreign_key => true
-      t.references :instance, :null => false #,:foreign_key => true
+      t.references :instancedataset, :null => false #, :foreign_key => true
       t.references :datatype, :null => false #,:foreign_key => true
       t.string :name, :null => false, :limit => 256, :comment => "Measurement parameter name"
       t.float :data_numeric, :comment => "Numeric data value"

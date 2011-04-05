@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110216123146) do
+ActiveRecord::Schema.define(:version => 20110405192247) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -51,24 +51,32 @@ ActiveRecord::Schema.define(:version => 20110216123146) do
   add_primary_key_trigger "experiments"
 
   create_table "instancedatas", :force => true do |t|
-    t.integer  "shot_id",                     :precision => 38, :scale => 0, :null => false
-    t.integer  "instance_id",                 :precision => 38, :scale => 0, :null => false
-    t.integer  "datatype_id",                 :precision => 38, :scale => 0, :null => false
-    t.string   "name",         :limit => 256,                                :null => false
+    t.integer  "instancedataset_id",                :precision => 38, :scale => 0, :null => false
+    t.integer  "datatype_id",                       :precision => 38, :scale => 0, :null => false
+    t.string   "name",               :limit => 256,                                :null => false
     t.decimal  "data_numeric"
     t.string   "data_string"
     t.binary   "data_binary"
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
   end
 
   add_primary_key_trigger "instancedatas"
+
+  create_table "instancedatasets", :force => true do |t|
+    t.integer  "shot_id",     :precision => 38, :scale => 0, :null => false
+    t.integer  "instance_id", :precision => 38, :scale => 0, :null => false
+    t.integer  "version",     :precision => 38, :scale => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_primary_key_trigger "instancedatasets"
 
   create_table "instances", :force => true do |t|
     t.integer  "classtype_id", :precision => 38, :scale => 0, :null => false
     t.integer  "subsystem_id", :precision => 38, :scale => 0, :null => false
     t.string   "name",                                        :null => false
-    t.integer  "version",      :precision => 38, :scale => 0, :null => false
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
   end

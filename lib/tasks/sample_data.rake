@@ -45,6 +45,7 @@ namespace :db do
       Instance.find_each do |instance|
         probabilityInstanceExists=rand()
         if (probabilityInstanceExists>0.5)
+	  dataset=Instancedataset.create!(:shot_id => shot.id, :instance_id => instance.id, :version => 0)
           classType=instance.classtype.name
       	  classParams[classType].each do |classParam|
             classParamType=classParam.split("_").last
@@ -65,9 +66,8 @@ namespace :db do
                 data_binary=fillSpectrumData()
                 dataTypeId=dataTypeList["spectrum"]
             end
-            Instancedata.create!(:shot_id => shot.id, 
-                                 :instance_id => instance.id,
-                                 :name => classParamName,
+            Instancedata.create!(:instancedataset_id => dataset.id,
+			         :name => classParamName,
                                  :datatype_id => dataTypeId,
                                  :data_string => data_string,
                                  :data_numeric => data_numeric,
@@ -105,8 +105,7 @@ def createInstances(instances)
     subsystem=Subsystem.find_or_create_by_name(subsystemName)
     classtype=Classtype.find_or_create_by_name(classtypeName)
     puts "Create Instance #{instance}"
-    Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id, :version => 0)
-    Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id, :version => 1)
+    Instance.create!(:name => instance, :subsystem_id => subsystem.id, :classtype_id => classtype.id)
   end
 end
 def createExperiments(nrOfExperiments)

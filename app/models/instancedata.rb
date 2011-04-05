@@ -1,26 +1,24 @@
 # == Schema Information
-# Schema version: 20110216123146
+# Schema version: 20110405192247
 #
 # Table name: instancedatas
 #
-#  id           :integer(38)     not null, primary key
-#  shot_id      :integer(38)     not null
-#  instance_id  :integer(38)     not null
-#  datatype_id  :integer(38)     not null
-#  name         :string(256)     not null
-#  data_numeric :decimal(, )
-#  data_string  :string(255)
-#  data_binary  :binary
-#  created_at   :datetime        not null
-#  updated_at   :datetime        not null
+#  id                 :integer(38)     not null, primary key
+#  instancedataset_id :integer(38)     not null
+#  datatype_id        :integer(38)     not null
+#  name               :string(256)     not null
+#  data_numeric       :decimal(, )
+#  data_string        :string(255)
+#  data_binary        :binary
+#  created_at         :datetime        not null
+#  updated_at         :datetime        not null
 #
 
 class Instancedata < ActiveRecord::Base
-  attr_accessible :name, :data_numeric, :data_binary, :data_string, :data_binary, 
-                  :shot_id, :datatype_id, :instance_id
+  attr_accessible :instancedataset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary, 
+                  :datatype_id
 
-  belongs_to :shot
-  belongs_to :instance
+  belongs_to :instancedataset
   belongs_to :datatype 
   
   validates :name, :presence => true,
@@ -28,7 +26,5 @@ class Instancedata < ActiveRecord::Base
 
   #validates_presence_of_at_least_one_field :data_numeric, :data_string, :data_binary
 
-  validates :shot, :presence => true
-  validates :instance, :presence => true
   validates :datatype, :presence => true
 end
