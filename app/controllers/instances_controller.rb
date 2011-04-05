@@ -24,6 +24,10 @@ class InstancesController < ApplicationController
       @instancedatas=@instance.instancedatas
     end
   end
+  def shotseries
+    @instances=Instance.where(:name => params[:instanceName])
+    
+  end
   def details
     @instances=Instance.where(:name => params[:instanceName])
   end

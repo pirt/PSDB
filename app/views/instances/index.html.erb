@@ -34,7 +34,7 @@
       <tbody> 
         <% @instances.each do |instance| %>
         <tr>
-          <td><%= instance.name %></td>
+          <td><%= link_to instance.name, shotseries_instances_path(:instanceName => instance.name) %></td>
           <td><%= instance.classtype.name %></td>
           <td><%= instance.subsystem.name %></td>
           <td><%= link_to "Details", details_instances_path(:instanceName => instance.name) %></td>

@@ -5,6 +5,7 @@ PSDB::Application.routes.draw do
   resources :instances do
     collection do
       get 'details'
+      get 'shotseries'
     end
   end
 
