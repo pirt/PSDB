@@ -1,0 +1,23 @@
+<h3>Measurement series</h3>
+<%= will_paginate @instanceDataSets %>
+<table border="0" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>Shot #</th>
+      <th>Date</th>
+      <th>Device</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <% @instanceDataSets.each do |instanceDataSet| %>
+      <tr>
+        <td><%= link_to instanceDataSet.shot_id, instanceDataSet.shot %></td>
+        <td><%= formatDate(instanceDataSet.shot.created_at) %></td>
+        <td><%= link_to instanceDataSet.instance.name, instanceDataSet %></td>
+        <td><%= render :partial => "instancedatasets/instancedataset_short", 
+                      :locals => { :instanceDataSet => instanceDataSet} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
