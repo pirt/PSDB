@@ -17,21 +17,20 @@ class ShotsController < ApplicationController
 
   def show
     @shot=Shot.find_by_id(params[:id])
-    availableInstanceDatas=@shot.instancedatas
-    groupedInstanceDatas=availableInstanceDatas.select(:instance_id).group(:instance_id).includes(:instance)
+    availableInstanceDataSets=@shot.instancedatasets
     if (params[:subsystemName])
       selectedSubsystem=Subsystem.find_by_name(params[:subsystemName])
       selectedInstances=selectedSubsystem.instances
-      @instanceDatas=groupedInstanceDatas.where(:instance_id => selectedInstances).paginate(:page => params[:page])
+      @instanceDataSets=availableInstanceDataSets.where(:instance_id => selectedInstances).paginate(:page => params[:page])
     elsif (params[:classtypeName])
       selectedClasstype=Classtype.find_by_name(params[:classtypeName])
       selectedInstances=selectedClasstype.instances
-      @instanceDatas=groupedInstanceDatas.where(:instance_id => selectedInstances).paginate(:page => params[:page])
+      @instanceDataSets=availableInstanceDataSets.where(:instance_id => selectedInstances).paginate(:page => params[:page])
     else
-      @instanceDatas=groupedInstanceDatas.paginate(:page => params[:page])
+      @instanceDataSets=availableInstanceDataSets.paginate(:page => params[:page])
     end
-    @usedClasses=availableInstanceDatas.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
-    @usedSubsystems=availableInstanceDatas.joins(:instance => :subsystem).select("subsystems.name").group("subsystems.name")
+    @usedClasses=availableInstanceDataSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
+    @usedSubsystems=availableInstanceDataSets.joins(:instance => :subsystem).select("subsystems.name").group("subsystems.name")
     @pageTitle="Shot #{@shot.id}"
   end
 

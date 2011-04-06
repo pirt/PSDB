@@ -16,7 +16,7 @@ class Shot < ActiveRecord::Base
 
   belongs_to :experiment
   belongs_to :shottype
-  has_many :instancedatas
+  has_many :instancedatasets
   has_many :attachments, :as => :attachable, :dependent => :destroy 
 
   validates :description, :length => { :maximum => 255 }
@@ -27,11 +27,11 @@ class Shot < ActiveRecord::Base
   validates :experiment, :presence => true
   validates :shottype, :presence => true
 
-  before_destroy :check_if_instancedatas_associated
+  before_destroy :check_if_instancedatasets_associated
   
   def check_if_instancedatas_associated
-    if (!instancedatas.empty?)
-      errors.add(:base, "cannot be deleted with instancedatas associated")
+    if (!instancedatasets.empty?)
+      errors.add(:base, "cannot be deleted with instancedatasets associated")
       return false
     else
       return true

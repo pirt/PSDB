@@ -1,9 +1,0 @@
-<h2>
-  <%= @instance.name %>
-  <% if params[:shot_id] %>
-    Shot# <%= params[:shot_id] %>
-  <% end %>
-</h2>
-<%= render :partial => "instances/instance_detailed", :locals => { :instancedata => @instancedatas } %>
-
-
