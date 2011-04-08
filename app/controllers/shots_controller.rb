@@ -1,13 +1,22 @@
 class ShotsController < ApplicationController
   def index
+    @fromDate=""
+    @toDate=""
     if (params[:selectedExp])
       selectedShots=Shot.where(:experiment_id => params[:selectedExp].to_i)
-    elsif (params[:startDate] and params[:endDate])
-      startDate=Date.civil(params[:startDate][:year].to_i, params[:startDate][:month].to_i, params[:startDate][:day].to_i)
-      endDate=Date.civil(params[:endDate][:year].to_i, params[:endDate][:month].to_i, params[:endDate][:day].to_i,23)
-      startDate=startDate.to_s+" 00:00:00"
-      endDate=endDate.to_s+" 23:59:59"
-      selectedShots=Shot.where("created_at >= ? AND created_at <= ?", startDate, endDate)
+    elsif (params[:from_date] and params[:to_date])
+      @fromDate=params[:from_date]
+      @toDate=params[:to_date]
+      begin
+        startDate=Date.parse(@fromDate).to_s+" 00:00:00"
+        endDate=Date.parse(@toDate).to_s+" 23:59:59"
+        selectedShots=Shot.where("created_at >= ? AND created_at <= ?", startDate, endDate)
+      rescue ArgumentError
+        selectedShots=Shot
+        @fromDate=""
+        @toDate=""
+        flash[:error]="Uncorrect dates selected."
+      end
     else
       selectedShots=Shot
     end

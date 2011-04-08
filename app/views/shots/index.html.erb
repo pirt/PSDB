@@ -3,12 +3,12 @@
   <div class="span-12" id="date filter">
    <h4 class="caps">Filter by date</h4>
     <div class="box">
-      <%= form_tag({:controller => "shots", :action => "index"}, :method => "get") do %>
-        <%= label_tag(:startDate, "Start date:") %>
-        <%= select_date Date.today-1.month, :prefix => :startDate %><br>
-        <%= label_tag(:endDate, "End date:") %>
-        <%= select_date Date.today, :prefix => :endDate %>
-        <%= submit_tag("Search") %>
+      <%= form_tag(shots_path, :method => "get") do %>
+        <%= label_tag(:from_date, "From:") %>
+        <%= text_field_tag(:from_date,@fromDate, :size => 10) %>
+        <%= label_tag(:to_date, "to:") %>
+        <%= text_field_tag(:to_date,@toDate, :size => 10) %>
+        <%= submit_tag("Filter") %>
       <% end %>
     </div>
   </div>
@@ -19,7 +19,7 @@
         <%= label_tag(:experiment, "Experiment:") %>
         <% possibleExp=options_from_collection_for_select(Experiment.all, :id, :name) %>
         <%= select_tag(:selectedExp,possibleExp) %> 
-        <%= submit_tag("Search") %>
+        <%= submit_tag("Filter") %>
       <% end %>
     </div>
   </div>

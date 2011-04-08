@@ -2,9 +2,10 @@
 <h3>Filter by date</h3>
 <%= form_tag(instancedatasets_path, :method => "get") do %>
   <%= label_tag(:from_date, "From:") %>
-  <%= text_field_tag(:from_date) %>
+  <%= text_field_tag(:from_date,@fromDate) %>
   <%= label_tag(:to_date, "to:") %>
-  <%= text_field_tag(:to_date) %>
+  <%= text_field_tag(:to_date,@toDate) %>
+  <%= hidden_field_tag(:instance_id, @instanceId) %>
   <%= submit_tag("Filter") %>
 <% end %>
 <br />

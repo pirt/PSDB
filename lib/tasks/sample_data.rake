@@ -5,7 +5,7 @@ namespace :db do
   task :populate => :environment do
     #
     nrOfExperiments=1
-    maxNrOfShotsPerExperiment=2
+    maxNrOfShotsPerExperiment=0
     #
     #Rake::Task['db:reset'].invoke
       
@@ -16,11 +16,11 @@ namespace :db do
 
     createShots(maxNrOfShotsPerExperiment,shotTypes)
 
-    createDataTypes
+    #createDataTypes
 
     # generate instances, subsystems and classtypes (typically 100)
 
-    instances=["fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB" ]#,
+    instances=[] #"fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB" ]#,
     #           "PA_Input_FF_Cam", "PA_Input_NF_Cam", "PA_Exit_FF_Cam", "PA_Exit_Powermeter",
     #           "PPPA_19_1_PU", "PPPA_19_2_PU", "PPPA_45_PU", 
     #           "MA_InjectIn_Cam", "MA_InjectOut_Cam", "MA_CH1_BB", "MA_CH2_BB", "MA_CH3_BB", "MA_CH4_BB",
