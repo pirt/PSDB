@@ -1,4 +1,13 @@
-<h3>Measurement series</h3>
+<h2>Measurement series</h2>
+<h3>Filter by date</h3>
+<%= form_tag(instancedatasets_path, :method => "get") do %>
+  <%= label_tag(:from_date, "From:") %>
+  <%= text_field_tag(:from_date) %>
+  <%= label_tag(:to_date, "to:") %>
+  <%= text_field_tag(:to_date) %>
+  <%= submit_tag("Filter") %>
+<% end %>
+<br />
 <%= will_paginate @instanceDataSets %>
 <table border="0" cellspacing="0" cellpadding="0">
   <thead>
