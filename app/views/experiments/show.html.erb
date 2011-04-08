@@ -3,7 +3,12 @@
 <strong>Description: </strong> <%= @experiment.description %><br>
 <strong>Created at: </strong> <%= formatDate(@experiment.created_at) %><br>
 <strong>Updated at: </strong> <%= formatDate(@experiment.updated_at) %><br>
-<strong>Number of shots: </strong> <%= @experiment.shots.count %><br>
+<% nrOfShots=@experiment.shots.count %>
+<strong>Number of shots: </strong> <%= nrOfShots %><br>
+<% if (nrOfShots>0) %>
+  <strong>First shot was: </strong> <%= formatDate(@experiment.shots.minimum("created_at")) %><br>
+  <strong>Latest shot was: </strong> <%= formatDate(@experiment.shots.maximum("created_at")) %><br>
+<% end %>
 <hr>
 <%= render :partial => "attachments/index", :locals => { :parent => @experiment } %>
 <hr>
