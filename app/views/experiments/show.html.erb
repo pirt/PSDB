@@ -8,6 +8,7 @@
 <% if (nrOfShots>0) %>
   <strong>First shot was: </strong> <%= formatDate(@experiment.shots.minimum("created_at")) %><br>
   <strong>Latest shot was: </strong> <%= formatDate(@experiment.shots.maximum("created_at")) %><br>
+  <strong>Maximum time between shots: </strong> <%= distance_of_time_in_words(@maxduration,0,true) %><br>
   <div class="span-5 last">
   <table border="0" cellspacing="0" cellpadding="0">
     <thead>
