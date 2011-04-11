@@ -53,7 +53,10 @@
     <tr>
       <td><%= link_to shot.id, shot %></td>
       <td><%= formatDate(shot.created_at) %></td>
-      <td></td>
+      <td><% if (@durations[shot.id-1]) %>
+            <%= distance_of_time_in_words(@durations[shot.id-1].t1-@durations[shot.id-1].t2,0,true) %>
+          <% end %>
+</td>
       <td></td>
       <td></td>
       <td></td>

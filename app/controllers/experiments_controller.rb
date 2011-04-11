@@ -9,6 +9,12 @@ class ExperimentsController < ApplicationController
     @experiment=Experiment.find_by_id(params[:id])
     if @experiment
         @pageTitle=@experiment.name
+        @durations=Shot.find_by_sql("select nextTable.created_at as t1,
+                                currentTable.created_at as t2 
+      from (select * from shots where experiment_id=1) currentTable
+      join (select * from shots where experiment_id=1) nextTable
+        on nextTable.id=(select min(id) from 
+          (select * from shots where experiment_id=1) where id>currentTable.id)");
     else
       flash[:error] = "Experiment not found"
       redirect_to experiments_path

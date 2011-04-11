@@ -1,13 +1,40 @@
 <h2>Experiment <%= @experiment.name %></h2>
-<hr>
 <strong>Description: </strong> <%= @experiment.description %><br>
 <strong>Created at: </strong> <%= formatDate(@experiment.created_at) %><br>
 <strong>Updated at: </strong> <%= formatDate(@experiment.updated_at) %><br>
+<hr>
+<h3>Shot statistics</h3>
 <% nrOfShots=@experiment.shots.count %>
-<strong>Number of shots: </strong> <%= nrOfShots %><br>
 <% if (nrOfShots>0) %>
   <strong>First shot was: </strong> <%= formatDate(@experiment.shots.minimum("created_at")) %><br>
   <strong>Latest shot was: </strong> <%= formatDate(@experiment.shots.maximum("created_at")) %><br>
+  <div class="span-5 last">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th class="span-3">Shot type</th>
+        <th class="span-2"># of shots</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Shottype.all.each do |shottype| %>
+        <% shotNr=@experiment.shots.where(:shottype_id => shottype).count %>
+        <% if shotNr>0 %>
+          <tr>
+            <td><%= shottype.name %></td>
+            <td><%= shotNr %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong><%= nrOfShots %></strong></td>
+      </tr>         
+    </tbody>
+  </table>
+  </div><br>
+<% else %>
+  No shots connected with this experiment.<br>
 <% end %>
 <hr>
 <%= render :partial => "attachments/index", :locals => { :parent => @experiment } %>
