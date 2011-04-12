@@ -9,6 +9,10 @@
     <%= e.label :description %><br />
     <%= e.text_field :description %>
   </div>
+  <div class="field">
+    <%= e.label :active, "Active Experiment?" %><br />
+    <%= e.check_box(:active) %>
+  </div>
   <div class="actions">
     <%= e.submit "Update Experiment" %>
     <%= e.submit "Cancel", :name => "cancel" %>

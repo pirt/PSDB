@@ -112,7 +112,7 @@ def createExperiments(nrOfExperiments)
   (1..nrOfExperiments).each do |n|
     name  = "P#{n}"
     description = Faker::Lorem.sentence(1)
-    experiment=Experiment.create!(:name => name, :description => description)
+    experiment=Experiment.create!(:name => name, :description => description, :active => true)
     puts "Created Experiment #{experiment.id}"
   end
 end

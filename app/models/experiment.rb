@@ -11,7 +11,7 @@
 #
 
 class Experiment < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :active
 
   # paginate results
   cattr_reader :per_page
@@ -28,8 +28,7 @@ class Experiment < ActiveRecord::Base
                           :length => { :maximum => 255 }
 
   before_destroy :check_if_shots_associated
-
-  
+ 
   
   def check_if_shots_associated
     if (!shots.empty?)

@@ -7,6 +7,7 @@
       <th class="span-1">Name</th>
       <th class="span-1"></th>
       <th class="span-10">Description</th>
+      <th class="span-1">Active?</th>
       <th></th>
     </tr>
   </thead>
@@ -18,7 +19,7 @@
               <%= image_tag 'paperclip.png' %>
             <% end %></td>
         <td><%= experiment.description %></td>
-        
+        <td><%= experiment.active? ? 'yes' : 'no' %></td>
         <td><%= link_to 'Edit', edit_experiment_path(experiment) %>
             <% if experiment.attachments.count!=0
               @confirmation="There are documents attached to the experiment, which WILL BE LOST if the experiment is deleted. Are You sure you want to do this?"
