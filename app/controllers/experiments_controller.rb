@@ -9,12 +9,19 @@ class ExperimentsController < ApplicationController
     @experiment=Experiment.find_by_id(params[:id])
     if @experiment
         @pageTitle=@experiment.name
-        @durations=Shot.find_by_sql("select nextTable.created_at as t1,
+        durations=Shot.find_by_sql("select nextTable.created_at as t1,
                                 currentTable.created_at as t2 
-      from (select * from shots where experiment_id=1) currentTable
-      join (select * from shots where experiment_id=1) nextTable
-        on nextTable.id=(select min(id) from 
-          (select * from shots where experiment_id=1) where id>currentTable.id)");
+      		from (select * from shots where experiment_id=1) currentTable
+      		join (select * from shots where experiment_id=1) nextTable
+        	on nextTable.id=(select min(id) from 
+          	(select * from shots where experiment_id=1) where id>currentTable.id)");
+	@maxduration=0
+	durations.each do |duration|
+	  difference=duration.t1-duration.t2
+	  if difference>@maxduration
+	    @maxduration=difference
+          end
+	end
     else
       flash[:error] = "Experiment not found"
       redirect_to experiments_path
