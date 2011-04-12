@@ -20,12 +20,14 @@ module InstancedatasHelper
   end
 
   def generatePlot(xyData, fileId, options={})
-    plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
+    plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions=plotOptions.merge(options)
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
         plot.output "public/images/tmp/test"+fileId.to_s+".#{plotOptions[:imagetype]}"
+        plot.ylabel plotOptions[:ylabel]
+        plot.xlabel plotOptions[:xlabel]
         plot.data << Gnuplot::DataSet.new( xyData ) do |ds|
           ds.with = "lines"
           ds.notitle
@@ -36,7 +38,25 @@ module InstancedatasHelper
 
   def generate2dPlot(instancedata, options = {})
     xyData=convert2D(instancedata.data_binary)
-    generatePlot(xyData, instancedata.id,options)
+    plotOptions={:xlabel=> "", :ylabel=> ""}
+    axisDescription=instancedata.data_string
+    if (axisDescription)
+      descriptionParts=axisDescription.split(",")
+      if (descriptionParts[0]) 
+        plotOptions[:xlabel]+=descriptionParts[0] 
+      end
+        if (descriptionParts[1]) 
+        plotOptions[:ylabel]+=descriptionParts[1] 
+      end
+      if (descriptionParts[2]) 
+        plotOptions[:xlabel]+=" ["+descriptionParts[2]+"]" 
+      end
+      if (descriptionParts[3]) 
+        plotOptions[:ylabel]+=" ["+descriptionParts[3]+"]"
+      end
+    end
+    plotOptions=plotOptions.merge(options)
+    generatePlot(xyData, instancedata.id,plotOptions)
   end
 
   def displayImage(instancedata, options = {} )
