@@ -8,20 +8,31 @@ class ExperimentsController < ApplicationController
   def show
     @experiment=Experiment.find_by_id(params[:id])
     if @experiment
-        @pageTitle=@experiment.name
-        durations=Shot.find_by_sql("select nextTable.created_at as t1,
-                                currentTable.created_at as t2 
-      		from (select * from shots where experiment_id=1) currentTable
-      		join (select * from shots where experiment_id=1) nextTable
-        	on nextTable.id=(select min(id) from 
-          	(select * from shots where experiment_id=1) where id>currentTable.id)");
-	@maxduration=0
-	durations.each do |duration|
-	  difference=duration.t1-duration.t2
-	  if difference>@maxduration
-	    @maxduration=difference
+      @pageTitle=@experiment.name
+      queryString="
+        select nextTable.created_at as t1,
+               currentTable.created_at as t2,
+               currentTable.id as currentid,
+               nextTable.id as nextid
+        from (select * from shots where experiment_id=%d) currentTable
+      	join (select * from shots where experiment_id=%d) nextTable
+       	on nextTable.id=(select min(id) from 
+         	(select * from shots where experiment_id=%d) where id>currentTable.id)" % [@experiment.id,@experiment.id,@experiment.id]
+      @durations=Shot.find_by_sql(queryString)
+
+      minimumTimeBetweenBeamTimes=200
+
+      @beamtimes=[{:firstId => Shot.where(:experiment_id => params[:id]).first.id}]
+      if (!@durations.empty?)
+	      (0..(@durations.length-1)).each do |i|
+          difference=@durations[i].t1-@durations[i].t2
+          if (difference>minimumTimeBetweenBeamTimes and i<@durations.length-1)
+            @beamtimes[@beamtimes.length-1]=@beamtimes.last.merge(:lastId => @durations[i].currentid)
+            @beamtimes << {:firstId => @durations[i].nextid}
           end
-	end
+	      end
+      end
+      @beamtimes[@beamtimes.length-1]=@beamtimes.last.merge(:lastId => Shot.where(:experiment_id => params[:id]).last.id)
     else
       flash[:error] = "Experiment not found"
       redirect_to experiments_path

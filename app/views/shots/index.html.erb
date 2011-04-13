@@ -31,7 +31,7 @@
   <thead>
     <tr>
       <th class="span-1">Shot#</th>
-      <th class="span-2">Date</th>
+      <th class="span-4">Date</th>
       <th class="span-1">fsFE WP</th>
       <th class="span-1">19_1</th>
       <th class="span-1">19_2</th>
@@ -44,7 +44,7 @@
       <th class="span-1">FR</th>
       <th class="span-1">PA Energy</th>
       <th class="span-1">MA Energy</th>
-      <th class="span-8">Comment</th>
+      <th class="span-6">Comment</th>
       <th></th>
     </tr>
   </thead>
@@ -53,10 +53,7 @@
     <tr>
       <td><%= link_to shot.id, shot %></td>
       <td><%= formatDate(shot.created_at) %></td>
-      <td><% if (@durations[shot.id-1]) %>
-            <%= distance_of_time_in_words(@durations[shot.id-1].t1-@durations[shot.id-1].t2,0,true) %>
-          <% end %>
-</td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>

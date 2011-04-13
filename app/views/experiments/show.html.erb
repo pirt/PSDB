@@ -1,14 +1,45 @@
 <h2>Experiment <%= @experiment.name %></h2>
-<strong>Description: </strong> <%= @experiment.description %><br>
-<strong>Created at: </strong> <%= formatDate(@experiment.created_at) %><br>
-<strong>Updated at: </strong> <%= formatDate(@experiment.updated_at) %><br>
+<div class="span-24 last" id="topbox">
+  <div class="span-8" id="general">
+    <div class="box">
+      <strong>Description: </strong> <%= @experiment.description %><br>
+      <strong>Created at: </strong> <%= formatDate(@experiment.created_at) %><br>
+      <strong>Updated at: </strong> <%= formatDate(@experiment.updated_at) %><br>
+      <strong>Active: </strong> <%= @experiment.active? ? 'yes' : 'no' %><br>
+      <%= link_to "Edit", edit_experiment_path(@experiment) %>
+    </div>
+  </div>
+  <div class="span-16 last" id="attachments">
+    <div class="box">
+      <%= render :partial => "attachments/index", :locals => { :parent => @experiment } %>
+    </div>
+  </div>
+</div>
 <hr>
 <h3>Shot statistics</h3>
 <% nrOfShots=@experiment.shots.count %>
 <% if (nrOfShots>0) %>
   <strong>First shot was: </strong> <%= formatDate(@experiment.shots.minimum("created_at")) %><br>
   <strong>Latest shot was: </strong> <%= formatDate(@experiment.shots.maximum("created_at")) %><br>
-  <strong>Maximum time between shots: </strong> <%= distance_of_time_in_words(@maxduration,0,true) %><br>
+  <strong># of beamtimes: </strong> <%= @beamtimes.length() %><br>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th class="span-3">Date</th>
+        <th class="span-3">first shot#</th>
+        <th class="span-3">last shot#</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @beamtimes.each do |beamtime| %>
+      <tr>
+       <td><%= formatDate(Shot.find(beamtime[:firstId]).created_at) %> - <%= formatDate(Shot.find(beamtime[:lastId]).created_at) %></td>
+       <td><%= beamtime[:firstId] %></td>
+       <td><%= beamtime[:lastId] %></td>
+      </tr>
+     <% end %>       
+    </tbody>
+  </table>
   <div class="span-5 last">
   <table border="0" cellspacing="0" cellpadding="0">
     <thead>
@@ -37,7 +68,5 @@
 <% else %>
   No shots connected with this experiment.<br>
 <% end %>
-<hr>
-<%= render :partial => "attachments/index", :locals => { :parent => @experiment } %>
 <hr>
 <%= link_to "Back to experiments", experiments_path %>

@@ -4,7 +4,6 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th class="span-3">Type</th>
       <th>Date added</th>
       <th></th>
     </tr>
@@ -14,7 +13,6 @@
     <tr>
       <td><%= link_to attachment.filename, linkPath+attachment.id.to_s %></td>
       <td><%= attachment.description %></td>
-      <td><%= attachment.filetype %></td>
       <td><%= formatDate(attachment.created_at) %></td>
       <td>
         <%= link_to "Edit", linkPath+attachment.id.to_s+"/edit" %>

@@ -22,11 +22,6 @@ class ShotsController < ApplicationController
     end
     @shots=selectedShots.order("created_at DESC").paginate(:page => params[:page])
     @pageTitle="Shot list"
-    @durations=Shot.find_by_sql("select nextTable.created_at as t1,
-                                currentTable.created_at as t2 
-      from shots currentTable
-      join shots nextTable
-        on nextTable.id=(select min(id) from shots where id>currentTable.id)");
   end
 
   def show
