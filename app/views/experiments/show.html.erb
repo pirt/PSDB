@@ -36,7 +36,7 @@
        <td><% firstDate=formatDate(Shot.find(beamtime[:firstId]).created_at, {:dateOnly => true})
               lastDate=formatDate(Shot.find(beamtime[:lastId]).created_at, {:dateOnly => true})
               dateSpan=firstDate+" - "+lastDate %>
-        <%= link_to dateSpan, shots_path({:from_date=>firstDate,:to_date=>lastDate}) %>
+        <%= link_to dateSpan, shots_path({:from_date=>firstDate,:to_date=>lastDate,:selectedExp=>@experiment.id}) %>
         </td>
        <td><%= beamtime[:firstId] %></td>
        <td><%= beamtime[:lastId] %></td>
