@@ -9,7 +9,11 @@ module ApplicationHelper
     end
   end
 
-  def formatDate(date)
-    return date.localtime().strftime("%d.%m.%Y %X")
+  def formatDate(date, options={})
+    if (options[:dateOnly]==true)
+      return date.localtime().strftime("%d.%m.%Y")
+    else
+      return date.localtime().strftime("%d.%m.%Y %X")
+    end
   end
 end

@@ -6,7 +6,7 @@
     <%= hidden_field_tag(:instanceDataId,imagedata.id) %>
     <%= label_tag(:imageFormat, "Format:") %>
     <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4]]) %>
-    <%= select_tag(:selectedExportFormat,possibleFormat,:disabled => true) %> 
+    <%= select_tag(:selectedExportFormat,possibleFormat) %> 
     <%= submit_tag("Export Image") %>
   <% end %><br />
 <h3>Acquisition Parameters</h3>

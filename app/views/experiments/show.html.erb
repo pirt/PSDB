@@ -33,7 +33,11 @@
     <tbody>
      <% @beamtimes.each do |beamtime| %>
       <tr>
-       <td><%= formatDate(Shot.find(beamtime[:firstId]).created_at) %> - <%= formatDate(Shot.find(beamtime[:lastId]).created_at) %></td>
+       <td><% firstDate=formatDate(Shot.find(beamtime[:firstId]).created_at, {:dateOnly => true})
+              lastDate=formatDate(Shot.find(beamtime[:lastId]).created_at, {:dateOnly => true})
+              dateSpan=firstDate+" - "+lastDate %>
+        <%= link_to dateSpan, shots_path({:from_date=>firstDate,:to_date=>lastDate}) %>
+        </td>
        <td><%= beamtime[:firstId] %></td>
        <td><%= beamtime[:lastId] %></td>
       </tr>
