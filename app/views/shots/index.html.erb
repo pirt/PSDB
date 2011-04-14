@@ -1,24 +1,20 @@
 <h2>Shot list</h2>
 <div class="span-24 last" id="search filters">
   <div class="span-12" id="date filter">
-   <h4 class="caps">Filter by date</h4>
     <div class="box">
       <%= form_tag(shots_path, :method => "get") do %>
         <%= label_tag(:from_date, "From:") %>
-        <%= text_field_tag(:from_date,@fromDate, :size => 10) %>
+        <%= text_field_tag(:from_date,@formData[:from_date], :size => 10) %>
         <%= label_tag(:to_date, "to:") %>
-        <%= text_field_tag(:to_date,@toDate, :size => 10) %>
-        <%= submit_tag("Filter") %>
-      <% end %>
-    </div>
-  </div>
-  <div class="span-12 last" id="experiment filter">
-    <h4 class="caps">Filter by experiment</h4>
-    <div class="box">
-      <%= form_tag({:controller => "shots", :action => "index"}, :method => "get") do %>
-        <%= label_tag(:experiment, "Experiment:") %>
-        <% possibleExp=options_from_collection_for_select(Experiment.all, :id, :name) %>
-        <%= select_tag(:selectedExp,possibleExp) %> 
+        <%= text_field_tag(:to_date,@formData[:to_date], :size => 10) %><br>
+        <%= label_tag(:selectedExp, "Experiment:") %>
+        <% experimentsArray=[['All',0]]
+           experimentsArray+= Experiment.all.map { |exp| [exp.name, exp.id] } %>
+        <%= select_tag(:selectedExp,options_for_select(experimentsArray,@formData[:selectedExp])) %> 
+        <%= label_tag(:shotType, "Shot type:") %>
+        <% shottypeArray=[['All',0]]
+           shottypeArray+= Shottype.all.map { |shottype| [shottype.name, shottype.id] } %>
+        <%= select_tag(:shotType,options_for_select(shottypeArray,@formData[:shotType])) %> 
         <%= submit_tag("Filter") %>
       <% end %>
     </div>

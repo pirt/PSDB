@@ -1,27 +1,33 @@
 class ShotsController < ApplicationController
   def index
-    @fromDate=""
-    @toDate=""
-    if (params[:selectedExp])
-      selectedShots=Shot.where(:experiment_id => params[:selectedExp].to_i)
-    elsif (params[:from_date] and params[:to_date])
-      @fromDate=params[:from_date]
-      @toDate=params[:to_date]
+    selectedShots=Shot
+    if (params[:selectedExp] and params[:selectedExp]!="0")
+      selectedShots=selectedShots.where(:experiment_id => params[:selectedExp].to_i)
+    end
+    if (params[:shotType] and params[:shotType]!="0")
+      selectedShots=selectedShots.where(:shottype_id => params[:shotType].to_i)
+    end
+    if (params[:from_date] and !params[:from_date].blank?)
       begin
-        startDate=Date.parse(@fromDate).to_s+" 00:00:00"
-        endDate=Date.parse(@toDate).to_s+" 23:59:59"
-        selectedShots=Shot.where("created_at >= ? AND created_at <= ?", startDate, endDate)
+        startDate=Date.parse(params[:from_date]).to_s+" 00:00:00"
+        selectedShots=selectedShots.where("created_at >= ?",startDate)
+        params[:from_date]=Date.parse(params[:from_date]).to_s
       rescue ArgumentError
-        selectedShots=Shot
-        @fromDate=""
-        @toDate=""
-        flash[:error]="Uncorrect dates selected."
+        params[:from_date]=""
       end
-    else
-      selectedShots=Shot
+    end
+    if (params[:to_date] and !params[:to_date].blank?)
+      begin
+        endDate=Date.parse(params[:to_date]).to_s+" 23:59:59"
+        selectedShots=selectedShots.where("created_at <= ?",endDate)
+        params[:to_date]=Date.parse(params[:to_date]).to_s
+      rescue ArgumentError
+        params[:to_date]=""
+      end
     end
     @shots=selectedShots.order("created_at DESC").paginate(:page => params[:page])
     @pageTitle="Shot list"
+    @formData=params
   end
 
   def show
