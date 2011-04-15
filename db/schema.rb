@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110405192247) do
+ActiveRecord::Schema.define(:version => 20110406103313) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -109,5 +109,17 @@ ActiveRecord::Schema.define(:version => 20110405192247) do
   end
 
   add_primary_key_trigger "subsystems"
+
+  add_foreign_key "instancedatas", "datatypes", :name => "sys_c00393337"
+  add_foreign_key "instancedatas", "instancedatasets", :name => "sys_c00393336"
+
+  add_foreign_key "instancedatasets", "instances", :name => "sys_c00393328"
+  add_foreign_key "instancedatasets", "shots", :name => "sys_c00393327"
+
+  add_foreign_key "instances", "classtypes", :name => "sys_c00393320"
+  add_foreign_key "instances", "subsystems", :name => "sys_c00393321"
+
+  add_foreign_key "shots", "experiments", :name => "sys_c00393296"
+  add_foreign_key "shots", "shottypes", :name => "sys_c00393297"
 
 end
