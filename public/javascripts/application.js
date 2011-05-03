@@ -20,4 +20,7 @@ $(function (){
 			}
 		});
 });
-
+// error flash messages should nicely disappear after a while.
+$(function(){
+  $('#errorflash').delay(2000).slideUp(500);
+});

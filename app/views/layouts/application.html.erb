@@ -32,7 +32,7 @@
     <hr />
     <section class="round">
       <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
+        <div id="errorflash" class="flash <%= key %>"><%= value %></div>
       <% end %>
       <%= yield %>
 <% # The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
