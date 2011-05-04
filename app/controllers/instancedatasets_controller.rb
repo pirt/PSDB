@@ -17,7 +17,7 @@ class InstancedatasetsController < ApplicationController
                                                 startDate, endDate)
     end
     
-    @instanceDataSets=selectedDataSets.paginate(:page => params[:page])
+    @instanceDataSets=selectedDataSets.order("shot_id DESC").paginate(:page => params[:page])
   end
 
   def show

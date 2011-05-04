@@ -1,7 +1,8 @@
 <% classType=instanceDataSet.instance.classtype.name %>
-<% partialName="instancedataset_short_#{classType}" %>
-<% partialFileName=::Rails.root.to_s+"/app/views/instancedatasets/_"+partialName+".html.erb" %>
+<% dataSetVersion=instanceDataSet.version %>
+<% partialName="/instancedatasets/#{classType}/short_#{dataSetVersion}" %>
+<% partialFileName=::Rails.root.to_s+"/app/views/instancedatasets/"+classType+"/_short_"+dataSetVersion.to_s+".html.erb" %>
 <% if !File.exists?(partialFileName) %>
-  <% partialName="instancedataset_short_unknown" %>
+  <% partialName="/instancedatasets/instancedataset_short_unknown" %>
 <% end %>
-<%= render :partial => "instancedatasets/#{partialName}", :locals => { :instanceDataSet => instanceDataSet } %>
+<%= render :partial => partialName, :locals => { :instanceDataSet => instanceDataSet } %>
