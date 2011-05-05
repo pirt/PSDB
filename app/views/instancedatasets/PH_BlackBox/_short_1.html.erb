@@ -1,1 +1,11 @@
-<%= displayParameter(instanceDataSet.instancedatas,"Status") %>
+<% status=instanceDataSet.instancedatas.find_by_name("Status").data_string.upcase
+ case status
+  when "IN","LEFT"
+    iconName="blackbox_in.png"
+  when "OUT","RIGHT"
+    iconName="blackbox_out.png"
+  else
+    iconName="blackbox_unknown.png"
+end %>
+<%= image_tag iconName, {:style=>"vertical-align:middle"} %>
+<strong><%= displayParameter(instanceDataSet.instancedatas,"Status") %></strong>

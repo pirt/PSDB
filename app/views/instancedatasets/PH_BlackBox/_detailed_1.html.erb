@@ -1,3 +1,11 @@
 <%= image_tag "blackbox.jpg" %><br>
-BlackBox status: <strong><%= displayParameter(instanceDataSet.instancedatas,"Status") %></strong>
-
+BlackBox status: <strong><%= displayParameter(instanceDataSet.instancedatas,"Status") %></strong><br>
+<% status=instanceDataSet.instancedatas.find_by_name("Status").data_string.upcase %>
+<%= case status
+  when "IN","LEFT"
+    image_tag "blackbox_in.png"
+  when "OUT","RIGHT"
+    image_tag "blackbox_out.png"
+  else
+    image_tag "blackbox_unknown.png"
+end %>
