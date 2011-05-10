@@ -14,8 +14,8 @@ PSDB::Application.routes.draw do
     resources :attachments
   end
 
-  get "pages/contact"
-  get "pages/about"
+  get "pages/start"
+  #get "pages/about"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,7 +54,7 @@ PSDB::Application.routes.draw do
   #     resources :products
   #   end
 
-  root :to => "shots#index"
+  root :to => "pages#start"
 
   # See how all your routes lay out with "rake routes"
 end
