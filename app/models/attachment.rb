@@ -29,5 +29,5 @@ class Attachment < ActiveRecord::Base
   validates :description, :length => { :maximum => 255 }
 
   validates :content, :presence => true,
-                      :length => { :maximum => 100.kilobytes }
+                      :length => { :maximum => 5.megabytes }
 end

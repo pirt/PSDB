@@ -4,7 +4,7 @@ namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
     #
-    nrOfExperiments=1
+    nrOfExperiments=0
     maxNrOfShotsPerExperiment=0
     #
     #Rake::Task['db:reset'].invoke
@@ -20,13 +20,13 @@ namespace :db do
 
     # generate instances, subsystems and classtypes (typically 100)
 
-    instances=[] #"fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB" ]#,
+    instances=[] # "fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB",
     #           "PA_Input_FF_Cam", "PA_Input_NF_Cam", "PA_Exit_FF_Cam", "PA_Exit_Powermeter",
     #           "PPPA_19_1_PU", "PPPA_19_2_PU", "PPPA_45_PU", 
     #           "MA_InjectIn_Cam", "MA_InjectOut_Cam", "MA_CH1_BB", "MA_CH2_BB", "MA_CH3_BB", "MA_CH4_BB",
     #           "PPMA_1_PU", "PPMA_2_PU", "PPMA_3_PU", "PPMA_4_PU", "PPMA_5_PU",
     #           "MAS_Powermeter", "MAS_Spectrometer", "MAS_Filt1_BB", "MAS_Filt2_BB", "MAS_Filt3_BB",
-    #           "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB", ]
+    #           "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB" ]
 
     createInstances(instances)
     

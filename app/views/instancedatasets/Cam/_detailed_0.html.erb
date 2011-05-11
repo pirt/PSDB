@@ -1,0 +1,18 @@
+<h3>Image</h3>
+<% instancedatas=instanceDataSet.instancedatas %>
+<%= displayParameter(instancedatas,"image",{:width=>400, :height=>300}) %>
+<% imagedata=instancedatas.find_by_name("image") %>
+<%= form_tag({:controller => "instancedatas", :action => "exportImage"}, :method => "get") do %>
+    <%= hidden_field_tag(:instanceDataId,imagedata.id) %>
+    <%= label_tag(:imageFormat, "Format:") %>
+    <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4]]) %>
+    <%= select_tag(:selectedExportFormat,possibleFormat) %> 
+    <%= submit_tag("Export Image") %>
+  <% end %><br />
+<h3>Acquisition Parameters</h3>
+<h4>Brightness: <%= displayParameter(instancedatas,"brightness") %></h4>
+<h4>Shutter: <%= displayParameter(instancedatas,"shutter") %></h4>
+<h4>Gain: <%= displayParameter(instancedatas,"gain") %></h4>
+<h3>Hardware Parameters</h3>
+<h4>Serial#</h4>
+
