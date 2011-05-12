@@ -1,0 +1,35 @@
+<div class="span-24">
+  <h1>Statistics</h1>
+  <h3>General</h3>
+  <div class="span-10 append-14 last" id="general">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total number of shots:</td>
+          <td><%= Shot.count %></td>
+        </tr>
+        <tr>
+          <td>Number of experiment shots:</td>
+          <td><%= Shot.where(:shottype_id=>1).count %></td>
+        </tr>
+        <tr>
+          <td>Total number of experiments:</td>
+          <td><%= Experiment.count %></td>
+        </tr>
+        <tr>
+          <td>Average number of shots/experiment</td>
+          <td><%= @avgShotsPerExperiment %></td>
+      </tbody>
+    </table>
+  </div>
+  <div class="span-10 last" id="linklist">
+    <h3>Further analysis</h3>
+    <%= link_to "Shots per day", "calendar" %>
+  </div>
+</div>

@@ -22,28 +22,30 @@
   <strong>First shot was: </strong> <%= formatDate(@experiment.shots.minimum("created_at")) %><br>
   <strong>Latest shot was: </strong> <%= formatDate(@experiment.shots.maximum("created_at")) %><br>
   <strong># of beamtimes: </strong> <%= @beamtimes.length() %><br>
-  <table border="0" cellspacing="0" cellpadding="0">
-    <thead>
-      <tr>
-        <th class="span-3">Date</th>
-        <th class="span-3">first shot#</th>
-        <th class="span-3">last shot#</th>
-      </tr>
-    </thead>
-    <tbody>
-     <% @beamtimes.each do |beamtime| %>
-      <tr>
-       <td><% firstDate=formatDate(Shot.find(beamtime[:firstId]).created_at, {:dateOnly => true})
-              lastDate=formatDate(Shot.find(beamtime[:lastId]).created_at, {:dateOnly => true})
-              dateSpan=firstDate+" - "+lastDate %>
-        <%= link_to dateSpan, shots_path({:from_date=>firstDate,:to_date=>lastDate,:selectedExp=>@experiment.id}) %>
-        </td>
-       <td><%= beamtime[:firstId] %></td>
-       <td><%= beamtime[:lastId] %></td>
-      </tr>
-     <% end %>       
-    </tbody>
-  </table>
+  <div class="span-9 append-15 last">
+    <table>
+      <thead>
+        <tr>
+          <th class="span-5">Date</th>
+          <th class="span-2">first shot#</th>
+          <th class="span-2">last shot#</th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @beamtimes.each do |beamtime| %>
+        <tr>
+         <td><% firstDate=formatDate(Shot.find(beamtime[:firstId]).created_at, {:dateOnly => true})
+                lastDate=formatDate(Shot.find(beamtime[:lastId]).created_at, {:dateOnly => true})
+                dateSpan=firstDate+" - "+lastDate %>
+          <%= link_to dateSpan, shots_path({:from_date=>firstDate,:to_date=>lastDate,:selectedExp=>@experiment.id}) %>
+          </td>
+         <td><%= beamtime[:firstId] %></td>
+         <td><%= beamtime[:lastId] %></td>
+        </tr>
+       <% end %>       
+      </tbody>
+    </table>
+  </div>
   <div class="span-5 last">
   <table border="0" cellspacing="0" cellpadding="0">
     <thead>

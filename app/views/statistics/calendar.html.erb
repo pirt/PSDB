@@ -1,0 +1,31 @@
+<h1>Shot calendar (#shots per day)</h1>
+<div class="span-12 last" id="filter">
+  <div class="box">
+    <%= form_tag("calendar", :method => "get") do %>
+      <%= label_tag(:shotType, "Shot type:") %>
+      <% shottypeArray=[['All',0]]
+         shottypeArray+= Shottype.all.map { |shottype| [shottype.name, shottype.id] } %>
+      <%= select_tag(:shotType,options_for_select(shottypeArray,@formData[:shotType])) %> 
+      <%= submit_tag("Filter") %>
+    <% end %>
+  </div>
+</div>
+<div class="span-15 last" id="calendar">
+  <h2 id="month">   
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>   
+    <%= h @date.strftime("%B %Y") %>   
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>   
+  </h2>    
+  <% calendar_for @shots, :year => @date.year, :month => @date.month  do |calendar| %>
+    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')%>  
+    <% calendar.day(:day_method => :created_at) do |date, shots| %>   
+      <%= date.day %>
+      <% nrOfShots=shots.count %>
+      <% if nrOfShots!=0 %>
+        <ul>
+          <li><%= link_to (nrOfShots,shots_path({:from_date=>date,:to_date=>date,:shotType=>params[:shotType]})) %></li>
+        </ul>
+      <% end %>
+    <% end %>   
+  <% end %>   
+</div>
