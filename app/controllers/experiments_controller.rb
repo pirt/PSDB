@@ -20,7 +20,7 @@ class ExperimentsController < ApplicationController
          	(select * from shots where experiment_id=%d) where id>currentTable.id)" % [@experiment.id,@experiment.id,@experiment.id]
       @durations=Shot.find_by_sql(queryString)
 
-      minimumTimeBetweenBeamTimes=200
+      minimumTimeBetweenBeamTimes=1.day
       if @experiment.shots.count!=0
         @beamtimes=[{:firstId => Shot.where(:experiment_id => params[:id]).first.id}]
         if (!@durations.empty?)

@@ -3,6 +3,11 @@ class StatisticsController < ApplicationController
     nrOfExps=Experiment.count
     nrOfExpShots=Shot.where(:shottype_id=>1).count
     @avgShotsPerExperiment=nrOfExpShots/nrOfExps
+    @nrOfDaysPerYear=(Date.today-(Date.today-1.year)).to_i
+    queryString="Select to_char(created_at,'DDD') FROM shots
+                                                  WHERE shottype_id=1
+                                                  GROUP BY to_char(created_at,'DDD')"
+    @nrOfShotDays=Shot.find_by_sql(queryString).count
   end
 
   def calendar

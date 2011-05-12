@@ -25,6 +25,11 @@
         <tr>
           <td>Average number of shots/experiment</td>
           <td><%= @avgShotsPerExperiment %></td>
+        </tr>
+        <tr>
+          <td>Number of days with experiment shots:</td>
+          <td><%= "#{@nrOfShotDays} (#{number_to_percentage(100.0*@nrOfShotDays/@nrOfDaysPerYear,:precision => 1)} of the year)" %></td>
+        </tr>
       </tbody>
     </table>
   </div>
