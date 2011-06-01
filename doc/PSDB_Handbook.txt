@@ -43,6 +43,7 @@ PHELIX Shot database (PSDB) documentation
 			export ORACLE_HOME=/home/udo/oracle/client
 			export PATH=/home/udo/oracle/client/bin:$PATH
 			export LD_LIBRARY_PATH=/home/udo/oracle/client/lib:$LD_LIBRARY_PATH
+			export NLS_LANG=AMERICAN_AMERICA.UTF8
 		execute the script (source ~/.bashrc)
 		
 		sudo ln -s /usr/bin/awk /bin/awk
