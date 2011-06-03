@@ -78,10 +78,11 @@ sudo passenger-install-apache2-module (follow the instructions)
     apache is restarted with "sudo service apache2 restart"
 
     site config file is /etc/apache2/sites-available/psdb
-    add the following line after <VirtualHost...>
+    add the following lines after <VirtualHost...>
     
     SetEnv ORACLE_HOME /home/udo/oracle/client
-    
+    SetEnv NLS_LANG AMERICAN_AMERICA_UTF8
+
     create link in /etc/apache2/sites_enabled : sudo ln -s ../sites-available/psdb 001-psdb
     remove link 000-default
 

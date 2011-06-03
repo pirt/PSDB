@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', "3.0.4"
+gem 'rails'
 gem 'gnuplot'       # Use plot package
-gem 'will_paginate', '3.0.pre2' # Paginate result lists
+gem 'will_paginate', "~> 3.0.pre2" # Paginate result lists
 gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
 gem 'jquery-rails'  # jQuery integration
 
@@ -13,7 +13,7 @@ gem 'ruby-plsql'
 
 # Gems for the local environment only. 
 group :development, :test do
-  gem 'mysql2'             # Support for mySQL database (development only)
+  # gem 'mysql2'             # Support for mySQL database (development only)
   gem 'rspec'		       # Use Rspec as testing framework
   gem 'rspec-rails'        # Use Rspec as testing framework
   gem 'webrat'             # Acceptance testing for webpages
