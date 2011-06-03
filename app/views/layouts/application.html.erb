@@ -12,7 +12,7 @@
     <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
     <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
     <%= stylesheet_link_tag 'redmond/jquery-ui-1.8.11.custom' %>
-    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+    <% # stylesheet_link_tag 'custom', :media => 'screen' %>
 </head>
 <body>
   <div class="container">
@@ -29,16 +29,15 @@
       <%= link_to "Statistics", :controller => "statistics", :action => "overview" %>
     </div>
     <hr />
-    <section class="round">
+    <section>
       <% flash.each do |key, value| %>
         <div id="errorflash" class="flash <%= key %>"><%= value %></div>
       <% end %>
       <%= yield %>
-<% # The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
-<script>$("tr:even").css("background-color", "#e5ecf9");</script>
-
     </section>
   </div>
+<% # The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
+<script>$("tr:even").css("background-color", "#e5ecf9");</script>
 <%= debug(params) if Rails.env.development? %>
 </body>
 </html>
