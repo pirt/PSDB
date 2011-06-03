@@ -15,7 +15,7 @@ class Instancedataset < ActiveRecord::Base
   attr_accessible :shot_id, :instance_id, :version 
   belongs_to :shot
   belongs_to :instance
-  has_many :instancedatas
+  has_many :instancevalues
 
   validates :version, :presence => true
 

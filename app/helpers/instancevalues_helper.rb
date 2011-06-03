@@ -1,8 +1,7 @@
 require "gnuplot"
 require "RMagick"
 
-
-module InstancedatasHelper
+module InstancevaluesHelper
   def trimBlob(blob)
     trimmedBlob=blob[4..-1]
   end
@@ -36,10 +35,10 @@ module InstancedatasHelper
     end
   end
 
-  def generate2dPlot(instancedata, options = {})
-    xyData=convert2D(instancedata.data_binary)
+  def generate2dPlot(instancevalue, options = {})
+    xyData=convert2D(instancevalue.data_binary)
     plotOptions={:xlabel=> "", :ylabel=> ""}
-    axisDescription=instancedata.data_string
+    axisDescription=instancevalue.data_string
     if (axisDescription)
       descriptionParts=axisDescription.split(",")
       if (descriptionParts[0]) 
@@ -56,16 +55,16 @@ module InstancedatasHelper
       end
     end
     plotOptions=plotOptions.merge(options)
-    generatePlot(xyData, instancedata.id,plotOptions)
+    generatePlot(xyData, instancevalue.id,plotOptions)
   end
 
-  def displayImage(instancedata, options = {} )
+  def displayImage(instancevalue, options = {} )
     imageOptions={:width => 320, :height =>200}
     imageOptions=imageOptions.merge(options)
-    fileName="public/images/tmp/image"+instancedata.id.to_s+"_"+
+    fileName="public/images/tmp/image"+instancevalue.id.to_s+"_"+
         imageOptions[:width].to_s+"_"+imageOptions[:height].to_s+".png"
     if !File.exists?(fileName)
-      imageData=trimBlob(instancedata.data_binary)
+      imageData=trimBlob(instancevalue.data_binary)
       myImage=Magick::Image.from_blob(imageData)
       myImage=myImage[0]
       paletteImg=Magick::Image.read("public/images/Rainbow.png")

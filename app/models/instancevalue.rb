@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20110405192247
 #
-# Table name: instancedatas
+# Table name: instancevalues
 #
 #  id                 :integer(38)     not null, primary key
 #  instancedataset_id :integer(38)     not null

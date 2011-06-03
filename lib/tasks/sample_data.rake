@@ -66,7 +66,7 @@ namespace :db do
                 data_binary=fillSpectrumData()
                 dataTypeId=dataTypeList["spectrum"]
             end
-            Instancedata.create!(:instancedataset_id => dataset.id,
+            Instancevalue.create!(:instancedataset_id => dataset.id,
 			         :name => classParamName,
                                  :datatype_id => dataTypeId,
                                  :data_string => data_string,

@@ -9,11 +9,11 @@
     </tr>
   </thead>
   <tbody>
-    <% instanceDataSet.instancedatas.includes(:datatype).each do |instancedata| %>
+    <% instanceDataSet.instancevalues.includes(:datatype).each do |instancevalue| %>
       <tr>
-        <td><%= instancedata.name %></td>
-        <td><%= instancedata.datatype.name %></td>
-        <td><%= render instancedata %></td>
+        <td><%= instancevalue.name %></td>
+        <td><%= instancevalue.datatype.name %></td>
+        <td><%= render instancevalue %></td>
       </tr>
     <% end %>
   </tbody>
