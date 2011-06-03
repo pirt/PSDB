@@ -19,9 +19,7 @@ PSDB::Application.routes.draw do
   end
 
   get "pages/start"
-  #get "pages/about"
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+  get "pages/about"
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
