@@ -23,7 +23,7 @@
       <% nrOfShots=shots.count %>
       <% if nrOfShots!=0 %>
         <ul>
-          <li><%= link_to (nrOfShots,shots_path({:from_date=>date,:to_date=>date,:shotType=>params[:shotType]})) %></li>
+          <li><%= link_to nrOfShots,shots_path({:from_date=>date,:to_date=>date,:shotType=>params[:shotType]}) %></li>
         </ul>
       <% end %>
     <% end %>   
