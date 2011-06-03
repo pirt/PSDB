@@ -14,7 +14,7 @@
 #  updated_at         :datetime        not null
 #
 
-class Instancedata < ActiveRecord::Base
+class Instancevalue < ActiveRecord::Base
   attr_accessible :instancedataset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary, 
                   :datatype_id
 
