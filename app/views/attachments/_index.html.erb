@@ -1,26 +1,29 @@
 <h3>Attached documents</h3>
-<table border="0" cellspacing="0" cellpadding="0">
+<table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th class="span-4">Name</th>
       <th>Description</th>
-      <th>Date added</th>
-      <th></th>
+      <th class="span-4">Date added</th>
+      <th class="span-1 last"> </th>
     </tr>
   </thead>
-    <% linkPath = "/#{parent.class.to_s.downcase}s/#{parent.id}/attachments/" %>
+  <% linkPath = "/#{parent.class.to_s.downcase}s/#{parent.id}/attachments/" %>
   <% parent.attachments.each do |attachment| %>
     <tr>
       <td><%= link_to attachment.filename, linkPath+attachment.id.to_s %></td>
       <td><%= attachment.description %></td>
       <td><%= formatDate(attachment.created_at) %></td>
       <td>
-        <%= link_to "Edit", linkPath+attachment.id.to_s+"/edit" %>
+        <%= link_to "Edit", linkPath+attachment.id.to_s+"/edit", 
+                             :title => "Edit #{attachment.filename}",
+                             :class => "ui-icon ui-icon-pencil" %>
         <%= link_to "Delete", [parent,attachment],
                              :method => :delete, :confirm => "Are You sure?",
-                             :title => "Delete #{attachment.filename}" %>
+                             :title => "Delete #{attachment.filename}",
+			     :class => "ui-icon ui-icon-trash" %>
       </td>
     </tr>
   <% end %>
 </table>
-<%= link_to "Add document", linkPath+"new" %>
+<%= link_to "Add document", linkPath+"new", :title => "Add new document" %>
