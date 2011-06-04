@@ -32,11 +32,11 @@
       <th class="span-1">19_1</th>
       <th class="span-1">19_2</th>
       <th class="span-1">45</th>
-      <th class="span-1">Amp1</th>
-      <th class="span-1">Amp2</th>
-      <th class="span-1">Amp3</th>
-      <th class="span-1">Amp4</th>
-      <th class="span-1">Amp5</th>
+      <th class="span-1">MA1</th>
+      <th class="span-1">MA2</th>
+      <th class="span-1">MA3</th>
+      <th class="span-1">MA4</th>
+      <th class="span-1">MA5</th>
       <th class="span-1">FR</th>
       <th class="span-1">PA Energy</th>
       <th class="span-1">MA Energy</th>
@@ -46,9 +46,10 @@
   </thead>
   <tbody>
   <% @shots.each do |shot| %>
+    <% instanceDataSets=shot.instancedatasets %>
     <tr>
       <td><%= link_to shot.id, shot %></td>
-      <td><%= formatDate(shot.created_at) %></td>
+      <td><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
       <td></td>
       <td></td>
       <td></td>
@@ -59,8 +60,8 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td><%= displayShotInstance(instanceDataSets,"PA_Exit_Powermeter") %></td>
+      <td><%= displayShotInstance(instanceDataSets,"MAS_Powermeter") %></td>
       <td><%= shot.description %></td>
       <td><% if shot.attachments.count!=0 %>
             <%= image_tag 'paperclip.png' %>

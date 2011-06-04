@@ -14,7 +14,11 @@ module ApplicationHelper
     if (options[:dateOnly]==true)
       return date.localtime().strftime("%d.%m.%Y")
     else
-      return date.localtime().strftime("%d.%m.%Y %X")
+      if (options[:showSeconds]==false)
+        return date.localtime().strftime("%d.%m.%Y %H:%M")
+      else
+        return date.localtime().strftime("%d.%m.%Y %X")
+      end
     end
   end
 
