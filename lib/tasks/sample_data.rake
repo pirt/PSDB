@@ -45,7 +45,7 @@ namespace :db do
       Instance.find_each do |instance|
         probabilityInstanceExists=rand()
         if (probabilityInstanceExists>0.5)
-	  dataset=Instancedataset.create!(:shot_id => shot.id, :instance_id => instance.id, :version => 0)
+	  valueset=Instancevalueset.create!(:shot_id => shot.id, :instance_id => instance.id, :version => 0)
           classType=instance.classtype.name
       	  classParams[classType].each do |classParam|
             classParamType=classParam.split("_").last
@@ -66,7 +66,7 @@ namespace :db do
                 data_binary=fillSpectrumData()
                 dataTypeId=dataTypeList["spectrum"]
             end
-            Instancevalue.create!(:instancedataset_id => dataset.id,
+            Instancevalue.create!(:instancevalueset_id => valueset.id,
 			         :name => classParamName,
                                  :datatype_id => dataTypeId,
                                  :data_string => data_string,

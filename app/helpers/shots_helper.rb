@@ -1,16 +1,15 @@
 module ShotsHelper
-  def displayShotInstance(instanceDataSets,instanceName,options={})
-    # instanceDataSets=shot.instancedatasets
+  def displayShotInstance(instanceValueSets,instanceName,options={})
     instanceId=Instance.find_by_name(instanceName)
     if (instanceId.nil?)
       return "unknown"
     else
-      instanceDataSet=instanceDataSets.find_by_instance_id(instanceId)
-      if (instanceDataSet.nil?)
+      instanceValueSet=instanceValueSets.find_by_instance_id(instanceId)
+      if (instanceValueSet.nil?)
         return "?"
       else
-        render :partial => "instancedatasets/instancedataset_short", 
-                            :locals => { :instanceDataSet => instanceDataSet}
+        render :partial => "instancevaluesets/instancevalueset_short", 
+                            :locals => { :instanceValueSet => instanceValueSet}
       end
     end
   end

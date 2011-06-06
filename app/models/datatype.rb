@@ -12,17 +12,17 @@
 class Datatype < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :instancedatas
+  has_many :instancevalues
 
   validates :name, :presence => true,
                    :length => { :maximum => 30 },
                    :uniqueness => { :case_sensitive => false }
 
-  before_destroy :check_if_instancedatas_associated
+  before_destroy :check_if_instancevalues_associated
 
-  def check_if_instancedatas_associated
-    if (!instancedatas.empty?)
-      errors.add(:base, "cannot be deleted with instancedatas associated")
+  def check_if_instancevalues_associated
+    if (!instancevalues.empty?)
+      errors.add(:base, "cannot be deleted with instancevalues associated")
       return false
     else
       return true

@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20110405192247
 #
-# Table name: instancedatasets
+# Table name: instancevaluesets
 #
 #  id          :integer(38)     not null, primary key
 #  shot_id     :integer(38)     not null
@@ -11,7 +11,7 @@
 #  updated_at  :datetime
 #
 
-class Instancedataset < ActiveRecord::Base
+class Instancevalueset < ActiveRecord::Base
   attr_accessible :shot_id, :instance_id, :version 
   belongs_to :shot
   belongs_to :instance

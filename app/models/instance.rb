@@ -16,7 +16,7 @@ class Instance < ActiveRecord::Base
   belongs_to :classtype
   belongs_to :subsystem
 
-  has_many :instancedatasets
+  has_many :instancevaluesets
 
   validates :name, :presence => true,
                    :length => { :maximum => 255 },

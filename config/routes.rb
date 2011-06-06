@@ -4,9 +4,9 @@ PSDB::Application.routes.draw do
 
   get "statistics/calendar"
 
-  resources :instancedatasets
+  resources :instancevaluesets
 
-  get "instancedatas/exportImage"
+  get "instancevalues/exportImage"
 
   resources :instances
 

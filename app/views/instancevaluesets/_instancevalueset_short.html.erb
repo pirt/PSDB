@@ -1,0 +1,8 @@
+<% classType=instanceValueSet.instance.classtype.name %>
+<% valueSetVersion=instanceValueSet.version %>
+<% partialName="/instancevaluesets/#{classType}/short_#{valueSetVersion}" %>
+<% partialFileName=::Rails.root.to_s+"/app/views/instancevaluesets/"+classType+"/_short_"+valueSetVersion.to_s+".html.erb" %>
+<% if !File.exists?(partialFileName) %>
+  <% partialName="/instancevaluesets/instancevalueset_short_unknown" %>
+<% end %>
+<%= render :partial => partialName, :locals => { :instanceValueSet => instanceValueSet } %>

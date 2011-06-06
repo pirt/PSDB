@@ -1,0 +1,5 @@
+<h2>
+  <%= @instanceValueSet.instance.name %>  Shot# <%= @instanceValueSet.shot_id %>
+</h2>
+<%= render :partial => "instancevalueset_detailed", :locals => { :instanceValueSet => @instanceValueSet } %>
+

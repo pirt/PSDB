@@ -16,10 +16,10 @@ class InstancesController < ApplicationController
 
   def show
     @instance=Instance.find_by_id(params[:id])
-    interfaceVersions=@instance.instancedatasets.select(:version).group(:version)
+    interfaceVersions=@instance.instancevaluesets.select(:version).group(:version)
     @interfaceInfo=[]
     interfaceVersions.each do |interfaceVersion|
-      shotId=@instance.instancedatasets.where(:version => interfaceVersion.version).minimum(:shot_id)
+      shotId=@instance.instancevaluesets.where(:version => interfaceVersion.version).minimum(:shot_id)
       shot=Shot.find_by_id(shotId)
       if (!shot.nil?)
         shotDate=shot.created_at

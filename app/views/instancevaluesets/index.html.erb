@@ -1,0 +1,34 @@
+<h2>Measurement series</h2>
+<h3>Filter by date</h3>
+<%= form_tag(instancevaluesets_path, :method => "get") do %>
+  <%= label_tag(:from_date, "From:") %>
+  <%= text_field_tag(:from_date,@fromDate) %>
+  <%= label_tag(:to_date, "to:") %>
+  <%= text_field_tag(:to_date,@toDate) %>
+  <%= hidden_field_tag(:instance_id, @instanceId) %>
+  <%= submit_tag("Filter") %>
+<% end %>
+<br />
+<%= page_entries_info @instanceValueSets %>
+<%= will_paginate @instanceValueSets %>
+<table border="0" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>Shot #</th>
+      <th>Date</th>
+      <th>Device</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <% @instanceValueSets.each do |instanceValueSet| %>
+      <tr>
+        <td><%= link_to instanceValueSet.shot_id, instanceValueSet.shot %></td>
+        <td><%= formatDate(instanceValueSet.shot.created_at) %></td>
+        <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
+        <td><%= render :partial => "instancevaluesets/instancevalueset_short", 
+                      :locals => { :instanceValueSet => instanceValueSet} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

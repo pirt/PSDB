@@ -1,5 +1,5 @@
 <h3>Image</h3>
-<% instancevalues=instanceDataSet.instancevalues %>
+<% instancevalues=instanceValueSet.instancevalues %>
 <%= displayParameter(instancevalues,"image",{:width=>400, :height=>300}) %>
 <% imagedata=instancevalues.find_by_name("image") %>
 <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>

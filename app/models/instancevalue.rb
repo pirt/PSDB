@@ -4,7 +4,7 @@
 # Table name: instancevalues
 #
 #  id                 :integer(38)     not null, primary key
-#  instancedataset_id :integer(38)     not null
+#  instancevalueset_id :integer(38)     not null
 #  datatype_id        :integer(38)     not null
 #  name               :string(256)     not null
 #  data_numeric       :decimal(, )
@@ -15,10 +15,10 @@
 #
 
 class Instancevalue < ActiveRecord::Base
-  attr_accessible :instancedataset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary, 
+  attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary, 
                   :datatype_id
 
-  belongs_to :instancedataset
+  belongs_to :instancevalueset
   belongs_to :datatype 
   
   validates :name, :presence => true,

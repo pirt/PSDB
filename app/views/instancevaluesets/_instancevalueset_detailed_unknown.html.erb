@@ -1,4 +1,4 @@
-<h3>No specific view for class < <%= instanceDataSet.instance.classtype.name %> Version <%=instanceDataSet.version %> >
+<h3>No specific view for class < <%= instanceValueSet.instance.classtype.name %> Version <%=instanceValueSet.version %> >
  defined..showing generic data</h3>
 <table border="0" cellspacing="0" cellpadding="0">
   <thead>
@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% instanceDataSet.instancevalues.includes(:datatype).each do |instancevalue| %>
+    <% instanceValueSet.instancevalues.includes(:datatype).each do |instancevalue| %>
       <tr>
         <td><%= instancevalue.name %></td>
         <td><%= instancevalue.datatype.name %></td>

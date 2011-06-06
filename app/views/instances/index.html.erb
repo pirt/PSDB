@@ -34,7 +34,7 @@
       <tbody> 
         <% @instances.each do |instance| %>
         <tr>
-          <td><%= link_to instance.name, instancedatasets_path(:instance_id => instance) %></td>
+          <td><%= link_to instance.name, instancevaluesets_path(:instance_id => instance) %></td>
           <td><%= instance.classtype.name %></td>
           <td><%= instance.subsystem.name %></td>
           <td><%= link_to "Details", instance %></td>

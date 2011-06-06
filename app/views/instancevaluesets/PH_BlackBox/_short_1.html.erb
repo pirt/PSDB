@@ -1,4 +1,4 @@
-<% status=instanceDataSet.instancevalues.find_by_name("Status").data_string.upcase
+<% status=instanceValueSet.instancevalues.find_by_name("Status").data_string.upcase
  case status
   when "IN","LEFT"
     iconName="blackbox_in.png"
@@ -8,4 +8,4 @@
     iconName="blackbox_unknown.png"
 end %>
 <%= image_tag iconName, {:style=>"vertical-align:middle"} %>
-<strong><%= displayParameter(instanceDataSet.instancevalues,"Status") %></strong>
+<strong><%= displayParameter(instanceValueSet.instancevalues,"Status") %></strong>

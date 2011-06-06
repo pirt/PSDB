@@ -46,7 +46,7 @@
   </thead>
   <tbody>
   <% @shots.each do |shot| %>
-    <% instanceDataSets=shot.instancedatasets %>
+    <% instanceValueSets=shot.instancevaluesets %>
     <tr>
       <td><%= link_to shot.id, shot %></td>
       <td><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
@@ -60,8 +60,8 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><%= displayShotInstance(instanceDataSets,"PA_Exit_Powermeter") %></td>
-      <td><%= displayShotInstance(instanceDataSets,"MAS_Powermeter") %></td>
+      <td><%= displayShotInstance(instanceValueSets,"PA_Exit_Powermeter") %></td>
+      <td><%= displayShotInstance(instanceValueSets,"MAS_Powermeter") %></td>
       <td><%= shot.description %></td>
       <td><% if shot.attachments.count!=0 %>
             <%= image_tag 'paperclip.png' %>

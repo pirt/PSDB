@@ -1,4 +1,4 @@
-module InstancedatasetsHelper
+module InstancevaluesetsHelper
   def displayParameter(instancevalues,parameterName,options={})
     parameterData=instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)

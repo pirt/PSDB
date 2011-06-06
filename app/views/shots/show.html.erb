@@ -36,8 +36,8 @@
       </div>
     </div>
   </div>
-  <div class="span-18 last" id="instancedata">
-    <%= will_paginate @instanceDataSets %>
+  <div class="span-18 last" id="instancevaluesets">
+    <%= will_paginate @instanceValueSets %>
     <table border="0" cellspacing="0" cellpadding="0">
       <thead>
        <tr>
@@ -46,11 +46,11 @@
        </tr>
       </thead>
       <tbody> 
-        <% @instanceDataSets.each do |instanceDataSet| %>
+        <% @instanceValueSets.each do |instanceValueSet| %>
           <tr>
-            <td><%= link_to instanceDataSet.instance.name, instanceDataSet %></td>
-            <td><%= render :partial => "instancedatasets/instancedataset_short", 
-                          :locals => { :instanceDataSet => instanceDataSet} %></td>
+            <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
+            <td><%= render :partial => "instancevaluesets/instancevalueset_short", 
+                          :locals => { :instanceValueSet => instanceValueSet} %></td>
           </tr>
         <% end %>
       </tbody>
