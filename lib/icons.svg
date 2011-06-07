@@ -21,15 +21,15 @@
     <linearGradient
        id="linearGradient3757">
       <stop
-         style="stop-color:#4696dc;stop-opacity:1;"
+         style="stop-color:#c3d9ff;stop-opacity:1;"
          offset="0"
          id="stop3759" />
       <stop
          id="stop3765"
          offset="0.5"
-         style="stop-color:#bafff1;stop-opacity:1;" />
+         style="stop-color:#e5ecf9;stop-opacity:1;" />
       <stop
-         style="stop-color:#4696dc;stop-opacity:0.99578059;"
+         style="stop-color:#c3d9ff;stop-opacity:1;"
          offset="1"
          id="stop3761" />
     </linearGradient>
@@ -51,7 +51,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="368.60313"
+     inkscape:cx="370.60313"
      inkscape:cy="920.49467"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -94,8 +94,8 @@
        y="32.362183"
        ry="10"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_in.png"
-       inkscape:export-xdpi="40.54945"
-       inkscape:export-ydpi="40.54945" />
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <use
        x="0"
        y="0"
@@ -105,8 +105,8 @@
        width="744.09448"
        height="1052.3622"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_out.png"
-       inkscape:export-xdpi="40.723984"
-       inkscape:export-ydpi="40.723984" />
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <use
        x="0"
        y="0"
@@ -116,8 +116,8 @@
        width="744.09448"
        height="1052.3622"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_unknown.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <text
        xml:space="preserve"
        style="font-size:64px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
@@ -126,8 +126,8 @@
        id="text3790"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_unknown.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383"><tspan
          sodipodi:role="line"
          id="tspan3792"
          x="140"
@@ -141,8 +141,8 @@
        y="52.362183"
        ry="10"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_in.png"
-       inkscape:export-xdpi="40.54945"
-       inkscape:export-ydpi="40.54945" />
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <rect
        style="fill:#000000"
        id="rect3794-0"
@@ -152,8 +152,8 @@
        y="192.36218"
        ry="10"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_out.png"
-       inkscape:export-xdpi="40.723984"
-       inkscape:export-ydpi="40.723984" />
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <use
        x="0"
        y="0"
@@ -161,13 +161,19 @@
        id="use3814"
        transform="translate(250,0)"
        width="744.09448"
-       height="1052.3622" />
+       height="1052.3622"
+       inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_error.png"
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <path
        style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 410,332.36218 -20,30 10,0 -10,20 -10,0 10,10 20,-10 -10,0 20,-30 -10,0 14,-20 z"
        id="path3816"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccccccc" />
+       sodipodi:nodetypes="cccccccccccc"
+       inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_error.png"
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <rect
        style="fill:none;stroke:#000000"
        id="rect3818"
@@ -177,8 +183,8 @@
        y="42.362183"
        ry="10"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_in.png"
-       inkscape:export-xdpi="40.54945"
-       inkscape:export-ydpi="40.54945" />
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
     <rect
        style="fill:none;stroke:#000000"
        id="rect3818-5"
@@ -188,7 +194,51 @@
        y="182.36218"
        ry="10"
        inkscape:export-filename="/home/udo/PSDB/public/images/blackbox_out.png"
-       inkscape:export-xdpi="40.723984"
-       inkscape:export-ydpi="40.723984" />
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3767"
+       transform="translate(250,140)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_OK.png"
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3771"
+       transform="translate(250,0)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_OFF.png"
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
+    <path
+       style="fill:#00ff00;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 370,222.36218 20,30 50,-60 -10,0 -40,40 -10,-10 z"
+       id="path3773"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_OK.png"
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383" />
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="406.64062"
+       y="102.36218"
+       id="text3790-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_OFF.png"
+       inkscape:export-xdpi="34.615383"
+       inkscape:export-ydpi="34.615383"><tspan
+         sodipodi:role="line"
+         id="tspan3792-0"
+         x="406.64062"
+         y="102.36218">OFF</tspan></text>
   </g>
 </svg>

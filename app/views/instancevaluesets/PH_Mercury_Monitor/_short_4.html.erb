@@ -1,0 +1,12 @@
+<% onState=instanceValueSet.instancevalues.find_by_name("State On/Off").data_string.upcase
+if onState="OFF/FALSE"
+  iconName="icon_OFF.png"
+else
+  alarmState=instanceValueSet.instancevalues.find_by_name("State Alarm").data_string.upcase
+  if alarmState="OFF/FALSE"
+    iconName="icon_OK.png"
+  else
+    iconName="icon_ERROR.png"
+  end
+end %>
+<%= image_tag iconName, {:style=>"vertical-align:middle"} %>
