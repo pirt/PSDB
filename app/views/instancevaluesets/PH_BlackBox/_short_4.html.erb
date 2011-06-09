@@ -1,9 +1,11 @@
 <% status=instanceValueSet.instancevalues.find_by_name("Status").data_string.upcase
  case status
-  when "IN","LEFT"
+  when "IN","LEFT","CLOSED","INSIDE"
     iconName="blackbox_in.png"
-  when "OUT","RIGHT"
+  when "OUT","RIGHT","OPEN","OUTSIDE"
     iconName="blackbox_out.png"
+  when "FAILURE"
+    iconName="icon_ERROR.png"
   else
     iconName="blackbox_unknown.png"
 end %>
