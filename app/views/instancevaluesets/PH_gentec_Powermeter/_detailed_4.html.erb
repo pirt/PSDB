@@ -3,24 +3,24 @@
   <div style="position:absolute;top: 90px; left: 170px;
   width:290px; height:210px;
   border-width:0px;border-style:solid;border-color:blue;
-  font-size:3.5em;font-family:sans;font-weight:bold; opacity: .75;
-  text-align:center;">
-  <p style="text-align:left;font-size:0.2em">Range: 300mJ</p>
-  <p style="text-align:left;font-size:0.2em">Trigger level: <%= displayParameter(instanceValueSet.instancevalues,"Trigger Level") %></p>
+  font-weight:bold; opacity: .75;">
+  <div style="text-align:left;">Range: <%= displayParameter(instanceValueSet.instancevalues,"Range") %></div>
+  <div style="text-align:left;">Trigger level: <%= displayParameter(instanceValueSet.instancevalues,"Trigger Level") %></div>
+  <div style="text-align:left;">Scaling factor: <%= displayParameter(instanceValueSet.instancevalues,"Scaling Factor") %></div>
   <% deviceData=instanceValueSet.instancevalues.find_by_name("Device State")
     if !deviceData.nil?
       deviceStatus=deviceData.data_string.upcase
     else
       deviceStatus=""
     end %>
-  <p style="line-height:2em">
+  <div style="text-align:center;font-size:3.5em; line-height:3em">
   <% if deviceStatus=="ON/TRUE" %>
      <%= displayParameter(instanceValueSet.instancevalues,"Value") %>
   <% else %>
     ERROR
   <% end %>
- </p>
- <p style="text-align:center;font-size:0.2em;">S/N: <%= displayParameter(instanceValueSet.instancevalues,"Serial Number") %> </p>
+ </div>
+ <div style="text-align:center;line-height:3em">S/N: <%= displayParameter(instanceValueSet.instancevalues,"Serial Number") %> </div>
   </div>
 </div>
 
