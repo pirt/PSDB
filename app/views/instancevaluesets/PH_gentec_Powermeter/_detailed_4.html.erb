@@ -1,0 +1,25 @@
+<div id="powerdisplay" style="position:relative;">
+  <%= image_tag "Powermeter2.png" %>
+  <div style="position:absolute;top: 90px; left: 170px;
+  width:290px; height:210px;
+  border-width:0px;border-style:solid;border-color:blue;
+  font-size:3.5em;font-family:sans;font-weight:bold; opacity: .75;
+  text-align:center;">
+  <p style="text-align:left;font-size:0.2em">Range: 300mJ</p>
+  <p style="text-align:left;font-size:0.2em">Trigger level: <%= displayParameter(instanceValueSet.instancevalues,"Trigger Level") %></p>
+  <% deviceData=instanceValueSet.instancevalues.find_by_name("Device Status")
+    if !deviceData.nil?
+      deviceStatus=deviceData.data_string.upcase
+    else
+      deviceStatus=""
+    end %>
+  <p style="line-height:2em">
+  <% if deviceStatus=="ON/TRUE" %>
+     <%= displayParameter(instanceValueSet.instancevalues,"Value") %>
+  <% else %>
+    ERROR
+  <% end %>
+ </p>
+  <p style="text-align:center;font-size:0.2em;">S/N: <%= displayParameter(instanceValueSet.instancevalues,"Serial Number") %></p>
+  </div>
+</div>
