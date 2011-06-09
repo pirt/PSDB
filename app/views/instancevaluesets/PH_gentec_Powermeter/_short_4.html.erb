@@ -1,9 +1,4 @@
-<% statusData=instanceValueSet.instancevalues.find_by_name("Device State")
-  if !statusData.nil?
-    deviceStatus=statusData.data_string.upcase
-   else
-    deviceStatus=""
-   end %>
+<% deviceStatus=getStringParameter(instanceValueSet.instancevalues,"Device State",:upcase=>true) %>
 <% if deviceStatus=="ON/TRUE" %>
   <%= displayParameter(instanceValueSet.instancevalues,"Value") %>
 <% else %>
