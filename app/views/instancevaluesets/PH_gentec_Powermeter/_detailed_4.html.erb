@@ -7,7 +7,7 @@
   text-align:center;">
   <p style="text-align:left;font-size:0.2em">Range: 300mJ</p>
   <p style="text-align:left;font-size:0.2em">Trigger level: <%= displayParameter(instanceValueSet.instancevalues,"Trigger Level") %></p>
-  <% deviceData=instanceValueSet.instancevalues.find_by_name("Device Status")
+  <% deviceData=instanceValueSet.instancevalues.find_by_name("Device State")
     if !deviceData.nil?
       deviceStatus=deviceData.data_string.upcase
     else
@@ -20,6 +20,7 @@
     ERROR
   <% end %>
  </p>
-  <p style="text-align:center;font-size:0.2em;">S/N: <%= displayParameter(instanceValueSet.instancevalues,"Serial Number") %></p>
+ <p style="text-align:center;font-size:0.2em;">S/N: <%= displayParameter(instanceValueSet.instancevalues,"Serial Number") %> </p>
   </div>
 </div>
+
