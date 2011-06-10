@@ -1,0 +1,29 @@
+<div class="span-8">
+  <%= image_tag "electrical_switch.png" %>
+</div>
+<%
+  status=getStringParameter(instanceValueSet.instancevalues,"Status",:upcase=>true)
+  closedRegEx=/^(.* )?(IN|CLOSED)(.)*/
+  openRegEx=/^(.* )?(OUT|OPEN)(.)*/
+  if !closedRegEx.match(status).nil?
+    iconName="switch_closed.png"
+  elsif !openRegEx.match(status).nil?
+    iconName="switch_open.png"
+  else
+    case status
+      when "FAILURE"
+        iconName="icon_ERROR.png"
+      else
+        iconName="switch_unknown.png"
+    end
+  end 
+%>
+<div class="span-16 last">
+  <ul>
+    <li>
+      <strong>Status:</strong>
+      <%= image_tag iconName, {:style=>"vertical-align:middle"} %>
+      <%= displayParameter(instanceValueSet.instancevalues,"Status") %>
+    </li>
+  </ul>
+</div>
