@@ -9,26 +9,32 @@
   <%= submit_tag("Filter") %>
 <% end %>
 <br />
-<%= page_entries_info @instanceValueSets %>
-<%= will_paginate @instanceValueSets %>
-<table border="0" cellspacing="0" cellpadding="0">
-  <thead>
-    <tr>
-      <th>Shot #</th>
-      <th>Date</th>
-      <th>Device</th>
-      <th>Result</th>
-    </tr>
-  </thead>
-  <tbody> 
-    <% @instanceValueSets.each do |instanceValueSet| %>
+<div class="span-12">
+  <%= page_entries_info @instanceValueSets %>
+  <%= will_paginate @instanceValueSets %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to instanceValueSet.shot_id, instanceValueSet.shot %></td>
-        <td><%= formatDate(instanceValueSet.shot.created_at) %></td>
-        <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
-        <td><%= render :partial => "instancevaluesets/instancevalueset_short", 
-                      :locals => { :instanceValueSet => instanceValueSet} %></td>
+        <th>Shot #</th>
+        <th>Date</th>
+        <th>Device</th>
+        <th class="span-4">Result</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+   <tbody> 
+      <% @instanceValueSets.each do |instanceValueSet| %>
+        <tr>
+          <td><%= link_to instanceValueSet.shot_id, instanceValueSet.shot %></td>
+          <td><%= formatDate(instanceValueSet.shot.created_at) %></td>
+          <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
+          <td><%= render :partial => "instancevaluesets/instancevalueset_short", 
+                        :locals => { :instanceValueSet => instanceValueSet} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="span-12 last">
+  <% generatePlot(@xyValues,1,{:width=>400,:height=>300}) %>
+  <%= image_tag "tmp/series1.png" %>
+</div>

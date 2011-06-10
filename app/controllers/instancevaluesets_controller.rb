@@ -18,6 +18,19 @@ class InstancevaluesetsController < ApplicationController
     end
     
     @instanceValueSets=selectedValueSets.order("shot_id DESC").paginate(:page => params[:page])
+    datatypeID=Datatype.find_by_name("numeric").id
+    @numericParameters=selectedValueSets.joins(:instancevalues).where("datatype_id=?",datatypeID).
+        select("instancevalues.name").group("instancevalues.name")
+    @firstNumericParameter=@numericParameters.first.name
+    parameterValues=selectedValueSets.joins(:instancevalues).
+        where("name=?",@firstNumericParameter).select("shot_id,instancevalues.data_numeric")
+    xValues=[]
+    yValues=[]
+    parameterValues.each do |parameterValue|
+      xValues << parameterValue.shot_id
+      yValues << parameterValue.data_numeric
+    end
+    @xyValues=[xValues,yValues]
   end
 
   def show
