@@ -1,0 +1,39 @@
+<%
+  instValues=instanceValueSet.instancevalues
+  conductivity=getStringParameter(instValues,"Conductivity",:upcase=>true)=="ON/TRUE" ? true : false
+  niveau=getStringParameter(instValues,"Niveau",:upcase=>true)=="ON/TRUE" ? true : false
+  flow=getStringParameter(instValues,"Flow",:upcase=>true)=="ON/TRUE" ? true : false
+  temperature=getStringParameter(instValues,"High Temperature",:upcase=>true)=="ON/TRUE" ? true : false
+  chillerOn=true
+  if !conductivity and niveau and !flow and !temperature
+    chillerOn=false
+  end
+%>
+<div class="span-10">
+  <%= iconName = chillerOn ? "chiller_ON.png" :  "chiller_OFF.png" 
+      image_tag iconName %>
+</div>
+<div class="span-14 last">
+  <ul>
+    <li>
+      <strong>Conductivity:</strong>
+      <%= iconName = conductivity ? "icon_OK.png" :  "icon_ERROR.png" 
+      image_tag iconName, {:style=>"vertical-align:middle"} %>
+    </li>
+    <li>
+      <strong>Flow:</strong>
+      <%= iconName = flow ? "icon_OK.png" :  "icon_ERROR.png" 
+      image_tag iconName, {:style=>"vertical-align:middle"} %>
+    </li>
+    <li>
+      <strong>Niveau:</strong>
+      <%= iconName = niveau ? "icon_OK.png" :  "icon_ERROR.png" 
+      image_tag iconName, {:style=>"vertical-align:middle"} %>
+    </li>
+    <li>
+      <strong>Temperature:</strong>
+      <%= iconName = temperature ? "icon_OK.png" :  "icon_ERROR.png" 
+      image_tag iconName, {:style=>"vertical-align:middle"} %>
+    </li>
+  </ul>
+</div>

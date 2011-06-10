@@ -1,0 +1,14 @@
+<%=
+  instValues=instanceValueSet.instancevalues
+  conductivity=getStringParameter(instValues,"Conductivity",:upcase=>true)=="ON/TRUE" ? true : false
+  niveau=getStringParameter(instValues,"Niveau",:upcase=>true)=="ON/TRUE" ? true : false
+  flow=getStringParameter(instValues,"Flow",:upcase=>true)=="ON/TRUE" ? true : false
+  temperature=getStringParameter(instValues,"High Temperature",:upcase=>true)=="ON/TRUE" ? true : false
+  if conductivity and niveau and flow and temperature
+    iconName="icon_OK.png"
+  elsif !conductivity and niveau and !flow and !temperature
+    iconName="icon_OFF.png"
+  else
+    iconName="icon_ERROR.png"
+  end
+  image_tag iconName %>
