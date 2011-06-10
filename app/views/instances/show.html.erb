@@ -6,7 +6,7 @@
 <li><strong>Updated at:</strong> <%= formatDate(@instance.updated_at) %></li>
 <li><strong># of available datasets for this instance:</strong> <%= @instance.instancevaluesets.count %></li>
 </ul>
-<div class="span-10 append-14 last" id="general">
+<div class="span-14 append-10 last" id="general">
   <h4>Interface version info</h4>
   <table>
     <thead>
@@ -14,6 +14,8 @@
         <th>Version</th>
         <th>Earliest Shot#</th>
         <th>Date</th>
+        <th>Short view</th>
+        <th>Detailed view</th>
       </tr>
     </thead>
     <tbody> 
@@ -22,6 +24,10 @@
           <td><%= info[:version] %></td>
           <td><%= info[:shot_id] %></td>
           <td><%= formatDate(info[:shotDate]) %></td>
+          <td><%= iconName=viewExists(@instance.classtype.name,info[:version],false) ? "icon_OK.png" : "icon_ERROR.png"
+                  image_tag iconName %></td>
+          <td><%= iconName=viewExists(@instance.classtype.name,info[:version],true) ? "icon_OK.png" : "icon_ERROR.png"
+                  image_tag iconName %></td>
         </tr>
       <% end %>
     </tbody>
