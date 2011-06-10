@@ -1,8 +1,8 @@
-<% onState=instanceValueSet.instancevalues.find_by_name("State On/Off").data_string.upcase
+<% onState=getStringParameter(instanceValueSet.instancevalues,"Status On/Off",:upcase=>true)
 if onState="OFF/FALSE"
   iconName="icon_OFF.png"
 else
-  alarmState=instanceValueSet.instancevalues.find_by_name("State Alarm").data_string.upcase
+  alarmState=getStringParameter(instanceValueSet.instancevalues,"State Alarm",:upcase=>true)
   if alarmState="OFF/FALSE"
     iconName="icon_OK.png"
   else

@@ -7,12 +7,7 @@
   <div style="text-align:left;">Range: <%= displayParameter(instanceValueSet.instancevalues,"Range") %></div>
   <div style="text-align:left;">Trigger level: <%= displayParameter(instanceValueSet.instancevalues,"Trigger Level") %></div>
   <div style="text-align:left;">Scaling factor: <%= displayParameter(instanceValueSet.instancevalues,"Scaling Factor") %></div>
-  <% deviceData=instanceValueSet.instancevalues.find_by_name("Device State")
-    if !deviceData.nil?
-      deviceStatus=deviceData.data_string.upcase
-    else
-      deviceStatus=""
-    end %>
+  <% deviceStatus=getStringParameter(instanceValueSet.instancevalues,"Device State",:upcase=>true) %>
   <div style="text-align:center;font-size:3.5em; line-height:3em">
   <% if deviceStatus=="ON/TRUE" %>
      <%= displayParameter(instanceValueSet.instancevalues,"Value") %>

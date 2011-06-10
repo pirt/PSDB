@@ -1,0 +1,44 @@
+<%
+  alertState=getStringParameter(instanceValueSet.instancevalues,"Alert") 
+  prealertState=getStringParameter(instanceValueSet.instancevalues,"Prealert")
+  failureState=getStringParameter(instanceValueSet.instancevalues,"Failure")
+  if alertState=="off/false"
+    alertIcon="icon_OK.png"
+  else
+    alertIcon="icon_ERROR.png"
+  end
+  if prealertState=="off/false"
+    prealertIcon="icon_OK.png"
+  else
+    prealertIcon="icon_ERROR.png"
+  end
+  if failureState=="off/false"
+    failureIcon="icon_OK.png"
+  else
+    failureIcon="icon_ERROR.png"
+  end
+%>
+<div class="span-8">
+<%= image_tag "o2sensor.png" %>
+</div>
+<div class="span-16 last">
+<ul>
+  <li>
+    <strong>Prealert:</strong> <%= image_tag prealertIcon,{:style=>"vertical-align:middle"} %>
+    <%= prealertState %>
+  </li>
+  <li>
+    <strong>Alert:</strong> <%= image_tag alertIcon,{:style=>"vertical-align:middle"} %>
+    <%= alertState %>
+  </li>
+  <li>
+    <strong>Failure:</strong> <%= image_tag failureIcon,{:style=>"vertical-align:middle"} %>
+    <%= failureState %>
+  </li>
+  <li>
+    <strong>Concentration:</strong> 
+    <%= displayParameter(instanceValueSet.instancevalues,"Concentration", :precision => 2) %>
+  </li>
+</ul>
+</div>
+
