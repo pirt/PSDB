@@ -18,7 +18,7 @@
         <th>Shot #</th>
         <th>Date</th>
         <th>Device</th>
-        <th class="span-4">Result</th>
+        <th class="span-3">Result</th>
       </tr>
     </thead>
    <tbody> 
@@ -35,6 +35,14 @@
   </table>
 </div>
 <div class="span-12 last">
-  <% generatePlot(@xyValues,1,{:width=>400,:height=>300}) %>
+  <div class="box">
+      <%= form_tag(instancevaluesets_path, :method => "get") do %>
+        <%= label_tag(:selectedParameter, "Parameter:") %>
+        <% parameterArray= @numericParameters.map { |parameter| [parameter.name, 1] } %>
+        <%= select_tag(:selectedParameter,options_for_select(parameterArray)) %> 
+        <%= submit_tag("Draw") %>
+      <% end %>
+    </div>
+  <% generatePlot(@xyValues,1,{:width=>450,:height=>300,:xlabel=>"shot#",:ylabel=>@yLabel}) %>
   <%= image_tag "tmp/series1.png" %>
 </div>

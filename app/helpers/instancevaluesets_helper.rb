@@ -27,12 +27,13 @@ module InstancevaluesetsHelper
     plotOptions=plotOptions.merge(options)
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
-        plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
+        plot.terminal "#{plotOptions[:imagetype]} small enhanced size #{plotOptions[:width]},#{plotOptions[:height]}"
         plot.output "public/images/tmp/series"+fileId.to_s+".#{plotOptions[:imagetype]}"
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
+        plot.boxwidth 0.5
         plot.data << Gnuplot::DataSet.new( xyData ) do |ds|
-          ds.with = "lines"
+          ds.with = "boxes"
           ds.notitle
         end
       end
