@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     else
       unit.strip!
     end
-    unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*(\w+)/
+    unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*(\w%+)/
     matchSet=unitRegEx.match(unit)
     if (matchSet.nil?) 
       return value
@@ -59,14 +59,13 @@ class ApplicationController < ActionController::Base
   def getBaseUnit(unitString)
     if (unitString.nil?)
       return unitString
-    end
-    if (unitString.empty?)
-      return value
+    elsif (unitString.empty?)
+      return unitString
     else
       unitString.strip!
+      unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*([\w%]+)/
+      matchSet=unitRegEx.match(unitString)
+      return matchSet[2]
     end
-    unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*(\w+)/
-    matchSet=unitRegEx.match(unitString)
-    return matchSet[2]
   end
 end

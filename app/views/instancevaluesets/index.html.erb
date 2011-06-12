@@ -2,10 +2,11 @@
 <h3>Filter by date</h3>
 <%= form_tag(instancevaluesets_path, :method => "get") do %>
   <%= label_tag(:from_date, "From:") %>
-  <%= text_field_tag(:from_date,@fromDate) %>
+  <%= text_field_tag(:from_date,@formData[:from_date]) %>
   <%= label_tag(:to_date, "to:") %>
-  <%= text_field_tag(:to_date,@toDate) %>
-  <%= hidden_field_tag(:instance_id, @instanceId) %>
+  <%= text_field_tag(:to_date,@formData[:to_date]) %>
+  <%= hidden_field_tag(:instance_id, @formData[:instance_id]) %>
+  <%= hidden_field_tag(:plotParameter, @formData[:plotParameter]) %>
   <%= submit_tag("Filter") %>
 <% end %>
 <br />
@@ -35,14 +36,20 @@
   </table>
 </div>
 <div class="span-12 last">
-  <div class="box">
-      <%= form_tag(instancevaluesets_path, :method => "get") do %>
-        <%= label_tag(:selectedParameter, "Parameter:") %>
-        <% parameterArray= @numericParameters.map { |parameter| [parameter.name, 1] } %>
-        <%= select_tag(:selectedParameter,options_for_select(parameterArray)) %> 
-        <%= submit_tag("Draw") %>
-      <% end %>
-    </div>
-  <% generatePlot(@xyValues,1,{:width=>450,:height=>300,:xlabel=>"shot#",:ylabel=>@yLabel}) %>
-  <%= image_tag "tmp/series1.png" %>
+  <% if @doPlot %>
+    <div class="box">
+        <%= form_tag(instancevaluesets_path, :method => "get") do %>
+          <%= label_tag(:plotParameter, "Plot parameter:") %>
+          <%= select_tag(:plotParameter,options_for_select(@parameterArray,@formData[:plotParameter])) %>
+          <%= hidden_field_tag(:instance_id, @formData[:instance_id]) %>
+          <%= hidden_field_tag(:from_date, @formData[:from_date]) %>
+          <%= hidden_field_tag(:to_date, @formData[:to_date]) %>
+          <%= submit_tag("Draw") %>
+        <% end %>
+      </div>
+    <% generatePlot(@xyValues,1,{:width=>450,:height=>300,:xlabel=>"shot#",:ylabel=>@yLabel}) %>
+    <%= image_tag "tmp/series1.png" %>
+  <% else %>
+    No numerical data for plot available
+  <% end %>
 </div>

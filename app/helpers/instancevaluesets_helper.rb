@@ -32,8 +32,9 @@ module InstancevaluesetsHelper
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
         plot.boxwidth 0.5
+        plot.grid ""
         plot.data << Gnuplot::DataSet.new( xyData ) do |ds|
-          ds.with = "boxes"
+          ds.with = "boxes fill solid 0.5"
           ds.notitle
         end
       end
