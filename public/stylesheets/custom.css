@@ -34,7 +34,36 @@ footer {
 #calendar .notmonth {  color: #CCC;}
 #calendar #month {  margin: 0;  padding-top: 10px;  padding-bottom: 10px;  text-align: center;}
 #calendar #month a, #calendar #month a:hover {  text-decoration: none;  padding: 0 10px;  color: #999;}
-#calendar .today {  background-color: #e5eCf9;}  /* #D7F2FF;} */
+#calendar .today {  background-color: #e5eCf9;}
 #calendar ul {  margin: 0;  margin-top: 5px;  padding: 0;  list-style: none;}
 #calendar li {  margin: 0;  padding: 0;  font-size: 16px;  text-align: center;}
+
+/* toplevel menu */
+.menu {display:inline;}
+.holder {display:table;}
+#wrapper3 {text-align:right;}
+#wrapper3 .holder {margin:0 0 0 auto;}
+
+.menu {
+  display:table-row;
+  padding:0;
+  margin:0;
+  list-style-type:none;
+  white-space:nowrap; 
+  }
+.menu li {display:inline;}
+.menu a, .menu a:visited {
+  display:block;
+  float:left;
+  padding:4px 16px;
+  color:#000; 
+  background:#e5eCf9; 
+  border:1px solid #fff; 
+  text-decoration:none;
+  }
+.menu a:hover {
+  color:#000; 
+  background:#c3d9ff;
+  }
+
 

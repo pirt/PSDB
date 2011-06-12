@@ -22,18 +22,26 @@
     <%= favicon_link_tag %>
 </head>
 <body>
+
   <div class="container">
+    
     <div id="header" class="span-24 last">
       <h1>
         <%= link_to image_tag("Phelix-logo-alpha.png", :alt => "PHELIX"), shots_path %>
         Shot database
       </h1>
     </div>
-    <div class="justifyright">
-      <%= link_to "Experiments",experiments_path %>
-      <%= link_to "Shots",shots_path %>
-      <%= link_to "Instances",instances_path %>
-      <%= link_to "Statistics", :controller => "statistics", :action => "overview" %>
+<div class="span-24 last"
+<div id="wrapper3">
+      <div class="holder">
+        <ul class="menu">
+          <li><%= link_to "Experiments",experiments_path %></li>
+          <li><%= link_to "Shots",shots_path %></li>
+          <li><%= link_to "Instances",instances_path %></li>
+          <li><%= link_to "Statistics", :controller => "statistics", :action => "overview" %></li>
+        </ul>
+      </div>
+    </div>
     </div>
     <hr />
     <section>
