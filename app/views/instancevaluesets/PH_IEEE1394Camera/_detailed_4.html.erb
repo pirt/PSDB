@@ -1,0 +1,24 @@
+<div class="span-12">
+  <h3>Image</h3>
+  <% instancevalues=instanceValueSet.instancevalues %>
+  <%= displayParameter(instancevalues,"Image",{:width=>400, :height=>300}) %>
+  <% imagedata=instancevalues.find_by_name("Image") %>
+  <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>
+    <%= hidden_field_tag(:instanceValueId,imagedata.id) %>
+    <%= label_tag(:imageFormat, "Format:") %>
+    <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4]]) %>
+    <%= select_tag(:selectedExportFormat,possibleFormat) %> 
+    <%= submit_tag("Export Image") %>
+  <% end %><br />
+</div>
+<h3>Acquisition Parameters</h3>
+<h4>Camera Mode: <%= displayParameter(instancevalues,"Current Mode") %></h4>
+<h4>Brightness: <%= displayParameter(instancevalues,"Brightness") %></h4>
+<h4>Shutter: <%= displayParameter(instancevalues,"Shutter") %></h4>
+<h4>Gain: <%= displayParameter(instancevalues,"Gain") %></h4>
+<h4>Trigger Mode: <%= displayParameter(instancevalues,"Trigger Mode") %></h4>
+<h4>Trigger Timeout: <%= displayParameter(instancevalues,"Timeout") %></h4>
+<h4>Trigger Polarity: <%= displayParameter(instancevalues,"Trigger Polarity") %></h4>
+<h3>Hardware Parameters</h3>
+<h4>Serial Number: <%= displayParameter(instancevalues,"Serial Number") %></h4>
+
