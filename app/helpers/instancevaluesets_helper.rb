@@ -22,7 +22,7 @@ module InstancevaluesetsHelper
       end
     end
   end
-  def generatePlot(xyData, fileId, options={})
+  def generateSeriesPlot(xyData, fileId, options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions=plotOptions.merge(options)
     Gnuplot.open do |gp|

@@ -47,7 +47,7 @@
           <%= submit_tag("Draw") %>
         <% end %>
       </div>
-    <% generatePlot(@xyValues,1,{:width=>450,:height=>300,:xlabel=>"shot#",:ylabel=>@yLabel}) %>
+    <% generateSeriesPlot(@xyValues,1,{:width=>450,:height=>300,:xlabel=>"shot#",:ylabel=>@yLabel}) %>
     <%= image_tag "tmp/series1.png" %>
   <% else %>
     No numerical data for plot available

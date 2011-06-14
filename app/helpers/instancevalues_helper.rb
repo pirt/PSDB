@@ -24,7 +24,7 @@ module InstancevaluesHelper
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
-        plot.output "public/images/tmp/test"+fileId.to_s+".#{plotOptions[:imagetype]}"
+        plot.output "public/images/tmp/plot"+fileId.to_s+".#{plotOptions[:imagetype]}"
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
         plot.data << Gnuplot::DataSet.new( xyData ) do |ds|

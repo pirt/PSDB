@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     else
       unit.strip!
     end
-    unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*(\w%+)/
+    unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*([\w%]+)/
     matchSet=unitRegEx.match(unit)
     if (matchSet.nil?) 
       return value

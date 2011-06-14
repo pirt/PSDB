@@ -37,7 +37,13 @@ class InstancevaluesetsController < ApplicationController
         count+=1
       end
       if (params[:plotParameter] and !params[:plotParameter].blank?)
-        selectedPlotParameter=@parameterArray[params[:plotParameter].to_i][0]
+        # check if parameterNr still valid
+        if params[:plotParameter].to_i<@parameterArray.length
+          selectedPlotParameter=@parameterArray[params[:plotParameter].to_i][0]
+        else
+          selectedPlotParameter=availableParameters.first.name
+          params[:plotParameter]=0
+        end
       else
         selectedPlotParameter=availableParameters.first.name
         params[:plotParameter]=0
