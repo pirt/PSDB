@@ -34,5 +34,36 @@ class InstancevaluesController < ApplicationController
     send_data sendImage, :type => 'image/'+exportFormat, :filename => fileName
   end
   def exportPlot
+    plotBlob=Instancevalue.find_by_id(params[:instanceValueId]).data_binary
+    plotBlob=plotBlob[4..-1]
+    splitData=plotBlob.split(",")
+    nrOfData=splitData.length
+    axisDescription=Instancevalue.find_by_id(params[:instanceValueId]).data_string
+    txtData=""
+    if (axisDescription)
+      descriptionParts=axisDescription.split(",")
+      if (descriptionParts[0]) 
+        txtData+=descriptionParts[0] 
+      end
+        if (descriptionParts[2]) 
+        txtData+=" ["+descriptionParts[2]+"]" 
+      end
+      txtData+="\t"
+      if (descriptionParts[1]) 
+        txtData+=descriptionParts[1] 
+      end
+      if (descriptionParts[3])
+        txtData+=" ["+descriptionParts[3]+"]"
+      end
+      txtData+="\n"
+    end
+   
+    (0..nrOfData-1).step(2) do |dataIndex|
+      txtData+=splitData[dataIndex]
+      txtData+="\t"
+      txtData+=splitData[dataIndex+1]
+      txtData+="\n"
+    end
+    send_data txtData, :type => 'text'      
   end
 end

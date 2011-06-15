@@ -7,6 +7,7 @@ PSDB::Application.routes.draw do
   resources :instancevaluesets
 
   get "instancevalues/exportImage"
+  get "instancevalues/exportPlot"
 
   resources :instances
 
