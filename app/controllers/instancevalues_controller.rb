@@ -64,6 +64,9 @@ class InstancevaluesController < ApplicationController
       txtData+=splitData[dataIndex+1]
       txtData+="\n"
     end
-    send_data txtData, :type => 'text'      
+    instanceName=Instancevalue.find_by_id(params[:instanceValueId]).instancevalueset.instance.name
+    shotNr=Instancevalue.find_by_id(params[:instanceValueId]).instancevalueset.shot_id
+    fileName=instanceName+'_'+shotNr.to_s+'.txt'
+    send_data txtData, :type => 'text', :filename => fileName
   end
 end
