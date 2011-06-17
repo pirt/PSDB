@@ -28,6 +28,13 @@ class Attachment < ActiveRecord::Base
 
   validates :description, :length => { :maximum => 255 }
 
+  @@maxContentSize=5.megabytes
+
   validates :content, :presence => true,
-                      :length => { :maximum => 5.megabytes }
+                      :length => { :maximum => @@maxContentSize }
+
+  # Get size limitations of the content field (=file size) of the Attachments table
+  def self.maxContentSize()
+    return @@maxContentSize
+  end
 end

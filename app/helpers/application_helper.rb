@@ -21,15 +21,4 @@ module ApplicationHelper
       end
     end
   end
-
-# Get size limitations of the content field (=file size) of the Attachments table
-  def getAttributeLength()
-    size=nil
-    Attachment.validators.each do |v|
-      if (v.attributes[0]==:content and v.kind==:length)
-        size=v.options[:maximum]
-      end
-    end
-    return size
-  end
 end
