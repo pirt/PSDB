@@ -1,6 +1,6 @@
 <%= image_tag "blackbox.jpg" %><br>
 BlackBox status:
-<% status=getStringParameter(instanceValueSet.instancevalues,"Status",:upcase=>true)
+<% status=instanceValueSet.getStringParameter("Status",:upcase=>true)
  case status
   when "IN","LEFT","CLOSED","INSIDE"
     iconName="blackbox_in.png"

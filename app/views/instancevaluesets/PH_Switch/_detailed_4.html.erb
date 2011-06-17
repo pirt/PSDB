@@ -2,7 +2,7 @@
   <%= image_tag "electrical_switch.png" %>
 </div>
 <%
-  status=getStringParameter(instanceValueSet.instancevalues,"Status",:upcase=>true)
+  status=instanceValueSet.getStringParameter("Status",:upcase=>true)
   closedRegEx=/^(.* )?(IN|CLOSED)(.)*/
   openRegEx=/^(.* )?(OUT|OPEN)(.)*/
   if !closedRegEx.match(status).nil?

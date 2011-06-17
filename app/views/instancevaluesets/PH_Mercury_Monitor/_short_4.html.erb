@@ -1,12 +1,14 @@
-<% onState=getStringParameter(instanceValueSet.instancevalues,"Status On/Off",:upcase=>true)
-if onState="OFF/FALSE"
-  iconName="icon_OFF.png"
-else
-  alarmState=getStringParameter(instanceValueSet.instancevalues,"State Alarm",:upcase=>true)
-  if alarmState="OFF/FALSE"
-    iconName="icon_OK.png"
+<%=
+  onState=instanceValueSet.getStringParameter("State On/Off",:upcase=>true)
+  if onState=="OFF/FALSE"
+    iconName="icon_OFF.png"
   else
-    iconName="icon_ERROR.png"
+    alarmState=instanceValueSet.getStringParameter("State Alarm",:upcase=>true)
+    if alarmState=="OFF/FALSE"
+      iconName="icon_OK.png"
+    else
+      iconName="icon_ERROR.png"
+    end
   end
-end %>
-<%= image_tag iconName, {:style=>"vertical-align:middle"} %>
+  image_tag iconName, {:style=>"vertical-align:middle"}
+%>

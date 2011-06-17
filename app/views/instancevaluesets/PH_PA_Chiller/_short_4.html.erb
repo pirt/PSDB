@@ -1,9 +1,8 @@
 <%=
-  instValues=instanceValueSet.instancevalues
-  conductivity=getStringParameter(instValues,"Conductivity",:upcase=>true)=="ON/TRUE" ? true : false
-  niveau=getStringParameter(instValues,"Niveau",:upcase=>true)=="ON/TRUE" ? true : false
-  flow=getStringParameter(instValues,"Flow",:upcase=>true)=="ON/TRUE" ? true : false
-  temperature=getStringParameter(instValues,"High Temperature",:upcase=>true)=="ON/TRUE" ? true : false
+  conductivity=instanceValueSet.getStringParameter("Conductivity",:upcase=>true)=="ON/TRUE" ? true : false
+  niveau=instanceValueSet.getStringParameter("Niveau",:upcase=>true)=="ON/TRUE" ? true : false
+  flow=instanceValueSet.getStringParameter("Flow",:upcase=>true)=="ON/TRUE" ? true : false
+  temperature=instanceValueSet.getStringParameter("High Temperature",:upcase=>true)=="ON/TRUE" ? true : false
   if conductivity and niveau and flow and temperature
     iconName="icon_OK.png"
   elsif !conductivity and niveau and !flow and !temperature

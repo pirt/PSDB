@@ -1,5 +1,5 @@
-<%
-  status=getStringParameter(instanceValueSet.instancevalues,"Status",:upcase=>true)
+<%=
+  status=instanceValueSet.getStringParameter("Status",:upcase=>true)
   closedRegEx=/^(.* )?(IN|CLOSED)(.)*/
   openRegEx=/^(.* )?(OUT|OPEN)(.)*/
   if !closedRegEx.match(status).nil?
@@ -14,6 +14,5 @@
         iconName="switch_unknown.png"
     end
   end 
-%>
-<%= image_tag iconName, {:style=>"vertical-align:middle"} %>
+  image_tag iconName, {:style=>"vertical-align:middle"} %>
 <strong><%= displayParameter(instanceValueSet.instancevalues,"Status") %></strong>

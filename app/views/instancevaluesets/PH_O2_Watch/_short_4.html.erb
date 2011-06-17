@@ -1,7 +1,7 @@
 <%=
-  alertState=getStringParameter(instanceValueSet.instancevalues,"Alert",:upcase=>true) 
-  prealertState=getStringParameter(instanceValueSet.instancevalues,"Prealert",:upcase=>true)
-  failureState=getStringParameter(instanceValueSet.instancevalues,"Failure",:upcase=>true)
+  alertState=instanceValueSet.getStringParameter("Alert",:upcase=>true) 
+  prealertState=instanceValueSet.getStringParameter("Prealert",:upcase=>true)
+  failureState=instanceValueSet.getStringParameter("Failure",:upcase=>true)
   if alertState=="OFF/FALSE" and prealertState=="OFF/FALSE" and failureState=="OFF/FALSE"
     statusIcon="icon_OK.png"
   else

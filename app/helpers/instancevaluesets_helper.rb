@@ -10,18 +10,6 @@ module InstancevaluesetsHelper
                  :locals => { :instancevalue => parameterData, :options => options}
     end
   end
-  def getStringParameter(instancevalues,parameterName,options={})
-    parameterData=instancevalues.find_by_name(parameterName)
-    if (parameterData.nil?)
-      return ""
-    else
-      if options[:upcase]==true
-        return parameterData.data_string.upcase
-      else
-        return parameterData.data_string
-      end
-    end
-  end
   def generateSeriesPlot(xyData, fileId, options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions=plotOptions.merge(options)

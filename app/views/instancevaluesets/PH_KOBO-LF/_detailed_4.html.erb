@@ -3,31 +3,31 @@
 </div>
 <div class="span-14 last">
   <% 
-  deviceState=getStringParameter(instanceValueSet.instancevalues,"Device Status",:upcase=>true)
+  deviceState=instanceValueSet.getStringParameter("Device Status",:upcase=>true)
   if deviceState=="ON/TRUE"
     deviceIconName="icon_OK.png"
   else
     deviceIconName="icon_ERROR.png"
   end
-  onState=getStringParameter(instanceValueSet.instancevalues,"On?",:upcase=>true)
+  onState=instanceValueSet.getStringParameter("On?",:upcase=>true)
   if onState=="ON/TRUE"
     onIconName="icon_OK.png"
   else
     onIconName="icon_OFF.png"
   end
-  alarmState=getStringParameter(instanceValueSet.instancevalues,"Alarm?",:upcase=>true)
+  alarmState=instanceValueSet.getStringParameter("Alarm?",:upcase=>true)
   if alarmState=="OFF/FALSE"
     alarmIconName="icon_OK.png"
   else
     alarmIconName="icon_ERROR.png"
   end
-  conductivityState=getStringParameter(instanceValueSet.instancevalues,"Conductivity to high?",:upcase=>true)
+  conductivityState=instanceValueSet.getStringParameter("Conductivity to high?",:upcase=>true)
   if conductivityState=="OFF/FALSE"
     conductivityIconName="icon_OK.png"
   else
     conductivityIconName="icon_ERROR.png"
   end
-  temperatureState=getStringParameter(instanceValueSet.instancevalues,"Temperature not to high?",:upcase=>true)
+  temperatureState=instanceValueSet.getStringParameter("Temperature not to high?",:upcase=>true)
   if temperatureState=="ON/TRUE"
     temperatureIconName="icon_ERROR.png"
   else

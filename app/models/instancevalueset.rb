@@ -21,4 +21,17 @@ class Instancevalueset < ActiveRecord::Base
 
   validates :shot, :presence => true
   validates :instance, :presence => true
+
+  def getStringParameter(parameterName,options={})
+    parameterData=self.instancevalues.find_by_name(parameterName)
+    if (parameterData.nil?)
+      return ""
+    else
+      if options[:upcase]==true
+        return parameterData.data_string.upcase
+      else
+        return parameterData.data_string
+      end
+    end
+  end
 end

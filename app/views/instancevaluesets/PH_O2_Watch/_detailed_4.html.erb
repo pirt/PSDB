@@ -1,7 +1,7 @@
 <%
-  alertState=getStringParameter(instanceValueSet.instancevalues,"Alert") 
-  prealertState=getStringParameter(instanceValueSet.instancevalues,"Prealert")
-  failureState=getStringParameter(instanceValueSet.instancevalues,"Failure")
+  alertState=instanceValueSet.getStringParameter("Alert") 
+  prealertState=instanceValueSet.getStringParameter("Prealert")
+  failureState=instanceValueSet.getStringParameter("Failure")
   if alertState=="off/false"
     alertIcon="icon_OK.png"
   else

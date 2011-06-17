@@ -2,25 +2,27 @@
   <%= image_tag "mercurymonitor.png" %><br>
 </div>
 <div class="span-14 last">
-  <% onState=getStringParameter(instanceValueSet.instancevalues,"Status On/Off",:upcase=>true)
+  <% onState=instanceValueSet.getStringParameter("State On/Off",:upcase=>true)
   if onState=="OFF/FALSE"
    deviceOn=false
    onoffIconName="icon_OFF.png"
   else
-    deviceOn=true
-    onffIconName="icon_ON.png"
+   deviceOn=true
+   onoffIconName="icon_ON.png"
   end
-  alarmState=getStringParameter(instanceValueSet.instancevalues,"State Alarm",:upcase=>true)
+  alarmState=instanceValueSet.getStringParameter("State Alarm",:upcase=>true)
   if alarmState=="OFF/FALSE"
     alarmIconName="icon_OK.png"
   else
     alarmIconName="icon_ERROR.png"
-  end%>
+  end
+  onState
+%>
   <ul>
-  <li><strong>Device Status:</strong><%= image_tag onoffIconName, {:style=>"vertical-align:middle"} %></li>
+    <li><strong>Device Status:</strong><%= image_tag onoffIconName, {:style=>"vertical-align:middle"} %></li>
   <% if deviceOn %>
     <li><strong>On since:</strong><%= displayParameter(instanceValueSet.instancevalues,"On since") %></li>
-    <li><strong>Concentration:</strong><%= displayParameter(instanceValueSet.instancevalues,"Concentration") %></li>
+    <li><strong>Concentration:</strong><%= displayParameter(instanceValueSet.instancevalues,"Concentration", :precision=>4) %></li>
     <li><strong>Alarm Status:</strong><%= image_tag alarmIconName, {:style=>"vertical-align:middle"} %></li>
   <% end %>
   </ul>

@@ -1,6 +1,8 @@
-<% deviceStatus=getStringParameter(instanceValueSet.instancevalues,"Device State",:upcase=>true) %>
-<% if deviceStatus=="ON/TRUE" %>
-  <%= displayParameter(instanceValueSet.instancevalues,"Value") %>
-<% else %>
-  <%= image_tag("icon_ERROR.png") %>
-<% end %>
+<%=
+  deviceStatus=instanceValueSet.getStringParameter("Device State",:upcase=>true)
+  if deviceStatus=="ON/TRUE"
+    displayParameter(instanceValueSet.instancevalues,"Value")
+  else
+    image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"}
+  end 
+%>
