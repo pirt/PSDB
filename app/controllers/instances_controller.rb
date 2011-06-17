@@ -12,6 +12,7 @@ class InstancesController < ApplicationController
     @instances=selectedInstances.includes(:classtype, :subsystem).paginate(:page => params[:page])
     @availableClasstypes=Classtype.all
     @availableSubsystems=Subsystem.all
+    @pageTitle="Instance list"
   end
 
   def show
@@ -24,9 +25,10 @@ class InstancesController < ApplicationController
       if (!shot.nil?)
         shotDate=shot.created_at
       else
-	shotDate=nil
+	      shotDate=nil
       end
       @interfaceInfo << {:version => interfaceVersion.version, :shot_id => shotId, :shotDate => shotDate}
     end
+    @pageTitle="Details for instance <#{@instance.name}>"
   end
 end

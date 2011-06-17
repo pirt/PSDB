@@ -24,4 +24,11 @@ class Instance < ActiveRecord::Base
 
   validates :classtype, :presence => true
   validates :subsystem, :presence => true
+
+  def viewExists?(interfaceVersion,detailed=false)
+    viewType= detailed ? "/_detailed_" : "/_short_"
+    viewFileName=::Rails.root.to_s+"/app/views/instancevaluesets/"+
+      self.classtype.name+viewType+interfaceVersion.to_s+".html.erb"
+    return File.exists?(viewFileName)
+  end
 end

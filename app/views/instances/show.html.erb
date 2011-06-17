@@ -24,9 +24,9 @@
           <td><%= info[:version] %></td>
           <td><%= info[:shot_id] %></td>
           <td><%= formatDate(info[:shotDate]) %></td>
-          <td><%= iconName=viewExists(@instance.classtype.name,info[:version],false) ? "icon_OK.png" : "icon_ERROR.png"
+          <td><%= iconName=@instance.viewExists?(info[:version],false) ? "icon_OK.png" : "icon_ERROR.png"
                   image_tag iconName %></td>
-          <td><%= iconName=viewExists(@instance.classtype.name,info[:version],true) ? "icon_OK.png" : "icon_ERROR.png"
+          <td><%= iconName=@instance.viewExists?(info[:version],true) ? "icon_OK.png" : "icon_ERROR.png"
                   image_tag iconName %></td>
         </tr>
       <% end %>
