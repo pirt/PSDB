@@ -3,7 +3,7 @@
 </div>
 <div class="span-14 last">
   <% onState=getStringParameter(instanceValueSet.instancevalues,"Status On/Off",:upcase=>true)
-  if onState="OFF/FALSE"
+  if onState=="OFF/FALSE"
    deviceOn=false
    onoffIconName="icon_OFF.png"
   else
@@ -11,7 +11,7 @@
     onffIconName="icon_ON.png"
   end
   alarmState=getStringParameter(instanceValueSet.instancevalues,"State Alarm",:upcase=>true)
-  if alarmState="OFF/FALSE"
+  if alarmState=="OFF/FALSE"
     alarmIconName="icon_OK.png"
   else
     alarmIconName="icon_ERROR.png"

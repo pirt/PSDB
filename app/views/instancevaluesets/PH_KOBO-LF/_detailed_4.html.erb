@@ -1,0 +1,45 @@
+<div class="span-10"
+  <%= image_tag "KOBO-LF.png" %><br>
+</div>
+<div class="span-14 last">
+  <% 
+  deviceState=getStringParameter(instanceValueSet.instancevalues,"Device Status",:upcase=>true)
+  if deviceState=="ON/TRUE"
+    deviceIconName="icon_OK.png"
+  else
+    deviceIconName="icon_ERROR.png"
+  end
+  onState=getStringParameter(instanceValueSet.instancevalues,"On?",:upcase=>true)
+  if onState=="ON/TRUE"
+    onIconName="icon_OK.png"
+  else
+    onIconName="icon_OFF.png"
+  end
+  alarmState=getStringParameter(instanceValueSet.instancevalues,"Alarm?",:upcase=>true)
+  if alarmState=="OFF/FALSE"
+    alarmIconName="icon_OK.png"
+  else
+    alarmIconName="icon_ERROR.png"
+  end
+  conductivityState=getStringParameter(instanceValueSet.instancevalues,"Conductivity to high?",:upcase=>true)
+  if conductivityState=="OFF/FALSE"
+    conductivityIconName="icon_OK.png"
+  else
+    conductivityIconName="icon_ERROR.png"
+  end
+  temperatureState=getStringParameter(instanceValueSet.instancevalues,"Temperature not to high?",:upcase=>true)
+  if temperatureState=="ON/TRUE"
+    temperatureIconName="icon_ERROR.png"
+  else
+    temperatureIconName="icon_OK.png"
+  end
+  %>
+  <ul>
+  <li><strong>Device Status:</strong><%= image_tag deviceIconName, {:style=>"vertical-align:middle"} %></li>
+  <li><strong>Device On?:</strong><%= image_tag onIconName, {:style=>"vertical-align:middle"} %></li>
+  <li><strong>Alarm?:</strong><%= image_tag alarmIconName, {:style=>"vertical-align:middle"} %></li>
+  <li><strong>Conductivity:</strong><%= image_tag conductivityIconName, {:style=>"vertical-align:middle"} %></li>
+  <li><strong>Temperature:</strong><%= image_tag temperatureIconName, {:style=>"vertical-align:middle"} %></li>
+  </ul>
+</div>
+

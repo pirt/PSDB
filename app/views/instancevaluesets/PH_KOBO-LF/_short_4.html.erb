@@ -1,0 +1,15 @@
+<%=
+  instValues=instanceValueSet.instancevalues
+  device=getStringParameter(instValues,"Device Status",:upcase=>true)=="ON/TRUE" ? true : false
+  on=getStringParameter(instanceValueSet.instancevalues,"On?",:upcase=>true)=="ON/TRUE" ? true : false
+  conductivityOK=getStringParameter(instValues,"Conductivity to high?",:upcase=>true)=="ON/TRUE" ? false : true
+  alarm=getStringParameter(instValues,"Alarm?",:upcase=>true)=="ON/TRUE" ? true : false
+  temperatureOK=getStringParameter(instValues,"Temperature not to high?",:upcase=>true)=="ON/TRUE" ? false : true
+  if device and on and conductivityOK and temperatureOK and !alarm
+    iconName="icon_OK.png"
+  elsif device and !on
+    iconName="icon_OFF.png"
+  else
+    iconName="icon_ERROR.png"
+  end
+  image_tag iconName %>
