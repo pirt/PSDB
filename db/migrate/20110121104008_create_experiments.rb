@@ -8,7 +8,7 @@ class CreateExperiments < ActiveRecord::Migration
 
       t.timestamps :null => false
     end
-    # TODO: check problems with migrations of add_index with mysql2
+
     add_index :experiments, :name, :unique => true
   end
 

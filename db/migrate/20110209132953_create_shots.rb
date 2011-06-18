@@ -7,6 +7,9 @@ class CreateShots < ActiveRecord::Migration
       t.references :shottype, :null => false, :foreign_key => true
       t.timestamps :null => false
     end
+
+    add_index :shots, :experiment_id
+    add_index :shots, :shottype_id
   end
 
   def self.down
