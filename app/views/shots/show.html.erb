@@ -11,7 +11,7 @@
   </div>
   <div class="span-16 last" id="attachments">
     <div class="box">
-      <%= render :partial => "attachments/index", :locals => { :parent => @shot } %>
+      <%= render 'attachments/index',:parent => @shot %>
     </div>
   </div>
 </div>
@@ -49,8 +49,8 @@
         <% @instanceValueSets.each do |instanceValueSet| %>
           <tr>
             <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
-            <td><%= render :partial => "instancevaluesets/instancevalueset_short",
-                          :locals => { :instanceValueSet => instanceValueSet} %></td>
+            <td><%= render 'instancevaluesets/instancevalueset_short',
+                          :instanceValueSet => instanceValueSet %></td>
           </tr>
         <% end %>
       </tbody>

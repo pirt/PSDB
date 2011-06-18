@@ -5,5 +5,5 @@
 <% if !File.exists?(partialFileName) %>
   <% partialName="instancevalueset_detailed_unknown" %>
 <% end %>
-<%= render :partial => partialName, :locals => { :instanceValueSet => instanceValueSet } %>
+<%= render partialName, :instanceValueSet => instanceValueSet %>
 
