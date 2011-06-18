@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     else
       unit.strip!
     end
-    unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*([\w%]+)/
+    unitRegEx=/^([afpnumcdhkMGTPE]?)[ ]*([\w%]+)/
     matchSet=unitRegEx.match(unit)
     if (matchSet.nil?) 
       return value
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         mult=1.0E-12
       when "n"
         mult=1.0E-9
-      when "u","µ"
+      when "u","\316\274"
         mult=1.0E-6
       when "m"
         mult=1.0E-3
@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
       return unitString
     else
       unitString.strip!
-      unitRegEx=/^([afpnuµmcdhkMGTPE]?)[ ]*([\w%]+)/
+      unitRegEx=/^([afpnumcdhkMGTPE]?)[ ]*([\w%]+)/
       matchSet=unitRegEx.match(unitString)
       return matchSet[2]
     end
