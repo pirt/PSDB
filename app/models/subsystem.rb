@@ -19,7 +19,7 @@ class Subsystem < ActiveRecord::Base
                    :uniqueness => { :case_sensitive => false}
 
   before_destroy :check_if_instances_associated
-  
+
   def check_if_instances_associated
     if (!instances.empty?)
       errors.add(:base, "cannot be deleted with instances associated")

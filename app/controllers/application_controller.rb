@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
     unitRegEx=/^([afpnumcdhkMGTPE]?)[ ]*([\w%]+)/
     matchSet=unitRegEx.match(unit)
-    if (matchSet.nil?) 
+    if (matchSet.nil?)
       return value
     else
       prefix=matchSet[1]

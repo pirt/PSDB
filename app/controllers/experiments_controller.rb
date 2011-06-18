@@ -1,6 +1,6 @@
 class ExperimentsController < ApplicationController
   def index
-    @experiments = Experiment.select([:id, :name, :description, :active]).paginate(:page => params[:page], 
+    @experiments = Experiment.select([:id, :name, :description, :active]).paginate(:page => params[:page],
                                                                               :per_page => Experiment.per_page)
     @pageTitle="Experiments"
   end
@@ -16,7 +16,7 @@ class ExperimentsController < ApplicationController
                nextTable.id as nextid
         from (select * from shots where experiment_id=%d) currentTable
       	join (select * from shots where experiment_id=%d) nextTable
-       	on nextTable.id=(select min(id) from 
+       	on nextTable.id=(select min(id) from
          	(select * from shots where experiment_id=%d) where id>currentTable.id)" % [@experiment.id,@experiment.id,@experiment.id]
       @durations=Shot.find_by_sql(queryString)
 
@@ -77,7 +77,7 @@ class ExperimentsController < ApplicationController
       redirect_to experiments_path
     else
       @experiment = Experiment.find_by_id(params[:id])
-      if @experiment 
+      if @experiment
         if @experiment.update_attributes(params[:experiment])
           flash[:success] = "Experiment successfully updated"
           redirect_to experiments_path

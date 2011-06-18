@@ -41,16 +41,16 @@ module InstancevaluesHelper
     axisDescription=instancevalue.data_string
     if (axisDescription)
       descriptionParts=axisDescription.split(",")
-      if (descriptionParts[0]) 
-        plotOptions[:xlabel]+=descriptionParts[0] 
+      if (descriptionParts[0])
+        plotOptions[:xlabel]+=descriptionParts[0]
       end
-        if (descriptionParts[1]) 
-        plotOptions[:ylabel]+=descriptionParts[1] 
+        if (descriptionParts[1])
+        plotOptions[:ylabel]+=descriptionParts[1]
       end
-      if (descriptionParts[2]) 
-        plotOptions[:xlabel]+=" ["+descriptionParts[2]+"]" 
+      if (descriptionParts[2])
+        plotOptions[:xlabel]+=" ["+descriptionParts[2]+"]"
       end
-      if (descriptionParts[3]) 
+      if (descriptionParts[3])
         plotOptions[:ylabel]+=" ["+descriptionParts[3]+"]"
       end
     end

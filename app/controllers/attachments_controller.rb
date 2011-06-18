@@ -6,7 +6,7 @@ class AttachmentsController < ApplicationController
       redirect_to experiment_path(:experiment_id)
       return
     end
-      send_data attachment.content, :type => attachment.filetype, :filename => attachment.filename     
+      send_data attachment.content, :type => attachment.filetype, :filename => attachment.filename
   end
   def new
       if params[:experiment_id]
@@ -72,7 +72,7 @@ class AttachmentsController < ApplicationController
       redirect_to parentPath
       return
     end
-    @pageTitle="Edit attachment"     
+    @pageTitle="Edit attachment"
   end
   def update
     if params[:experiment_id]

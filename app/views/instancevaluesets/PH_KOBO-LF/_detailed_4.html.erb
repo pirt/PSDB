@@ -2,7 +2,7 @@
   <%= image_tag "KOBO-LF.png" %><br>
 </div>
 <div class="span-14 last">
-  <% 
+  <%
   deviceState=instanceValueSet.getStringParameter("Device Status",:upcase=>true)
   if deviceState=="ON/TRUE"
     deviceIconName="icon_OK.png"
@@ -42,4 +42,3 @@
   <li><strong>Temperature:</strong><%= image_tag temperatureIconName, {:style=>"vertical-align:middle"} %></li>
   </ul>
 </div>
-

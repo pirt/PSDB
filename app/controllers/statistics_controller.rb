@@ -17,7 +17,7 @@ class StatisticsController < ApplicationController
     end
     @shots=selectedShots
     @date=params[:month] ? Date.parse(params[:month]) : Date.today
-    @formData=params 
+    @formData=params
   end
 
 end

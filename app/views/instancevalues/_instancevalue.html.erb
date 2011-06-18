@@ -11,6 +11,6 @@
   <% if defined?(options) %>
     <% localoptions=localoptions.merge(options) %>
   <% end %>
-  <%= render :partial => "instancevalues/#{partialName}", 
+  <%= render :partial => "instancevalues/#{partialName}",
       :locals => { :instancevalue => instancevalue, :options => localoptions } %>
 <% end %>

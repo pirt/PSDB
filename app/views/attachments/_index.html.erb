@@ -15,7 +15,7 @@
       <td><%= attachment.description %></td>
       <td><%= formatDate(attachment.created_at) %></td>
       <td>
-        <%= link_to "Edit", linkPath+attachment.id.to_s+"/edit", 
+        <%= link_to "Edit", linkPath+attachment.id.to_s+"/edit",
                              :title => "Edit #{attachment.filename}",
                              :class => "ui-icon ui-icon-pencil" %>
         <%= link_to "Delete", [parent,attachment],

@@ -42,22 +42,22 @@ class InstancevaluesController < ApplicationController
     txtData=""
     if (axisDescription)
       descriptionParts=axisDescription.split(",")
-      if (descriptionParts[0]) 
-        txtData+=descriptionParts[0] 
+      if (descriptionParts[0])
+        txtData+=descriptionParts[0]
       end
-        if (descriptionParts[2]) 
-        txtData+=" ["+descriptionParts[2]+"]" 
+        if (descriptionParts[2])
+        txtData+=" ["+descriptionParts[2]+"]"
       end
       txtData+="\t"
-      if (descriptionParts[1]) 
-        txtData+=descriptionParts[1] 
+      if (descriptionParts[1])
+        txtData+=descriptionParts[1]
       end
       if (descriptionParts[3])
         txtData+=" ["+descriptionParts[3]+"]"
       end
       txtData+="\n"
     end
-   
+
     (0..nrOfData-1).step(2) do |dataIndex|
       txtData+=splitData[dataIndex]
       txtData+="\t"

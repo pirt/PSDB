@@ -3,7 +3,7 @@
   <%= render 'shared/error_messages', :object => shot.object %>
   <div class="field">
     <%= shot.label :experiment_id %>
-    <%= shot.collection_select(:experiment_id,Experiment.all, :id, :name) %>  
+    <%= shot.collection_select(:experiment_id,Experiment.all, :id, :name) %>
   </div>
   <div class="field">
     <%= shot.label :shottype %>

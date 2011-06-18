@@ -25,8 +25,7 @@
               @confirmation="There are documents attached to the experiment, which WILL BE LOST if the experiment is deleted. Are You sure you want to do this?"
                else
               @confirmation="Are You sure?"
-              end %>   
-
+              end %>
             <%= link_to "Delete", experiment, :method => :delete, :confirm => @confirmation,
                                   :title => "Delete #{experiment.name}" %>
         </td>
@@ -35,4 +34,3 @@
   </tbody>
 </table>
 <%= will_paginate @experiments %>
-

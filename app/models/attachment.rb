@@ -18,7 +18,7 @@ class Attachment < ActiveRecord::Base
   attr_accessible :filename, :filetype, :description, :content, :attachable_id, :attachable_type
 
   belongs_to :attachable, :polymorphic => true
- 
+
   validates :filename, :presence => true,
                        :length => { :maximum => 255 },
                        :uniqueness => { :scope => [:attachable_id, :attachable_type] }

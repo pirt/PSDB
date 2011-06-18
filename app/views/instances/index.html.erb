@@ -2,7 +2,7 @@
 <div class="span-24 last" id="databox">
   <div class="span-6" id="sidebar">
     <div id="subsystems">
-      <h3 class="caps">Subsystems</h3>  
+      <h3 class="caps">Subsystems</h3>
       <div class="box">
         <%= link_to 'All', instances_path %><br />
         <% @availableSubsystems.each do |subsystem| %>
@@ -31,7 +31,7 @@
           <th></th>
        </tr>
       </thead>
-      <tbody> 
+      <tbody>
         <% @instances.each do |instance| %>
         <tr>
           <td><%= link_to instance.name, instancevaluesets_path(:instance_id => instance) %></td>
@@ -44,4 +44,3 @@
     </table>
   </div>
 </div>
-

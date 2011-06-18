@@ -5,7 +5,7 @@ class CreateInstances < ActiveRecord::Migration
       t.references :classtype, :null => false, :foreign_key => true
       t.references :subsystem, :null => false, :foreign_key => true
       t.string :name, :null => false, :limit => 255, :comment => "name of the instance"
-     
+
       t.timestamps :null => false
     end
   end

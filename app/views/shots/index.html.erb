@@ -10,11 +10,11 @@
         <%= label_tag(:selectedExp, "Experiment:") %>
         <% experimentsArray=[['All',0]]
            experimentsArray+= Experiment.all.map { |exp| [exp.name, exp.id] } %>
-        <%= select_tag(:selectedExp,options_for_select(experimentsArray,@formData[:selectedExp])) %> 
+        <%= select_tag(:selectedExp,options_for_select(experimentsArray,@formData[:selectedExp])) %>
         <%= label_tag(:shotType, "Shot type:") %>
         <% shottypeArray=[['All',0]]
            shottypeArray+= Shottype.all.map { |shottype| [shottype.name, shottype.id] } %>
-        <%= select_tag(:shotType,options_for_select(shottypeArray,@formData[:shotType])) %> 
+        <%= select_tag(:shotType,options_for_select(shottypeArray,@formData[:shotType])) %>
         <%= submit_tag("Filter") %>
       <% end %>
     </div>

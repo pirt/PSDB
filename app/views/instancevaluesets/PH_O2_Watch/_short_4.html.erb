@@ -1,5 +1,5 @@
 <%=
-  alertState=instanceValueSet.getStringParameter("Alert",:upcase=>true) 
+  alertState=instanceValueSet.getStringParameter("Alert",:upcase=>true)
   prealertState=instanceValueSet.getStringParameter("Prealert",:upcase=>true)
   failureState=instanceValueSet.getStringParameter("Failure",:upcase=>true)
   if alertState=="OFF/FALSE" and prealertState=="OFF/FALSE" and failureState=="OFF/FALSE"
@@ -7,6 +7,6 @@
   else
     statusIcon="icon_ERROR.png"
   end
-  image_tag statusIcon, {:style=>"vertical-align:middle"} 
+  image_tag statusIcon, {:style=>"vertical-align:middle"}
 %>
 <%= displayParameter(instanceValueSet.instancevalues,"Concentration", :precision => 2) %>

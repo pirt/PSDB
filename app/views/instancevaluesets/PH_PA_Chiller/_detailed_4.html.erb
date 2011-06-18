@@ -9,29 +9,29 @@
   end
 %>
 <div class="span-10">
-  <%= iconName = chillerOn ? "chiller_ON.png" :  "chiller_OFF.png" 
+  <%= iconName = chillerOn ? "chiller_ON.png" :  "chiller_OFF.png"
       image_tag iconName %>
 </div>
 <div class="span-14 last">
   <ul>
     <li>
       <strong>Conductivity:</strong>
-      <%= iconName = conductivity ? "icon_OK.png" :  "icon_ERROR.png" 
+      <%= iconName = conductivity ? "icon_OK.png" : "icon_ERROR.png"
       image_tag iconName, {:style=>"vertical-align:middle"} %>
     </li>
     <li>
       <strong>Flow:</strong>
-      <%= iconName = flow ? "icon_OK.png" :  "icon_ERROR.png" 
+      <%= iconName = flow ? "icon_OK.png" : "icon_ERROR.png"
       image_tag iconName, {:style=>"vertical-align:middle"} %>
     </li>
     <li>
       <strong>Niveau:</strong>
-      <%= iconName = niveau ? "icon_OK.png" :  "icon_ERROR.png" 
+      <%= iconName = niveau ? "icon_OK.png" : "icon_ERROR.png"
       image_tag iconName, {:style=>"vertical-align:middle"} %>
     </li>
     <li>
       <strong>Temperature:</strong>
-      <%= iconName = temperature ? "icon_OK.png" :  "icon_ERROR.png" 
+      <%= iconName = temperature ? "icon_OK.png" : "icon_ERROR.png"
       image_tag iconName, {:style=>"vertical-align:middle"} %>
     </li>
   </ul>

@@ -18,7 +18,7 @@ class Experiment < ActiveRecord::Base
   @@per_page = 15
 
   has_many :shots
-  has_many :attachments, :as => :attachable, :dependent => :destroy 
+  has_many :attachments, :as => :attachable, :dependent => :destroy
 
   validates :name, :presence => true,
                    :length => { :maximum => 30 },
@@ -28,8 +28,7 @@ class Experiment < ActiveRecord::Base
                           :length => { :maximum => 255 }
 
   before_destroy :check_if_shots_associated
- 
-  
+
   def check_if_shots_associated
     if (!shots.empty?)
       errors.add(:base, "cannot be deleted with shots associated")

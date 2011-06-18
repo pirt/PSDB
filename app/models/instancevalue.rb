@@ -15,12 +15,12 @@
 #
 
 class Instancevalue < ActiveRecord::Base
-  attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary, 
+  attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary,
                   :datatype_id
 
   belongs_to :instancevalueset
-  belongs_to :datatype 
-  
+  belongs_to :datatype
+
   validates :name, :presence => true,
                    :length => { :maximum => 255 }
 

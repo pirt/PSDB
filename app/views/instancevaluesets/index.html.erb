@@ -22,13 +22,13 @@
         <th class="span-3">Result</th>
       </tr>
     </thead>
-   <tbody> 
+   <tbody>
       <% @instanceValueSets.each do |instanceValueSet| %>
         <tr>
           <td><%= link_to instanceValueSet.shot_id, instanceValueSet.shot %></td>
           <td><%= formatDate(instanceValueSet.shot.created_at) %></td>
           <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
-          <td><%= render :partial => "instancevaluesets/instancevalueset_short", 
+          <td><%= render :partial => "instancevaluesets/instancevalueset_short",
                         :locals => { :instanceValueSet => instanceValueSet} %></td>
         </tr>
       <% end %>

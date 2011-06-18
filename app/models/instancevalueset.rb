@@ -12,7 +12,7 @@
 #
 
 class Instancevalueset < ActiveRecord::Base
-  attr_accessible :shot_id, :instance_id, :version 
+  attr_accessible :shot_id, :instance_id, :version
   belongs_to :shot
   belongs_to :instance
   has_many :instancevalues

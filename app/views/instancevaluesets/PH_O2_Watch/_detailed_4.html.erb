@@ -1,5 +1,5 @@
 <%
-  alertState=instanceValueSet.getStringParameter("Alert") 
+  alertState=instanceValueSet.getStringParameter("Alert")
   prealertState=instanceValueSet.getStringParameter("Prealert")
   failureState=instanceValueSet.getStringParameter("Failure")
   if alertState=="off/false"
@@ -19,26 +19,26 @@
   end
 %>
 <div class="span-8">
-<%= image_tag "o2sensor.png" %>
+  <%= image_tag "o2sensor.png" %>
 </div>
 <div class="span-16 last">
-<ul>
-  <li>
-    <strong>Prealert:</strong> <%= image_tag prealertIcon,{:style=>"vertical-align:middle"} %>
-    <%= prealertState %>
-  </li>
-  <li>
-    <strong>Alert:</strong> <%= image_tag alertIcon,{:style=>"vertical-align:middle"} %>
-    <%= alertState %>
-  </li>
-  <li>
-    <strong>Failure:</strong> <%= image_tag failureIcon,{:style=>"vertical-align:middle"} %>
-    <%= failureState %>
-  </li>
-  <li>
-    <strong>Concentration:</strong> 
-    <%= displayParameter(instanceValueSet.instancevalues,"Concentration", :precision => 2) %>
-  </li>
-</ul>
+  <ul>
+    <li>
+      <strong>Prealert:</strong> <%= image_tag prealertIcon,{:style=>"vertical-align:middle"} %>
+      <%= prealertState %>
+    </li>
+    <li>
+      <strong>Alert:</strong> <%= image_tag alertIcon,{:style=>"vertical-align:middle"} %>
+      <%= alertState %>
+    </li>
+    <li>
+      <strong>Failure:</strong> <%= image_tag failureIcon,{:style=>"vertical-align:middle"} %>
+      <%= failureState %>
+    </li>
+    <li>
+      <strong>Concentration:</strong>
+      <%= displayParameter(instanceValueSet.instancevalues,"Concentration", :precision => 2) %>
+    </li>
+  </ul>
 </div>
 

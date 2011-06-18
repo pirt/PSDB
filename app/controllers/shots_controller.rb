@@ -60,7 +60,7 @@ class ShotsController < ApplicationController
       redirect_to shot_path(@shot)
     else
       @shot = Shot.find_by_id(params[:id])
-      if @shot 
+      if @shot
         if @shot.update_attributes(params[:shot])
           flash[:success] = "Shot successfully updated"
           redirect_to shot_path(@shot)
