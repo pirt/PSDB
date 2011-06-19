@@ -31,4 +31,20 @@ class Instance < ActiveRecord::Base
       self.classtype.name+viewType+interfaceVersion.to_s+".html.erb"
     return File.exists?(viewFileName)
   end
+
+  def interfaceVersionInfo
+    interfaceVersions=self.instancevaluesets.select(:version).group(:version)
+    interfaceInfo=[]
+    interfaceVersions.each do |interfaceVersion|
+      shotId=self.instancevaluesets.where(:version => interfaceVersion.version).minimum(:shot_id)
+      shot=Shot.find_by_id(shotId)
+      if (!shot.nil?)
+        shotDate=shot.created_at
+      else
+	      shotDate=nil
+      end
+      interfaceInfo << {:version => interfaceVersion.version, :shot_id => shotId, :shotDate => shotDate}
+    end
+    return interfaceInfo
+  end
 end

@@ -72,5 +72,4 @@ class InstancevaluesetsController < ApplicationController
   def show
     @instanceValueSet=Instancevalueset.find_by_id(params[:id])
   end
-
 end

@@ -17,18 +17,7 @@ class InstancesController < ApplicationController
 
   def show
     @instance=Instance.find_by_id(params[:id])
-    interfaceVersions=@instance.instancevaluesets.select(:version).group(:version)
-    @interfaceInfo=[]
-    interfaceVersions.each do |interfaceVersion|
-      shotId=@instance.instancevaluesets.where(:version => interfaceVersion.version).minimum(:shot_id)
-      shot=Shot.find_by_id(shotId)
-      if (!shot.nil?)
-        shotDate=shot.created_at
-      else
-	      shotDate=nil
-      end
-      @interfaceInfo << {:version => interfaceVersion.version, :shot_id => shotId, :shotDate => shotDate}
-    end
+    @interfaceInfo=@instance.interfaceVersionInfo
     @pageTitle="Details for instance <#{@instance.name}>"
   end
 end

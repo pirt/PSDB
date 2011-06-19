@@ -38,6 +38,7 @@ class AttachmentsController < ApplicationController
       return
     end
     @attachment=@parent.attachments.new
+
     @attachment.description=params[:attachment][:description]
     uploaded_content=params[:attachment][:content]
     if (uploaded_content)
@@ -51,7 +52,7 @@ class AttachmentsController < ApplicationController
         @attachment.content=uploaded_content.read
       end
     end
-    if @attachment.save
+      if @attachment.save
       flash[:success]="Attachment created"
       redirect_to parentPath
     else
