@@ -27,4 +27,38 @@ class Instancevalue < ActiveRecord::Base
   #validates_presence_of_at_least_one_field :data_numeric, :data_string, :data_binary
 
   validates :datatype, :presence => true
+
+  def export2dData
+    plotBlob=self.data_binary
+    plotBlob=plotBlob[4..-1]
+    splitData=plotBlob.split(",")
+    nrOfData=splitData.length
+    axisDescription=self.data_string
+    txtData=""
+    if (axisDescription)
+      descriptionParts=axisDescription.split(",")
+      if (descriptionParts[0])
+        txtData+=descriptionParts[0]
+      end
+        if (descriptionParts[2])
+        txtData+=" ["+descriptionParts[2]+"]"
+      end
+      txtData+="\t"
+      if (descriptionParts[1])
+        txtData+=descriptionParts[1]
+      end
+      if (descriptionParts[3])
+        txtData+=" ["+descriptionParts[3]+"]"
+      end
+      txtData+="\n"
+    end
+
+    (0..nrOfData-1).step(2) do |dataIndex|
+      txtData+=splitData[dataIndex]
+      txtData+="\t"
+      txtData+=splitData[dataIndex+1]
+      txtData+="\n"
+    end
+    return txtData
+  end
 end
