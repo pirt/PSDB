@@ -10,6 +10,8 @@ class CreateInstancevalues < ActiveRecord::Migration
       t.binary :data_binary, :comment => "Binary data value"
       t.timestamps :null => false
     end
+    add_index :instancevalues, :instancevalueset_id
+    add_index :instancevalues, :datatype_id
   end
 
   def self.down

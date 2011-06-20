@@ -7,6 +7,8 @@ class CreateInstancevaluesets < ActiveRecord::Migration
       t.integer :version, :null => false, :comment => "Version number of the interface"
       t.timestamps
     end
+    add_index :instancevaluesets, :shot_id
+    add_index :instancevaluesets, :instance_id
   end
 
   def self.down

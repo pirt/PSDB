@@ -8,6 +8,8 @@ class CreateInstances < ActiveRecord::Migration
 
       t.timestamps :null => false
     end
+    add_index :instances, :classtype_id
+    add_index :instances, :subsystem_id
   end
 
   def self.down
