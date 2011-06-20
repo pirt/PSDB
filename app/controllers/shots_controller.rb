@@ -36,16 +36,15 @@ class ShotsController < ApplicationController
     if (params[:subsystemName])
       selectedSubsystem=Subsystem.find_by_name(params[:subsystemName])
       selectedInstances=selectedSubsystem.instances
-      @instanceValueSets=availableInstanceValueSets.where(:instance_id => selectedInstances).paginate(:page => params[:page])
+      availableInstanceValueSets=availableInstanceValueSets.where(:instance_id => selectedInstances)
     elsif (params[:classtypeName])
       selectedClasstype=Classtype.find_by_name(params[:classtypeName])
       selectedInstances=selectedClasstype.instances
-      @instanceValueSets=availableInstanceValueSets.where(:instance_id => selectedInstances).paginate(:page => params[:page])
-    else
-      @instanceValueSets=availableInstanceValueSets.paginate(:page => params[:page])
+      availableInstanceValueSets=availableInstanceValueSets.where(:instance_id => selectedInstances)
     end
-    @usedClasses=availableInstanceValueSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
-    @usedSubsystems=availableInstanceValueSets.joins(:instance => :subsystem).select("subsystems.name").group("subsystems.name")
+    @instanceValueSets=availableInstanceValueSets.paginate(:page => params[:page])
+    @usedClasses=@shot.involvedClasstypes
+    @usedSubsystems=@shot.involvedSubsystems
     @pageTitle="Shot #{@shot.id}"
   end
 

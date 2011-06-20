@@ -37,4 +37,14 @@ class Shot < ActiveRecord::Base
       return true
     end
   end
+
+  def involvedSubsystems
+    availableInstanceValueSets=self.instancevaluesets
+    availableInstanceValueSets.joins(:instance => :subsystem).select("subsystems.name").group("subsystems.name")
+  end
+
+  def involvedClasstypes
+    availableInstanceValueSets=self.instancevaluesets
+    availableInstanceValueSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
+  end
 end
