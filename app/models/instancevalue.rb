@@ -14,7 +14,7 @@
 #  updated_at         :datetime        not null
 #
 
-require 'faster_csv'
+require 'csv'
 
 class Instancevalue < ActiveRecord::Base
   attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary,
@@ -53,12 +53,12 @@ class Instancevalue < ActiveRecord::Base
 
     plotBlob=trimBlob(self.data_binary)
     #splitData=plotBlob.split(",")
-    splitData=FCSV(plotBlob).read[0]
+    splitData=CSV(plotBlob).read
     nrOfData=splitData.length
-    (0..nrOfData-1).step(2) do |dataIndex|
-      txtData+=splitData[dataIndex]
+    (0..nrOfData-1).each do |dataIndex|
+      txtData+=splitData[dataIndex][0]
       txtData+="\t"
-      txtData+=splitData[dataIndex+1]
+      txtData+=splitData[dataIndex][1]
       txtData+="\n"
     end
     instanceName=self.instancevalueset.instance.name
@@ -116,21 +116,51 @@ class Instancevalue < ActiveRecord::Base
     end
     return fileName.sub("public/images/","")
   end
-
+  def generate2dPlot(options = {})
+    xyData=convert2D(self.data_binary)
+    plotOptions={:xlabel=> "", :ylabel=> ""}
+    axisDescription=self.data_string
+    if (axisDescription)
+      descriptionParts=axisDescription.split(",")
+      if (descriptionParts[0])
+        plotOptions[:xlabel]+=descriptionParts[0]
+      end
+        if (descriptionParts[1])
+        plotOptions[:ylabel]+=descriptionParts[1]
+      end
+      if (descriptionParts[2])
+        plotOptions[:xlabel]+=" ["+descriptionParts[2]+"]"
+      end
+      if (descriptionParts[3])
+        plotOptions[:ylabel]+=" ["+descriptionParts[3]+"]"
+      end
+    end
+    plotOptions=plotOptions.merge(options)
+    generatePlot(xyData, self.id,plotOptions)
+  end
 # -------------------------------------------------------------------------------------------------
 private
   def trimBlob(blob)
     blob[4..-1]
   end
   def convert2D(data)
-    splitData=trimBlob(data).split(",")
-    nrOfData=splitData.length
-    xValues=[]
-    yValues=[]
-    (0..nrOfData-1).step(2) do |dataIndex|
-      xValues << splitData[dataIndex].to_f
-      yValues << splitData[dataIndex+1].to_f
-    end
-    [xValues,yValues]
+    splitData=CSV(trimBlob(data),:converters=>:float).read
+    return splitData.transpose
   end
 end
+def generatePlot(xyData, fileId, options={})
+    plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
+    plotOptions=plotOptions.merge(options)
+    Gnuplot.open do |gp|
+      Gnuplot::Plot.new( gp ) do |plot|
+        plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
+        plot.output "public/images/tmp/plot"+fileId.to_s+".#{plotOptions[:imagetype]}"
+        plot.ylabel plotOptions[:ylabel]
+        plot.xlabel plotOptions[:xlabel]
+        plot.data << Gnuplot::DataSet.new( xyData ) do |ds|
+          ds.with = "lines"
+          ds.notitle
+        end
+      end
+    end
+  end
