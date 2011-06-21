@@ -8,8 +8,7 @@ module ShotsHelper
       if (instanceValueSet.nil?)
         return "?"
       else
-        render :partial => "instancevaluesets/instancevalueset_short",
-                            :locals => { :instanceValueSet => instanceValueSet}
+        render "instancevaluesets/instancevalueset_short", :instanceValueSet => instanceValueSet
       end
     end
   end
