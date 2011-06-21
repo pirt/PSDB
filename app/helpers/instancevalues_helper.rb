@@ -57,21 +57,4 @@ module InstancevaluesHelper
     plotOptions=plotOptions.merge(options)
     generatePlot(xyData, instancevalue.id,plotOptions)
   end
-
-  def displayImage(instancevalue, options = {} )
-    imageOptions={:width => 320, :height =>200}
-    imageOptions=imageOptions.merge(options)
-    fileName="public/images/tmp/image"+instancevalue.id.to_s+"_"+
-        imageOptions[:width].to_s+"_"+imageOptions[:height].to_s+".png"
-    if !File.exists?(fileName)
-      imageData=trimBlob(instancevalue.data_binary)
-      myImage=Magick::Image.from_blob(imageData)
-      myImage=myImage[0]
-      paletteImg=Magick::Image.read("public/images/Rainbow.png")
-      myImage=myImage.clut_channel(paletteImg[0])
-      myImage=myImage.resize_to_fit(imageOptions[:width],imageOptions[:height])
-      myImage.write fileName
-    end
-    return fileName.sub("public/images/","")
-  end
 end

@@ -5,6 +5,7 @@ gem 'gnuplot'       # Use plot package
 gem 'will_paginate', "~> 3.0.pre2" # Paginate result lists
 gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
 gem 'jquery-rails'  # jQuery integration
+gem 'fastercsv'
 
 # Add support for oracle database
 gem 'ruby-oci8'
