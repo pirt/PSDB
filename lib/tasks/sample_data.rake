@@ -1,6 +1,22 @@
 require 'faker'
 
 namespace :db do
+  desc "Initialize database with shot types and one (internal) experiment"
+  task :initialize => :environment do
+    puts "Initializing PSDB..."
+      print "  Creating experiment... "
+      STDOUT.flush
+      Experiment.create!(:name => "Internal", :description => "internal shots of PHELIX", :active => true)
+      puts "done"
+      print "  Creating shot types... "
+      STDOUT.flush
+      shotTypes=["experiment shot","test shot","snapshot","other"]
+      shotTypes.each do |shottype|
+        Shottype.create!(:name => shottype)
+      end
+      puts "done"
+    puts "Done."
+  end
   desc "Fill database with sample data"
   task :populate => :environment do
     #
@@ -12,7 +28,6 @@ namespace :db do
     createExperiments(nrOfExperiments)
 
     shotTypes=["experiment shot","test shot","snapshot","other"]
-    createShottypes(shotTypes)
 
     #createShots(maxNrOfShotsPerExperiment,shotTypes)
 
@@ -78,13 +93,7 @@ namespace :db do
     end
   end
 end
-def createShottypes(shotTypes)
-  puts "Generate shot types:"
-  shotTypes.each do |shottype|
-    puts "Generate shot type <#{shottype}>"
-    Shottype.create!(:name => shottype)
-  end
-end
+
 def createShots(maxNrOfShotsPerExperiment,shotTypes)
   Experiment.find_each do |experiment|
     nrOfShots=1+rand(maxNrOfShotsPerExperiment)

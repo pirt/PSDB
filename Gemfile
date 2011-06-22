@@ -5,7 +5,6 @@ gem 'gnuplot'       # Use plot package
 gem 'will_paginate', "~> 3.0.pre2" # Paginate result lists
 gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
 gem 'jquery-rails'  # jQuery integration
-gem 'fastercsv'
 
 # Add support for oracle database
 gem 'ruby-oci8'
@@ -14,8 +13,7 @@ gem 'ruby-plsql'
 
 # Gems for the local environment only. 
 group :development, :test do
-  # gem 'mysql2'             # Support for mySQL database (development only)
-  gem 'rspec'		       # Use Rspec as testing framework
+  gem 'rspec'		           # Use Rspec as testing framework
   gem 'rspec-rails'        # Use Rspec as testing framework
   gem 'webrat'             # Acceptance testing for webpages
   gem 'faker'              # Use generator for sample data
