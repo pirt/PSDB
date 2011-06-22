@@ -30,6 +30,7 @@ class Instancevalue < ActiveRecord::Base
 
   validates :datatype, :presence => true
 
+  # convert instancevalue of type 2dData to a text string.
   def export2dData
     axisDescription=self.data_string
     txtData=""
@@ -52,7 +53,6 @@ class Instancevalue < ActiveRecord::Base
     end
 
     plotBlob=trimBlob(self.data_binary)
-    #splitData=plotBlob.split(",")
     splitData=CSV(plotBlob).read
     nrOfData=splitData.length
     (0..nrOfData-1).each do |dataIndex|
@@ -67,6 +67,7 @@ class Instancevalue < ActiveRecord::Base
     return {:content=>txtData, :type=>"txt", :filename=>fileName}
   end
 
+  # convert instancevalue of type "image" to an image of a given file format.
   def exportImage(options={})
     localOptions={:exportFormat=>"2",:withColorPalette=>false}
     localOptions=localOptions.merge(options)
@@ -140,12 +141,13 @@ class Instancevalue < ActiveRecord::Base
   end
 # -------------------------------------------------------------------------------------------------
 private
+  # remove the first 4 bytes from a BLOB
   def trimBlob(blob)
     blob[4..-1]
   end
   def convert2D(data)
     splitData=CSV(trimBlob(data),:converters=>:float).read
-    return splitData.transpose
+    return splitData #.transpose
   end
 end
 def generatePlot(xyData, fileId, options={})
