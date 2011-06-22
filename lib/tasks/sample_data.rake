@@ -14,7 +14,7 @@ namespace :db do
     shotTypes=["experiment shot","test shot","snapshot","other"]
     createShottypes(shotTypes)
 
-    createShots(maxNrOfShotsPerExperiment,shotTypes)
+    #createShots(maxNrOfShotsPerExperiment,shotTypes)
 
     #createDataTypes
 
@@ -28,7 +28,7 @@ namespace :db do
     #           "MAS_Powermeter", "MAS_Spectrometer", "MAS_Filt1_BB", "MAS_Filt2_BB", "MAS_Filt3_BB",
     #           "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB" ]
 
-    createInstances(instances)
+    #createInstances(instances)
     
     
     # generate instance data (typically 10 per instance)
