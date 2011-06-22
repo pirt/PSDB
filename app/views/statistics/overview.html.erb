@@ -67,6 +67,14 @@
           <td>Total number of file attachments:</td>
           <td><%= Attachment.count %></td>
         </tr>
+        <tr>
+          <td>PSDB used space:</td>
+          <td><%= number_to_human_size(@statistics.used_bytes) %></td>
+        </tr>
+        <tr>
+          <td>PSDB free space:</td>
+          <td><%= number_to_human_size(@statistics.free_bytes) %></td>
+        </tr>
       </tbody>
     </table>
   </div>
