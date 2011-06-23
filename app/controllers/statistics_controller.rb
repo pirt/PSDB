@@ -19,6 +19,7 @@ class StatisticsController < ApplicationController
                           and    d.tablespace_name = 'PHELIX'
                         group by d.file_name"
     @statistics=Shot.find_by_sql(queryString).last
+    @pageTitle="Statistics overview"
   end
 
   def calendar
@@ -29,6 +30,7 @@ class StatisticsController < ApplicationController
     @shots=selectedShots
     @date=params[:month] ? Date.parse(params[:month]) : Date.today
     @formData=params
+    @pageTitle="Shot calendar"
   end
 
 end
