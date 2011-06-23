@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+puts "Initializing PSDB..."
+  print "  Creating experiment... "
+  STDOUT.flush
+  Experiment.create!(:name => "Internal", :description => "internal shots of PHELIX", :active => true)
+  puts "done"
+  print "  Creating shot types... "
+  STDOUT.flush
+  shotTypes=["experiment shot","test shot","snapshot","other"]
+  shotTypes.each do |shottype|
+    Shottype.create!(:name => shottype)
+  end
+  puts "done"
+puts "Done."

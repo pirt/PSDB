@@ -10,7 +10,7 @@ development:
 test:
   adapter: oracle_enhanced
   database: db-test
-  username: phelix_test
+  username: "phelix_test"
   password: phelixtest
 
 production:

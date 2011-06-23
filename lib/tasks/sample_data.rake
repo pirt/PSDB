@@ -1,35 +1,17 @@
 require 'faker'
 
 namespace :db do
-  desc "Initialize database with shot types and one (internal) experiment"
-  task :initialize => :environment do
-    puts "Initializing PSDB..."
-      print "  Creating experiment... "
-      STDOUT.flush
-      Experiment.create!(:name => "Internal", :description => "internal shots of PHELIX", :active => true)
-      puts "done"
-      print "  Creating shot types... "
-      STDOUT.flush
-      shotTypes=["experiment shot","test shot","snapshot","other"]
-      shotTypes.each do |shottype|
-        Shottype.create!(:name => shottype)
-      end
-      puts "done"
-    puts "Done."
-  end
   desc "Fill database with sample data"
   task :populate => :environment do
     #
-    nrOfExperiments=0
-    maxNrOfShotsPerExperiment=0
+    nrOfExperiments=1
+    maxNrOfShotsPerExperiment=10
     #
     #Rake::Task['db:reset'].invoke
       
     createExperiments(nrOfExperiments)
 
-    shotTypes=["experiment shot","test shot","snapshot","other"]
-
-    #createShots(maxNrOfShotsPerExperiment,shotTypes)
+    createShots(maxNrOfShotsPerExperiment)
 
     #createDataTypes
 
@@ -94,15 +76,17 @@ namespace :db do
   end
 end
 
-def createShots(maxNrOfShotsPerExperiment,shotTypes)
+def createShots(maxNrOfShotsPerExperiment)
+  shotTypes=Shottype.all.collect{|type| type.id}
   Experiment.find_each do |experiment|
     nrOfShots=1+rand(maxNrOfShotsPerExperiment)
     (1..nrOfShots).each do |s|
+      print "Create Shot..."
+      STDOUT.flush
       comment= Faker::Lorem.sentence(4)
-      shottypeName=shotTypes[rand(shotTypes.length)]
-	    shottypeId=Shottype.find_by_name(shottypeName).id
+      shottypeId=shotTypes[rand(shotTypes.length)]
       shot=experiment.shots.create!(:description => comment , :shottype_id => shottypeId)
-      puts "Created Shot #{shot.id}"
+      puts "#{shot.id} done."
     end
   end
 end
