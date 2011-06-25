@@ -27,9 +27,9 @@ describe Shot do
     shot=Shot.new(@attr)
     shot.should respond_to(:attachments)
   end
-  it "should have an instancedata association" do
+  it "should have an instancevalueset association" do
     shot=Shot.new(@attr)
-    shot.should respond_to(:instancedatas)
+    shot.should respond_to(:instancevaluesets)
   end
   it "should have a shottype association" do
     shot=Shot.new(@attr)
@@ -49,9 +49,9 @@ describe Shot do
     shot=Shot.new(@attr.merge(:experiment_id => nonExistingExperimentId))
     shot.should_not be_valid
   end
-  it "should not be destroyed if instancedatas associated" do
-    @instancedata=Factory(:instancedata)
-    @shot=@instancedata.shot
+  it "should not be destroyed if instancevalueset associated" do
+    @instancevalueset=Factory(:instancevalueset)
+    @shot=@instancevalueset.shot
     lambda do
        @shot.destroy
     end.should_not change(Shot, :count)

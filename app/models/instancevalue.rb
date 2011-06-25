@@ -17,8 +17,7 @@
 require 'csv'
 
 class Instancevalue < ActiveRecord::Base
-  attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :data_binary,
-                  :datatype_id
+  attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :datatype_id
 
   belongs_to :instancevalueset
   belongs_to :datatype
@@ -29,6 +28,7 @@ class Instancevalue < ActiveRecord::Base
   #validates_presence_of_at_least_one_field :data_numeric, :data_string, :data_binary
 
   validates :datatype, :presence => true
+  validates :instancevalueset, :presence => true
 
   # convert instancevalue of type 2dData to a text string.
   def export2dData

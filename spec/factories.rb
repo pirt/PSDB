@@ -18,7 +18,6 @@ Factory.define :shot do |shot|
 end
 Factory.define :classtype do |classtype|
   classtype.name "test classtype"
-  classtype.version 1
 end
 Factory.define :subsystem do |subsystem|
   subsystem.name "test subsystem"
@@ -31,10 +30,14 @@ end
 Factory.define :datatype do |datatype|
   datatype.name   "numeric"
 end
-Factory.define :instancedata do |instancedata|
-  instancedata.shot {Factory(:shot)}
-  instancedata.instance {Factory(:instance)}
-  instancedata.datatype {Factory(:datatype)}
-  instancedata.name "Test parameter"
-  instancedata.data_numeric 47.11
+Factory.define :instancevalue do |instancevalue|
+  instancevalue.instancevalueset {Factory(:instancevalueset)}
+  instancevalue.datatype {Factory(:datatype)}
+  instancevalue.name "Test parameter"
+  instancevalue.data_numeric 47.11
+end
+Factory.define :instancevalueset do |instancevalue|
+  instancevalue.shot {Factory(:shot)}
+  instancevalue.instance {Factory(:instance)}
+  instancevalue.version 0
 end

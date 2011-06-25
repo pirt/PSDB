@@ -39,9 +39,9 @@ describe Instance do
       corrupted_instance=Instance.new(@attr.merge(:subsystem_id => nonExistingSubsystemId))
       corrupted_instance.should_not be_valid
     end
-    it "should have many instancedatas" do
+    it "should have many instancevaluesets" do
       instance=Instance.new(@attr)
-      instance.should respond_to(:instancedatas)
+      instance.should respond_to(:instancevaluesets)
     end
   end
 end
