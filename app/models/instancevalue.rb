@@ -117,9 +117,9 @@ class Instancevalue < ActiveRecord::Base
     end
     return fileName.sub("public/images/","")
   end
-  def generate2dPlot(options = {})
-    xyData=convert2D(self.data_binary)
+  def generate2dPlot(options={})
     plotOptions={:xlabel=> "", :ylabel=> ""}
+    plotOptions=plotOptions.merge(options)
     axisDescription=self.data_string
     if (axisDescription)
       descriptionParts=axisDescription.split(",")
@@ -136,8 +136,18 @@ class Instancevalue < ActiveRecord::Base
         plotOptions[:ylabel]+=" ["+descriptionParts[3]+"]"
       end
     end
-    plotOptions=plotOptions.merge(options)
-    generatePlot(xyData, self.id,plotOptions)
+    plotData=generatePlotDataSet(plotOptions)
+    generatePlot(plotData,plotOptions)
+  end
+  def generatePlotDataSet(options={})
+    localOptions={:plotstyle=>"lines"}
+    localOption=localOptions.merge(options)
+    xyData=convert2D(self.data_binary)
+    dataSet=Gnuplot::DataSet.new(xyData) do |ds|
+      ds.with = "lines"
+      ds.notitle
+    end
+    return dataSet
   end
 # -------------------------------------------------------------------------------------------------
 private
@@ -149,20 +159,18 @@ private
     splitData=CSV(trimBlob(data),:converters=>:float).read
     return splitData #.transpose
   end
-end
-def generatePlot(xyData, fileId, options={})
+
+  def generatePlot(plotData,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions=plotOptions.merge(options)
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
-        plot.output "public/images/tmp/plot"+fileId.to_s+".#{plotOptions[:imagetype]}"
+        plot.output "public/images/tmp/plot"+self.id.to_s+".#{plotOptions[:imagetype]}"
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
-        plot.data << Gnuplot::DataSet.new( xyData ) do |ds|
-          ds.with = "lines"
-          ds.notitle
-        end
+        plot.data << plotData
       end
     end
   end
+end

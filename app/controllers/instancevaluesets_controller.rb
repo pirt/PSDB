@@ -75,6 +75,7 @@ class InstancevaluesetsController < ApplicationController
   end
 
   def show
+    @showRaw=params[:rawView]=="true" ? true : false
     @instanceValueSet=Instancevalueset.find_by_id(params[:id])
   end
 end

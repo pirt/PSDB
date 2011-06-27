@@ -1,4 +1,12 @@
 <h2>
   <%= @instanceValueSet.instance.name %>  Shot# <%= @instanceValueSet.shot_id %>
 </h2>
-<%= render 'instancevalueset_detailed', :instanceValueSet => @instanceValueSet %>
+<% if @showRaw %>
+  <%= render 'instancevalueset_detailed_unknown', :instanceValueSet => @instanceValueSet %>
+<% else %>
+  <%= render 'instancevalueset_detailed', :instanceValueSet => @instanceValueSet %>
+<% end %>
+<% if Rails.env.development? %>
+  <br />
+  <%= link_to "Raw development view", instancevalueset_path(@instanceValueSet, :rawView=>true) %>
+<% end %>
