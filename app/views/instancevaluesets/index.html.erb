@@ -1,13 +1,13 @@
 <h2>Measurement series</h2>
 <h3>Filter by date</h3>
 <%= form_tag(instancevaluesets_path, :method => "get") do %>
-  <%= label_tag(:from_date, "From:") %>
-  <%= text_field_tag(:from_date,@formData[:from_date]) %>
-  <%= label_tag(:to_date, "to:") %>
-  <%= text_field_tag(:to_date,@formData[:to_date]) %>
-  <%= hidden_field_tag(:instance_id, @formData[:instance_id]) %>
-  <%= hidden_field_tag(:plotParameter, @formData[:plotParameter]) %>
-  <%= submit_tag("Filter") %>
+ <%= label_tag(:from_date, "From:") %>
+ <%= text_field_tag(:from_date,@formData[:from_date]) %>
+ <%= label_tag(:to_date, "to:") %>
+ <%= text_field_tag(:to_date,@formData[:to_date]) %>
+ <%= hidden_field_tag(:instance_id, @formData[:instance_id]) %>
+ <%= hidden_field_tag(:plotParameter, @formData[:plotParameter]) %>
+ <%= submit_tag("Filter") %>
 <% end %>
 <br />
 <div class="span-12">

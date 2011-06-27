@@ -7,7 +7,7 @@ class InstancevaluesetsController < ApplicationController
     end
     if (params[:from_date] and !params[:from_date].blank?)
       begin
-        startDate=Date.parse(params[:from_date]).to_s+" 00:00:00"
+       startDate=Date.parse(params[:from_date]).to_s+" 00:00:00"
         selectedValueSets=selectedValueSets.where("instancevaluesets.created_at >= ?",startDate)
         params[:from_date]=Date.parse(params[:from_date]).to_s
       rescue ArgumentError
@@ -24,9 +24,14 @@ class InstancevaluesetsController < ApplicationController
       end
     end
     @instanceValueSets=selectedValueSets.order("shot_id DESC").paginate(:page => params[:page])
-    datatypeID=Datatype.find_by_name("numeric").id
-    availableParameters=selectedValueSets.joins(:instancevalues).where("datatype_id=?",datatypeID).
+    datatype=Datatype.find_by_name("numeric")
+    if (datatype) 
+      datatypeId=datatype.id
+      availableParameters=selectedValueSets.joins(:instancevalues).where("datatype_id=?",datatypeId).
         select("instancevalues.name").group("instancevalues.name")
+    else
+      availableParameters=[]
+    end
     @doPlot=false
     if (availableParameters.length!=0)
       @doPlot=true
