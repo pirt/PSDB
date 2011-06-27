@@ -124,16 +124,16 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
 
   add_primary_key_trigger "subsystems"
 
-  add_foreign_key "instances", "classtypes", :name => "sys_c00410252"
-  add_foreign_key "instances", "subsystems", :name => "sys_c00410253"
+  add_foreign_key "instances", "classtypes", :name => "sys_c00410318"
+  add_foreign_key "instances", "subsystems", :name => "sys_c00410319"
 
-  add_foreign_key "instancevalues", "datatypes", :name => "sys_c00410269"
-  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c00410268"
+  add_foreign_key "instancevalues", "datatypes", :name => "sys_c00410335"
+  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c00410334"
 
-  add_foreign_key "instancevaluesets", "instances", :name => "sys_c00410260"
-  add_foreign_key "instancevaluesets", "shots", :name => "sys_c00410259"
+  add_foreign_key "instancevaluesets", "instances", :name => "sys_c00410326"
+  add_foreign_key "instancevaluesets", "shots", :name => "sys_c00410325"
 
-  add_foreign_key "shots", "experiments", :name => "sys_c00410228"
-  add_foreign_key "shots", "shottypes", :name => "sys_c00410229"
+  add_foreign_key "shots", "experiments", :name => "sys_c00410294"
+  add_foreign_key "shots", "shottypes", :name => "sys_c00410295"
 
 end

@@ -157,7 +157,7 @@ private
   end
   def convert2D(data)
     splitData=CSV(trimBlob(data),:converters=>:float).read
-    return splitData #.transpose
+    return splitData.transpose
   end
 
   def generatePlot(plotData,options={})

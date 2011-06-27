@@ -10,7 +10,7 @@
   <% deviceStatus=instanceValueSet.getStringParameter("Device State",:upcase=>true) %>
   <div style="text-align:center;font-size:3.5em; line-height:3em">
   <% if deviceStatus=="ON/TRUE" %>
-     <%= displayParameter(instanceValueSet.instancevalues,"Value") %>
+     <%= displayParameter(instanceValueSet.instancevalues,"Energy") %>
   <% else %>
     ERROR
   <% end %>

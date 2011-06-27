@@ -1,28 +1,34 @@
 <div class="span-12">
   <h3>Image</h3>
+  <% camIsOn=instanceValueSet.getStringParameter("Camera State")=="on/true" ? true : false %>
   <% instancevalues=instanceValueSet.instancevalues %>
-  <%= displayParameter(instancevalues,"Image",{:width=>450, :height=>800}) %>
-  <% imagedata=instancevalues.find_by_name("Image") %>
-  <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>
-    <%= hidden_field_tag(:instanceValueId,imagedata.id) %>
-    <%= label_tag(:imageFormat, "Format:") %>
-    <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4], ['GIF',5], ['TXT',6]],2) %>
-    <%= select_tag(:selectedExportFormat,possibleFormat) %>
-    <%= label_tag(:withColorPalette, "Save with color palette:") %>
-    <%= check_box_tag(:withColorPalette) %><br />
-    <%= submit_tag("Export Image") %>
+  <% if camIsOn %>
+    <%= displayParameter(instancevalues,"Image",{:width=>450, :height=>800}) %>
+    <% imagedata=instancevalues.find_by_name("Image") %>
+    <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>
+      <%= hidden_field_tag(:instanceValueId,imagedata.id) %>
+      <%= label_tag(:imageFormat, "Format:") %>
+      <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4], ['GIF',5], ['TXT',6]],2) %>
+      <%= select_tag(:selectedExportFormat,possibleFormat) %>
+      <%= label_tag(:withColorPalette, "Save with color palette:") %>
+      <%= check_box_tag(:withColorPalette) %><br />
+      <%= submit_tag("Export Image") %>
+    <% end %>
+  <% else %>
+    <%= image_tag "icon_ERROR.png" %>
   <% end %>
 </div>
 <div class="span-12 last">
   <h3>Acquisition Parameters</h3>
   <ul>
+    <li>Camera State: <%= displayParameter(instancevalues,"Camera State") %></li>
     <li>Camera Mode: <%= displayParameter(instancevalues,"Current Mode") %></li>
     <li>Brightness: <%= displayParameter(instancevalues,"Brightness",{:precision=>0}) %></li>
     <li>Shutter: <%= displayParameter(instancevalues,"Shutter",{:precision=>0}) %></li>
     <li>Gain: <%= displayParameter(instancevalues,"Gain",{:precision=>0}) %></li>
     <li>Trigger Mode: <%= displayParameter(instancevalues,"Trigger Mode",{:precision=>0}) %></li>
     <li>Trigger Timeout: <%= displayParameter(instancevalues,"Timeout",{:precision=>0}) %></li>
-    <li>Trigger Polarity: <%= displayParameter(instancevalues,"Tigger Polarity") %></li>
+    <li>Trigger Polarity: <%= displayParameter(instancevalues,"Trigger Polarity") %></li>
     <li>Serial Number: <%= displayParameter(instancevalues,"Serial Number",{:precision=>0}) %></li>
   </ul>
 </div>
