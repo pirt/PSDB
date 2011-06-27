@@ -48,7 +48,10 @@ class Instancevalueset < ActiveRecord::Base
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
         plotParameterNames.each do |plotParameterName|
-          plot.data << getPlotDataSet(plotParameterName)
+	  plotData=getPlotDataSet(plotParameterName)
+          if !plotData.nil?
+            plot.data << plotData
+          end
         end
       end
     end
@@ -58,7 +61,7 @@ class Instancevalueset < ActiveRecord::Base
   def getPlotDataSet(parameterName,options={})
     instanceValue=self.instancevalues.find_by_name(parameterName)
     if (instanceValue.nil?)
-      return ""
+      return nil
     else
       plotDataSet=instanceValue.generatePlotDataSet()
       return plotDataSet
