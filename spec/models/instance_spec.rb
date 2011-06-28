@@ -44,4 +44,39 @@ describe Instance do
       instance.should respond_to(:instancevaluesets)
     end
   end
+  describe "instance method" do
+    it "should have 'viewExists?'"
+    describe "'interfaceVersionInfo'" do
+      it "should return empty array for 'naked' instance" do
+        instance=Instance.new(@attr)
+        (instance.interfaceVersionInfo.length==0).should be_true
+      end
+      it "should return version info for refering instancevaluesets" do
+        instance=Instance.new(@attr)
+        experiment=Factory(:experiment)
+        shotType=Factory(:shottype)
+        shot1=Factory(:shot,{:experiment=>experiment,:shottype=>shotType})
+        shot2=Factory(:shot,{:experiment=>experiment,:shottype=>shotType})
+        Factory(:instancevalueset,{:instance=>instance, :shot=>shot1, :version=>1})
+        Factory(:instancevalueset,{:instance=>instance, :shot=>shot2, :version=>2})
+        (instance.interfaceVersionInfo.length==2).should be_true
+        (instance.interfaceVersionInfo[0][:version]==1).should be_true
+        (instance.interfaceVersionInfo[0][:shot_id]==shot1.id).should be_true
+        (instance.interfaceVersionInfo[0][:shotDate]==shot1.created_at).should be_true
+        (instance.interfaceVersionInfo[1][:version]==2).should be_true
+        (instance.interfaceVersionInfo[1][:shot_id]==shot2.id).should be_true
+        (instance.interfaceVersionInfo[1][:shotDate]==shot2.created_at).should be_true
+      end
+      it "should return only one version item for refering instancevaluesetswith same API version" do
+        instance=Instance.new(@attr)
+        experiment=Factory(:experiment)
+        shotType=Factory(:shottype)
+        shot1=Factory(:shot,{:experiment=>experiment,:shottype=>shotType})
+        shot2=Factory(:shot,{:experiment=>experiment,:shottype=>shotType})
+        Factory(:instancevalueset,{:instance=>instance, :shot=>shot1, :version=>4})
+        Factory(:instancevalueset,{:instance=>instance, :shot=>shot2, :version=>4})
+        (instance.interfaceVersionInfo.length==1).should be_true
+      end
+    end
+  end
 end
