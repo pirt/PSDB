@@ -5,6 +5,7 @@ class CreateSubsystems < ActiveRecord::Migration
       t.string :name, :null => false, :limit => 255, :comment => "name of the subsystem"
       t.timestamps :null => false
     end
+    add_index :subsystems, :name, :unique => true
   end
 
   def self.down
