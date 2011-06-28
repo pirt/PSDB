@@ -1,21 +1,29 @@
 <div class="span-24 last">
-  <div class="span-12"> 
-    <h3>PPMA 1</h3>
+  <div class="span-12">
     <% fileName=instanceValueSet.generatePlot(["PPMA PU 1 1","PPMA PU 1 2","PPMA PU 1 3",
                                            "PPMA PU 1 4","PPMA PU 1 5","PPMA PU 1 6",
                                            "PPMA PU 1 7","PPMA PU 1 8","PPMA PU 1 9",
                                            "PPMA PU 1 10","PPMA PU 1 Refl","PPMA PU 1 Ground"],
                                             1,{:width=>320, :height=>200}) %>
-    <%= image_tag fileName %>
+    <h3>PPMA 1</h3>
+    <% if fileName.blank? %>
+      no data
+    <% else %>
+      <%= image_tag fileName %>
+    <% end %>
   </div>
   <div class="span-12 last">
-    <h3>PPMA 2</h3>
     <% fileName=instanceValueSet.generatePlot(["PPMA PU 2 1","PPMA PU 2 2","PPMA PU 2 3",
                                            "PPMA PU 2 4","PPMA PU 2 5","PPMA PU 2 6",
                                            "PPMA PU 2 7","PPMA PU 2 8","PPMA PU 2 9",
                                            "PPMA PU 2 10","PPMA PU 2 Refl","PPMA PU 2 Ground"],
                                             2,{:width=>320, :height=>200}) %>
-    <%= image_tag fileName %>
+    <h3>PPMA 2</h3>
+    <% if fileName.blank? %>
+      no data
+    <% else %>
+      <%= image_tag fileName %>
+    <% end %>
   </div>
 </div>
 <div class="span-24 last">
@@ -26,7 +34,11 @@
                                            "PPMA PU 3 7","PPMA PU 3 8","PPMA PU 3 9",
                                            "PPMA PU 3 10","PPMA PU 3 Refl","PPMA PU 3 Ground"],
                                             3,{:width=>320, :height=>200}) %>
-    <%= image_tag fileName %>
+    <% if fileName.blank? %>
+      no data
+    <% else %>
+      <%= image_tag fileName %>
+    <% end %>
   </div>
   <div class="span-12 last">
     <h3>PPMA 4</h3>
@@ -35,7 +47,11 @@
                                            "PPMA PU 4 7","PPMA PU 4 8","PPMA PU 4 9",
                                            "PPMA PU 4 10","PPMA PU 4 Refl","PPMA PU 4 Ground"],
                                             4,{:width=>320, :height=>200}) %>
-    <%= image_tag fileName %>
+    <% if fileName.blank? %>
+      no data
+    <% else %>
+      <%= image_tag fileName %>
+    <% end %>
   </div>
 </div>
 <div class="span-24 last">
@@ -46,14 +62,22 @@
                                            "PPMA PU 5 7","PPMA PU 5 8","PPMA PU 5 9",
                                            "PPMA PU 5 10","PPMA PU 5 Refl","PPMA PU 5 Ground"],
                                             5,{:width=>320, :height=>200}) %>
-    <%= image_tag fileName %>
+    <% if fileName.blank? %>
+      no data
+    <% else %>
+      <%= image_tag fileName %>
+    <% end %>
   </div>
   <div class="span-12 last">
     <h3>FR</h3>
     <% fileName=instanceValueSet.generatePlot(["FR 1","FR 2","FR 3",
                                            "FR 4","FR 5","FR Ground"],
                                             6,{:width=>320, :height=>200}) %>
-    <%= image_tag fileName %>
+    <% if fileName.blank? %>
+      no data
+    <% else %>
+      <%= image_tag fileName %>
+    <% end %>
   </div>
 </div>
 <div class="span-24 last">
@@ -65,6 +89,10 @@
                                          "PPPA PU 45 Ret","PPPA PU 45 Dummy 1",
                                          "PPPA PU 45 Dummy 2"],
                                           7,{:width=>600, :height=>400}) %>
-  <%= image_tag fileName %>
+    <% if fileName.blank? %>
+      no data
+    <% else %>
+      <%= image_tag fileName %>
+    <% end %>
   </div>
 </div>
