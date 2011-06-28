@@ -53,9 +53,10 @@ describe Attachment do
     no_longFiletype_attachment = Attachment.new(@attr.merge(:filetype => longFiletype))
     no_longFiletype_attachment.should_not be_valid
   end
-  it "should reject content larger than 100 kilobytes" do
-    largeContent="a"*(100.kilobytes+1)
-    no_largeContent_attachment = Attachment.new(@attr.merge(:content => largeContent))
-    no_largeContent_attachment.should_not be_valid
+  it "should reject content larger than model limit" do
+    maxContentSize=Attachment.maxContentSize
+    largeContent="a"*(maxContentSize+1)
+    largeContent_attachment = Attachment.new(@attr.merge(:content => largeContent))
+    largeContent_attachment.should_not be_valid
   end
 end
