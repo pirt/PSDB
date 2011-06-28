@@ -25,10 +25,15 @@ class Instancevalue < ActiveRecord::Base
   validates :name, :presence => true,
                    :length => { :maximum => 255 }
 
-  #validates_presence_of_at_least_one_field :data_numeric, :data_string, :data_binary
-
   validates :datatype, :presence => true
   validates :instancevalueset, :presence => true
+
+  validate :presence_of_at_least_one_field
+
+  def presence_of_at_least_one_field
+    errors.add(:data_fields, "at least one data field must not be empty") if
+      data_numeric.nil? and data_binary.nil? and data_string.nil?
+  end
 
   # convert instancevalue of type 2dData to a text string.
   def export2dData
@@ -77,7 +82,7 @@ class Instancevalue < ActiveRecord::Base
     case localOptions[:exportFormat]
       when '1'
         exportFormat='BMP'
-     when '2'
+      when '2'
         exportFormat='TIF'
       when '3'
         exportFormat='JPG'
