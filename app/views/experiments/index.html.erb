@@ -26,8 +26,8 @@
                else
               @confirmation="Are You sure?"
               end %>
-            <%= link_to "Delete", experiment, :method => :delete, :confirm => @confirmation,
-                                  :title => "Delete #{experiment.name}" %>
+              <%= link_to_if(experiment.shots.empty?,"Delete",
+                             experiment,{:method => :delete, :confirm=> @confirmation,:title => "Delete #{experiment.name}"}) %>
         </td>
       </tr>
     <% end %>
