@@ -5,6 +5,7 @@ class CreateShottypes < ActiveRecord::Migration
       t.string :name, :null => false, :limit => 30, :comment => "Name of a shot type"
       t.timestamps :null => false
     end
+    add_index :shottypes, :name, :unique => true
   end
 
   def self.down
