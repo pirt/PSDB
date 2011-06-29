@@ -60,4 +60,23 @@ describe Instancevalue do
       corrupted_instancedata.should_not be_valid
     end
   end
+  describe "instance method" do
+    describe "'export2dData'" do
+      it "should return 'nil' if instancevalue has wrong data type"
+      it "should return return a correct CSV text string containing the values if data type is '2dData'"
+      it "should return an empty string if a 2dData instancevalue has no data" 
+    end
+    describe "'exportImage'" do
+      it "should return 'nil' if instancevalue has wrong data type"
+      it "should return a string representing the bytestream of the image for an image instancevalue"
+    end
+    describe "'generateImage'" do
+      it "should generate an Image for an image instancevalue"
+    end
+    describe "'generate2dPlot'" do
+      it "should generate an plot image for a 2dData instancevalue"
+    end
+    describe "'generatePlotDataSet'" do
+    end
+  end
 end
