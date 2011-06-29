@@ -49,7 +49,7 @@ describe Instance do
     describe "'interfaceVersionInfo'" do
       it "should return empty array for 'naked' instance" do
         instance=Instance.new(@attr)
-        (instance.interfaceVersionInfo.length==0).should be_true
+        instance.interfaceVersionInfo.length.should eq(0)
       end
       it "should return version info for refering instancevaluesets" do
         instance=Instance.new(@attr)
@@ -59,15 +59,15 @@ describe Instance do
         shot2=Factory(:shot,{:experiment=>experiment,:shottype=>shotType})
         Factory(:instancevalueset,{:instance=>instance, :shot=>shot1, :version=>1})
         Factory(:instancevalueset,{:instance=>instance, :shot=>shot2, :version=>2})
-        (instance.interfaceVersionInfo.length==2).should be_true
-        (instance.interfaceVersionInfo[0][:version]==1).should be_true
-        (instance.interfaceVersionInfo[0][:shot_id]==shot1.id).should be_true
-        (instance.interfaceVersionInfo[0][:shotDate]==shot1.created_at).should be_true
-        (instance.interfaceVersionInfo[1][:version]==2).should be_true
-        (instance.interfaceVersionInfo[1][:shot_id]==shot2.id).should be_true
-        (instance.interfaceVersionInfo[1][:shotDate]==shot2.created_at).should be_true
+        instance.interfaceVersionInfo.length.should eq(2)
+        instance.interfaceVersionInfo[0][:version].should eq(1)
+        instance.interfaceVersionInfo[0][:shot_id].should eq(shot1.id)
+        instance.interfaceVersionInfo[0][:shotDate].should eq(Shot.find(shot1.id).created_at)
+        instance.interfaceVersionInfo[1][:version].should eq(2)
+        instance.interfaceVersionInfo[1][:shot_id].should eq(shot2.id)
+        instance.interfaceVersionInfo[1][:shotDate].should eq(Shot.find(shot2.id).created_at)
       end
-      it "should return only one version item for refering instancevaluesetswith same API version" do
+      it "should return only one version item for refering instancevaluesets with same API version" do
         instance=Instance.new(@attr)
         experiment=Factory(:experiment)
         shotType=Factory(:shottype)
@@ -75,7 +75,7 @@ describe Instance do
         shot2=Factory(:shot,{:experiment=>experiment,:shottype=>shotType})
         Factory(:instancevalueset,{:instance=>instance, :shot=>shot1, :version=>4})
         Factory(:instancevalueset,{:instance=>instance, :shot=>shot2, :version=>4})
-        (instance.interfaceVersionInfo.length==1).should be_true
+        instance.interfaceVersionInfo.length.should eq(1)
       end
     end
   end
