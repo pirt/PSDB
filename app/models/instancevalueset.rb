@@ -27,7 +27,7 @@ class Instancevalueset < ActiveRecord::Base
   def getStringParameter(parameterName,options={})
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
-      return ""
+      return nil
     else
       if options[:upcase]==true
         return parameterData.data_string.upcase

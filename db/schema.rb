@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "updated_at",                :null => false
   end
 
+  add_index "classtypes", ["name"], :name => "index_classtypes_on_name", :unique => true
+
   add_primary_key_trigger "classtypes"
 
   create_table "datatypes", :force => true do |t|
@@ -39,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "datatypes", ["name"], :name => "index_datatypes_on_name", :unique => true
 
   add_primary_key_trigger "datatypes"
 
@@ -63,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
   end
 
   add_index "instances", ["classtype_id"], :name => "i_instances_classtype_id"
+  add_index "instances", ["name"], :name => "index_instances_on_name", :unique => true
   add_index "instances", ["subsystem_id"], :name => "i_instances_subsystem_id"
 
   add_primary_key_trigger "instances"
@@ -114,6 +119,8 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "updated_at",               :null => false
   end
 
+  add_index "shottypes", ["name"], :name => "index_shottypes_on_name", :unique => true
+
   add_primary_key_trigger "shottypes"
 
   create_table "subsystems", :force => true do |t|
@@ -122,18 +129,20 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "subsystems", ["name"], :name => "index_subsystems_on_name", :unique => true
+
   add_primary_key_trigger "subsystems"
 
-  add_foreign_key "instances", "classtypes", :name => "sys_c00410318"
-  add_foreign_key "instances", "subsystems", :name => "sys_c00410319"
+  add_foreign_key "instances", "classtypes", :name => "sys_c00411046"
+  add_foreign_key "instances", "subsystems", :name => "sys_c00411047"
 
-  add_foreign_key "instancevalues", "datatypes", :name => "sys_c00410335"
-  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c00410334"
+  add_foreign_key "instancevalues", "datatypes", :name => "sys_c00411063"
+  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c00411062"
 
-  add_foreign_key "instancevaluesets", "instances", :name => "sys_c00410326"
-  add_foreign_key "instancevaluesets", "shots", :name => "sys_c00410325"
+  add_foreign_key "instancevaluesets", "instances", :name => "sys_c00411054"
+  add_foreign_key "instancevaluesets", "shots", :name => "sys_c00411053"
 
-  add_foreign_key "shots", "experiments", :name => "sys_c00410294"
-  add_foreign_key "shots", "shottypes", :name => "sys_c00410295"
+  add_foreign_key "shots", "experiments", :name => "sys_c00411022"
+  add_foreign_key "shots", "shottypes", :name => "sys_c00411023"
 
 end

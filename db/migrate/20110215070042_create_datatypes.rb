@@ -5,7 +5,7 @@ class CreateDatatypes < ActiveRecord::Migration
       t.string :name, :null => false, :limit => 30, :comment => "Name of the data type"
       t.timestamps :null => false
     end
-    add_index :experiments, :name, :unique => true
+    add_index :datatypes, :name, :unique => true
   end
 
   def self.down
