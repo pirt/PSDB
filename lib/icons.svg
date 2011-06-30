@@ -68,7 +68,7 @@
       </feSpecularLighting>
       <feComposite
          id="feComposite3167"
-         in2="result91"
+         in2="result1"
          k3="1"
          k2="1"
          operator="arithmetic"
@@ -90,8 +90,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="370.60313"
-     inkscape:cy="920.49467"
+     inkscape:cx="572.80576"
+     inkscape:cy="581.34681"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -279,5 +279,60 @@
          id="tspan3792-0"
          x="406.64062"
          y="102.36218">OFF</tspan></text>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3018"
+       transform="translate(0,420)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_RISING.png"
+       inkscape:export-xdpi="19.780224"
+       inkscape:export-ydpi="19.780224" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3020"
+       transform="translate(250,420)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_FALLING.png"
+       inkscape:export-xdpi="19.780224"
+       inkscape:export-ydpi="19.780224" />
+    <g
+       id="g4316"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_RISING.png"
+       inkscape:export-xdpi="19.780224"
+       inkscape:export-ydpi="19.780224">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3790"
+         d="m 80,522.36218 80,0 0,-50 80,0"
+         style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4254"
+         d="m 150,502.36218 10,-10 10,10"
+         style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       transform="matrix(1,0,0,-1,250,994.72436)"
+       id="g4316-6"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_FALLING.png"
+       inkscape:export-xdpi="19.780224"
+       inkscape:export-ydpi="19.780224">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3790-3"
+         d="m 80,522.36218 80,0 0,-50 80,0"
+         style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4254-8"
+         d="m 150,502.36218 10,-10 10,10"
+         style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
   </g>
 </svg>

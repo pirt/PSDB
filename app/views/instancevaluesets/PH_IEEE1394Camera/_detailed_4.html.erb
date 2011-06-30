@@ -19,6 +19,13 @@
   <% end %>
 </div>
 <div class="span-12 last">
+  <% polarity=instancevalues.find_by_name("Trigger Polarity").data_numeric>0 ? true : false %>
+  <% if polarity
+       polarityIcon="icon_RISING.png"
+     else
+       polarityIcon="icon_FALLING.png"
+     end
+  %>
   <h3>Acquisition Parameters</h3>
   <ul>
     <li>Camera State: <%= displayParameter(instancevalues,"Camera State") %></li>
@@ -28,7 +35,7 @@
     <li>Gain: <%= displayParameter(instancevalues,"Gain",{:precision=>0}) %></li>
     <li>Trigger Mode: <%= displayParameter(instancevalues,"Trigger Mode",{:precision=>0}) %></li>
     <li>Trigger Timeout: <%= displayParameter(instancevalues,"Timeout",{:precision=>0}) %></li>
-    <li>Trigger Polarity: <%= displayParameter(instancevalues,"Trigger Polarity") %></li>
+    <li>Trigger Polarity: <%= image_tag polarityIcon, {:style=>"vertical-align:middle"} %></li>
     <li>Serial Number: <%= displayParameter(instancevalues,"Serial Number",{:precision=>0}) %></li>
   </ul>
 </div>
