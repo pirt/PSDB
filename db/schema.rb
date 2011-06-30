@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
   end
 
   add_index "instancevalues", ["datatype_id"], :name => "i_instancevalues_datatype_id"
+  add_index "instancevalues", ["instancevalueset_id"], :name => "valueset_index"
 
   add_primary_key_trigger "instancevalues"
 
@@ -133,16 +134,16 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
 
   add_primary_key_trigger "subsystems"
 
-  add_foreign_key "instances", "classtypes", :name => "sys_c00411046"
-  add_foreign_key "instances", "subsystems", :name => "sys_c00411047"
+  add_foreign_key "instances", "classtypes", :name => "sys_c00411245"
+  add_foreign_key "instances", "subsystems", :name => "sys_c00411246"
 
-  add_foreign_key "instancevalues", "datatypes", :name => "sys_c00411063"
-  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c00411062"
+  add_foreign_key "instancevalues", "datatypes", :name => "sys_c00411262"
+  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c00411261"
 
-  add_foreign_key "instancevaluesets", "instances", :name => "sys_c00411054"
-  add_foreign_key "instancevaluesets", "shots", :name => "sys_c00411053"
+  add_foreign_key "instancevaluesets", "instances", :name => "sys_c00411253"
+  add_foreign_key "instancevaluesets", "shots", :name => "sys_c00411252"
 
-  add_foreign_key "shots", "experiments", :name => "sys_c00411022"
-  add_foreign_key "shots", "shottypes", :name => "sys_c00411023"
+  add_foreign_key "shots", "experiments", :name => "sys_c00411221"
+  add_foreign_key "shots", "shottypes", :name => "sys_c00411222"
 
 end
