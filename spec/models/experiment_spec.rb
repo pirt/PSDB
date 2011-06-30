@@ -14,9 +14,6 @@ describe Experiment do
     no_name_experiment = Experiment.new(@attr.merge(:name => ""))
     no_name_experiment.should_not be_valid
   end
-
-  it "should have a unique index on name column"
- 
   it "should have a unique (case insensitive) name" do
     Experiment.create!(@attr)
     experiment_with_duplicate_name = Experiment.new(@attr.merge(:name => "p0038", :description => "Another description"))
@@ -39,9 +36,11 @@ describe Experiment do
    long_description_experiment = Experiment.new(@attr.merge(:name => long_description))
    long_description_experiment.should_not be_valid
   end
-
+  it "should have a boolean column named 'active' which is true by default" do
+    experiment=Experiment.new(@attr)
+    experiment.active.should eq(true)
+  end
   describe "associations" do
-
     before(:each) do
       @experiment = Experiment.create(@attr)
     end
@@ -60,6 +59,46 @@ describe Experiment do
       lambda do
          @experiment.destroy
       end.should_not change(Experiment, :count)
+    end
+  end
+  describe "method" do
+    describe "'getBeamtimes'" do
+      it "should correctly work for experiments with only one shot" do
+        shot=Factory(:shot)
+        experiment=shot.experiment
+        beamtimes=experiment.getBeamtimes
+        beamtimes.length.should eq(1)
+        beamtimes[0][:firstId].should eq(shot.id)
+        beamtimes[0][:lastId].should eq(shot.id)
+      end
+      it "should correctly work for experiments with two shots within 5 days" do
+        shot1=Factory(:shot)
+        experiment=shot1.experiment
+        shottype=shot1.shottype
+        date1=shot1.created_at
+        shot2=Factory(:shot,{:experiment_id=>experiment.id, :shottype_id=>shottype.id, :created_at=>date1+4.days})
+        beamtimes=experiment.getBeamtimes
+        beamtimes.length.should eq(1)
+        beamtimes[0][:firstId].should eq(shot1.id)
+        beamtimes[0][:lastId].should eq(shot2.id)
+      end
+      it "should correctly work for experiments with two shots more than 5 days apart" do
+        shot1=Factory(:shot)
+        experiment=shot1.experiment
+        shottype=shot1.shottype
+        date1=shot1.created_at
+        shot2=Factory(:shot,{:experiment_id=>experiment.id, :shottype_id=>shottype.id, :created_at=>date1+6.days})
+        beamtimes=experiment.getBeamtimes
+        beamtimes.length.should eq(2)
+        beamtimes[0][:firstId].should eq(shot1.id)
+        beamtimes[0][:lastId].should eq(shot1.id)
+        beamtimes[1][:firstId].should eq(shot2.id)
+        beamtimes[1][:lastId].should eq(shot2.id)
+      end
+      it "should return empty array if no shots are connected to an experiments" do
+        experiment=Experiment.create(@attr)
+        experiment.getBeamtimes.length.should eq(0)
+      end
     end
   end
 end

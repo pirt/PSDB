@@ -37,7 +37,10 @@ class Experiment < ActiveRecord::Base
       return true
     end
   end
-  def getBeamtimes
+  def getBeamtimes(minimumTimeBetweenBeamTimes=5.days)
+    if self.shots.empty? 
+      return []
+    end
     queryString="
         select nextTable.created_at as t1,
                currentTable.created_at as t2,
@@ -48,20 +51,18 @@ class Experiment < ActiveRecord::Base
        	on nextTable.id=(select min(id) from
          	(select * from shots where experiment_id=%d) where id>currentTable.id)" % [self.id,self.id,self.id]
     durations=Shot.find_by_sql(queryString)
-    minimumTimeBetweenBeamTimes=5.days
-    if self.shots.exists?
-      beamtimes=[{:firstId => self.shots.first.id}]
-      if (!durations.empty?)
-        (0..(durations.length-1)).each do |i|
-          difference=durations[i].t1-durations[i].t2
-          if (difference>minimumTimeBetweenBeamTimes and i<durations.length-1)
-            beamtimes[beamtimes.length-1]=beamtimes.last.merge(:lastId => durations[i].currentid)
-            beamtimes << {:firstId => durations[i].nextid}
-          end
-        end
+    beamtimes=[]
+    beamtime={:firstId=>self.shots.first.id}
+    durations.each do |d|
+      difference=d.t1-d.t2
+      if(difference>minimumTimeBetweenBeamTimes)
+        beamtime[:lastId]=d.currentid
+        beamtimes << beamtime
+        beamtime={:firstId=>d.nextid}
       end
-      beamtimes[beamtimes.length-1]=beamtimes.last.merge(:lastId => self.shots.last.id)
-      return beamtimes
     end
+    beamtime[:lastId]=self.shots.last.id
+    beamtimes << beamtime
+    return beamtimes
   end
 end
