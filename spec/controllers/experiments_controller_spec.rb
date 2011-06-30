@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe ExperimentsController do
   render_views
+  
+  # login to http basic auth
+  include AuthHelper
+  before(:each) do
+    http_login
+  end
 
   describe "GET 'index'" do
     it "should be successful" do

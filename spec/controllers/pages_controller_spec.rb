@@ -3,6 +3,12 @@ require 'spec_helper'
 describe PagesController do
   render_views
 
+  # login to http basic auth
+  include AuthHelper
+  before(:each) do
+    http_login
+  end
+
   describe "GET 'contact'" do
     it "should be successful" do
       get 'contact'

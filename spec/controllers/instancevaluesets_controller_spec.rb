@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe InstancedatasetsController do
+describe InstancevaluesetsController do
 
   describe "GET 'show'" do
     it "should be successful" do

@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe InstancesController do
 
+  # login to http basic auth
+  include AuthHelper
+  before(:each) do
+    http_login
+  end
+
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'

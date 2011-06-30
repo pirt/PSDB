@@ -21,6 +21,12 @@ end
 describe AttachmentsController do
   render_views
 
+  # login to http basic auth
+  include AuthHelper
+  before(:each) do
+    http_login
+  end
+
   before(:all) do
     @experiment = Factory(:experiment)
     @nonExistingId=@experiment.id+1
