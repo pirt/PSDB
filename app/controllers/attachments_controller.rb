@@ -14,7 +14,7 @@ class AttachmentsController < ApplicationController
       elsif params[:shot_id]
         @parent=Shot.find_by_id(params[:shot_id])
       end
-      @attachment=Attachment.new
+      @attachment=@parent.attachments.new
       @pageTitle="Add attachment"
   end
   def create
@@ -23,15 +23,15 @@ class AttachmentsController < ApplicationController
     elsif params[:shot_id]
        @parent=Shot.find_by_id(params[:shot_id])
     else
-      flash[:error]="No experiment / shot selected."
+      flash[:error]="No experiment or shot selected."
       redirect_to :experiments
     end
-    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     if !@parent
-      flash[:error]="Experiment / shot not found"
+      flash[:error]="Experiment or shot not found"
       redirect_to experiments_path
       return
     end
+    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     if params[:cancel]
       flash[:info]="Attachment creation cancelled"
       redirect_to parentPath

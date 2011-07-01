@@ -2,7 +2,11 @@ class StatisticsController < ApplicationController
   def overview
     nrOfExps=Experiment.count
     nrOfExpShots=Shot.where(:shottype_id=>1).count
-    @avgShotsPerExperiment=nrOfExpShots/nrOfExps
+    if (nrOfExpShots>0)
+      @avgShotsPerExperiment=nrOfExpShots/nrOfExps
+    else
+      @avgShotsPerExperiment=0
+    end
     @nrOfDaysPerYear=(Date.today-(Date.today-1.year)).to_i
     queryString="Select to_char(created_at,'DDD') FROM shots
                                                   WHERE shottype_id=1
@@ -16,7 +20,7 @@ class StatisticsController < ApplicationController
                         from   DBA_FREE_SPACE f , DBA_DATA_FILES d
                         where  f.tablespace_name(+) = d.tablespace_name
                           and    f.file_id(+) = d.file_id
-                          and    d.tablespace_name = 'PHELIX'
+                          and    d.tablespace_name = 'PHELIX_TEST'
                         group by d.file_name"
     @statistics=Shot.find_by_sql(queryString).last
     @pageTitle="Statistics overview"

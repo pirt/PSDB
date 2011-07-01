@@ -126,7 +126,7 @@ describe AttachmentsController do
     describe "for non-existing experiment" do
       it "should have an error flash" do
         post :create, :experiment_id => @nonExistingId
-        flash[:error].should =~ /Experiment not found/i
+        flash[:error].should =~ /Experiment or shot not found/i
       end
       it "should redirect to experiments index" do
         post :create, :experiment_id => @nonExistingId
@@ -200,7 +200,7 @@ describe AttachmentsController do
       end
       describe "success" do
         before(:each) do
-          @attr = {:content => Mockfile.new("test2.png","fghij"), :description => ""}
+          @attr = {:content => Mockfile.new("test2.png","fghij"), :description => "abcd"}
         end
         it "should update an attachment" do
           put :update, :experiment_id => @experiment, :id => @attachment, :attachment => @attr
@@ -210,7 +210,7 @@ describe AttachmentsController do
           @attachment.filetype.should == mockfile.content_type
           @attachment.content.should == mockfile.read
           @attachment.description.should  == @attr[:description]
-          @attachment.attachable_id == @experiment.id
+          @attachment.attachable_id.should == @experiment.id
         end
         it "should have a success flash" do
           put :update, :experiment_id => @experiment, :id => @attachment, :attachment => @attr

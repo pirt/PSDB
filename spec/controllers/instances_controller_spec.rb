@@ -6,6 +6,7 @@ describe InstancesController do
   include AuthHelper
   before(:each) do
     http_login
+    @instance=Factory(:instance)
   end
 
   describe "GET 'index'" do
@@ -17,7 +18,7 @@ describe InstancesController do
 
   describe "GET 'show'" do
     it "should be successful" do
-      get 'show'
+      get 'show', :id => @instance
       response.should be_success
     end
   end

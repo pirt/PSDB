@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe "Experiment" do
+  before(:each) do
+    basic_auth("admin", "123123")
+  end
   describe "Add new" do
     describe "failure" do
       it "should not create a new experiment" do
