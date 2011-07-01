@@ -9,17 +9,12 @@ describe PagesController do
     http_login
   end
 
-  describe "GET 'contact'" do
+  describe "GET 'start'" do
     it "should be successful" do
-      get 'contact'
+      get 'start'
       response.should be_success
     end
-    it "should have the right title" do
-      get 'contact'
-      response.should have_selector("title", :content => "Contact")
-    end
   end
-
   describe "GET 'about'" do
     it "should be successful" do
       get 'about'
@@ -28,6 +23,16 @@ describe PagesController do
     it "should have the right title" do
       get 'about'
       response.should have_selector("title", :content => "About")
+    end
+  end
+  describe "GET 'changelog'" do
+    it "should be successful" do
+      get 'changelog'
+      response.should be_success
+    end
+    it "should have the right title" do
+      get 'changelog'
+      response.should have_selector("title", :content => "Changelog")
     end
   end
 end

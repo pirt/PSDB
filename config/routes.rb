@@ -1,26 +1,23 @@
 PSDB::Application.routes.draw do
+  resources :experiments do
+    resources :attachments
+  end
+  resources :shots do
+    resources :attachments
+  end
 
-  get "statistics/overview"
-
-  get "statistics/calendar"
-
+  resources :instances
   resources :instancevaluesets
 
   get "instancevalues/exportImage"
   get "instancevalues/exportPlot"
 
-  resources :instances
-
-  resources :experiments do
-    resources :attachments
-  end
-
-  resources :shots do
-    resources :attachments
-  end
+  get "statistics/overview"
+  get "statistics/calendar"
 
   get "pages/start"
   get "pages/about"
+  get "pages/changelog"
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
