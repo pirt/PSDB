@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ShotsHelper. For example:
-#
-# describe ShotsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe ShotsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "'displayShotInstance'" do
+    it "should render a short view of an instance for a given shot" do
+      Factory(:instancevalueset)
+      helper.displayShotInstance(Instancevalueset,Instancevalueset.last.instance.name).should eq("no view defined")
+    end
+    it "should return (error) message 'unknown' if instance name was not found" do
+      Factory(:instancevalueset)
+      helper.displayShotInstance(Instancevalueset,"wronginstancename").should eq("unknown")
+    end
+    it "should render '?' if there is no valueset of given instance for this shot."
+  end
 end
