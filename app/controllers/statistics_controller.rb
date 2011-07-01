@@ -20,7 +20,7 @@ class StatisticsController < ApplicationController
                         from   DBA_FREE_SPACE f , DBA_DATA_FILES d
                         where  f.tablespace_name(+) = d.tablespace_name
                           and    f.file_id(+) = d.file_id
-                          and    d.tablespace_name = 'PHELIX_TEST'
+                          and    d.tablespace_name = 'PHELIX'
                         group by d.file_name"
     @statistics=Shot.find_by_sql(queryString).last
     @pageTitle="Statistics overview"
