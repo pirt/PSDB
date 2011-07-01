@@ -15,6 +15,8 @@
 #
 
 require 'csv'
+require "gnuplot"
+require "RMagick"
 
 class Instancevalue < ActiveRecord::Base
   attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :datatype_id
@@ -37,6 +39,9 @@ class Instancevalue < ActiveRecord::Base
 
   # convert instancevalue of type 2dData to a text string.
   def export2dData
+    if self.datatype.name!="2dData"
+      return nil
+    end
     axisDescription=self.data_string
     txtData=""
     if (axisDescription)
@@ -56,15 +61,20 @@ class Instancevalue < ActiveRecord::Base
       end
       txtData+="\n"
     end
-
     plotBlob=trimBlob(self.data_binary)
-    splitData=CSV(plotBlob).read
-    nrOfData=splitData.length
-    (0..nrOfData-1).each do |dataIndex|
-      txtData+=splitData[dataIndex][0]
-      txtData+="\t"
-      txtData+=splitData[dataIndex][1]
-      txtData+="\n"
+    if !plotBlob.nil?
+      splitData=CSV(plotBlob).read
+      nrOfData=splitData.length
+      (0..nrOfData-1).each do |dataIndex|
+        if !splitData[dataIndex][0].nil?
+          txtData+=splitData[dataIndex][0]
+        end
+        txtData+="\t"
+        if !splitData[dataIndex][1].nil?
+          txtData+=splitData[dataIndex][1]
+        end
+        txtData+="\n"
+      end
     end
     instanceName=self.instancevalueset.instance.name
     shotNr=self.instancevalueset.shot_id
@@ -74,11 +84,13 @@ class Instancevalue < ActiveRecord::Base
 
   # convert instancevalue of type "image" to an image of a given file format.
   def exportImage(options={})
+    if self.datatype.name!="image"
+      return nil
+    end
     localOptions={:exportFormat=>"2",:withColorPalette=>false}
     localOptions=localOptions.merge(options)
     imageBlob=trimBlob(self.data_binary)
-    myImage=Magick::Image.from_blob(imageBlob)
-    myImage=myImage[0]
+    myImage=Magick::Image.from_blob(imageBlob)[0]
     case localOptions[:exportFormat]
       when '1'
         exportFormat='BMP'
@@ -158,7 +170,11 @@ class Instancevalue < ActiveRecord::Base
 private
   # remove the first 4 bytes from a BLOB
   def trimBlob(blob)
-    blob[4..-1]
+    if !blob.nil?
+      return blob[4..-1]
+    else
+      return nil
+    end
   end
   def convert2D(data)
     splitData=CSV(trimBlob(data),:converters=>:float).read

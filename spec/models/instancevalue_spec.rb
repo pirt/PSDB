@@ -15,12 +15,12 @@ describe Instancevalue do
   end
   it "should require a name" do
     no_name_instancedata=Instancevalue.new(@attr.merge(:name => ""))
-    no_name_instancedata.should_not be_valid
+    no_name_instancedata.should have(1).error_on(:name)
   end
   it "should reject names longer than 255 characters" do
     longname = "a"*256
     longname_instancedata=Instancevalue.new(@attr.merge(:name => longname))
-    longname_instancedata.should_not be_valid
+    longname_instancedata.should have(1).error_on(:name)
   end
   describe "data field conditions" do
     it "should reject if no data field set" do
@@ -62,13 +62,63 @@ describe Instancevalue do
   end
   describe "instance method" do
     describe "'export2dData'" do
-      it "should return 'nil' if instancevalue has wrong data type"
-      it "should return return a correct CSV text string containing the values if data type is '2dData'"
-      it "should return an empty string if a 2dData instancevalue has no data" 
+      before(:each) do
+        datatype2D=Factory(:datatype,:name=>"2dData")
+        axisDescription="XValue,YValue,m,s"
+        data2D="AAAA1.0,2.0\n3.0,4.0"
+        @attr2d=@attr.merge({:datatype_id=>datatype2D.id,:name=>"spectrum",:data_numeric=>nil,
+                                                        :data_string=>axisDescription, :data_binary=>data2D})
+      end
+      it "should return return a correct CSV text string" do
+        correctValue=Instancevalue.create(@attr2d)
+        result=correctValue.export2dData
+        result[:content].should eq("XValue [m]\tYValue [s]\n1.0\t2.0\n3.0\t4.0\n")
+        result[:type].should eq("txt")
+        result[:filename].should eq(correctValue.instancevalueset.instance.name+"_"+
+                                    correctValue.instancevalueset.shot.id.to_s+".txt")
+      end
+      it "should return 'nil' if instancevalue has wrong data type" do
+        wrongDataType=Factory(:datatype,:name=>"wrongType")
+        wrongDataTypeValue=Instancevalue.new(@attr2d.merge({:datatype_id=>wrongDataType.id}))
+        wrongDataTypeValue.export2dData.should eq(nil)
+      end
+      it "should return only axis description if a 2dData instancevalue has no data" do
+        emptyValue=Instancevalue.new(@attr2d.merge(:data_binary=>nil))
+        emptyValue.export2dData[:content].should eq("XValue [m]\tYValue [s]\n")
+      end
+      it "should return an empty string if data field has wrong format" do
+        emptyValue=Instancevalue.new(@attr2d.merge(:data_binary=>"XXXXabcde,fef,142463\n\n"))
+        emptyValue.export2dData[:content].should eq("XValue [m]\tYValue [s]\nabcde\tfef\n\t\n")
+      end
+      it "should return only value table if no axisDescription is given" do
+        noDescValue=Instancevalue.new(@attr2d.merge(:data_string=>nil))
+        noDescValue.export2dData[:content].should eq("1.0\t2.0\n3.0\t4.0\n")
+      end
     end
     describe "'exportImage'" do
-      it "should return 'nil' if instancevalue has wrong data type"
-      it "should return a string representing the bytestream of the image for an image instancevalue"
+      before(:each) do
+        datatypeImage=Factory(:datatype,:name=>"image")
+        imagePath=Rails.root.to_s+"/public/images/Rainbow.png"
+        @testImage=Magick::Image.read(imagePath)[0].to_blob  { self.format='TIF' }
+        dataImage="AAAA"+@testImage
+        @attrImage=@attr.merge({:datatype_id=>datatypeImage.id,:name=>"image",:data_numeric=>nil,
+                                                        :data_string=>nil, :data_binary=>dataImage})
+      end
+      it "should return a string representing the bytestream of the image for an image instancevalue" do
+        correctValue=Instancevalue.new(@attrImage)
+        result=correctValue.exportImage
+        result[:content].should eq(@testImage)
+        result[:format].should eq("image/TIF")
+        result[:filename].should eq(correctValue.instancevalueset.instance.name+"_"+
+                                    correctValue.instancevalueset.shot.id.to_s+".tif")
+      end
+      it "should return 'nil' if instancevalue has wrong data type" do
+        wrongDataType=Factory(:datatype,:name=>"wrongType")
+        wrongDataTypeValue=Instancevalue.new(@attrImage.merge({:datatype_id=>wrongDataType.id}))
+        wrongDataTypeValue.exportImage.should eq(nil)
+      end
+      it "should return empty content if data field is empty"
+      it "should return empty content if data field has wrong format"
     end
     describe "'generateImage'" do
       it "should generate an Image for an image instancevalue"
