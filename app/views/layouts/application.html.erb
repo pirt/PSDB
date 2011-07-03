@@ -17,7 +17,7 @@
     <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
     <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
     <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
-    <%= stylesheet_link_tag 'redmond/jquery-ui-1.8.11.custom' %>
+    <%= stylesheet_link_tag 'redmond/jquery-ui-1.8.14.custom' %>
     <% stylesheet_link_tag 'custom', :media => 'screen' %>
     <%= favicon_link_tag %>
 </head>
@@ -51,8 +51,8 @@
     <%= yield %>
   </section>
 </div>
-<footer class="quiet">PSDB ( version <%= APP_VERSION %>) - <%= link_to "About","about" %> -
-<%= link_to "Version", "changelog" %></footer>
+<footer class="quiet">PSDB ( version <%= APP_VERSION %>) - <%= link_to "About","/pages/about" %> -
+<%= link_to "Version", "/pages/changelog" %></footer>
 <% # The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
 <script>$("tr:even").css("background-color", "#e5ecf9");</script>
 <%= debug(params) if Rails.env.development? %>
