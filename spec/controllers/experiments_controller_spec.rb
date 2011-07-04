@@ -25,12 +25,12 @@ describe ExperimentsController do
     before(:each) do
       @experiment = Factory(:experiment)
     end
-    describe "for existing shot" do
+    describe "for existing experiment" do
       it "should be successful" do
         get :show,:id => @experiment
         response.should be_success
       end
-      it "should find the right user" do
+      it "should find the right experiment" do
         get :show, :id => @experiment
         assigns(:experiment).should == @experiment
       end
@@ -51,10 +51,23 @@ describe ExperimentsController do
         get :show, :id => @experiment
         response.should contain("Updated at:")
       end
-      it "should show # of associated shots"
-      it "should show first and last date of asscociated shots"
+      describe "with no associated shots" do
+        it "should show message" do
+          get :show, :id => @experiment
+          response.should contain("No shots connected with this experiment.")
+        end
+      end
+      describe "with associated shots" do
+        before(:each) do
+          Factory(:shot,{:experiment_id=>@experiment.id})
+        end
+        it "should show # of associated shots" do
+          get :show, :id => @experiment
+          response.should contain("# of shots")
+        end
+      end
     end
-    describe "for non-existing shot" do
+    describe "for non-existing experiment" do
       before(:each) do
         @nonExistingIndex=Experiment.last.id+1
       end
@@ -180,7 +193,7 @@ describe ExperimentsController do
         end
         it "should redirect to the experiments index" do
           put :update, :id => @experiment, :cancel => "1"
-          response.should redirect_to(experiments_path)
+          response.should redirect_to(experiment_path(@experiment))
         end
         it "should have a flash message" do
           put :update, :id => @experiment, :cancel => "1"
@@ -250,9 +263,17 @@ describe ExperimentsController do
         flash[:success].should =~ /Experiment successfully deleted/i
       end
       describe "with associated shots" do
-        # TODO: add a shot associated to @experiment
-        it "should not delete the experiment"
-        it "should have an error flash message"
+        it "should not delete the experiment" do
+          Factory(:shot,{:experiment_id=>@experiment.id})
+          lambda do
+            delete :destroy, :id => @experiment
+          end.should_not change(Experiment, :count)
+        end
+        it "should have an error flash message" do
+          Factory(:shot,{:experiment_id=>@experiment.id})
+          delete :destroy, :id => @experiment
+          flash[:error].should =~ /Error while deleting experiment/i
+        end
       end
     end
     describe "for non-existing experiment" do

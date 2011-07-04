@@ -46,24 +46,24 @@ class ExperimentsController < ApplicationController
   end
 
   def update
+    @experiment = Experiment.find_by_id(params[:id])
+    if !@experiment
+      flash[:error] = "Experiment not found"
+      redirect_to experiments_path
+      return
+    end
     if params[:cancel]
       flash[:info] = "Experiment update canceled"
+      redirect_to experiment_path(@experiment)
+      return
+    end
+    if @experiment.update_attributes(params[:experiment])
+      flash[:success] = "Experiment successfully updated"
       redirect_to experiments_path
     else
-      @experiment = Experiment.find_by_id(params[:id])
-      if @experiment
-        if @experiment.update_attributes(params[:experiment])
-          flash[:success] = "Experiment successfully updated"
-          redirect_to experiments_path
-        else
-          @experiment.reload
-          @pageTitle="Edit experiment "+@experiment.name
-          render 'edit'
-        end
-      else
-        flash[:error] = "Experiment not found"
-        redirect_to experiments_path
-      end
+       @experiment.reload
+       @pageTitle="Edit experiment "+@experiment.name
+       render 'edit'
     end
   end
 

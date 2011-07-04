@@ -32,6 +32,11 @@ class ShotsController < ApplicationController
 
   def show
     @shot=Shot.find_by_id(params[:id])
+    if !@shot
+      flash[:error]="Shot not found."
+      redirect_to shots_path
+      return
+    end
     availableInstanceValueSets=@shot.instancevaluesets
     if (params[:subsystemName])
       selectedSubsystem=Subsystem.find_by_name(params[:subsystemName])
@@ -50,28 +55,33 @@ class ShotsController < ApplicationController
 
   def edit
     @shot=Shot.find_by_id(params[:id])
+    if !@shot
+      flash[:error]="Shot not found."
+      redirect_to shots_path
+      return
+    end
     @pageTitle="Edit shot #{@shot.id}"
   end
 
   def update
+    @shot = Shot.find_by_id(params[:id])
+    if !@shot
+      flash[:error] = "Shot not found"
+      redirect_to shots_path
+      return
+    end
     if params[:cancel]
       flash[:info] = "Shot update canceled"
       redirect_to shot_path(@shot)
+      return
+    end
+    if @shot.update_attributes(params[:shot])
+      flash[:success] = "Shot successfully updated"
+      redirect_to shot_path(@shot)
     else
-      @shot = Shot.find_by_id(params[:id])
-      if @shot
-        if @shot.update_attributes(params[:shot])
-          flash[:success] = "Shot successfully updated"
-          redirect_to shot_path(@shot)
-        else
-          @experiment.reload
-          @pageTitle="Edit shot #{@shot.id}"
-          render 'edit'
-        end
-      else
-        flash[:error] = "Shot not found"
-        redirect_to shot_path(@shot)
-      end
+      @shot.reload
+      @pageTitle="Edit shot #{@shot.id}"
+      render 'edit'
     end
   end
 end
