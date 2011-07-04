@@ -1,4 +1,4 @@
 $(document).ready(
   function() {
-    $( "#tabs" ).tabs();
+    $( "#tabs" ).tabs({ fx: { opacity: 'toggle' } });
   });
