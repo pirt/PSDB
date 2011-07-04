@@ -11,5 +11,10 @@ require 'spec_helper'
 #   end
 # end
 describe InstancevaluesetsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "'displayParameter'" do
+    it "should display an instancevalue of the given name"
+  end
+  describe "'generateSeriesPlot'" do
+    it "should generate a plot of a series of plot data"
+  end
 end
