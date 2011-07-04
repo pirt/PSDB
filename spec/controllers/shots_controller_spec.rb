@@ -129,13 +129,17 @@ describe ShotsController do
         before(:each) do
           @attr = {:description => "New description" }
         end
-        it "should update shot"
+        it "should update shot" do
+	  put :update, :id => @shot, :shot => @attr
+          @shot.reload
+          @shot.description.should  == @attr[:description]
+        end
         it "should redirect to the shots#show" do
-          put :update, :id => @shot, :experiment => @attr
+          put :update, :id => @shot, :shot => @attr
           response.should redirect_to(shot_path(@shot))
         end
         it "should have a flash message" do
-          put :update, :id => @shot, :experiment => @attr
+          put :update, :id => @shot, :shot => @attr
           flash[:success].should =~ /Shot successfully updated/i
         end
       end

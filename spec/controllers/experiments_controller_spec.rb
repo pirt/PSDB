@@ -191,7 +191,7 @@ describe ExperimentsController do
             put :update, :id => @experiment, :cancel => "1"
           end.should_not change(Experiment, :all)
         end
-        it "should redirect to the experiments index" do
+        it "should redirect to the experiment#show" do
           put :update, :id => @experiment, :cancel => "1"
           response.should redirect_to(experiment_path(@experiment))
         end
