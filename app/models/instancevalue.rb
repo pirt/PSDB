@@ -135,24 +135,10 @@ class Instancevalue < ActiveRecord::Base
     return fileName.sub("public/images/","")
   end
   def generate2dPlot(options={})
-    plotOptions={:xlabel=> "", :ylabel=> ""}
+    plotOptions={}
     plotOptions=plotOptions.merge(options)
-    axisDescription=self.data_string
-    if (axisDescription)
-      descriptionParts=axisDescription.split(",")
-      if (descriptionParts[0])
-        plotOptions[:xlabel]+=descriptionParts[0]
-      end
-        if (descriptionParts[1])
-        plotOptions[:ylabel]+=descriptionParts[1]
-      end
-      if (descriptionParts[2])
-        plotOptions[:xlabel]+=" ["+descriptionParts[2]+"]"
-      end
-      if (descriptionParts[3])
-        plotOptions[:ylabel]+=" ["+descriptionParts[3]+"]"
-      end
-    end
+    axisDescriptionOptions=generatePlotAxisDescriptions()
+    plotOptions=plotOptions.merge(axisDescriptionOptions)
     plotData=generatePlotDataSet(plotOptions)
     generatePlot(plotData,plotOptions)
   end
@@ -165,6 +151,26 @@ class Instancevalue < ActiveRecord::Base
       ds.notitle
     end
     return dataSet
+  end
+  def generatePlotAxisDescriptions
+    axisDescriptionOptions={:xlabel=>"", :ylabel=>""}
+    axisDescription=self.data_string
+    if (axisDescription)
+      descriptionParts=axisDescription.split(",")
+      if (descriptionParts[0])
+        axisDescriptionOptions[:xlabel]+=descriptionParts[0]
+      end
+        if (descriptionParts[1])
+        axisDescriptionOptions[:ylabel]+=descriptionParts[1]
+      end
+      if (descriptionParts[2])
+        axisDescriptionOptions[:xlabel]+=" ["+descriptionParts[2]+"]"
+      end
+      if (descriptionParts[3])
+        axisDescriptionOptions[:ylabel]+=" ["+descriptionParts[3]+"]"
+      end
+    end
+    return axisDescriptionOptions
   end
 # -------------------------------------------------------------------------------------------------
 private

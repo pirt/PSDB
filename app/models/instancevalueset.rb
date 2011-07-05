@@ -38,7 +38,7 @@ class Instancevalueset < ActiveRecord::Base
   end
 
   def generatePlot(plotParameterNames,plotNr,options={})
-    plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
+    plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)
     fileName="public/images/tmp/plotseries"+self.id.to_s+"_"+plotNr.to_s+".#{plotOptions[:imagetype]}"
     dataAvailable=false
@@ -46,8 +46,14 @@ class Instancevalueset < ActiveRecord::Base
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} small size #{plotOptions[:width]},#{plotOptions[:height]}"
         plot.output fileName
-        plot.ylabel plotOptions[:ylabel]
-        plot.xlabel plotOptions[:xlabel]
+        if (plotParameterNames.length!=0)
+          instanceValue=self.instancevalues.find_by_name(plotParameterNames[0])
+          if instanceValue
+            axisDescriptions=instanceValue.generatePlotAxisDescriptions()
+            plot.xlabel axisDescriptions[:xlabel]
+            plot.ylabel axisDescriptions[:ylabel]
+          end
+        end
         plotParameterNames.each do |plotParameterName|
           plotData=getPlotDataSet(plotParameterName)
           if !plotData.nil?
