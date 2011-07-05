@@ -1,6 +1,10 @@
-<% camIsOn=instanceValueSet.getStringParameter("Camera State")=="on/true" ? true : false %>
-<% if camIsOn %>
+<% camState=instanceValueSet.getStringParameter("Camera State") %>
+<% if camState=="on/true" %>
   <%= displayParameter(instanceValueSet.instancevalues,"Image",{:width=>100, :height=>100}) %>
-<% else %>
+<% elsif camState=="off/false" %>
+  <%= image_tag "icon_OFF.png" %>
+<% elsif camState=="Failure" %>
   <%= image_tag "icon_ERROR.png" %>
+<% else %>
+  <%= image_tag "icon_UNKNOWN.png" %>
 <% end %>
