@@ -128,5 +128,31 @@ describe Instancevalue do
     end
     describe "'generatePlotDataSet'" do
     end
+    describe "'generatePlotAxisDescriptions'" do
+      it "should generate options list with axis labels" do
+        plotDescInstValue=Instancevalue.new(@attr.merge(:data_string=>"A,B,C,D"))
+        plotOptions=plotDescInstValue.generatePlotAxisDescriptions()
+        plotOptions[:xlabel].should == "A [C]"
+        plotOptions[:ylabel].should == "B [D]"
+      end
+      it "should generate correct options list with empty labels id string field is empty" do
+        emptyStringInstValue=Instancevalue.new(@attr.merge(:data_string=>""))
+        plotOptions=emptyStringInstValue.generatePlotAxisDescriptions()
+        plotOptions[:xlabel].should == ""
+        plotOptions[:ylabel].should == ""
+      end
+      it "should generate correct options list with empty labels id string field has empty fields" do
+        emptyFieldsInstValue=Instancevalue.new(@attr.merge(:data_string=>",,,,"))
+        plotOptions=emptyFieldsInstValue.generatePlotAxisDescriptions()
+        plotOptions[:xlabel].should == ""
+        plotOptions[:ylabel].should == ""
+      end
+      it "should generate options list with empty axis labels if instancevalue has no data_string field" do
+        noStringInstValue=Instancevalue.new(:@attr)
+        plotOptions=noStringInstValue.generatePlotAxisDescriptions()
+        plotOptions[:xlabel].should == ""
+        plotOptions[:ylabel].should == ""
+      end
+    end
   end
 end

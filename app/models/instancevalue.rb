@@ -152,6 +152,8 @@ class Instancevalue < ActiveRecord::Base
     end
     return dataSet
   end
+
+  # parse string field of a 2dData instancevalue and generate plot options for the axis labels.
   def generatePlotAxisDescriptions
     axisDescriptionOptions={:xlabel=>"", :ylabel=>""}
     axisDescription=self.data_string
@@ -174,7 +176,7 @@ class Instancevalue < ActiveRecord::Base
   end
 # -------------------------------------------------------------------------------------------------
 private
-  # remove the first 4 bytes from a BLOB
+  # remove the first 4 bytes from a BLOB since it is always added by the LabVIEW interface.
   def trimBlob(blob)
     if !blob.nil?
       return blob[4..-1]
@@ -182,6 +184,8 @@ private
       return nil
     end
   end
+
+  # convert an 2dData instancevalue to a 2d array.
   def convert2D(data)
     splitData=CSV(trimBlob(data),:converters=>:float).read
     return splitData.transpose
