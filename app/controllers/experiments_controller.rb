@@ -9,7 +9,7 @@ class ExperimentsController < ApplicationController
     @experiment=Experiment.find_by_id(params[:id])
     if @experiment
       @pageTitle=@experiment.name
-      @beamtimes=@experiment.getBeamtimes
+      @beamtimes=@experiment.getBeamtimes(7.days)
     else
       flash[:error] = "Experiment not found"
       redirect_to experiments_path
