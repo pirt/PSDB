@@ -7,6 +7,12 @@ describe InstancevaluesetsController do
     http_login
     @instancevalueset=Factory(:instancevalueset)
   end
+  describe "GET 'index'" do
+    it "should be successful" do
+      get 'index'
+      response.should be_success
+    end
+  end
   describe "GET 'show'" do
     it "should be successful" do
       get 'show', :id=>@instancevalueset
