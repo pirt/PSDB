@@ -1,5 +1,11 @@
 <%= javascript_include_tag 'tabs' %>
 <% instancevalues=instanceValueSet.instancevalues %>
+<p>
+Background substraction: <%= displayParameter(instancevalues,"BI Subtraction Failure?",{:icon=>true, :invert=>true}) %>
+Cam calibration: <%= displayParameter(instancevalues,"Calibration: Cam Error",{:icon=>true, :invert=>true}) %>
+Size calibration: <%= displayParameter(instancevalues,"Calibration: Linear: no mm",{:icon=>true, :invert=>true}) %></li>
+Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no mJ",{:icon=>true, :invert=>true}) %></li>
+</p>
 <div id="tabs">
   <ul>
     <li><a href="#tabs-1">Overview</a></li>
@@ -12,9 +18,8 @@
   <div id="tabs-1">
     <div class="container">
       <div class="span-11">
-        <h3>General</h3>
+        <h3>Energy</h3>
         <ul>
-          <li>Background substraction error: <%= displayParameter(instancevalues,"BI Subtraction Failure?") %></li>
           <li>Energy: <%= displayParameter(instancevalues,"Energy",{:precision=>2}) %></li>
           <li>Expected Energy: <%= displayParameter(instancevalues,"expected Energy") %></li>
           <li>Calculated at: <%= displayParameter(instancevalues,"Energy: calculated at") %></li>
@@ -58,9 +63,6 @@
       <div class="span-11 last">
         <h3>Calibration data</h3>
         <ul>
-          <li>Cam Error?: <%= displayParameter(instancevalues,"Calibration: Cam Error") %></li>
-          <li>Has no size calibration?: <%= displayParameter(instancevalues,"Calibration: Linear: no mm") %></li>
-          <li>Has no energy calibration?: <%= displayParameter(instancevalues,"Calibration: Energy: no mJ") %></li>
           <li>Serial number: <%= displayParameter(instancevalues,"Calibration: Serial Number",{:precision=>0}) %></li>
           <li>Brightness: <%= displayParameter(instancevalues,"Calibration: Brightness",{:precision=>0}) %></li>
           <li>Shutter: <%= displayParameter(instancevalues,"Calibration: Shutter",{:precision=>0}) %></li>
@@ -130,10 +132,10 @@
       </div>
       <div class="span-8 last">
         <ul>
+          <li class="large">Fillfactor: <%= displayParameter(instancevalues,"Fill Factor: Fillfactor",{:precision=>3}) %></li>
           <li>Filtered?: <%= displayParameter(instancevalues,"Fill Factor: Filter on?") %></li>
           <li>Threshold: <%= displayParameter(instancevalues,"Fill Factor: Threshold",{:precision=>2}) %></li>
           <li>Damage Threshold: <%= displayParameter(instancevalues,"Fill Factor: Damage Threshold") %></li>
-          <li>Fillfactor: <%= displayParameter(instancevalues,"Fill Factor: Fillfactor",{:precision=>3}) %></li>
           <li>max. allowed Energy: <%= displayParameter(instancevalues,"Fill Factor: allowed Energy",{:precision=>4}) %></li>
           <li>calculated: <%= displayParameter(instancevalues,"Fill Factor: calculated at") %></li>
          </ul>

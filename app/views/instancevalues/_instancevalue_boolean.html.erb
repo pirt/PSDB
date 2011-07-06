@@ -1,6 +1,18 @@
-<% if instancevalue.data_numeric!=0 %>
-true
-<% else %>
-false
-<% end %>
+<%= 
+  value=instancevalue.data_numeric!=0 ? true : false
+  if options[:invert]==true
+    value=!value
+  end
+  if options[:icon]==true
+    if value
+      icon="icon_OK.png"
+    else
+      icon="icon_ERROR.png"
+    end
+    image_tag icon, {:style=>"vertical-align:middle"}
+  else
+    value
+  end
+%>
+
 
