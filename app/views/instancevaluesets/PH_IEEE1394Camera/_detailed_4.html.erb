@@ -3,19 +3,7 @@
   <% camIsOn=instanceValueSet.getStringParameter("Camera State")=="on/true" ? true : false %>
   <% instancevalues=instanceValueSet.instancevalues %>
   <% if camIsOn %>
-    <%= displayParameter(instancevalues,"Image",{:width=>450, :height=>800}) %>
-    <% imagedata=instancevalues.find_by_name("Image") %>
-    <% if imagedata %>
-      <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>
-        <%= hidden_field_tag(:instanceValueId,imagedata.id) %>
-        <%= label_tag(:imageFormat, "Format:") %>
-        <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4], ['GIF',5], ['TXT',6]],2) %>
-        <%= select_tag(:selectedExportFormat,possibleFormat) %>
-        <%= label_tag(:withColorPalette, "Save with color palette:") %>
-        <%= check_box_tag(:withColorPalette) %><br />
-        <%= submit_tag("Export Image") %>
-      <% end %>
-    <% end %>
+    <%= displayParameter(instancevalues,"Image",{:width=>450, :height=>800, :withExport=>true}) %>
   <% else %>
     <%= image_tag "icon_ERROR.png" %>
   <% end %>

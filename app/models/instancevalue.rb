@@ -162,7 +162,7 @@ class Instancevalue < ActiveRecord::Base
       if (descriptionParts[0])
         axisDescriptionOptions[:xlabel]+=descriptionParts[0]
       end
-        if (descriptionParts[1])
+      if (descriptionParts[1])
         axisDescriptionOptions[:ylabel]+=descriptionParts[1]
       end
       if (descriptionParts[2])
