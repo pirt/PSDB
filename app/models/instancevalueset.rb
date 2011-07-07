@@ -36,7 +36,14 @@ class Instancevalueset < ActiveRecord::Base
       end
     end
   end
-
+  def getBooleanParameter(parameterName,options={})
+    parameterData=self.instancevalues.find_by_name(parameterName)
+    if (parameterData.nil?)
+      return nil
+    else
+      return parameterData
+    end
+  end
   def generatePlot(plotParameterNames,plotNr,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)

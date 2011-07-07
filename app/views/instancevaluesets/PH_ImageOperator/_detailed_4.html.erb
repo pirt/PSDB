@@ -19,31 +19,43 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
     <div class="container">
       <div class="span-11">
         <h3>Energy</h3>
-        <ul>
-          <li>Energy: <%= displayParameter(instancevalues,"Energy",{:precision=>2}) %></li>
-          <li>Expected Energy: <%= displayParameter(instancevalues,"expected Energy") %></li>
-          <li>Calculated at: <%= displayParameter(instancevalues,"Energy: calculated at") %></li>
-        </ul>
+        <% if instanceValueSet.getBooleanParameter("Energy: Calculation on?")==true %>
+          <ul>
+            <li>Energy: <%= displayParameter(instancevalues,"Energy",{:precision=>2}) %></li>
+            <li>Expected Energy: <%= displayParameter(instancevalues,"expected Energy") %></li>
+            <li>Calculated at: <%= displayParameter(instancevalues,"Energy: calculated at") %></li>
+          </ul>
+        <% else %>
+          no data
+        <% end %>
         <h3>Position Analysis</h3>
-        <ul>
-          <li>expected X-Position: <%= displayParameter(instancevalues,"Position Analysis: Nearfield expected X-Position") %></li>
-          <li>expected Y-Position: <%= displayParameter(instancevalues,"Position Analysis: Nearfield expected Y-Position") %></li>
-          <li>Delta: <%= displayParameter(instancevalues,"Position Analysis: Nearfield Delta") %></li>
-          <li>Analyzed at: <%= displayParameter(instancevalues,"Position Analysis: analysed at") %></li>
-        </ul>
+        <% if instanceValueSet.getBooleanParameter("Position Analysis: Calculation on?")==true %>
+          <ul>
+            <li>expected X-Position: <%= displayParameter(instancevalues,"Position Analysis: Nearfield expected X-Position") %></li>
+            <li>expected Y-Position: <%= displayParameter(instancevalues,"Position Analysis: Nearfield expected Y-Position") %></li>
+            <li>Delta: <%= displayParameter(instancevalues,"Position Analysis: Nearfield Delta") %></li>
+            <li>Analyzed at: <%= displayParameter(instancevalues,"Position Analysis: analysed at") %></li>
+          </ul>
+        <% else %>
+          no data
+        <% end %>
       </div>
       <div class="span-11 last">
         <h3>Beam Analysis</h3>
-        <ul>
-          <li>Azimuth angle relativ to major axis?: <%= displayParameter(instancevalues,"Beam Analysis: Azimuth angle relativ to major axis?") %></li>
-          <li>Center of gravity x: <%= displayParameter(instancevalues,"Beam Analysis: Center of gravity - x",{:precision=>1}) %></li>
-          <li>Center of gravity y: <%= displayParameter(instancevalues,"Beam Analysis: Center of gravity - y",{:precision=>1}) %></li>
-          <li>Major diameter: <%= displayParameter(instancevalues,"Beam Analysis: Major axis dimension", {:precision=>2}) %></li>
-          <li>Minor diameter: <%= displayParameter(instancevalues,"Beam Analysis: Minor axis dimension", {:precision=>2}) %></li>
-          <li>Azimuth angle: <%= displayParameter(instancevalues,"Beam Analysis: Azimuth angle",{:precision=>2}) %></li>
-          <li>Region of interest method: <%= displayParameter(instancevalues,"Beam Analysis: Region of interest") %></li>
-          <li>Analyzed at: <%= displayParameter(instancevalues,"Beam Analysis: Analysed at") %></li>
-        </ul>
+        <% if instanceValueSet.getBooleanParameter("Beam Analysis: Analysis on?")==true %>
+          <ul>
+            <li>Azimuth angle relativ to major axis?: <%= displayParameter(instancevalues,"Beam Analysis: Azimuth angle relativ to major axis?") %></li>
+            <li>Center of gravity x: <%= displayParameter(instancevalues,"Beam Analysis: Center of gravity - x",{:precision=>1}) %></li>
+            <li>Center of gravity y: <%= displayParameter(instancevalues,"Beam Analysis: Center of gravity - y",{:precision=>1}) %></li>
+            <li>Major diameter: <%= displayParameter(instancevalues,"Beam Analysis: Major axis dimension", {:precision=>2}) %></li>
+            <li>Minor diameter: <%= displayParameter(instancevalues,"Beam Analysis: Minor axis dimension", {:precision=>2}) %></li>
+            <li>Azimuth angle: <%= displayParameter(instancevalues,"Beam Analysis: Azimuth angle",{:precision=>2}) %></li>
+            <li>Region of interest method: <%= displayParameter(instancevalues,"Beam Analysis: Region of interest") %></li>
+            <li>Analyzed at: <%= displayParameter(instancevalues,"Beam Analysis: Analysed at") %></li>
+          </ul>
+        <% else %>
+          no data
+        <% end %>
       </div>
     </div>
   </div>
@@ -78,46 +90,50 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
     </div>
   </div>
   <div id="tabs-3">
-    <div class="container">
-      <div class="span-22">
-        <div class="span-14">
-          <% fileName=instanceValueSet.generatePlot(["Trace Analysis: Maj Trace","Trace Analysis: Maj Gauss Fit"],
-                                                1,{:width=>550, :height=>200}) %>
-          <% if fileName.blank? %>
-            no data
-          <% else %>
-            <%= image_tag fileName %>
-         <% end %>
+    <% if instanceValueSet.getBooleanParameter("Trace Analysis: Calculation on?")==true %>
+      <div class="container">
+        <div class="span-22">
+          <div class="span-14">
+            <% fileName=instanceValueSet.generatePlot(["Trace Analysis: Maj Trace","Trace Analysis: Maj Gauss Fit"],
+                                                  1,{:width=>550, :height=>200}) %>
+            <% if fileName.blank? %>
+              no data
+            <% else %>
+              <%= image_tag fileName %>
+            <% end %>
+          </div>
+          <div class="span-8 last">
+            <h3>Major Axis</h3>
+            <ul>
+              <li>FWHM: <%= displayParameter(instancevalues,"Trace Analysis: Maj FWHM",{:precision=>2}) %></li>
+              <li>99% Width: <%= displayParameter(instancevalues,"Trace Analysis: Maj 99% Width",{:precision=>2}) %></li>
+              <li>Fit order: <%= displayParameter(instancevalues,"Trace Analysis: Maj Gauss Fit Order",{:precision=>0}) %></li>
+            </ul>
+          </div>
         </div>
-        <div class="span-8 last">
-          <h3>Major Axis</h3>
-          <ul>
-            <li>FWHM: <%= displayParameter(instancevalues,"Trace Analysis: Maj FWHM",{:precision=>2}) %></li>
-            <li>99% Width: <%= displayParameter(instancevalues,"Trace Analysis: Maj 99% Width",{:precision=>2}) %></li>
-             <li>Fit order: <%= displayParameter(instancevalues,"Trace Analysis: Maj Gauss Fit Order",{:precision=>0}) %></li>
-          </ul>
+        <div class="span-22">
+          <div class="span-14">
+            <% fileName=instanceValueSet.generatePlot(["Trace Analysis: Min Trace","Trace Analysis: Min Gauss Fit"],
+                                                  2,{:width=>550, :height=>200}) %>
+            <% if fileName.blank? %>
+              no data
+            <% else %>
+              <%= image_tag fileName %>
+            <% end %>
+          </div>
+          <div class="span-8 last">
+           <h3>Minor Axis</h3>
+           <ul>
+             <li>FWHM: <%= displayParameter(instancevalues,"Trace Analysis: Min FWHM",{:precision=>2}) %></li>
+             <li>99% Width: <%= displayParameter(instancevalues,"Trace Analysis: Min 99% Width",{:precision=>2}) %></li>
+             <li>Fit order: <%= displayParameter(instancevalues,"Trace Analysis: Min Gauss Fit Order",{:precision=>0}) %></li>
+           </ul>
+          </div>
         </div>
       </div>
-      <div class="span-22">
-        <div class="span-14">
-          <% fileName=instanceValueSet.generatePlot(["Trace Analysis: Min Trace","Trace Analysis: Min Gauss Fit"],
-                                                2,{:width=>550, :height=>200}) %>
-          <% if fileName.blank? %>
-            no data
-          <% else %>
-            <%= image_tag fileName %>
-          <% end %>
-        </div>
-        <div class="span-8 last">
-         <h3>Minor Axis</h3>
-         <ul>
-           <li>FWHM: <%= displayParameter(instancevalues,"Trace Analysis: Min FWHM",{:precision=>2}) %></li>
-           <li>99% Width: <%= displayParameter(instancevalues,"Trace Analysis: Min 99% Width",{:precision=>2}) %></li>
-           <li>Fit order: <%= displayParameter(instancevalues,"Trace Analysis: Min Gauss Fit Order",{:precision=>0}) %></li>
-         </ul>
-        </div>
-      </div>
-    </div>
+    <% else %>
+      no data
+    <% end %>
   </div>
   <div id="tabs-4">
     <%= displayParameter(instancevalues,"Operation Image",{:width=>450, :height=>800, :withExport=>true}) %>
@@ -126,20 +142,24 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
     <%= displayParameter(instancevalues,"Background Image",{:width=>450, :height=>800, :withExport=>true}) %>
   </div>
   <div id="tabs-6">
-    <div class="container">
-      <div class="span-14">
-        <%= displayParameter(instancevalues,"Fill Factor Image",{:width=>450, :height=>800, :withExport=>true}) %>
+    <% if instanceValueSet.getBooleanParameter("Fill Factor: Calculation on?")==true %>
+      <div class="container">
+        <div class="span-14">
+          <%= displayParameter(instancevalues,"Fill Factor Image",{:width=>450, :height=>800, :withExport=>true}) %>
+        </div>
+        <div class="span-8 last">
+          <ul>
+            <li class="large">Fillfactor: <%= displayParameter(instancevalues,"Fill Factor: Fillfactor",{:precision=>3}) %></li>
+            <li>Filtered?: <%= displayParameter(instancevalues,"Fill Factor: Filter on?") %></li>
+            <li>Threshold: <%= displayParameter(instancevalues,"Fill Factor: Threshold",{:precision=>2}) %></li>
+            <li>Damage Threshold: <%= displayParameter(instancevalues,"Fill Factor: Damage Threshold") %></li>
+            <li>max. allowed Energy: <%= displayParameter(instancevalues,"Fill Factor: allowed Energy",{:precision=>4}) %></li>
+            <li>calculated: <%= displayParameter(instancevalues,"Fill Factor: calculated at") %></li>
+           </ul>
+        </div>
       </div>
-      <div class="span-8 last">
-        <ul>
-          <li class="large">Fillfactor: <%= displayParameter(instancevalues,"Fill Factor: Fillfactor",{:precision=>3}) %></li>
-          <li>Filtered?: <%= displayParameter(instancevalues,"Fill Factor: Filter on?") %></li>
-          <li>Threshold: <%= displayParameter(instancevalues,"Fill Factor: Threshold",{:precision=>2}) %></li>
-          <li>Damage Threshold: <%= displayParameter(instancevalues,"Fill Factor: Damage Threshold") %></li>
-          <li>max. allowed Energy: <%= displayParameter(instancevalues,"Fill Factor: allowed Energy",{:precision=>4}) %></li>
-          <li>calculated: <%= displayParameter(instancevalues,"Fill Factor: calculated at") %></li>
-         </ul>
-      </div>
-    </div>
+    <% else %>
+      no data
+    <% end %>
   </div>
 </div>
