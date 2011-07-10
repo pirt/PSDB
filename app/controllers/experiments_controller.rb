@@ -1,8 +1,7 @@
 class ExperimentsController < ApplicationController
 
   def index
-    @experiments = Experiment.select([:id, :name, :description, :active]).paginate(:page => params[:page],
-                                                                              :per_page => Experiment.per_page)
+    @experiments = Experiment.select([:id, :name, :description, :active]).paginate(:page => params[:page])
     @pageTitle="Experiments"
   end
   def show
@@ -24,15 +23,15 @@ class ExperimentsController < ApplicationController
     if params[:cancel]
       flash[:info] = "Experiment creation cancelled"
       redirect_to experiments_path
-    elsif
-      @experiment = Experiment.new(params[:experiment])
-      if @experiment.save
-        flash[:success] = "Experiment successfully created"
-        redirect_to experiments_path
-      else
-        @pageTitle = "Add new experiment"
-        render 'new'
-      end
+      return
+    end
+    @experiment = Experiment.new(params[:experiment])
+    if @experiment.save
+      flash[:success] = "Experiment successfully created"
+      redirect_to experiments_path
+    else
+      @pageTitle = "Add new experiment"
+      render 'new'
     end
   end
   def edit
