@@ -76,4 +76,7 @@ class ApplicationController < ActionController::Base
       return matchSet[2]
     end
   end
+  def getDatabaseType
+    return ActiveRecord::Base.connection.adapter_name
+  end
 end

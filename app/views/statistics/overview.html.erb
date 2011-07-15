@@ -68,6 +68,10 @@
           <td><%= Attachment.count %></td>
         </tr>
         <tr>
+          <td>Database type:</td>
+          <td><%= @databaseType %></td>
+        </tr>
+        <tr>
           <td>PSDB used space:</td>
           <td><%= number_to_human_size(@statistics.used_bytes) %></td>
         </tr>

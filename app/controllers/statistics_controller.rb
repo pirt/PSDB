@@ -23,6 +23,7 @@ class StatisticsController < ApplicationController
                           and    d.tablespace_name = 'PHELIX'
                         group by d.file_name"
     @statistics=Shot.find_by_sql(queryString).last
+    @databaseType=getDatabaseType()
     @pageTitle="Statistics overview"
   end
 
