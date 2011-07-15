@@ -7,11 +7,11 @@ class StatisticsController < ApplicationController
     else
       @avgShotsPerExperiment=0
     end
-    @nrOfDaysPerYear=(Date.today-(Date.today-1.year)).to_i
-    queryString="Select to_char(created_at,'DDD') FROM shots
-                                                  WHERE shottype_id=1
-                                                  GROUP BY to_char(created_at,'DDD')"
-    @nrOfShotDays=Shot.find_by_sql(queryString).count
+    @nrOfDaysPerYear=Time.parse("12/31").yday
+    yearBegin=Time.parse("1/1")
+    yearEnd=yearBegin+1.year
+    shotsOfTheYear=Shot.where(:shottype_id=>1,:created_at=>yearBegin..yearEnd)
+    @nrOfShotDays=shotsOfTheYear.group_by {|s| s.created_at.yday}.length
     queryString="Select MAX(d.bytes) total_bytes,
                         nvl(SUM(f.Bytes), 0) free_bytes,
                         d.file_name,
