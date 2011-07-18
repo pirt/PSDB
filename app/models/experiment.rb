@@ -49,7 +49,7 @@ class Experiment < ActiveRecord::Base
         from (select * from shots where experiment_id=%d) currentTable
       	join (select * from shots where experiment_id=%d) nextTable
        	on nextTable.id=(select min(id) from
-         	(select * from shots where experiment_id=%d) where id>currentTable.id)" % [self.id,self.id,self.id]
+         	(select * from shots where experiment_id=%d) dummyTable where id>currentTable.id)" % [self.id,self.id,self.id]
     durations=Shot.find_by_sql(queryString)
     beamtimes=[]
     beamtime={:firstId=>self.shots.first.id}
