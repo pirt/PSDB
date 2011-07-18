@@ -5,7 +5,7 @@ development:
   adapter: <%= DBConfig["development"]["adapter"] %>
   database: <%= DBConfig["development"]["database"] %>
   username: <%= DBConfig["development"]["username"] %>
-  password: <%= DBConfig["development"]["password"] %>
+  password: <%= "\""+DBConfig["development"]["password"]+"\"" %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,11 +14,11 @@ test:
   adapter: <%= DBConfig["test"]["adapter"] %>
   database: <%= DBConfig["test"]["database"] %>
   username: <%= DBConfig["test"]["username"] %>
-  password: <%= DBConfig["test"]["password"] %>
+  password: <%= "\""+DBConfig["test"]["password"]+"\"" %>
 
 production:
   adapter: <%= DBConfig["production"]["adapter"] %>
   database: <%= DBConfig["production"]["database"] %>
   username: <%= DBConfig["production"]["username"] %>
-  password: <%= DBConfig["production"]["password"] %>
+  password: <%= "\""+DBConfig["production"]["password"]+"\"" %>
 
