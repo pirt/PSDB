@@ -1,6 +1,5 @@
 <%
-  raw_config = File.read(RAILS_ROOT + "/config/psdbconfig.yml")
-  DBConfig = YAML.load(raw_config)["database"]
+  DBConfig=PSDB_CONFIG["database"]
 %>
 development:
   adapter: <%= DBConfig["development"]["adapter"] %>
