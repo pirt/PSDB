@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
         stats=Shot.find_by_sql(queryString).last
         dbStats[:bytesUsed]=stats.used_bytes
         dbStats[:bytesFree]=stats.free_bytes
-      when "MySQL"
+      when "Mysql2"
         bytesUsed=0
         stats=Shot.find_by_sql("SHOW TABLE STATUS")
         stats.each do |status|
