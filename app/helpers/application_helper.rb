@@ -21,4 +21,8 @@ module ApplicationHelper
       end
     end
   end
+  def projectizeName(filename)
+    return ApplicationController.projectizeName(filename)
+  end
 end
+

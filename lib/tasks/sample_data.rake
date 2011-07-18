@@ -7,29 +7,24 @@ namespace :db do
     nrOfExperiments=1
     maxNrOfShotsPerExperiment=10
     #
-    #Rake::Task['db:reset'].invoke
-      
     createExperiments(nrOfExperiments)
 
     createShots(maxNrOfShotsPerExperiment)
 
-    #createDataTypes
-
     # generate instances, subsystems and classtypes (typically 100)
 
-    instances=[] # "fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB",
-    #           "PA_Input_FF_Cam", "PA_Input_NF_Cam", "PA_Exit_FF_Cam", "PA_Exit_Powermeter",
-    #           "PPPA_19_1_PU", "PPPA_19_2_PU", "PPPA_45_PU", 
-    #           "MA_InjectIn_Cam", "MA_InjectOut_Cam", "MA_CH1_BB", "MA_CH2_BB", "MA_CH3_BB", "MA_CH4_BB",
-    #           "PPMA_1_PU", "PPMA_2_PU", "PPMA_3_PU", "PPMA_4_PU", "PPMA_5_PU",
-    #           "MAS_Powermeter", "MAS_Spectrometer", "MAS_Filt1_BB", "MAS_Filt2_BB", "MAS_Filt3_BB",
-    #           "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB" ]
+    instances= "fsFE_BB", "fsFE_Shut_PA_BB", "fsFE_SwitchYLF_BB",
+               "PA_Input_FF_Cam", "PA_Input_NF_Cam", "PA_Exit_FF_Cam", "PA_Exit_Powermeter",
+               "PPPA_19_1_PU", "PPPA_19_2_PU", "PPPA_45_PU",
+               "MA_InjectIn_Cam", "MA_InjectOut_Cam", "MA_CH1_BB", "MA_CH2_BB", "MA_CH3_BB", "MA_CH4_BB",
+               "PPMA_1_PU", "PPMA_2_PU", "PPMA_3_PU", "PPMA_4_PU", "PPMA_5_PU",
+               "MAS_Powermeter", "MAS_Spectrometer", "MAS_Filt1_BB", "MAS_Filt2_BB", "MAS_Filt3_BB",
+               "COS_FF_Cam", "COS_NF_Cam", "COS_Filt1_BB", "COS_Filt2_BB", "COS_Filt3_BB" ]
 
-    #createInstances(instances)
-    
-    
+    createInstances(instances)
+
     # generate instance data (typically 10 per instance)
-    classParams={'Cam' => ["brightness_n","shutter_n","gain_n","image_i","serial_s","paramA_s", "paramB_n", "paramC_n"], 
+    classParams={'Cam' => ["brightness_n","shutter_n","gain_n","image_i","serial_s","paramA_s", "paramB_n", "paramC_n"],
                  'Powermeter' => ["serial_s","range_s","energy_n", "paramD_s", "paramE_n", "paramF_n", "paramG_n"],
                  'PU' => ["voltage_n","current_curve_sp", "param14_s", "param15_s", "param16_n", "param17_n", "param18_n"],
                  'BB' => ["in_n","out_n","direction_n", "param18_n", "param19_n"],
@@ -42,7 +37,7 @@ namespace :db do
       Instance.find_each do |instance|
         probabilityInstanceExists=rand()
         if (probabilityInstanceExists>0.5)
-	  valueset=Instancevalueset.create!(:shot_id => shot.id, :instance_id => instance.id, :version => 0)
+	        valueset=Instancevalueset.create!(:shot_id => shot.id, :instance_id => instance.id, :version => 0)
           classType=instance.classtype.name
       	  classParams[classType].each do |classParam|
             classParamType=classParam.split("_").last
@@ -59,7 +54,7 @@ namespace :db do
                 #dataTypeId=dataTypeList["image"]
                 data_binary=fillNumericData()
                 dataTypeId=dataTypeList["numeric"]
-	      when "sp"
+	            when "sp"
                 data_binary=fillSpectrumData()
                 dataTypeId=dataTypeList["spectrum"]
             end
@@ -125,7 +120,7 @@ def fillImageData
 end
 =end
 def fillSpectrumData
-  spectrum="" 
+  spectrum=""
   (1..100).each do |dataPoint|
     spectrum = spectrum + dataPoint.to_s + "," + (100*rand()-50).to_s + "\n"
   end

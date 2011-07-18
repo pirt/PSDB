@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
                           nvl(SUM(f.Bytes), 0) free_bytes,
                           d.file_name,
                           MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
-                          ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx 
+                          ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx
                           from   DBA_FREE_SPACE f , DBA_DATA_FILES d
                           where  f.tablespace_name(+) = d.tablespace_name
                             and    f.file_id(+) = d.file_id
@@ -112,4 +112,15 @@ class ApplicationController < ActionController::Base
     end
     return dbStats
   end
+  def self.projectizeName(filename)
+    projectName=PSDB_CONFIG["project"]["name"]
+    dirname=File.dirname(filename)
+    basename=File.basename(filename)
+    if dirname=="."
+      return projectName+"_"+basename
+    else
+      return basename+"/"+projectName+"_"+basename
+    end
+  end
 end
+

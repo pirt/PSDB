@@ -4,3 +4,5 @@ log/*.log
 tmp/**/*
 public/images/tmp/*.png
 webrat.log
+config/psdbconfig.yml
+
