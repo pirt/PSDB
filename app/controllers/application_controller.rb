@@ -112,6 +112,9 @@ class ApplicationController < ActionController::Base
     end
     return dbStats
   end
+  def projectizeName(filename)
+    return ApplicationController.projectizeName(filename)
+  end
   def self.projectizeName(filename)
     projectName=PSDB_CONFIG["project"]["name"]
     dirname=File.dirname(filename)

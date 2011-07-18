@@ -1,21 +1,25 @@
+<%
+  raw_config = File.read(RAILS_ROOT + "/config/psdbconfig.yml")
+  DBConfig = YAML.load(raw_config)["database"]
+%>
 development:
-  adapter: oracle_enhanced
-  database: db-test
-  username: phelix
-  password: CtrlPhel!x
+  adapter: <%= DBConfig["development"]["adapter"] %>
+  database: <%= DBConfig["development"]["database"] %>
+  username: <%= DBConfig["development"]["username"] %>
+  password: <%= DBConfig["development"]["password"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: oracle_enhanced
-  database: db-test
-  username: "phelix_test"
-  password: phelixtest
+  adapter: <%= DBConfig["test"]["adapter"] %>
+  database: <%= DBConfig["test"]["database"] %>
+  username: <%= DBConfig["test"]["username"] %>
+  password: <%= DBConfig["test"]["password"] %>
 
 production:
-  adapter: oracle_enhanced
-  database: db-test
-  username: phelix
-  password: CtrlPhel!x
+  adapter: <%= DBConfig["production"]["adapter"] %>
+  database: <%= DBConfig["production"]["database"] %>
+  username: <%= DBConfig["production"]["username"] %>
+  password: <%= DBConfig["production"]["password"] %>
 

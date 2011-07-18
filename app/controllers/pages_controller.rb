@@ -4,8 +4,10 @@ class PagesController < ApplicationController
   end
   def about
     @pageTitle="About"
+    render projectizeName("about")
   end
   def changelog
     @pageTitle="Changelog"
   end
 end
+
