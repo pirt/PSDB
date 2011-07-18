@@ -83,19 +83,21 @@ class ApplicationController < ActionController::Base
     dbStats={:bytesUsed=>-1,:bytesFree=>-1}
     case (getDatabaseType)
       when "OracleEnhanced"
-        queryString="Select MAX(d.bytes) total_bytes,
-                        nvl(SUM(f.Bytes), 0) free_bytes,
-                        d.file_name,
-                        MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
-                        ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx 
-                        from   DBA_FREE_SPACE f , DBA_DATA_FILES d
-                        where  f.tablespace_name(+) = d.tablespace_name
-                          and    f.file_id(+) = d.file_id
-                          and    d.tablespace_name = 'PHELIX'
-                        group by d.file_name"
-        stats=Shot.find_by_sql(queryString).last
-        dbStats[:bytesUsed]=stats.used_bytes
-        dbStats[:bytesFree]=stats.free_bytes
+        if (!Rails.env.test?) # avoid problems while unit testing
+          queryString="Select MAX(d.bytes) total_bytes,
+                          nvl(SUM(f.Bytes), 0) free_bytes,
+                          d.file_name,
+                          MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
+                          ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx 
+                          from   DBA_FREE_SPACE f , DBA_DATA_FILES d
+                          where  f.tablespace_name(+) = d.tablespace_name
+                            and    f.file_id(+) = d.file_id
+                            and    d.tablespace_name = 'PHELIX'
+                          group by d.file_name"
+          stats=Shot.find_by_sql(queryString).last
+          dbStats[:bytesUsed]=stats.used_bytes
+          dbStats[:bytesFree]=stats.free_bytes
+        end
       when "Mysql2"
         bytesUsed=0
         bytesFree=0

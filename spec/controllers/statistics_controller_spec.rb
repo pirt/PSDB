@@ -16,7 +16,7 @@ describe StatisticsController do
     end
     it "should have the right title" do
       get 'overview'
-      response.should have_selector("title", :content => "Overview")
+      response.should have_selector("title", :content => "Statistics overview")
     end
   end
 
