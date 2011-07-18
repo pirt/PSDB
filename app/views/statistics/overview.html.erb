@@ -73,11 +73,11 @@
         </tr>
         <tr>
           <td>PSDB used space:</td>
-          <td><%= number_to_human_size(@statistics.used_bytes) %></td>
+          <td><%= number_to_human_size(@dbStats[:bytesUsed]) %></td>
         </tr>
         <tr>
           <td>PSDB free space:</td>
-          <td><%= number_to_human_size(@statistics.free_bytes) %></td>
+          <td><%= number_to_human_size(@dbStats[:bytesFree]) %></td>
         </tr>
       </tbody>
     </table>

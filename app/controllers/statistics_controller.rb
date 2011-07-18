@@ -12,18 +12,8 @@ class StatisticsController < ApplicationController
     yearEnd=yearBegin+1.year
     shotsOfTheYear=Shot.where(:shottype_id=>1,:created_at=>yearBegin..yearEnd)
     @nrOfShotDays=shotsOfTheYear.group_by {|s| s.created_at.yday}.length
-    queryString="Select MAX(d.bytes) total_bytes,
-                        nvl(SUM(f.Bytes), 0) free_bytes,
-                        d.file_name,
-                        MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
-                        ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx 
-                        from   DBA_FREE_SPACE f , DBA_DATA_FILES d
-                        where  f.tablespace_name(+) = d.tablespace_name
-                          and    f.file_id(+) = d.file_id
-                          and    d.tablespace_name = 'PHELIX'
-                        group by d.file_name"
-    @statistics=Shot.find_by_sql(queryString).last
     @databaseType=getDatabaseType()
+    @dbStats=getDBSize()
     @pageTitle="Statistics overview"
   end
 

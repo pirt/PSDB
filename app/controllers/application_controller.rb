@@ -79,4 +79,32 @@ class ApplicationController < ActionController::Base
   def getDatabaseType
     return ActiveRecord::Base.connection.adapter_name
   end
+  def getDBSize
+    dbStats={:bytesUsed=>-1,:bytesFree=>-1}
+    case (getDatabaseType)
+      when "OracleEnhanced"
+        queryString="Select MAX(d.bytes) total_bytes,
+                        nvl(SUM(f.Bytes), 0) free_bytes,
+                        d.file_name,
+                        MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
+                        ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx 
+                        from   DBA_FREE_SPACE f , DBA_DATA_FILES d
+                        where  f.tablespace_name(+) = d.tablespace_name
+                          and    f.file_id(+) = d.file_id
+                          and    d.tablespace_name = 'PHELIX'
+                        group by d.file_name"
+        stats=Shot.find_by_sql(queryString).last
+        dbStats[:bytesUsed]=stats.used_bytes
+        dbStats[:bytesFree]=stats.free_bytes
+      when "MySQL"
+        bytesUsed=0
+        stats=Shot.find_by_sql("SHOW TABLE STATUS")
+        stats.each do |status|
+          bytesUsed+=status.Data_length
+          bytesUsed+=status.Index_length
+        end
+        dbStats[:bytesUsed]=bytesUsed
+    end
+    return dbStats
+  end
 end
