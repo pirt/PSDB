@@ -22,7 +22,11 @@ describe InstancevaluesController do
       before(:each) do
         @instValImage=Factory(:instancevalue_image)
       end
-      it "should return an image file for an image instancevalue"
+      it "should be successful" do
+        get :exportImage, :instanceValueId=>@instValImage.id
+        response.should be_successful
+      end
+      it "should return an image file"
     end
     describe "for existing instancevalue of wrong datatype" do
       before(:each) do
@@ -53,7 +57,14 @@ describe InstancevaluesController do
       before(:each) do
         @instVal2D=Factory(:instancevalue_2dData)
       end
-      it "should return a CSV file for a 2dData instancevalue"
+      it "should be successful" do
+        get :exportPlot, :instanceValueId=>@instVal2D.id
+        response.should be_successful
+      end
+      it "should return a CSV file" do
+        get :exportPlot, :instanceValueId=>@instVal2D.id
+	response.headers["Content-Type"].should eq('text/csv')
+      end
     end
     describe "for existing instancevalue of wrong datatype" do
       before(:each) do
