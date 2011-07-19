@@ -23,7 +23,7 @@ group :development, :test do
   gem 'webrat'             # Acceptance testing for webpages
   gem 'faker'              # Use generator for sample data
   gem 'factory_girl_rails' # generate model test instances (experiments, shots, users, ...)
-  gem 'annotate-models'    # Annotate models with the fields of the database
+  gem 'annotate'    # Annotate models with the fields of the database
 end
 
 # gem 'capistrano' # Deploy with Capistrano

@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20110127161802
 #
 # Table name: attachments
 #

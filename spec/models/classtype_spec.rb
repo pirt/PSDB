@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: classtypes
+#
+#  id         :integer(38)     not null, primary key
+#  name       :string(256)     not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Classtype do
@@ -32,3 +42,4 @@ describe Classtype do
     end
   end
 end
+

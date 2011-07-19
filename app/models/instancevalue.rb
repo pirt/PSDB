@@ -1,17 +1,16 @@
 # == Schema Information
-# Schema version: 20110405192247
 #
 # Table name: instancevalues
 #
-#  id                 :integer(38)     not null, primary key
+#  id                  :integer(38)     not null, primary key
 #  instancevalueset_id :integer(38)     not null
-#  datatype_id        :integer(38)     not null
-#  name               :string(256)     not null
-#  data_numeric       :decimal(, )
-#  data_string        :string(255)
-#  data_binary        :binary
-#  created_at         :datetime        not null
-#  updated_at         :datetime        not null
+#  datatype_id         :integer(38)     not null
+#  name                :string(256)     not null
+#  data_numeric        :decimal(, )
+#  data_string         :string(255)
+#  data_binary         :binary
+#  created_at          :datetime        not null
+#  updated_at          :datetime        not null
 #
 
 require 'csv'
@@ -205,3 +204,4 @@ private
     end
   end
 end
+

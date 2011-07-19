@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: subsystems
+#
+#  id         :integer(38)     not null, primary key
+#  name       :string(255)     not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Subsystem do
@@ -37,3 +47,4 @@ describe Subsystem do
     end
   end
 end
+

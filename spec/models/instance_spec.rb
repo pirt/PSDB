@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: instances
+#
+#  id           :integer(38)     not null, primary key
+#  classtype_id :integer(38)     not null
+#  subsystem_id :integer(38)     not null
+#  name         :string(255)     not null
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Instance do
@@ -80,3 +92,4 @@ describe Instance do
     end
   end
 end
+

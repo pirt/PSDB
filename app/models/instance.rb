@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20110405192247
 #
 # Table name: instances
 #

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: experiments
+#
+#  id          :integer(38)     not null, primary key
+#  name        :string(30)      not null
+#  active      :boolean(1)      default(TRUE)
+#  description :string(255)     not null
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Experiment do
@@ -102,3 +114,4 @@ describe Experiment do
     end
   end
 end
+

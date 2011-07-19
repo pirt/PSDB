@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: instancevaluesets
+#
+#  id          :integer(38)     not null, primary key
+#  shot_id     :integer(38)     not null
+#  instance_id :integer(38)     not null
+#  version     :integer(38)     not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'spec_helper'
 
 describe Instancevalueset do
@@ -61,3 +73,4 @@ describe Instancevalueset do
     end
   end
 end
+

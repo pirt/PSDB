@@ -1,10 +1,10 @@
 # == Schema Information
-# Schema version: 20110127161802
 #
 # Table name: experiments
 #
 #  id          :integer(38)     not null, primary key
 #  name        :string(30)      not null
+#  active      :boolean(1)      default(TRUE)
 #  description :string(255)     not null
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
@@ -66,3 +66,4 @@ class Experiment < ActiveRecord::Base
     return beamtimes
   end
 end
+

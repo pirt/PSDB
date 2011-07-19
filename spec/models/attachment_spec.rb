@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: attachments
+#
+#  id              :integer(38)     not null, primary key
+#  filename        :string(255)     not null
+#  filetype        :string(50)      not null
+#  description     :string(255)
+#  content         :binary          not null
+#  attachable_id   :integer(38)
+#  attachable_type :string(255)
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Attachment do
@@ -60,3 +75,4 @@ describe Attachment do
     largeContent_attachment.should_not be_valid
   end
 end
+

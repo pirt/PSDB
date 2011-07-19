@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: shots
+#
+#  id            :integer(38)     not null, primary key
+#  description   :string(255)
+#  experiment_id :integer(38)     not null
+#  shottype_id   :integer(38)     not null
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Shot do
@@ -57,3 +69,4 @@ describe Shot do
     end.should_not change(Shot, :count)
   end
 end
+

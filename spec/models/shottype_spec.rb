@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: shottypes
+#
+#  id         :integer(38)     not null, primary key
+#  name       :string(30)      not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Shottype do
@@ -38,3 +48,4 @@ describe Shottype do
     end
   end
 end
+

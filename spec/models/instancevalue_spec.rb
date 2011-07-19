@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: instancevalues
+#
+#  id                  :integer(38)     not null, primary key
+#  instancevalueset_id :integer(38)     not null
+#  datatype_id         :integer(38)     not null
+#  name                :string(256)     not null
+#  data_numeric        :decimal(, )
+#  data_string         :string(255)
+#  data_binary         :binary
+#  created_at          :datetime        not null
+#  updated_at          :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Instancevalue do
@@ -156,3 +171,4 @@ describe Instancevalue do
     end
   end
 end
+

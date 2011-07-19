@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20110216123146
 #
 # Table name: shots
 #
