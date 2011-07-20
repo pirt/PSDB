@@ -26,7 +26,22 @@ describe InstancevaluesController do
         get :exportImage, :instanceValueId=>@instValImage.id
         response.should be_successful
       end
-      it "should return an image file"
+      it "should return a PNG image file" do
+        imageData=@instValImage.exportImage
+        controller.stub!(:send_data)
+        controller.stub!(:render)
+        controller.should_receive(:send_data).
+          with(imageData[:content],:type => "image/PNG", :filename => imageData[:filename])
+        get :exportImage, :instanceValueId=>@instValImage.id
+      end
+      it "should return a JPEG image file if selectedImageFormat=3" do
+        imageData=@instValImage.exportImage(:exportFormat=>"3")
+        controller.stub!(:send_data)
+        controller.stub!(:render)
+        controller.should_receive(:send_data).
+          with(imageData[:content],:type => "image/JPG", :filename => imageData[:filename])
+        get :exportImage, :instanceValueId=>@instValImage.id, :selectedExportFormat=>"3"
+      end
     end
     describe "for existing instancevalue of wrong datatype" do
       before(:each) do
@@ -62,8 +77,12 @@ describe InstancevaluesController do
         response.should be_successful
       end
       it "should return a CSV file" do
+        txtData=@instVal2D.export2dData
+        controller.stub!(:send_data)
+        controller.stub!(:render)
+        controller.should_receive(:send_data).
+          with(txtData[:content],:type => txtData[:type], :filename => txtData[:filename])
         get :exportPlot, :instanceValueId=>@instVal2D.id
-	response.headers["Content-Type"].should eq('text/csv')
       end
     end
     describe "for existing instancevalue of wrong datatype" do

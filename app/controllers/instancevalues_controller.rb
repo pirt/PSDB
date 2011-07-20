@@ -19,7 +19,7 @@ class InstancevaluesController < ApplicationController
     if (instanceValue)
       txtData=instanceValue.export2dData
       if (txtData)
-        send_data txtData[:content], :type => txtData[:content], :filename => txtData[:filename]
+        send_data txtData[:content], :type => txtData[:type], :filename => txtData[:filename]
       else
         flash[:error]="Error exporting 2dData."
         redirect_to shots_path

@@ -78,7 +78,7 @@ class Instancevalue < ActiveRecord::Base
     instanceName=self.instancevalueset.instance.name
     shotNr=self.instancevalueset.shot_id
     fileName=instanceName+'_'+shotNr.to_s+'.txt'
-    return {:content=>txtData, :type=>"txt", :filename=>fileName}
+    return {:content=>txtData, :type=>"text/plain", :filename=>fileName}
   end
 
   # convert instancevalue of type "image" to an image of a given file format.
@@ -86,8 +86,8 @@ class Instancevalue < ActiveRecord::Base
     if self.datatype.name!="image"
       return nil
     end
-    localOptions={:exportFormat=>"2",:withColorPalette=>false}
-    localOptions=localOptions.merge(options)
+    localOptions={:withColorPalette=>false}
+    localOptions.merge!(options)
     imageBlob=trimBlob(self.data_binary)
     myImage=Magick::Image.from_blob(imageBlob)[0]
     case localOptions[:exportFormat]
@@ -119,7 +119,7 @@ class Instancevalue < ActiveRecord::Base
 
   def generateImage(options = {})
     imageOptions={:width => 320, :height =>200}
-    imageOptions=imageOptions.merge(options)
+    imageOptions.merge!(options)
     fileName="public/images/tmp/image"+self.id.to_s+"_"+
         imageOptions[:width].to_s+"_"+imageOptions[:height].to_s+".png"
     if !File.exists?(fileName)
@@ -143,7 +143,7 @@ class Instancevalue < ActiveRecord::Base
   end
   def generatePlotDataSet(options={})
     localOptions={:plotstyle=>"lines"}
-    localOption=localOptions.merge(options)
+    localOption.merge!(options)
     xyData=convert2D(self.data_binary)
     dataSet=Gnuplot::DataSet.new(xyData) do |ds|
       ds.with = "lines"
@@ -192,7 +192,7 @@ private
 
   def generatePlot(plotData,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
-    plotOptions=plotOptions.merge(options)
+    plotOptions.merge!(options)
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
