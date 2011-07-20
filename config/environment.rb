@@ -8,7 +8,7 @@ begin
 rescue
   puts
   puts "Error while trying to read config/psdbconfig.yml"
-  puts "Try to run 'ruby lib/psdbConfig.rb' first and follow the instructions there."
+  puts "Try to run 'ruby ./lib/configPSDB.rb' first and follow the instructions there."
   exit!
 end
 
