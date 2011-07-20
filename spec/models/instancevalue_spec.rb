@@ -132,8 +132,24 @@ describe Instancevalue do
         wrongDataTypeValue=Instancevalue.new(@attrImage.merge({:datatype_id=>wrongDataType.id}))
         wrongDataTypeValue.exportImage.should eq(nil)
       end
-      it "should return empty content if data field is empty"
-      it "should return empty content if data field has wrong format"
+      it "should return empty content if data field is empty" do
+        emptyImage=Factory(:datatype,:name=>"emptyImage")
+        emptyImage=Instancevalue.new(@attrImage.merge({:datatype_binary=>nil}))
+        result=emptyImage.exportImage
+        result[:content].should eq("")
+        result[:format].should eq("image/PNG")
+        result[:filename].should eq(emptyImage.instancevalueset.instance.name+"_"+
+                                    emptyImage.instancevalueset.shot.id.to_s+".png")
+      end
+      it "should return empty content if data field has wrong format" do
+        illegalImage=Factory(:datatype,:name=>"illegalImage")
+        illegalImage=Instancevalue.new(@attrImage.merge({:datatype_binary=>"AAAA12345"}))
+        result=illegalImage.exportImage
+        result[:content].should eq("")
+        result[:format].should eq("image/PNG")
+        result[:filename].should eq(illegalImage.instancevalueset.instance.name+"_"+
+                                    illegalImage.instancevalueset.shot.id.to_s+".png")
+      end
     end
     describe "'generateImage'" do
       it "should generate an Image for an image instancevalue"
