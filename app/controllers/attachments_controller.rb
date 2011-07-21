@@ -31,10 +31,9 @@ class AttachmentsController < ApplicationController
       redirect_to experiments_path
       return
     end
-    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     if params[:cancel]
       flash[:info]="Attachment creation cancelled"
-      redirect_to parentPath
+      redirect_to polymorphic_path(@parent)
       return
     end
     @attachment=@parent.attachments.new
@@ -54,7 +53,7 @@ class AttachmentsController < ApplicationController
     end
       if @attachment.save
       flash[:success]="Attachment created"
-      redirect_to parentPath
+      redirect_to polymorphic_path(@parent)
     else
       @pageTitle="Add attachment"
       render 'new'
@@ -66,11 +65,10 @@ class AttachmentsController < ApplicationController
     elsif params[:shot_id]
        @parent=Shot.find_by_id(params[:shot_id])
     end
-    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     @attachment=Attachment.find_by_id(params[:id])
     if !@attachment
       flash[:error]="Attachment not found"
-      redirect_to parentPath
+      redirect_to polymorphic_path(@parent)
       return
     end
     @pageTitle="Edit attachment"
@@ -81,16 +79,15 @@ class AttachmentsController < ApplicationController
     elsif params[:shot_id]
        @parent=Shot.find_by_id(params[:shot_id])
     end
-    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     @attachment=Attachment.find_by_id(params[:id])
     if !@attachment
       flash[:error]="Attachment not found"
-      redirect_to parentPath
+      redirect_to polymorphic_path(@parent)
       return
     end
     if params[:cancel]
       flash[:info]="Attachment update cancelled"
-      redirect_to parentPath
+      redirect_to polymorphic_path(@parent)
       return
     end
     @attachment.description=params[:attachment][:description]
@@ -111,7 +108,7 @@ class AttachmentsController < ApplicationController
     end
     if @attachment.save
       flash[:success]="Attachment updated"
-      redirect_to parentPath
+      redirect_to polymorphic_path(@parent)
     else
       @attachment.reload
       @pageTitle="Edit attachment"
@@ -122,9 +119,8 @@ class AttachmentsController < ApplicationController
     if params[:experiment_id]
       @parent=Experiment.find_by_id(params[:experiment_id])
     elsif params[:shot_id]
-       @parent=Shot.find_by_id(params[:shot_id])
+      @parent=Shot.find_by_id(params[:shot_id])
     end
-    parentPath="/#{@parent.class.to_s.downcase}s/#{@parent.id}"
     attachment=Attachment.find_by_id(params[:id])
     if !attachment
       flash[:error] = "Attachment not found"
@@ -135,6 +131,7 @@ class AttachmentsController < ApplicationController
         flash[:error] = "Error while deleting attachment"
       end
     end
-    redirect_to parentPath
+    redirect_to polymorphic_path(@parent)
   end
 end
+
