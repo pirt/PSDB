@@ -38,7 +38,7 @@ class Experiment < ActiveRecord::Base
     end
   end
   def getBeamtimes(minimumTimeBetweenBeamTimes=5.days)
-    if self.shots.empty? 
+    if self.shots.empty?
       return []
     end
     queryString="
@@ -47,9 +47,9 @@ class Experiment < ActiveRecord::Base
                currentTable.id as currentid,
                nextTable.id as nextid
         from (select * from shots where experiment_id=%d) currentTable
-      	join (select * from shots where experiment_id=%d) nextTable
-       	on nextTable.id=(select min(id) from
-         	(select * from shots where experiment_id=%d) dummyTable where id>currentTable.id)" % [self.id,self.id,self.id]
+        join (select * from shots where experiment_id=%d) nextTable
+        on nextTable.id=(select min(id) from
+          (select * from shots where experiment_id=%d) dummyTable where id>currentTable.id)" % [self.id,self.id,self.id]
     durations=Shot.find_by_sql(queryString)
     beamtimes=[]
     beamtime={:firstId=>self.shots.first.id}

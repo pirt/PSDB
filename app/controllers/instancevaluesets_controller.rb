@@ -25,7 +25,7 @@ class InstancevaluesetsController < ApplicationController
     end
     @instanceValueSets=selectedValueSets.order("shot_id DESC").paginate(:page => params[:page])
     datatype=Datatype.find_by_name("numeric")
-    if (datatype) 
+    if (datatype)
       datatypeId=datatype.id
       availableParameters=selectedValueSets.joins(:instancevalues).where("datatype_id=?",datatypeId).
         select("instancevalues.name").group("instancevalues.name")
@@ -79,3 +79,4 @@ class InstancevaluesetsController < ApplicationController
     @instanceValueSet=Instancevalueset.find_by_id(params[:id])
   end
 end
+

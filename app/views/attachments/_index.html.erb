@@ -21,9 +21,10 @@
         <%= link_to "Delete", [parent,attachment],
                              :method => :delete, :confirm => "Are You sure?",
                              :title => "Delete #{attachment.filename}",
-			     :class => "ui-icon ui-icon-trash" %>
+                             :class => "ui-icon ui-icon-trash" %>
       </td>
     </tr>
   <% end %>
 </table>
 <%= link_to "Add document", linkPath+"new", :title => "Add new document" %>
+

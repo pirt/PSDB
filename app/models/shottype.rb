@@ -27,4 +27,8 @@ class Shottype < ActiveRecord::Base
       return true
     end
   end
+  def to_s
+    return self.name
+  end
 end
+
