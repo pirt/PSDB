@@ -34,10 +34,12 @@
       <tbody>
        <% @beamtimes.each do |beamtime| %>
         <tr>
-         <td><% firstDate=formatDate(Shot.find(beamtime[:firstId]).created_at, {:dateOnly => true})
-                lastDate=formatDate(Shot.find(beamtime[:lastId]).created_at, {:dateOnly => true})
+         <td><% firstDate=formatDate(beamtime[:firstDate], {:dateOnly => true})
+                lastDate=formatDate(beamtime[:lastDate], {:dateOnly => true})
                 dateSpan=firstDate+" - "+lastDate %>
-          <%= link_to dateSpan, shots_path({:from_date=>firstDate,:to_date=>lastDate,:selectedExp=>@experiment.id}) %>
+          <%= link_to dateSpan, shots_path({:from_date=>firstDate,
+                                            :to_date=>lastDate,
+                                            :selectedExp=>@experiment.id}) %>
           </td>
          <td><%= beamtime[:firstId] %></td>
          <td><%= beamtime[:lastId] %></td>
@@ -59,7 +61,7 @@
         <% shotNr=@experiment.shots.where(:shottype_id => shottype).count %>
         <% if shotNr>0 %>
           <tr>
-            <td><%= shottype.name %></td>
+            <td><%= shottype %></td>
             <td><%= shotNr %></td>
           </tr>
         <% end %>
@@ -76,3 +78,4 @@
 <% end %>
 <hr>
 <%= link_to "Back to experiments", experiments_path %>
+

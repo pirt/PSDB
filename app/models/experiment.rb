@@ -52,16 +52,18 @@ class Experiment < ActiveRecord::Base
           (select * from shots where experiment_id=%d) dummyTable where id>currentTable.id)" % [self.id,self.id,self.id]
     durations=Shot.find_by_sql(queryString)
     beamtimes=[]
-    beamtime={:firstId=>self.shots.first.id}
+    beamtime={:firstId=>self.shots.first.id, :firstDate=>self.shots.first.created_at}
     durations.each do |d|
       difference=d.t1-d.t2
       if(difference>minimumTimeBetweenBeamTimes)
         beamtime[:lastId]=d.currentid
+        beamtime[:lastDate]=d.t2
         beamtimes << beamtime
-        beamtime={:firstId=>d.nextid}
+        beamtime={:firstId=>d.nextid, :firstDate=>d.t1}
       end
     end
     beamtime[:lastId]=self.shots.last.id
+    beamtime[:lastDate]=self.shots.last.created_at
     beamtimes << beamtime
     return beamtimes
   end
