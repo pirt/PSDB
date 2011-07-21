@@ -92,16 +92,17 @@ describe Instancevalue do
         result[:filename].should eq(correctValue.instancevalueset.instance.name+"_"+
                                     correctValue.instancevalueset.shot.id.to_s+".txt")
       end
-      it "should return 'nil' if instancevalue has wrong data type" do
+      it "should raise RuntimeError if instancevalue has wrong data type" do
         wrongDataType=Factory(:datatype,:name=>"wrongType")
         wrongDataTypeValue=Instancevalue.new(@attr2d.merge({:datatype_id=>wrongDataType.id}))
-        wrongDataTypeValue.export2dData.should eq(nil)
+        expect {wrongDataTypeValue.export2dData}.
+        to raise_error(RuntimeError,"instancevalue has wrong datatype")
       end
       it "should return only axis description if a 2dData instancevalue has no data" do
         emptyValue=Instancevalue.new(@attr2d.merge(:data_binary=>nil))
         emptyValue.export2dData[:content].should eq("XValue [m]\tYValue [s]\n")
       end
-      it "should return an empty string if data field has wrong format" do
+      it "should return only valid lines data field has wrong format" do
         emptyValue=Instancevalue.new(@attr2d.merge(:data_binary=>"XXXXabcde,fef,142463\n\n"))
         emptyValue.export2dData[:content].should eq("XValue [m]\tYValue [s]\nabcde\tfef\n\t\n")
       end
@@ -157,7 +158,11 @@ describe Instancevalue do
         before(:each) do
           @imageInstVal=Factory(:instancevalue_image,:instancevalueset_id => @instancevalueset.id)
         end
-        it "should generate an image"
+        it "should generate an image" do
+          @imageInstVal.generateImage
+          File.exists?(Rails.root.to_s+
+            "/public/images/tmp/image"+@imageInstVal.id.to_s+"_320_200.png").should == true
+        end
         it "should return a filename containing the instancevalue id" do
           result=@imageInstVal.generateImage
           result.should =="tmp/image"+@imageInstVal.id.to_s+"_320_200.png"
@@ -170,7 +175,11 @@ describe Instancevalue do
             :instancevalueset_id => @instancevalueset.id,
             :datatype_id=>wrongDataType.id)
         end
-        it "should not generate an image"
+        it "should not generate an image" do
+          expect {@wrongInstVal.generateImage}.to raise_error
+          File.exists?(Rails.root.to_s+
+            "/public/images/tmp/image"+@wrongInstVal.id.to_s+"_320_200.png").should == false
+        end
         it "should raise a RuntimeError" do
           expect {@wrongInstVal.generateImage}.
           to raise_error(RuntimeError, 'error converting instancevalue to image file')
@@ -179,16 +188,65 @@ describe Instancevalue do
     end
     describe "'generate2dPlot'" do
       describe "for a 2dData instancevalue" do
-        it "should generate an plot image"
-        it "should return a filename containing the instancevalue id"
+        before(:each) do
+          @plotInstVal=Factory(:instancevalue_2dData, :instancevalueset_id=>@instancevalueset.id)
+        end
+        it "should generate a plot image" do
+          @plotInstVal.generate2dPlot
+          File.exists?(Rails.root.to_s+"/public/images/tmp/plot"+@plotInstVal.id.to_s+".png").should == true
+        end
+        it "should return a filename containing the instancevalue id" do
+          result=@plotInstVal.generate2dPlot
+          result.should == "tmp/plot"+@plotInstVal.id.to_s+".png"
+        end
+      end
+      describe "for a non-2dData instancevalue" do
+        before(:each) do
+          wrongDataType=Factory(:datatype,:name=>"wrongType")
+          @wrongInstVal=Factory(:instancevalue,
+            :instancevalueset_id => @instancevalueset.id,
+            :datatype_id=>wrongDataType.id)
+        end
+        it "should not generate a plot image" do
+          expect {@wrongInstVal.generate2dPlot}.to raise_error
+          File.exists?(Rails.root.to_s+
+            "/public/images/tmp/plot"+@wrongInstVal.id.to_s+".png").should == false
+        end
+        it "should raise a RuntimeError" do
+          expect {@wrongInstVal.generate2dPlot}.
+          to raise_error(RuntimeError, 'instancevalue has wrong data type')
+        end
       end
     end
     describe "'generatePlotDataSet'" do
       describe "for 2dData instancevalue" do
-        it "should return a plot dataset"
+        before(:each) do
+          @plotInstVal=Factory(:instancevalue_2dData, :instancevalueset_id=>@instancevalueset.id)
+        end
+        it "should return a correct plot dataset" do
+          result=@plotInstVal.generatePlotDataSet
+          result.class.should == Gnuplot::DataSet
+          result.with.should == "lines"
+          result.title.should == "notitle"
+          result.data.should == [[1.0, 3.0], [2.0, 4.0]]
+        end
+        it "should raise a RuntimeError if 2dData has illegal format" do
+          @plotInstVal.data_binary="AAAA1,2,3\n4ab"
+          expect {@plotInstVal.generatePlotDataSet}.
+          to raise_error(RuntimeError,'cannot convert data')
+        end
       end
       describe "for non-2dData instancevalue" do
-        it "should raise a RuntimeError"
+        before(:each) do
+          wrongDataType=Factory(:datatype,:name=>"wrongType")
+          @wrongInstVal=Factory(:instancevalue,
+            :instancevalueset_id => @instancevalueset.id,
+            :datatype_id=>wrongDataType.id)
+        end
+        it "should raise a RuntimeError" do
+          expect {@wrongInstVal.generatePlotDataSet}.
+          to raise_error(RuntimeError, 'instancevalue has wrong data type')
+        end
       end
     end
     describe "'generatePlotAxisDescriptions'" do

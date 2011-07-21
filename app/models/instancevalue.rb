@@ -39,7 +39,7 @@ class Instancevalue < ActiveRecord::Base
   # convert instancevalue of type 2dData to a text string.
   def export2dData
     if self.datatype.name!="2dData"
-      return nil
+      raise "instancevalue has wrong datatype"
     end
     axisDescription=self.data_string
     txtData=""
@@ -152,10 +152,17 @@ class Instancevalue < ActiveRecord::Base
     generatePlot(plotData,plotOptions)
   end
   def generatePlotDataSet(options={})
+    if self.datatype.name!="2dData"
+      raise "instancevalue has wrong data type"
+    end
     localOptions={:plotstyle=>"lines"}
-    localOption.merge!(options)
-    xyData=convert2D(self.data_binary)
-    dataSet=Gnuplot::DataSet.new(xyData) do |ds|
+    localOptions.merge!(options)
+    begin
+      xyData=convert2D(self.data_binary)
+    rescue
+      raise "cannot convert data"
+    end
+      dataSet=Gnuplot::DataSet.new(xyData) do |ds|
       ds.with = "lines"
       ds.notitle
     end
@@ -203,15 +210,17 @@ private
   def generatePlot(plotData,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions.merge!(options)
+    fileName=Rails.root.to_s+"/public/images/tmp/plot"+self.id.to_s+".#{plotOptions[:imagetype]}"
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
-        plot.output "public/images/tmp/plot"+self.id.to_s+".#{plotOptions[:imagetype]}"
+        plot.output fileName
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
         plot.data << plotData
       end
     end
+    return fileName.sub(Rails.root.to_s+"/public/images/","")
   end
 end
 
