@@ -127,37 +127,69 @@ describe Instancevalue do
         result[:filename].should eq(correctValue.instancevalueset.instance.name+"_"+
                                     correctValue.instancevalueset.shot.id.to_s+".png")
       end
-      it "should return 'nil' if instancevalue has wrong data type" do
+      it "should raise a RuntimeError if instancevalue has wrong data type" do
         wrongDataType=Factory(:datatype,:name=>"wrongType")
         wrongDataTypeValue=Instancevalue.new(@attrImage.merge({:datatype_id=>wrongDataType.id}))
-        wrongDataTypeValue.exportImage.should eq(nil)
+        expect {wrongDataTypeValue.exportImage}.
+          to raise_error(RuntimeError,'instancevalue has wrong data type')
       end
-      it "should return empty content if data field is empty" do
+      it "should raise a RuntimeError if the data field is nil" do
         emptyImage=Factory(:datatype,:name=>"emptyImage")
-        emptyImage=Instancevalue.new(@attrImage.merge({:datatype_binary=>nil}))
-        result=emptyImage.exportImage
-        result[:content].should eq("")
-        result[:format].should eq("image/PNG")
-        result[:filename].should eq(emptyImage.instancevalueset.instance.name+"_"+
-                                    emptyImage.instancevalueset.shot.id.to_s+".png")
+        emptyImage=Instancevalue.new(@attrImage.merge({:data_binary=>nil}))
+        expect {emptyImage.exportImage}.
+          to raise_error(RuntimeError, 'no image data found')
       end
-      it "should return empty content if data field has wrong format" do
+      it "should raise a RuntimeError if the data field is empty string" do
+        emptyImage=Factory(:datatype,:name=>"emptyImage")
+        emptyImage=Instancevalue.new(@attrImage.merge({:data_binary=>""}))
+        expect {emptyImage.exportImage}.
+          to raise_error(RuntimeError, 'no image data found')
+      end
+      it "should raise a RuntimeError if data field has wrong format" do
         illegalImage=Factory(:datatype,:name=>"illegalImage")
-        illegalImage=Instancevalue.new(@attrImage.merge({:datatype_binary=>"AAAA12345"}))
-        result=illegalImage.exportImage
-        result[:content].should eq("")
-        result[:format].should eq("image/PNG")
-        result[:filename].should eq(illegalImage.instancevalueset.instance.name+"_"+
-                                    illegalImage.instancevalueset.shot.id.to_s+".png")
+        illegalImage=Instancevalue.new(@attrImage.merge({:data_binary=>"AAAA12345"}))
+        expect {illegalImage.exportImage}.
+          to raise_error(RuntimeError, 'instancevalue contains invalid image data')
       end
     end
     describe "'generateImage'" do
-      it "should generate an Image for an image instancevalue"
+      describe "for an image instancevalue" do
+        before(:each) do
+          @imageInstVal=Factory(:instancevalue_image,:instancevalueset_id => @instancevalueset.id)
+        end
+        it "should generate an image"
+        it "should return a filename containing the instancevalue id" do
+          result=@imageInstVal.generateImage
+          result.should =="tmp/image"+@imageInstVal.id.to_s+"_320_200.png"
+        end
+      end
+      describe "for a non-image instancevalue" do
+        before(:each) do
+          wrongDataType=Factory(:datatype,:name=>"wrongType")
+          @wrongInstVal=Factory(:instancevalue,
+            :instancevalueset_id => @instancevalueset.id,
+            :datatype_id=>wrongDataType.id)
+        end
+        it "should not generate an image"
+        it "should raise a RuntimeError" do
+          expect {@wrongInstVal.generateImage}.
+          to raise_error(RuntimeError, 'error converting instancevalue to image file')
+        end
+      end
     end
     describe "'generate2dPlot'" do
-      it "should generate an plot image for a 2dData instancevalue"
+      describe "for a 2dData instancevalue" do
+        it "should generate an plot image"
+        it "should return a filename containing the instancevalue id"
+      end
     end
     describe "'generatePlotDataSet'" do
+      describe "for 2dData instancevalue" do
+        it "should return a plot dataset"
+      end
+      describe "for non-2dData instancevalue" do
+        it "should raise a RuntimeError"
+      end
     end
     describe "'generatePlotAxisDescriptions'" do
       it "should generate options list with axis labels" do

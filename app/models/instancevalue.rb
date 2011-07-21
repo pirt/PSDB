@@ -84,12 +84,19 @@ class Instancevalue < ActiveRecord::Base
   # convert instancevalue of type "image" to an image of a given file format.
   def exportImage(options={})
     if self.datatype.name!="image"
-      return nil
+      raise "instancevalue has wrong data type"
+    end
+    if self.data_binary.blank?
+      raise "no image data found"
     end
     localOptions={:withColorPalette=>false}
     localOptions.merge!(options)
     imageBlob=trimBlob(self.data_binary)
-    myImage=Magick::Image.from_blob(imageBlob)[0]
+    begin
+      myImage=Magick::Image.from_blob(imageBlob)[0]
+    rescue Magick::ImageMagickError
+      raise "instancevalue contains invalid image data"
+    end
     case localOptions[:exportFormat]
       when '1'
         exportFormat='BMP'
@@ -118,20 +125,23 @@ class Instancevalue < ActiveRecord::Base
   end
 
   def generateImage(options = {})
+    if self.datatype.name!="image"
+      raise "error converting instancevalue to image file"
+    end
     imageOptions={:width => 320, :height =>200}
     imageOptions.merge!(options)
-    fileName="public/images/tmp/image"+self.id.to_s+"_"+
+    fileName=Rails.root.to_s+"/public/images/tmp/image"+self.id.to_s+"_"+
         imageOptions[:width].to_s+"_"+imageOptions[:height].to_s+".png"
     if !File.exists?(fileName)
       imageData=trimBlob(self.data_binary)
       myImage=Magick::Image.from_blob(imageData)
       myImage=myImage[0]
-      paletteImg=Magick::Image.read("public/images/Rainbow.png")
+      paletteImg=Magick::Image.read(Rails.root.to_s+"/public/images/Rainbow.png")
       myImage=myImage.clut_channel(paletteImg[0])
       myImage=myImage.resize_to_fit(imageOptions[:width],imageOptions[:height])
       myImage.write fileName
     end
-    return fileName.sub("public/images/","")
+    return fileName.sub(Rails.root.to_s+"/public/images/","")
   end
   def generate2dPlot(options={})
     plotOptions={}
