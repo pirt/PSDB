@@ -21,8 +21,8 @@
   <ul>
     <li><strong>Device Status:</strong><%= image_tag onoffIconName, {:style=>"vertical-align:middle"} %></li>
   <% if deviceOn %>
-    <li><strong>On since:</strong><%= displayParameter(instanceValueSet.instancevalues,"On since") %></li>
-    <li><strong>Concentration:</strong><%= displayParameter(instanceValueSet.instancevalues,"Concentration", :precision=>4) %></li>
+    <li><strong>On since:</strong><%= displayParameter(instanceValueSet,"On since") %></li>
+    <li><strong>Concentration:</strong><%= displayParameter(instanceValueSet,"Concentration", :precision=>4) %></li>
     <li><strong>Alarm Status:</strong><%= image_tag alarmIconName, {:style=>"vertical-align:middle"} %></li>
   <% end %>
   </ul>

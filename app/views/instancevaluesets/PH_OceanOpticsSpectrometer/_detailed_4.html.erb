@@ -1,8 +1,7 @@
-<% instanceValues=instanceValueSet.instancevalues %>
 <div class="span-12">
   <h3>Spectrum</h3>
-  <%= displayParameter(instanceValues,"Spectrum",{:width=>450,:height=>300}) %>
-  <% plotData=instanceValues.find_by_name("Spectrum") %>
+  <%= displayParameter(instanceValueSet,"Spectrum",{:width=>450,:height=>300}) %>
+  <% plotData=instanceValueSet.instancevalues.find_by_name("Spectrum") %>
 <%= form_tag({:controller => "instancevalues", :action => "exportPlot"}, :method => "get") do %>
     <%= hidden_field_tag(:instanceValueId,plotData.id) %>
     <%= label_tag(:imageFormat, "Format:") %>
@@ -14,8 +13,8 @@
 <div class="span-12 last">
   <h3>Aquisition Parameters</h3>
   <ul>
-    <li>Integration time: <%= displayParameter(instanceValues,"Integration Time") %></li>
-    <li>Trigger mode: <%= displayParameter(instanceValues,"Triggermode",{:precision=>0}) %></li>
-    <li>Device Status: <%= displayParameter(instanceValues,"Status") %></li>
+    <li>Integration time: <%= displayParameter(instanceValueSet,"Integration Time") %></li>
+    <li>Trigger mode: <%= displayParameter(instanceValueSet,"Triggermode",{:precision=>0}) %></li>
+    <li>Device Status: <%= displayParameter(instanceValueSet,"Status") %></li>
   </ul>
 </div>

@@ -40,7 +40,8 @@ class Instancevalueset < ActiveRecord::Base
     if (parameterData.nil?)
       return nil
     else
-      return parameterData
+      result=parameterData.data_numeric>0 ? true : false
+      return result
     end
   end
   def generatePlot(plotParameterNames,plotNr,options={})

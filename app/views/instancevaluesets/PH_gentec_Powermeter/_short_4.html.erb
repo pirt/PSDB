@@ -1,7 +1,7 @@
 <%=
   deviceStatus=instanceValueSet.getStringParameter("Device State",:upcase=>true)
   if deviceStatus=="ON/TRUE"
-    displayParameter(instanceValueSet.instancevalues,"Energy")
+    displayParameter(instanceValueSet,"Energy")
   else
     image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"}
   end

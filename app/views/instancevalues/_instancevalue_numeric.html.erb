@@ -1,9 +1,8 @@
-<%= if options[:precision].nil?
-    instancevalue.data_numeric
-  else
-    number_with_precision(instancevalue.data_numeric, :precision =>options[:precision])
-  end %>
-<% if (instancevalue.data_string) %>
- <%=h instancevalue.data_string %>
+<% if options[:precision].nil? %>
+<%=  instancevalue.data_numeric %>
+<% else %>
+<%= number_with_precision(instancevalue.data_numeric, :precision =>options[:precision]) %>
 <% end %>
-
+<% if (instancevalue.data_string.present?) %>
+<%=h instancevalue.data_string %>
+<% end %>

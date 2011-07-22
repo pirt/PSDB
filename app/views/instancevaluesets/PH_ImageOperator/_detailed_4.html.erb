@@ -1,10 +1,10 @@
 <%= javascript_include_tag 'tabs' %>
 <% instancevalues=instanceValueSet.instancevalues %>
 <p>
-Background substraction: <%= displayParameter(instancevalues,"BI Subtraction Failure?",{:icon=>true, :invert=>true}) %>
-Cam calibration: <%= displayParameter(instancevalues,"Calibration: Cam Error",{:icon=>true, :invert=>true}) %>
-Size calibration: <%= displayParameter(instancevalues,"Calibration: Linear: no mm",{:icon=>true, :invert=>true}) %></li>
-Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no mJ",{:icon=>true, :invert=>true}) %></li>
+Background substraction: <%= displayParameter(instanceValueSet,"BI Subtraction Failure?",{:icon=>true, :invert=>true}) %>
+Cam calibration: <%= displayParameter(instanceValueSet,"Calibration: Cam Error",{:icon=>true, :invert=>true}) %>
+Size calibration: <%= displayParameter(instanceValueSet,"Calibration: Linear: no mm",{:icon=>true, :invert=>true}) %></li>
+Energy calibration: <%= displayParameter(instanceValueSet,"Calibration: Energy: no mJ",{:icon=>true, :invert=>true}) %></li>
 </p>
 <div id="tabs">
   <ul>
@@ -19,22 +19,22 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
     <div class="container">
       <div class="span-11">
         <h3>Energy</h3>
-        <% if instanceValueSet.getBooleanParameter("Energy: Calculation on?")==true %>
+        <% if instanceValueSet.getBooleanParameter("Energy: Analysis on?")==true %>
           <ul>
-            <li>Energy: <%= displayParameter(instancevalues,"Energy",{:precision=>2}) %></li>
-            <li>Expected Energy: <%= displayParameter(instancevalues,"expected Energy") %></li>
-            <li>Calculated at: <%= displayParameter(instancevalues,"Energy: calculated at") %></li>
+            <li>Energy: <%= displayParameter(instanceValueSet,"Energy",{:precision=>2}) %></li>
+            <li>Expected Energy: <%= displayParameter(instanceValueSet,"expected Energy") %></li>
+            <li>Calculated at: <%= displayParameter(instanceValueSet,"Energy: calculated at") %></li>
           </ul>
         <% else %>
           no data
         <% end %>
         <h3>Position Analysis</h3>
-        <% if instanceValueSet.getBooleanParameter("Position Analysis: Calculation on?")==true %>
+        <% if instanceValueSet.getBooleanParameter("Position Analysis: Analysis on?")==true %>
           <ul>
-            <li>expected X-Position: <%= displayParameter(instancevalues,"Position Analysis: Nearfield expected X-Position") %></li>
-            <li>expected Y-Position: <%= displayParameter(instancevalues,"Position Analysis: Nearfield expected Y-Position") %></li>
-            <li>Delta: <%= displayParameter(instancevalues,"Position Analysis: Nearfield Delta") %></li>
-            <li>Analyzed at: <%= displayParameter(instancevalues,"Position Analysis: analysed at") %></li>
+            <li>expected X-Position: <%= displayParameter(instanceValueSet,"Position Analysis: Nearfield expected X-Position") %></li>
+            <li>expected Y-Position: <%= displayParameter(instanceValueSet,"Position Analysis: Nearfield expected Y-Position") %></li>
+            <li>Delta: <%= displayParameter(instanceValueSet,"Position Analysis: Nearfield Delta") %></li>
+            <li>Analyzed at: <%= displayParameter(instanceValueSet,"Position Analysis: analysed at") %></li>
           </ul>
         <% else %>
           no data
@@ -44,14 +44,14 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
         <h3>Beam Analysis</h3>
         <% if instanceValueSet.getBooleanParameter("Beam Analysis: Analysis on?")==true %>
           <ul>
-            <li>Azimuth angle relativ to major axis?: <%= displayParameter(instancevalues,"Beam Analysis: Azimuth angle relativ to major axis?") %></li>
-            <li>Center of gravity x: <%= displayParameter(instancevalues,"Beam Analysis: Center of gravity - x",{:precision=>1}) %></li>
-            <li>Center of gravity y: <%= displayParameter(instancevalues,"Beam Analysis: Center of gravity - y",{:precision=>1}) %></li>
-            <li>Major diameter: <%= displayParameter(instancevalues,"Beam Analysis: Major axis dimension", {:precision=>2}) %></li>
-            <li>Minor diameter: <%= displayParameter(instancevalues,"Beam Analysis: Minor axis dimension", {:precision=>2}) %></li>
-            <li>Azimuth angle: <%= displayParameter(instancevalues,"Beam Analysis: Azimuth angle",{:precision=>2}) %></li>
-            <li>Region of interest method: <%= displayParameter(instancevalues,"Beam Analysis: Region of interest") %></li>
-            <li>Analyzed at: <%= displayParameter(instancevalues,"Beam Analysis: Analysed at") %></li>
+            <li>Azimuth angle relativ to major axis?: <%= displayParameter(instanceValueSet,"Beam Analysis: Azimuth angle relativ to major axis?") %></li>
+            <li>Center of gravity x: <%= displayParameter(instanceValueSet,"Beam Analysis: Center of gravity - x",{:precision=>1}) %></li>
+            <li>Center of gravity y: <%= displayParameter(instanceValueSet,"Beam Analysis: Center of gravity - y",{:precision=>1}) %></li>
+            <li>Major diameter: <%= displayParameter(instanceValueSet,"Beam Analysis: Major axis dimension", {:precision=>2}) %></li>
+            <li>Minor diameter: <%= displayParameter(instanceValueSet,"Beam Analysis: Minor axis dimension", {:precision=>2}) %></li>
+            <li>Azimuth angle: <%= displayParameter(instanceValueSet,"Beam Analysis: Azimuth angle",{:precision=>2}) %></li>
+            <li>Region of interest method: <%= displayParameter(instanceValueSet,"Beam Analysis: Region of interest") %></li>
+            <li>Analyzed at: <%= displayParameter(instanceValueSet,"Beam Analysis: Analysed at") %></li>
           </ul>
         <% else %>
           no data
@@ -64,33 +64,33 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
       <div class="span-11">
         <h3>Camera data</h3>
         <ul>
-          <li>Info Failure?: <%= displayParameter(instancevalues,"Cam Settings: Information Failure?") %></li>
-          <li>Serial number: <%= displayParameter(instancevalues,"Cam Settings: Serial Number",{:precision=>0}) %></li>
-          <li>Brightness: <%= displayParameter(instancevalues,"Cam Settings: Brightness",{:precision=>0}) %></li>
-          <li>Shutter: <%= displayParameter(instancevalues,"Cam Settings: Shutter",{:precision=>0}) %></li>
-          <li>Gain: <%= displayParameter(instancevalues,"Cam Settings: Gain",{:precision=>0}) %></li>
-          <li>Mode: <%= displayParameter(instancevalues,"Cam Settings: Mode",{:precision=>0}) %></li>
+          <li>Info Failure?: <%= displayParameter(instanceValueSet,"Cam Settings: Information Failure?") %></li>
+          <li>Serial number: <%= displayParameter(instanceValueSet,"Cam Settings: Serial Number",{:precision=>0}) %></li>
+          <li>Brightness: <%= displayParameter(instanceValueSet,"Cam Settings: Brightness",{:precision=>0}) %></li>
+          <li>Shutter: <%= displayParameter(instanceValueSet,"Cam Settings: Shutter",{:precision=>0}) %></li>
+          <li>Gain: <%= displayParameter(instanceValueSet,"Cam Settings: Gain",{:precision=>0}) %></li>
+          <li>Mode: <%= displayParameter(instanceValueSet,"Cam Settings: Mode",{:precision=>0}) %></li>
         </ul>
       </div>
       <div class="span-11 last">
         <h3>Calibration data</h3>
         <ul>
-          <li>Serial number: <%= displayParameter(instancevalues,"Calibration: Serial Number",{:precision=>0}) %></li>
-          <li>Brightness: <%= displayParameter(instancevalues,"Calibration: Brightness",{:precision=>0}) %></li>
-          <li>Shutter: <%= displayParameter(instancevalues,"Calibration: Shutter",{:precision=>0}) %></li>
-          <li>Gain: <%= displayParameter(instancevalues,"Calibration: Gain",{:precision=>0}) %></li>
-          <li>Mode: <%= displayParameter(instancevalues,"Calibration: Mode",{:precision=>0}) %></li>
-          <li>Energy Calibration Factor: <%= displayParameter(instancevalues,"Calibration: Energy Cali Factor",{:precision=>3}) %></li>
-          <li>Size Calibration Factor: <%= displayParameter(instancevalues,"Calibration: Linear Cali Factor",{:precision=>3}) %></li>
-          <li>Calibration Status: <%= displayParameter(instancevalues,"Calibration: Status") %></li>
-          <li>Calibration Date: <%= displayParameter(instancevalues,"Calibration: Date") %>,
-                                <%= displayParameter(instancevalues,"Calibration: Time") %></li>
+          <li>Serial number: <%= displayParameter(instanceValueSet,"Calibration: Serial Number",{:precision=>0}) %></li>
+          <li>Brightness: <%= displayParameter(instanceValueSet,"Calibration: Brightness",{:precision=>0}) %></li>
+          <li>Shutter: <%= displayParameter(instanceValueSet,"Calibration: Shutter",{:precision=>0}) %></li>
+          <li>Gain: <%= displayParameter(instanceValueSet,"Calibration: Gain",{:precision=>0}) %></li>
+          <li>Mode: <%= displayParameter(instanceValueSet,"Calibration: Mode",{:precision=>0}) %></li>
+          <li>Energy Calibration Factor: <%= displayParameter(instanceValueSet,"Calibration: Energy Cali Factor",{:precision=>3}) %></li>
+          <li>Size Calibration Factor: <%= displayParameter(instanceValueSet,"Calibration: Linear Cali Factor",{:precision=>3}) %></li>
+          <li>Calibration Status: <%= displayParameter(instanceValueSet,"Calibration: Status") %></li>
+          <li>Calibration Date: <%= displayParameter(instanceValueSet,"Calibration: Date") %>,
+                                <%= displayParameter(instanceValueSet,"Calibration: Time") %></li>
         </ul>
       </div>
     </div>
   </div>
   <div id="tabs-3">
-    <% if instanceValueSet.getBooleanParameter("Trace Analysis: Calculation on?")==true %>
+    <% if instanceValueSet.getBooleanParameter("Trace Analysis: Analysis on?")==true %>
       <div class="container">
         <div class="span-22">
           <div class="span-14">
@@ -105,9 +105,9 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
           <div class="span-8 last">
             <h3>Major Axis</h3>
             <ul>
-              <li>FWHM: <%= displayParameter(instancevalues,"Trace Analysis: Maj FWHM",{:precision=>2}) %></li>
-              <li>99% Width: <%= displayParameter(instancevalues,"Trace Analysis: Maj 99% Width",{:precision=>2}) %></li>
-              <li>Fit order: <%= displayParameter(instancevalues,"Trace Analysis: Maj Gauss Fit Order",{:precision=>0}) %></li>
+              <li>FWHM: <%= displayParameter(instanceValueSet,"Trace Analysis: Maj FWHM",{:precision=>2}) %></li>
+              <li>99% Width: <%= displayParameter(instanceValueSet,"Trace Analysis: Maj 99% Width",{:precision=>2}) %></li>
+              <li>Fit order: <%= displayParameter(instanceValueSet,"Trace Analysis: Maj Gauss Fit Order",{:precision=>0}) %></li>
             </ul>
           </div>
         </div>
@@ -124,9 +124,9 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
           <div class="span-8 last">
            <h3>Minor Axis</h3>
            <ul>
-             <li>FWHM: <%= displayParameter(instancevalues,"Trace Analysis: Min FWHM",{:precision=>2}) %></li>
-             <li>99% Width: <%= displayParameter(instancevalues,"Trace Analysis: Min 99% Width",{:precision=>2}) %></li>
-             <li>Fit order: <%= displayParameter(instancevalues,"Trace Analysis: Min Gauss Fit Order",{:precision=>0}) %></li>
+             <li>FWHM: <%= displayParameter(instanceValueSet,"Trace Analysis: Min FWHM",{:precision=>2}) %></li>
+             <li>99% Width: <%= displayParameter(instanceValueSet,"Trace Analysis: Min 99% Width",{:precision=>2}) %></li>
+             <li>Fit order: <%= displayParameter(instanceValueSet,"Trace Analysis: Min Gauss Fit Order",{:precision=>0}) %></li>
            </ul>
           </div>
         </div>
@@ -136,25 +136,25 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
     <% end %>
   </div>
   <div id="tabs-4">
-    <%= displayParameter(instancevalues,"Operation Image",{:width=>450, :height=>800, :withExport=>true}) %>
+    <%= displayParameter(instanceValueSet,"Operation Image",{:width=>450, :height=>800, :withExport=>true}) %>
   </div>
   <div id="tabs-5">
-    <%= displayParameter(instancevalues,"Background Image",{:width=>450, :height=>800, :withExport=>true}) %>
+    <%= displayParameter(instanceValueSet,"Background Image",{:width=>450, :height=>800, :withExport=>true}) %>
   </div>
   <div id="tabs-6">
-    <% if instanceValueSet.getBooleanParameter("Fill Factor: Calculation on?")==true %>
+    <% if instanceValueSet.getBooleanParameter("Fill Factor: Analysis on?")==true %>
       <div class="container">
         <div class="span-14">
-          <%= displayParameter(instancevalues,"Fill Factor Image",{:width=>450, :height=>800, :withExport=>true}) %>
+          <%= displayParameter(instanceValueSet,"Fill Factor Image",{:width=>450, :height=>800, :withExport=>true}) %>
         </div>
         <div class="span-8 last">
           <ul>
-            <li class="large">Fillfactor: <%= displayParameter(instancevalues,"Fill Factor: Fillfactor",{:precision=>3}) %></li>
-            <li>Filtered?: <%= displayParameter(instancevalues,"Fill Factor: Filter on?") %></li>
-            <li>Threshold: <%= displayParameter(instancevalues,"Fill Factor: Threshold",{:precision=>2}) %></li>
-            <li>Damage Threshold: <%= displayParameter(instancevalues,"Fill Factor: Damage Threshold") %></li>
-            <li>max. allowed Energy: <%= displayParameter(instancevalues,"Fill Factor: allowed Energy",{:precision=>4}) %></li>
-            <li>calculated: <%= displayParameter(instancevalues,"Fill Factor: calculated at") %></li>
+            <li class="large">Fillfactor: <%= displayParameter(instanceValueSet,"Fill Factor: Fillfactor",{:precision=>3}) %></li>
+            <li>Filtered?: <%= displayParameter(instanceValueSet,"Fill Factor: Filter on?") %></li>
+            <li>Threshold: <%= displayParameter(instanceValueSet,"Fill Factor: Threshold",{:precision=>2}) %></li>
+            <li>Damage Threshold: <%= displayParameter(instanceValueSet,"Fill Factor: Damage Threshold") %></li>
+            <li>max. allowed Energy: <%= displayParameter(instanceValueSet,"Fill Factor: allowed Energy",{:precision=>4}) %></li>
+            <li>calculated: <%= displayParameter(instanceValueSet,"Fill Factor: calculated at") %></li>
            </ul>
         </div>
       </div>
@@ -163,4 +163,3 @@ Energy calibration: <%= displayParameter(instancevalues,"Calibration: Energy: no
     <% end %>
   </div>
 </div>
-

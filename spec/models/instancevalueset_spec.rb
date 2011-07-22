@@ -53,7 +53,7 @@ describe Instancevalueset do
     end
   end
   describe "method" do
-    describe "'generateStringParameter'" do
+    describe "'getStringParameter'" do
       it "should return a string parameter of a given instancevalue name"
       it "should return nil if parameter was not found in instancevalues" do
         valueset=Instancevalueset.new(@attr)
@@ -64,6 +64,9 @@ describe Instancevalueset do
         instancevalue=Factory(:instancevalue, {:instancevalueset=>valueset})
         valueset.getStringParameter("Test parameter").should eq(nil)
       end
+    end
+    describe "'getBooleanParameter'" do
+      it "should return a boolean parameter of a given instancevalue name"
     end
     describe "'generatePlot'" do
       it "should generate a plot"

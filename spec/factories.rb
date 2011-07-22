@@ -47,7 +47,7 @@ Factory.define :instancevalue_image, :class=>Instancevalue do |instancevalue|
   instancevalue.name "Test image"
   def instancevalue.getImageBlob
     imagePath=Rails.root.to_s+"/public/images/Rainbow.png"
-    testImage=Magick::Image.read(imagePath)[0].to_blob  { self.format='TIF' }
+    testImage=Magick::Image.read(imagePath)[0].to_blob  { self.format='PNG' }
     return "AAAA"+testImage
   end
   instancevalue.data_binary {instancevalue.getImageBlob}
