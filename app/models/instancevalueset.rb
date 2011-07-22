@@ -24,10 +24,14 @@ class Instancevalueset < ActiveRecord::Base
   validates :instance, :presence => true
 
   def getStringParameter(parameterName,options={})
+    
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
       return nil
     else
+      if parameterData.datatype.name!="string"
+        return nil
+      end
       if options[:upcase]==true
         return parameterData.data_string.upcase
       else
@@ -36,10 +40,14 @@ class Instancevalueset < ActiveRecord::Base
     end
   end
   def getBooleanParameter(parameterName,options={})
+    
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
       return nil
     else
+      if parameterData.datatype.name!="boolean"
+        return nil
+      end
       result=parameterData.data_numeric>0 ? true : false
       return result
     end

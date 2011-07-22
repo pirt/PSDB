@@ -59,4 +59,15 @@ Factory.define :instancevalue_2dData, :class=>Instancevalue do |instancevalue|
   instancevalue.data_binary "AAAA1.0,2.0\n3.0,4.0\n"
   instancevalue.data_string "xlabel,ylabel,dim1,dim2"
 end
-
+Factory.define :instancevalue_string, :class=>Instancevalue do |instancevalue|
+  instancevalue.association :instancevalueset
+  instancevalue.association :datatype, :name=>"string"
+  instancevalue.name "string data"
+  instancevalue.data_string "teststring"
+end
+Factory.define :instancevalue_boolean, :class=>Instancevalue do |instancevalue|
+  instancevalue.association :instancevalueset
+  instancevalue.association :datatype, :name=>"boolean"
+  instancevalue.name "boolean data"
+  instancevalue.data_numeric 1
+end
