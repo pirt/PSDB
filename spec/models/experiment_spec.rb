@@ -81,9 +81,9 @@ describe Experiment do
         beamtimes=experiment.getBeamtimes
         beamtimes.length.should eq(1)
         beamtimes[0][:firstId].should == shot.id
-        beamtimes[0][:firstDate].should == shot.created_at
+        beamtimes[0][:firstDate].should == Shot.find(shot.id).created_at
         beamtimes[0][:lastId].should == shot.id
-        beamtimes[0][:lastDate].should == shot.created_at
+        beamtimes[0][:lastDate].should == Shot.find(shot.id).created_at
       end
       it "should correctly work for experiments with two shots within 5 days" do
         shot1=Factory(:shot)
@@ -108,16 +108,16 @@ describe Experiment do
         beamtimes=experiment.getBeamtimes
         beamtimes.length.should eq(2)
         beamtimes[0][:firstId].should == shot1.id
-        beamtimes[0][:firstDate].should == shot1.created_at
+        beamtimes[0][:firstDate].should == Shot.find(shot1.id).created_at
 
         beamtimes[0][:lastId].should == shot1.id
-        beamtimes[0][:lastDate].should == shot1.created_at
+        beamtimes[0][:lastDate].should == Shot.find(shot1.id).created_at
 
         beamtimes[1][:firstId].should == shot2.id
-        beamtimes[1][:firstDate].should == shot2.created_at
+        beamtimes[1][:firstDate].should == Shot.find(shot2.id).created_at
 
         beamtimes[1][:lastId].should == shot2.id
-        beamtimes[1][:lastDate].should == shot2.created_at
+        beamtimes[1][:lastDate].should == Shot.find(shot2.id).created_at
       end
       it "should return empty array if no shots are connected to an experiments" do
         experiment=Experiment.create(@attr)
