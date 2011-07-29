@@ -5,6 +5,8 @@ class CreateShots < ActiveRecord::Migration
       t.string :description, :limit => 255, :comment => "Description of a PHELIX shot"
       t.references :experiment, :null => false, :foreign_key => true
       t.references :shottype, :null => false, :foreign_key => true
+      t.references :configuration_id
+      t.integer :status
       t.timestamps :null => false
     end
 
