@@ -20,7 +20,6 @@
     </div>
   </div>
 </div>
-
 <%= page_entries_info @shots %>
 <%= will_paginate @shots %>
 <table border="0" cellspacing="0" cellpadding="0">
@@ -29,10 +28,10 @@
       <th class="span-1">Shot#</th>
       <th class="span-4">Date</th>
       <th class="span-1">fsFE WP</th>
-      <th class="span-1">19_1</th>
-      <th class="span-1">19_2</th>
-      <th class="span-1">45</th>
-      <th class="span-1">MA1</th>
+      <th>19_1</th>
+      <th>19_2</th>
+      <th>45</th>
+      <th>MA1</th>
       <th class="span-1">MA2</th>
       <th class="span-1">MA3</th>
       <th class="span-1">MA4</th>
@@ -51,21 +50,21 @@
       <td><%= link_to shot.id, shot %></td>
       <td><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><%= displayShotInstance(instanceValueSets,"PA_Exit_Powermeter") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPPA_19mm_1_PU") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPPA_19mm_2_PU") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPPA_45mm_MAIN_PU") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPMA_PU1") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPMA_PU2") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPMA_PU3") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPMA_PU4") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPMA_PU5") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PPMA_FR") %></td>
+      <td><%# = displayShotInstance(instanceValueSets,"PA_Exit_Powermeter") %></td>
       <td><%= displayShotInstance(instanceValueSets,"MAS_Powermeter") %></td>
       <td><%= shot.description %></td>
-      <td><% if shot.attachments.count!=0 %>
-            <%= image_tag 'paperclip.png' %>
-          <% end %></td>
+      <td><%# if shot.attachments.count!=0 %>
+            <%# = image_tag 'paperclip.png' %>
+          <%# end %></td>
     </tr>
   <% end %>
   </tbody>

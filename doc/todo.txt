@@ -1,10 +1,16 @@
+Bugs: 
 -current measurement: data rounded too much? (curves with steps plotted).
+-fix class PH_MercuryMonitor: fix device status icon in detailed view, check display of concentration unit in plot label.
+-some PH_Switch values wronly interpreted.
+-fix correct treatment of "micro" prefix in regular expression.
+-add/fix missing index for instancevalues on column instancevalueset_id (performance!!!)
+
+Features:
 -missing views:
   BNC555
   PH_Sixpack
   SRDG535
-  PH_PPPA_PowerUnit
-  PH_PPMA_PowerUnit
--fix class PH_MercuryMonitor: fix device status icon in detailed view, check display of concentration unit in plot label
+  PH_PPPA_PowerUnit (and display in shot index)
+  PH_PPMA_PowerUnit (and display in shot index)
 -sort subsystems/classtypes (maybe instances as well)
 -add customization possibility for shot index view

@@ -1,0 +1,8 @@
+<% status=instanceValueSet.getStringParameter("State",:upcase=>true)
+ if status=="OFF/FALSE" %>
+<%= image_tag "icon_OFF.png", {:style=>"vertical-align:middle"} %>
+<% elsif status=="ON/TRUE" %>
+<%= displayParameter(instanceValueSet,"Voltage") %>
+<% else %>
+<%= image_tag "icon_UNKNOWN.png", {:style=>"vertical-align:middle"} %>
+<% end %>

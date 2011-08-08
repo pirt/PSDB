@@ -1,5 +1,5 @@
 <% if options[:precision].nil? %>
-<%=  instancevalue.data_numeric %>
+<%= instancevalue.data_numeric %>
 <% else %>
 <%= number_with_precision(instancevalue.data_numeric, :precision =>options[:precision]) %>
 <% end %>
