@@ -6,7 +6,7 @@ module InstancevaluesetsHelper
     if (parameterData.nil?)
       return "parameter <#{parameterName}> not found"
     else
-      render "instancevalues/instancevalue", { :instancevalue => parameterData, :options => options}
+      displayValue(parameterData,options)
     end
   end
   def generateSeriesPlot(xyData, fileId, options={})
