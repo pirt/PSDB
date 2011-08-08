@@ -1,0 +1,2 @@
+-current measurement: data rounded too much? (curves with steps plotted).
+
