@@ -13,7 +13,7 @@ module ShotsHelper
     end
   end
   def displayAttachmentLabel(shot)
-    if shot.attachments.count!=0
+    if shot.attachments.present?
       image_tag 'paperclip.png'
     end
   end

@@ -15,13 +15,13 @@
     <% @experiments.each do |experiment| %>
       <tr>
         <td><%= link_to experiment.name, experiment %></td>
-        <td><% if experiment.attachments.count!=0 %>
+        <td><% if experiment.attachments.present? %>
               <%= image_tag 'paperclip.png' %>
             <% end %></td>
         <td><%= experiment.description %></td>
         <td><%= experiment.active? ? 'yes' : 'no' %></td>
         <td><%= link_to 'Edit', edit_experiment_path(experiment) %>
-            <% if experiment.attachments.count!=0
+            <% if experiment.attachments.present?
               @confirmation="There are documents attached to the experiment, which WILL BE LOST if the experiment is deleted. Are You sure you want to do this?"
                else
               @confirmation="Are You sure?"
