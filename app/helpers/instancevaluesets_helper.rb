@@ -9,6 +9,17 @@ module InstancevaluesetsHelper
       displayValue(parameterData,options)
     end
   end
+  def displayValueSetShort(instanceValueSet)
+    classType=instanceValueSet.instance.classtype.name
+    valueSetVersion=instanceValueSet.version
+    partialName="/instancevaluesets/#{classType}/short_#{valueSetVersion}"
+    partialFileName=::Rails.root.to_s+"/app/views/instancevaluesets/"+classType+"/_short_"+valueSetVersion.to_s+".html.erb"
+    if !File.exists?(partialFileName)
+      return "no view defined"
+    else
+      render partialName, :instanceValueSet => instanceValueSet
+    end
+  end
   def generateSeriesPlot(xyData, fileId, options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions=plotOptions.merge(options)

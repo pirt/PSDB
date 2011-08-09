@@ -8,7 +8,7 @@ module ShotsHelper
       if (instanceValueSet.nil?)
         return "?"
       else
-        render "instancevaluesets/instancevalueset_short", :instanceValueSet => instanceValueSet
+        displayValueSetShort(instanceValueSet)
       end
     end
   end

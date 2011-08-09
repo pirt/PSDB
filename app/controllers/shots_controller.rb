@@ -25,7 +25,7 @@ class ShotsController < ApplicationController
         params[:to_date]=""
       end
     end
-    @shots=selectedShots.order("created_at DESC").paginate(:page => params[:page],:per_page => 2)
+    @shots=selectedShots.order("created_at DESC").paginate(:page => params[:page],:per_page => 30)
     @pageTitle="Shot list"
     @formData=params
   end
