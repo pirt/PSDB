@@ -62,9 +62,7 @@
       <td><%# = displayShotInstance(instanceValueSets,"PA_Exit_Powermeter") %></td>
       <td><%= displayShotInstance(instanceValueSets,"MAS_Powermeter") %></td>
       <td><%= shot.description %></td>
-      <td><%# if shot.attachments.count!=0 %>
-            <%# = image_tag 'paperclip.png' %>
-          <%# end %></td>
+      <td><%= displayAttachmentLabel(shot) %></td>
     </tr>
   <% end %>
   </tbody>

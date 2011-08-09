@@ -7,7 +7,7 @@ module InstancevaluesHelper
     partialName="instancevalue_#{dataType}"
     partialFileName=::Rails.root.to_s+"/app/views/instancevalues/_"+partialName+".html.erb"
     if !File.exists?(partialFileName)
-      partialName="instancevalue_unknown"
+      return "no view for data type <"+dataType+"> available !"
     end
     localoptions = {}
     if defined?(options)

@@ -49,8 +49,7 @@
         <% @instanceValueSets.each do |instanceValueSet| %>
           <tr>
             <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
-            <td><%= render 'instancevaluesets/instancevalueset_short',
-                          :instanceValueSet => instanceValueSet %></td>
+            <td><%= displayValueSetShort(instanceValueSet) %></td>
           </tr>
         <% end %>
       </tbody>

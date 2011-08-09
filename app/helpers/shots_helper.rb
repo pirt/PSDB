@@ -12,4 +12,9 @@ module ShotsHelper
       end
     end
   end
+  def displayAttachmentLabel(shot)
+    if shot.attachments.count!=0
+      image_tag 'paperclip.png'
+    end
+  end
 end
