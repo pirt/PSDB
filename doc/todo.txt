@@ -4,6 +4,14 @@ Bugs:
 -some PH_Switch values wronly interpreted.
 -fix correct treatment of "micro" prefix in regular expression.
 -add/fix missing index for instancevalues on column instancevalueset_id (performance!!!)
+-add index for instances on name column
+-rename some classes and meanings: FR+MT_Flowbox_off, MainAmp_Flowbox_off
+    BL-Z6-Beamdump (Dump in)
+    BL-Z6-CH9 (CH in)
+    PA_Bypass_In (not mirror in)
+    PA_Bypass_out (not mirror in)
+    Shutter_Exp4 (Z6 closed)
+    Shutter_Laserlab (not open)
 
 Features:
 -missing views:
