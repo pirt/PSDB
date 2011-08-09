@@ -1,6 +1,6 @@
 Bugs: 
 -current measurement: data rounded too much? (curves with steps plotted).
--fix class PH_MercuryMonitor: fix device status icon in detailed view, check display of concentration unit in plot label.
+-fix class PH_MercuryMonitor: check display of concentration unit in plot label.
 -some PH_Switch values wronly interpreted.
 -fix correct treatment of "micro" prefix in regular expression.
 -add/fix missing index for instancevalues on column instancevalueset_id (performance!!!)

@@ -90,8 +90,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="572.80576"
-     inkscape:cy="581.34681"
+     inkscape:cx="572.98264"
+     inkscape:cy="701.34681"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -334,5 +334,30 @@
          d="m 150,502.36218 10,-10 10,10"
          style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3019"
+       transform="translate(0,560)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_ON.png"
+       inkscape:export-xdpi="19"
+       inkscape:export-ydpi="19" />
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="160.64062"
+       y="662.36218"
+       id="text3790-8-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/udo/PSDB/public/images/icon_ON.png"
+       inkscape:export-xdpi="19.78023"
+       inkscape:export-ydpi="19.78023"><tspan
+         sodipodi:role="line"
+         id="tspan3792-0-7"
+         x="160.64062"
+         y="662.36218">ON</tspan></text>
   </g>
 </svg>
