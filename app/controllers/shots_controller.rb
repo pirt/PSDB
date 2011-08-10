@@ -78,11 +78,20 @@ class ShotsController < ApplicationController
     end
     if @shot.update_attributes(params[:shot])
       flash[:success] = "Shot successfully updated"
+      deleteShotCache(@shot)
       redirect_to shot_path(@shot)
     else
       @shot.reload
       @pageTitle="Edit shot #{@shot.id}"
       render 'edit'
+    end
+  end
+private
+  def deleteShotCache(shot)
+    shotId=shot.id
+    partialFileName=::Rails.root.to_s+"/public/cache/shotline"+shotId.to_s+".html"
+    if File.exists?(partialFileName)
+      File.delete(partialFileName)
     end
   end
 end
