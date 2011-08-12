@@ -1,3 +1,4 @@
+# coding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -18,7 +19,7 @@ class ApplicationController < ActionController::Base
     else
       unit.strip!
     end
-    unitRegEx=/^([afpnumcdhkMGTPE]?)[ ]*([\w%]+)/
+    unitRegEx=/^([afpnu\xC2\xB5\316\274mcdhkMGTPE]?)[ ]*(.+)/
     matchSet=unitRegEx.match(unit)
     if (matchSet.nil?)
       return value
@@ -34,7 +35,7 @@ class ApplicationController < ActionController::Base
         mult=1.0E-12
       when "n"
         mult=1.0E-9
-      when "u","\316\274"
+      when "u","\316\274","\xC2\xB5"
         mult=1.0E-6
       when "m"
         mult=1.0E-3

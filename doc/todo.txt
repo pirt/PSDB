@@ -2,8 +2,7 @@ Bugs:
 -current measurement: data rounded too much? (curves with steps plotted).
 -fix class PH_MercuryMonitor: check display of concentration unit in plot label.
 -some PH_Switch values wronly interpreted.
--fix correct treatment of "micro" prefix in regular expression.
--add/fix missing index for instancevalues on column instancevalueset_id (performance!!!)
+-check missing index for instancevalues on column instancevalueset_id during next migration
 -add index for instances on name column
 -rename some classes and meanings: FR+MT_Flowbox_off, MainAmp_Flowbox_off
     BL-Z6-Beamdump (Dump in)
@@ -18,7 +17,7 @@ Features:
   BNC555
   PH_Sixpack
   SRDG535
-  PH_PPPA_PowerUnit (and display in shot index)
-  PH_PPMA_PowerUnit (and display in shot index)
+  PH_PPPA_PowerUnit
+  PH_PPMA_PowerUnit
 -sort subsystems/classtypes (maybe instances as well)
 -add customization possibility for shot index view

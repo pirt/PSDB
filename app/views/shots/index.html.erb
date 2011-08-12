@@ -43,10 +43,10 @@
       <th></th>
     </tr>
   </thead>
-  <tbody><%#= render @shots %>
+  <tbody>
   <% @shots.each do |shot| %>
-  <%= displayShotLine(shot) %>
+    <%= displayShotLine(shot) %>
   <% end %>
-</tbody>
+  </tbody>
 </table>
 <%= will_paginate %>

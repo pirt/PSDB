@@ -13,7 +13,8 @@ module InstancevaluesetsHelper
     classType=instanceValueSet.instance.classtype.name
     valueSetVersion=instanceValueSet.version
     partialName="/instancevaluesets/#{classType}/short_#{valueSetVersion}"
-    partialFileName=::Rails.root.to_s+"/app/views/instancevaluesets/"+classType+"/_short_"+valueSetVersion.to_s+".html.erb"
+    partialFileName=::Rails.root.to_s+"/app/views/instancevaluesets/"+classType+
+      "/_short_"+valueSetVersion.to_s+".html.erb"
     if !File.exists?(partialFileName)
       return "no view defined"
     else
@@ -25,7 +26,7 @@ module InstancevaluesetsHelper
     plotOptions=plotOptions.merge(options)
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
-        plot.terminal "#{plotOptions[:imagetype]} small enhanced size #{plotOptions[:width]},#{plotOptions[:height]}"
+        plot.terminal "#{plotOptions[:imagetype]} small enhanced size #{plotOptions[:width]},#{plotOptions[:height]} crop"
         plot.output "public/images/tmp/series"+fileId.to_s+".#{plotOptions[:imagetype]}"
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
