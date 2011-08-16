@@ -1,0 +1,94 @@
+<%= javascript_include_tag 'tabs' %>
+<div class="span-8">
+<%= image_tag "bnc555.png" %>
+</div>
+<div class="span-16 last">
+<div id="tabs">
+  <ul>
+    <li><a href="#gen">General</a></li>
+    <li><a href="#chanA">Ch A</a></li>
+    <li><a href="#chanB">Ch B</a></li>
+    <li><a href="#chanC">Ch C</a></li>
+    <li><a href="#chanD">Ch D</a></li>
+    <li><a href="#chanE">Ch E</a></li>
+    <li><a href="#chanF">Ch F</a></li>
+    <li><a href="#chanG">Ch G</a></li>
+    <li><a href="#chanH">Ch H</a></li>
+  </ul>
+  <div id="gen">
+    <div class="container">
+      <div class="span-11">
+        <ul>
+          <li>Trigger Mode: <%= displayParameter(instanceValueSet,"Trigger Mode") %></li>
+          <li>Mode: <%= displayParameter(instanceValueSet,"Mode") %></li>
+          <li>VISA Name: <%= displayParameter(instanceValueSet,"VISA name") %></li>
+          <li>Trigger Level: <%= displayParameter(instanceValueSet,"Trigger Level") %></li>
+          <li>DC on: <%= displayParameter(instanceValueSet,"DC on") %></li>
+          <li>DC off: <%= displayParameter(instanceValueSet,"DC off") %></li>
+          <li>System Burst Count: <%= displayParameter(instanceValueSet,"System Burst Count",:precision=>0) %></li>
+          <li>Period: <%= displayParameter(instanceValueSet,"Period") %></li>
+          <li>Gate on?: <%= displayParameter(instanceValueSet,"Gate on?") %></li>
+          <li>Device on?: <%= displayParameter(instanceValueSet,"Device On?") %></li>
+          <li>Trigger on rising edge?: <%= displayParameter(instanceValueSet,"Trigger on rising edge?") %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="chanA">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"A"} %>
+      </div>
+    </div>
+  </div>
+  <div id="chanB">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"B"} %>
+      </div>
+    </div>
+  </div>
+  <div id="chanC">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"C"} %>
+      </div>
+    </div>
+  </div>
+  <div id="chanD">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"D"} %>
+      </div>
+    </div>
+  </div>
+  <div id="chanE">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"E"} %>
+      </div>
+    </div>
+  </div>
+  <div id="chanF">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"F"} %>
+      </div>
+    </div>
+  </div>
+  <div id="chanG">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"G"} %>
+      </div>
+    </div>
+  </div>
+  <div id="chanH">
+    <div class="container">
+      <div class="span-11">
+        <%= render "instancevaluesets/BNC555/channel", {:instanceValueSet=> instanceValueSet,:channel=>"H"} %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

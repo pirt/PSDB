@@ -1,0 +1,13 @@
+<ul>
+  <li>On: <%= displayParameter(instanceValueSet,"Channel #{channel}: On?") %></li>
+  <li>Mode: <%= displayParameter(instanceValueSet,"Channel #{channel}: Mode") %></li>
+  <li>Polarity: <%= displayParameter(instanceValueSet,"Channel #{channel}: Polarity") %></li>
+  <li>Gate Polarity Level: <%= displayParameter(instanceValueSet,"Channel #{channel}: Gate Polarity Level") %></li>
+  <li>Level: <%= displayParameter(instanceValueSet,"Channel #{channel}: Level") %></li>
+  <li>Gate: <%= displayParameter(instanceValueSet,"Channel #{channel}: Gate on?") %></li>
+  <li>Delay: <%= displayParameter(instanceValueSet,"Channel #{channel}: Delay") %></li>
+  <li>Width: <%= displayParameter(instanceValueSet,"Channel #{channel}: Width") %></li>
+  <li>Level Adjust: <%= displayParameter(instanceValueSet,"Channel #{channel}: Level Adjust") %></li>
+  <li>Burst Count: <%= displayParameter(instanceValueSet,"Channel #{channel}: Burst Count",:precision=>0) %></li>
+  <li>Divide by: <%= displayParameter(instanceValueSet,"Channel #{channel}: Divide by",:precision=>0) %></li>
+</ul>

@@ -11,7 +11,7 @@ Bugs:
     PA_Bypass_out (not mirror in)
     Shutter_Exp4 (Z6 closed)
     Shutter_Laserlab (not open)
-
+- BNC555 attribute "DC on" has no dimension (voltage?), "Device On?" => "Device on?"
 Features:
 -missing views:
   BNC555
