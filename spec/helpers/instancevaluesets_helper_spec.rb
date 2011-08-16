@@ -9,7 +9,7 @@ describe InstancevaluesetsHelper do
     describe "for existing parameter" do
       it "should display an instancevalue of the given name" do
         result=helper.displayParameter(@instanceValueSet,"valueparam")
-        result.should == @instanceValue.data_numeric.to_s+"\n\n"
+        result.should == @instanceValue.data_numeric.to_s+"\n"
       end
     end
     describe "for non-existing parameter" do

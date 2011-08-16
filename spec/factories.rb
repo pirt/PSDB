@@ -45,12 +45,12 @@ Factory.define :instancevalue_image, :class=>Instancevalue do |instancevalue|
   instancevalue.association :instancevalueset
   instancevalue.association :datatype, :name=>"image"
   instancevalue.name "Test image"
-  def instancevalue.getImageBlob
+  def getTestImageBlob
     imagePath=Rails.root.to_s+"/public/images/Rainbow.png"
     testImage=Magick::Image.read(imagePath)[0].to_blob  { self.format='PNG' }
     return "AAAA"+testImage
   end
-  instancevalue.data_binary {instancevalue.getImageBlob}
+  instancevalue.data_binary {getTestImageBlob}
 end
 Factory.define :instancevalue_2dData, :class=>Instancevalue do |instancevalue|
   instancevalue.association :instancevalueset

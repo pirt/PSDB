@@ -4,7 +4,8 @@ describe ShotsHelper do
   describe "'displayShotInstance'" do
     it "should render a short view of an instance for a given shot" do
       Factory(:instancevalueset)
-      helper.displayShotInstance(Instancevalueset,Instancevalueset.last.instance.name).should eq("no view defined\n")
+      helper.displayShotInstance(Instancevalueset,Instancevalueset.last.instance.name).
+        should eq("no view defined")
     end
     it "should return (error) message 'unknown' if instance name was not found" do
       Factory(:instancevalueset)
