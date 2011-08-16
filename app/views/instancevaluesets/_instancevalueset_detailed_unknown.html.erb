@@ -13,7 +13,7 @@ Version <%=instanceValueSet.version %> > defined..showing generic data</h3>
       <tr>
         <td><%= instancevalue.name %></td>
         <td><%= instancevalue.datatype %></td>
-        <td><%= render instancevalue %></td>
+        <td><%= displayValue(instancevalue) %></td>
       </tr>
     <% end %>
   </tbody>
