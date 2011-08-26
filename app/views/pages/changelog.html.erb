@@ -1,6 +1,20 @@
 <h1>Version history</h1>
-
 <ul>
+  <li>0.3 (26.08.11):</li>
+  <ul>
+    <li>shots index page now shows all flashlamp voltages.</li>
+    <li>shots index page uses some data caching for faster loading.</li>
+    <li>added new view for BNC555 gate/delay generator class.</li>
+    <li>fixed problems while parsing the "micro" prefix in the value units. This also fixes
+        errors while plotting shot series.</li>
+    <li>fixed wrong display of on/off status of mercury sensor.</li>
+    <li>performance inprovements in experiments and shots index lists through database preloading.</li>
+    <li>various code cleanups.</li>
+    <li>powermeter values are now rounded to two significant digits.</li>
+    <li>small changes in the database layout which were necessary for projects other than PHELIX.</li>
+    <li>fixed some small errors while displaying boolean values.</li>
+    <li>many further unit tests added.<li>
+  </ul>
   <li>0.2alpha (19.07.11):</li>
   <ul>
     <li>added support for MySQL databases.</li>
