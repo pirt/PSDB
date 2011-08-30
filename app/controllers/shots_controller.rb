@@ -79,6 +79,7 @@ class ShotsController < ApplicationController
     if @shot.update_attributes(params[:shot])
       flash[:success] = "Shot successfully updated"
       deleteShotCache(@shot)
+      expire_page(:action => 'index')
       redirect_to shot_path(@shot)
     else
       @shot.reload
