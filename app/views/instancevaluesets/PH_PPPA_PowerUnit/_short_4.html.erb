@@ -1,8 +1,13 @@
 <% status=instanceValueSet.getStringParameter("State",:upcase=>true)
  if status=="OFF/FALSE" %>
 <%= image_tag "icon_OFF.png", {:style=>"vertical-align:middle"} %>
-<% elsif status=="ON/TRUE" %>
+<% elsif status=="ON/TRUE"
+timeoutState=instanceValueSet.getStringParameter("Timeout",:upcase=>true)
+if timeoutState=="NONE" %>
 <%= displayParameter(instanceValueSet,"Voltage") %>
+<% else %>
+<%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
+<% end %>
 <% else %>
 <%= image_tag "icon_UNKNOWN.png", {:style=>"vertical-align:middle"} %>
 <% end %>
