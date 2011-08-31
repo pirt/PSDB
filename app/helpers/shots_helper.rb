@@ -24,7 +24,8 @@ module ShotsHelper
       renderString=render shot
       File.open(partialFileName, 'w') {|f| f.write(renderString) }
     end
-    render :file => partialFileName
+    render :file => partialFileName, :locals=>{:dummy=>"dummy"}
+    #File.read(partialFileName)
   end
   
 end
