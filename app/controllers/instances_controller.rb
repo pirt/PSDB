@@ -1,15 +1,20 @@
 class InstancesController < ApplicationController
   def index
-    if (params[:subsystemName])
+    selectedInstances=Instance.includes(:classtype, :subsystem)
+    @selectedSubsystemName=""
+    @selectedClasstypeName=""
+    if (params[:subsystemName] and !params[:subsystemName].blank?)
+      @selectedSubsystemName=params[:subsystemName]
       selectedSubsystem=Subsystem.find_by_name(params[:subsystemName])
-      selectedInstances=selectedSubsystem.instances.order("name ASC")
-    elsif (params[:classtypeName])
-      selectedClasstype=Classtype.find_by_name(params[:classtypeName])
-      selectedInstances=selectedClasstype.instances.order("name ASC")
-    else
-      selectedInstances=Instance.order("name ASC")
+      selectedInstances=selectedInstances.where(:subsystem_id=>selectedSubsystem)
     end
-    @instances=selectedInstances.includes(:classtype, :subsystem).paginate(:page => params[:page])
+    if (params[:classtypeName] and !params[:classtypeName].blank?)
+      @selectedClasstypeName=params[:classtypeName]
+      selectedClasstype=Classtype.find_by_name(params[:classtypeName])
+      selectedInstances=selectedInstances.where(:classtype_id=>selectedClasstype)
+    end
+    @instances=selectedInstances.order("name ASC").
+       paginate(:page => params[:page])
     @availableClasstypes=Classtype.all
     @availableSubsystems=Subsystem.all
     @pageTitle="Instance list"

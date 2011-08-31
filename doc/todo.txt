@@ -19,5 +19,4 @@ Features:
   SRDG535
   PH_PPPA_PowerUnit
   PH_PPMA_PowerUnit
--sort subsystems/classtypes (maybe instances as well)
 -add customization possibility for shot index view

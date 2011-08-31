@@ -4,18 +4,32 @@
     <div id="subsystems">
       <h3 class="caps">Subsystems</h3>
       <div class="box">
-        <%= link_to 'All', instances_path %><br />
+        <%= link_to 'All', instances_path(:classtypeName => @selectedClasstypeName) %><br />
         <% @availableSubsystems.each do |subsystem| %>
-          <%= link_to subsystem.name, instances_path(:subsystemName => subsystem.name) %><br />
+          <% if @selectedSubsystemName==subsystem.name %>
+          <% selection="large loud" %>
+          <% else %>
+          <% selection="" %>
+          <% end %>
+          <%= link_to subsystem.name, 
+          instances_path(:subsystemName => subsystem.name,:classtypeName => @selectedClasstypeName),
+          :class => selection %><br />
         <% end %>
       </div>
     </div>
     <div id="class types">
       <h3 class="caps">Class types</h3>
       <div class="box">
-        <%= link_to 'All', instances_path %><br />
+        <%= link_to 'All', instances_path(:subsystemName => @selectedSubsystemName) %><br />
         <% @availableClasstypes.each do |classtype| %>
-          <%= link_to classtype.name, instances_path(:classtypeName => classtype.name) %><br />
+          <% if @selectedClasstypeName==classtype.name %>
+          <% selection="large loud" %>
+          <% else %>
+          <% selection="" %>
+          <% end %>
+          <%= link_to classtype.name, 
+          instances_path(:classtypeName => classtype.name,:subsystemName => @selectedSubsystemName ),
+          :class => selection %><br />
         <% end %>
       </div>
     </div>
