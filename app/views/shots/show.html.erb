@@ -20,18 +20,32 @@
     <div id="subsystems">
       <h3 class="caps">Subsystems</h3>
       <div class="box">
-        <%= link_to 'All', shot_path(@shot) %><br />
+        <%= link_to 'All', shot_path(@shot,:classtypeName => @selectedClasstypeName) %><br />
         <% @usedSubsystems.each do |usedSubsystem| %>
-          <%= link_to usedSubsystem.name, shot_path(@shot, :subsystemName => usedSubsystem.name) %><br />
+        <% if @selectedSubsystemName==usedSubsystem.name %>
+        <% selection="large loud" %>
+        <% else %>
+        <% selection="" %>
+        <% end %>
+          <%= link_to usedSubsystem.name, shot_path(@shot,
+              {:subsystemName => usedSubsystem.name, :classtypeName => @selectedClasstypeName }), 
+              :class=> selection %><br />
         <% end %>
       </div>
     </div>
     <div id="class types">
       <h3 class="caps">Class types</h3>
       <div class="box">
-        <%= link_to 'All', shot_path(@shot) %><br />
+        <%= link_to 'All', shot_path(@shot,:subsystemName => @selectedSubsystemName) %><br />
         <% @usedClasses.each do |usedClass| %>
-           <%= link_to usedClass.name, shot_path(@shot, :classtypeName => usedClass.name) %><br />
+        <% if @selectedClasstypeName==usedClass.name %>
+        <% selection="large loud" %>
+        <% else %>
+        <% selection="" %>
+        <% end %>
+           <%= link_to usedClass.name, shot_path(@shot, 
+               {:classtypeName => usedClass.name, :subsystemName => @selectedSubsystemName }),
+               :class=> selection %><br />
         <% end %>
       </div>
     </div>
