@@ -32,11 +32,14 @@ class Instancevalueset < ActiveRecord::Base
       if parameterData.datatype.name!="string"
         return nil
       end
-      if options[:upcase]==true
-        return parameterData.data_string.upcase
-      else
-        return parameterData.data_string
+      stringData=parameterData.data_string
+      if options[:strip]==true
+        stringData.strip!
       end
+      if options[:upcase]==true
+        stringData.upcase!
+      end
+      return stringData
     end
   end
   def getBooleanParameter(parameterName,options={})

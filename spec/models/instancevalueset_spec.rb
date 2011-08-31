@@ -61,6 +61,16 @@ describe Instancevalueset do
         valueset=correctInstanceValue.instancevalueset
         valueset.getStringParameter("string data").should == "teststring"
       end
+      it "should return an upcase string if 'upcase' option is used" do
+        correctInstanceValue=Factory(:instancevalue_string)
+        valueset=correctInstanceValue.instancevalueset
+        valueset.getStringParameter("string data",:upcase=>true).should == "TESTSTRING"
+      end
+      it "should return an string without leading or trailing whitespaces if 'strip' option is used" do
+        correctInstanceValue=Factory(:instancevalue_string, :data_string=>"  teststring  ")
+        valueset=correctInstanceValue.instancevalueset
+        valueset.getStringParameter("string data",:strip=>true).should == "teststring"
+      end
       it "should return nil if parameter was not found in instancevalues" do
         wrongNameInstanceValue=Factory(:instancevalue_string)
         valueset=wrongNameInstanceValue.instancevalueset
