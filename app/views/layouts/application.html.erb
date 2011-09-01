@@ -9,8 +9,8 @@
   <meta name="copyright" content="2011© GSI Helmholtzzentrum für Schwerionenforschung" />
   <%= csrf_meta_tag %>
   <title><%= pageTitle %></title>
-  <%= stylesheet_link_tag :all, :cache => true, :recursive=>true %>
   <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag :all, :cache => true, :recursive=>true %>
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -50,8 +50,10 @@
   <footer class="quiet">PSDB ( version <%= APP_VERSION %>) - <%= link_to "About","/pages/about" %> -
   <%= link_to "Version", "/pages/changelog" %></footer>
 </div>
-<% # The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
-<script>$("tr:even").css("background-color", "#e5ecf9");</script>
+<%# The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
+<!--[if lt IE 9]>
+  <script>$("tr:even").css("background-color", "#e5ecf9");</script>
+<![endif]-->
 <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

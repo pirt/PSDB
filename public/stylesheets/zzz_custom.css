@@ -69,4 +69,7 @@ footer {
 th, td, caption {padding:2px 2px 2px 0px;}
 /* a bold style */
 .PSDB_bold {font-weight:bold; font-size:larger;}
+/* disable table striping */
+table.no-zebra tbody tr:nth-child(even) td,
+table.no-zebra tbody tr.even td { background: transparent;}
 

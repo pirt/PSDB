@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', "~> 3.0.7"
 gem 'gnuplot'       # Use plot package
 gem 'will_paginate', "~> 3.0.pre2" # Paginate result lists
 gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
