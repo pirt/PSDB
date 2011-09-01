@@ -6,15 +6,15 @@
   closedRegEx=/^(.* )?(IN|CLOSED)(.)*/
   openRegEx=/^(.* )?(OUT|OPEN)(.)*/
   if !closedRegEx.match(status).nil?
-    iconName="switch_closed.png"
+    iconName="icon_IN.png"
   elsif !openRegEx.match(status).nil?
-    iconName="switch_open.png"
+    iconName="icon_OUT.png"
   else
     case status
       when "FAILURE"
         iconName="icon_ERROR.png"
       else
-        iconName="switch_unknown.png"
+        iconName="icon_UNKNOWN.png"
     end
   end
 %>

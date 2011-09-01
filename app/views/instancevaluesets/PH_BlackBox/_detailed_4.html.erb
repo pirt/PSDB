@@ -3,13 +3,13 @@ BlackBox status:
 <% status=instanceValueSet.getStringParameter("Status",:upcase=>true)
  case status
   when "IN","LEFT","CLOSED","INSIDE"
-    iconName="blackbox_in.png"
+    iconName="icon_IN.png"
   when "OUT","RIGHT","OPEN","OUTSIDE"
-    iconName="blackbox_out.png"
+    iconName="icon_OUT.png"
   when "FAILURE"
     iconName="icon_ERROR.png"
   else
-    iconName="blackbox_unknown.png"
+    iconName="icon_UNKNOWN.png"
 end %>
 <%= image_tag iconName, {:style=>"vertical-align:middle"} %>
 <strong><%= displayParameter(instanceValueSet,"Status") %></strong>

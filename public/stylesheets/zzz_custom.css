@@ -65,5 +65,8 @@ footer {
   color:#000; 
   background:#c3d9ff;
   }
-
+/* adjust table padding */
+th, td, caption {padding:2px 2px 2px 0px;}
+/* a bold style */
+.PSDB_bold {font-weight:bold; font-size:larger;}
 
