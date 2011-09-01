@@ -16,7 +16,7 @@ Bugs:
 Features:
 -missing views:
   PH_Sixpack
-  SRDG535
-  PH_PPPA_PowerUnit
-  PH_PPMA_PowerUnit
+  SRDG535 (no shots written yet)
+  PH_PPPA_PowerUnit (add picture)
+  PH_PPMA_PowerUnit (add picture)
 -add customization possibility for shot index view
