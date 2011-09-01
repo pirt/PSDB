@@ -44,9 +44,9 @@
     </tr>
   </thead>
   <tbody>
-  <% cache 'all shotlines' do %> 
   <% @shots.each do |shot| %>
-    <%= displayShotLine(shot) %>
+  <% cache "shotline#{shot.id}" do %> 
+    <%= render shot %>
   <% end %>
   <% end %>
   </tbody>

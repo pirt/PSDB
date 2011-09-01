@@ -17,15 +17,4 @@ module ShotsHelper
       image_tag 'paperclip.png'
     end
   end
-  def displayShotLine(shot)
-    shotId=shot.id
-    partialFileName=::Rails.root.to_s+"/public/cache/shotline"+shotId.to_s+".html"
-    if !File.exists?(partialFileName)
-      renderString=render shot
-      File.open(partialFileName, 'w') {|f| f.write(renderString) }
-    end
-    render :file => partialFileName, :locals=>{:dummy=>"dummy"}
-    #File.read(partialFileName)
-  end
-  
 end
