@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Instancevalue</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./__/app/models/instancevalue_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="../app/models/instancevalue.rb">../app/models/instancevalue.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">ActiveRecord::Base</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-export2dData">#export2dData</a></li>
+          
+          <li><a href="#method-i-exportImage">#exportImage</a></li>
+          
+          <li><a href="#method-i-generate2dPlot">#generate2dPlot</a></li>
+          
+          <li><a href="#method-i-generateImage">#generateImage</a></li>
+          
+          <li><a href="#method-i-generatePlotAxisDescriptions">#generatePlotAxisDescriptions</a></li>
+          
+          <li><a href="#method-i-generatePlotDataSet">#generatePlotDataSet</a></li>
+          
+          <li><a href="#method-i-presence_of_at_least_one_field">#presence_of_at_least_one_field</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./ApplicationController.html">ApplicationController</a></li>
+        
+          <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+        
+          <li><a href="./Attachment.html">Attachment</a></li>
+        
+          <li><a href="./AttachmentsController.html">AttachmentsController</a></li>
+        
+          <li><a href="./Classtype.html">Classtype</a></li>
+        
+          <li><a href="./Datatype.html">Datatype</a></li>
+        
+          <li><a href="./Experiment.html">Experiment</a></li>
+        
+          <li><a href="./ExperimentsController.html">ExperimentsController</a></li>
+        
+          <li><a href="./Instance.html">Instance</a></li>
+        
+          <li><a href="./InstancesController.html">InstancesController</a></li>
+        
+          <li><a href="./Instancevalue.html">Instancevalue</a></li>
+        
+          <li><a href="./InstancevaluesController.html">InstancevaluesController</a></li>
+        
+          <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a></li>
+        
+          <li><a href="./Instancevalueset.html">Instancevalueset</a></li>
+        
+          <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a></li>
+        
+          <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a></li>
+        
+          <li><a href="./PagesController.html">PagesController</a></li>
+        
+          <li><a href="./Shot.html">Shot</a></li>
+        
+          <li><a href="./ShotsController.html">ShotsController</a></li>
+        
+          <li><a href="./ShotsHelper.html">ShotsHelper</a></li>
+        
+          <li><a href="./Shottype.html">Shottype</a></li>
+        
+          <li><a href="./StatisticsController.html">StatisticsController</a></li>
+        
+          <li><a href="./Subsystem.html">Subsystem</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Instancevalue</h1>
+
+    <div id="description" class="description">
+      
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="export2dData-method" class="method-detail ">
+          <a name="method-i-export2dData"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">export2dData</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>convert instancevalue of type 2dData to a text string.</p>
+            
+
+            
+            <div class="method-source-code" id="export2dData-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/instancevalue.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">export2dData</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;2dData&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong datatype&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">axisDescription</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_string</span>
+  <span class="ruby-identifier">txtData</span>=<span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">axisDescription</span>)
+    <span class="ruby-identifier">descriptionParts</span>=<span class="ruby-identifier">axisDescription</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>)
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">0</span>])
+      <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">2</span>])
+      <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-string">&quot; [&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">2</span>]<span class="ruby-operator">+</span><span class="ruby-string">&quot;]&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-string">&quot;\t&quot;</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">1</span>])
+      <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">3</span>])
+      <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-string">&quot; [&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">3</span>]<span class="ruby-operator">+</span><span class="ruby-string">&quot;]&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-string">&quot;\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">plotBlob</span>=<span class="ruby-identifier">trimBlob</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_binary</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">plotBlob</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">splitData</span>=<span class="ruby-constant">CSV</span>(<span class="ruby-identifier">plotBlob</span>).<span class="ruby-identifier">read</span>
+    <span class="ruby-identifier">nrOfData</span>=<span class="ruby-identifier">splitData</span>.<span class="ruby-identifier">length</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">nrOfData</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dataIndex</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">splitData</span>[<span class="ruby-identifier">dataIndex</span>][<span class="ruby-value">0</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-identifier">splitData</span>[<span class="ruby-identifier">dataIndex</span>][<span class="ruby-value">0</span>]
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-string">&quot;\t&quot;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">splitData</span>[<span class="ruby-identifier">dataIndex</span>][<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-identifier">splitData</span>[<span class="ruby-identifier">dataIndex</span>][<span class="ruby-value">1</span>]
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">txtData</span><span class="ruby-operator">+=</span><span class="ruby-string">&quot;\n&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">instanceName</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalueset</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">shotNr</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalueset</span>.<span class="ruby-identifier">shot_id</span>
+  <span class="ruby-identifier">fileName</span>=<span class="ruby-identifier">instanceName</span><span class="ruby-operator">+</span><span class="ruby-string">'_'</span><span class="ruby-operator">+</span><span class="ruby-identifier">shotNr</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">'.txt'</span>
+  <span class="ruby-keyword">return</span> {<span class="ruby-value">:content=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">txtData</span>, <span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;text/plain&quot;</span>, <span class="ruby-value">:filename=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">fileName</span>}
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- export2dData-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- export2dData-method -->
+
+      
+        <div id="exportImage-method" class="method-detail ">
+          <a name="method-i-exportImage"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">exportImage</span><span
+              class="method-args">(options={})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>convert instancevalue of type “image” to an image of a given file format.</p>
+            
+
+            
+            <div class="method-source-code" id="exportImage-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/instancevalue.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exportImage</span>(<span class="ruby-identifier">options</span>={})
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong data type&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_binary</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;no image data found&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">localOptions</span>={<span class="ruby-value">:withColorPalette=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">false</span>}
+  <span class="ruby-identifier">localOptions</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">imageBlob</span>=<span class="ruby-identifier">trimBlob</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_binary</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">myImage</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">from_blob</span>(<span class="ruby-identifier">imageBlob</span>)[<span class="ruby-value">0</span>]
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">ImageMagickError</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue contains invalid image data&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">localOptions</span>[<span class="ruby-value">:exportFormat</span>]
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'1'</span>
+      <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'BMP'</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'2'</span>
+      <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'TIF'</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'3'</span>
+      <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'JPG'</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'4'</span>
+      <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'PNG'</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'5'</span>
+      <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'GIF'</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'6'</span>
+      <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'TXT'</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'PNG'</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">localOptions</span>[<span class="ruby-value">:withColorPalette</span>]
+    <span class="ruby-identifier">paletteImg</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&quot;public/images/Rainbow.png&quot;</span>)
+    <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">clut_channel</span>(<span class="ruby-identifier">paletteImg</span>[<span class="ruby-value">0</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">sendImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">to_blob</span> { <span class="ruby-keyword">self</span>.<span class="ruby-identifier">format</span>=<span class="ruby-identifier">exportFormat</span> }
+  <span class="ruby-identifier">instanceName</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalueset</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">shotNr</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalueset</span>.<span class="ruby-identifier">shot_id</span>
+  <span class="ruby-identifier">fileName</span>=<span class="ruby-identifier">instanceName</span><span class="ruby-operator">+</span><span class="ruby-string">'_'</span><span class="ruby-operator">+</span><span class="ruby-identifier">shotNr</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">'.'</span><span class="ruby-operator">+</span><span class="ruby-identifier">exportFormat</span>.<span class="ruby-identifier">downcase</span>
+  <span class="ruby-keyword">return</span> {<span class="ruby-value">:content=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">sendImage</span>, <span class="ruby-value">:format=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">'image/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">exportFormat</span>, <span class="ruby-value">:filename=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">fileName</span>}
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- exportImage-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- exportImage-method -->
+
+      
+        <div id="generate2dPlot-method" class="method-detail ">
+          <a name="method-i-generate2dPlot"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">generate2dPlot</span><span
+              class="method-args">(options={})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="generate2dPlot-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/instancevalue.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generate2dPlot</span>(<span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">plotOptions</span>={}
+  <span class="ruby-identifier">plotOptions</span>=<span class="ruby-identifier">plotOptions</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">axisDescriptionOptions</span>=<span class="ruby-identifier">generatePlotAxisDescriptions</span>()
+  <span class="ruby-identifier">plotOptions</span>=<span class="ruby-identifier">plotOptions</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">axisDescriptionOptions</span>)
+  <span class="ruby-identifier">plotData</span>=<span class="ruby-identifier">generatePlotDataSet</span>(<span class="ruby-identifier">plotOptions</span>)
+  <span class="ruby-identifier">generatePlot</span>(<span class="ruby-identifier">plotData</span>,<span class="ruby-identifier">plotOptions</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- generate2dPlot-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- generate2dPlot-method -->
+
+      
+        <div id="generateImage-method" class="method-detail ">
+          <a name="method-i-generateImage"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">generateImage</span><span
+              class="method-args">(options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="generateImage-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/instancevalue.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generateImage</span>(<span class="ruby-identifier">options</span> = {})
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;error converting instancevalue to image file&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">imageOptions</span>={<span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">320</span>, <span class="ruby-value">:height</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">200</span>}
+  <span class="ruby-identifier">imageOptions</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">fileName</span>=<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/public/images/tmp/image&quot;</span><span class="ruby-operator">+</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span>
+      <span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:width</span>].<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:height</span>].<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;.png&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">fileName</span>)
+    <span class="ruby-identifier">imageData</span>=<span class="ruby-identifier">trimBlob</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_binary</span>)
+    <span class="ruby-identifier">myImage</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">from_blob</span>(<span class="ruby-identifier">imageData</span>)
+    <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">paletteImg</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/public/images/Rainbow.png&quot;</span>)
+    <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">clut_channel</span>(<span class="ruby-identifier">paletteImg</span>[<span class="ruby-value">0</span>])
+    <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">resize_to_fit</span>(<span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:width</span>],<span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:height</span>])
+    <span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">fileName</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fileName</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/public/images/&quot;</span>,<span class="ruby-string">&quot;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- generateImage-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- generateImage-method -->
+
+      
+        <div id="generatePlotAxisDescriptions-method" class="method-detail ">
+          <a name="method-i-generatePlotAxisDescriptions"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">generatePlotAxisDescriptions</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>parse string field of a 2dData instancevalue and generate plot options for
+the axis labels.</p>
+            
+
+            
+            <div class="method-source-code" id="generatePlotAxisDescriptions-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/instancevalue.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlotAxisDescriptions</span>
+  <span class="ruby-identifier">axisDescriptionOptions</span>={<span class="ruby-value">:xlabel=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">:ylabel=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>}
+  <span class="ruby-identifier">axisDescription</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_string</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">axisDescription</span>)
+    <span class="ruby-identifier">descriptionParts</span>=<span class="ruby-identifier">axisDescription</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>)
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">0</span>])
+      <span class="ruby-identifier">axisDescriptionOptions</span>[<span class="ruby-value">:xlabel</span>]<span class="ruby-operator">+=</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">1</span>])
+      <span class="ruby-identifier">axisDescriptionOptions</span>[<span class="ruby-value">:ylabel</span>]<span class="ruby-operator">+=</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">2</span>])
+      <span class="ruby-identifier">axisDescriptionOptions</span>[<span class="ruby-value">:xlabel</span>]<span class="ruby-operator">+=</span><span class="ruby-string">&quot; [&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">2</span>]<span class="ruby-operator">+</span><span class="ruby-string">&quot;]&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">3</span>])
+      <span class="ruby-identifier">axisDescriptionOptions</span>[<span class="ruby-value">:ylabel</span>]<span class="ruby-operator">+=</span><span class="ruby-string">&quot; [&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">descriptionParts</span>[<span class="ruby-value">3</span>]<span class="ruby-operator">+</span><span class="ruby-string">&quot;]&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">axisDescriptionOptions</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- generatePlotAxisDescriptions-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- generatePlotAxisDescriptions-method -->
+
+      
+        <div id="generatePlotDataSet-method" class="method-detail ">
+          <a name="method-i-generatePlotDataSet"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">generatePlotDataSet</span><span
+              class="method-args">(options={})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="generatePlotDataSet-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/instancevalue.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlotDataSet</span>(<span class="ruby-identifier">options</span>={})
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;2dData&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong data type&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">localOptions</span>={<span class="ruby-value">:plotstyle=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;lines&quot;</span>}
+  <span class="ruby-identifier">localOptions</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">xyData</span>=<span class="ruby-identifier">convert2D</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_binary</span>)
+  <span class="ruby-keyword">rescue</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;cannot convert data&quot;</span>
+  <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">dataSet</span>=<span class="ruby-constant">Gnuplot</span><span class="ruby-operator">::</span><span class="ruby-constant">DataSet</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xyData</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ds</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">with</span> = <span class="ruby-string">&quot;lines&quot;</span>
+    <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">notitle</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dataSet</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- generatePlotDataSet-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- generatePlotDataSet-method -->
+
+      
+        <div id="presence_of_at_least_one_field-method" class="method-detail ">
+          <a name="method-i-presence_of_at_least_one_field"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">presence_of_at_least_one_field</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="presence_of_at_least_one_field-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/instancevalue.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">presence_of_at_least_one_field</span>
+  <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:data_fields</span>, <span class="ruby-string">&quot;at least one data field must not be empty&quot;</span>) <span class="ruby-keyword">if</span>
+    <span class="ruby-identifier">data_numeric</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">data_binary</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">data_string</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- presence_of_at_least_one_field-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- presence_of_at_least_one_field-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

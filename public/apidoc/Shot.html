@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Shot</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./__/app/models/shot_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="../app/models/shot.rb">../app/models/shot.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">ActiveRecord::Base</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-check_if_instancevaluesets_associated">#check_if_instancevaluesets_associated</a></li>
+          
+          <li><a href="#method-i-involvedClasstypes">#involvedClasstypes</a></li>
+          
+          <li><a href="#method-i-involvedSubsystems">#involvedSubsystems</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./ApplicationController.html">ApplicationController</a></li>
+        
+          <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+        
+          <li><a href="./Attachment.html">Attachment</a></li>
+        
+          <li><a href="./AttachmentsController.html">AttachmentsController</a></li>
+        
+          <li><a href="./Classtype.html">Classtype</a></li>
+        
+          <li><a href="./Datatype.html">Datatype</a></li>
+        
+          <li><a href="./Experiment.html">Experiment</a></li>
+        
+          <li><a href="./ExperimentsController.html">ExperimentsController</a></li>
+        
+          <li><a href="./Instance.html">Instance</a></li>
+        
+          <li><a href="./InstancesController.html">InstancesController</a></li>
+        
+          <li><a href="./Instancevalue.html">Instancevalue</a></li>
+        
+          <li><a href="./InstancevaluesController.html">InstancevaluesController</a></li>
+        
+          <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a></li>
+        
+          <li><a href="./Instancevalueset.html">Instancevalueset</a></li>
+        
+          <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a></li>
+        
+          <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a></li>
+        
+          <li><a href="./PagesController.html">PagesController</a></li>
+        
+          <li><a href="./Shot.html">Shot</a></li>
+        
+          <li><a href="./ShotsController.html">ShotsController</a></li>
+        
+          <li><a href="./ShotsHelper.html">ShotsHelper</a></li>
+        
+          <li><a href="./Shottype.html">Shottype</a></li>
+        
+          <li><a href="./StatisticsController.html">StatisticsController</a></li>
+        
+          <li><a href="./Subsystem.html">Subsystem</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Shot</h1>
+
+    <div id="description" class="description">
+      
+<h2>Schema Information</h2>
+
+<p>Table name: shots</p>
+
+<pre>id            :integer(38)     not null, primary key
+description   :string(255)
+experiment_id :integer(38)     not null
+shottype_id   :integer(38)     not null
+created_at    :datetime        not null
+updated_at    :datetime        not null</pre>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="check_if_instancevaluesets_associated-method" class="method-detail ">
+          <a name="method-i-check_if_instancevaluesets_associated"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">check_if_instancevaluesets_associated</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="check_if_instancevaluesets_associated-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/shot.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_if_instancevaluesets_associated</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">instancevaluesets</span>.<span class="ruby-identifier">empty?</span>)
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:base</span>, <span class="ruby-string">&quot;cannot be deleted with instancevaluesets associated&quot;</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- check_if_instancevaluesets_associated-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- check_if_instancevaluesets_associated-method -->
+
+      
+        <div id="involvedClasstypes-method" class="method-detail ">
+          <a name="method-i-involvedClasstypes"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">involvedClasstypes</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="involvedClasstypes-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/shot.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedClasstypes</span>
+  <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
+  <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:classtype</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- involvedClasstypes-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- involvedClasstypes-method -->
+
+      
+        <div id="involvedSubsystems-method" class="method-detail ">
+          <a name="method-i-involvedSubsystems"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">involvedSubsystems</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="involvedSubsystems-source">
+<pre>
+<span class="ruby-comment"># File ../app/models/shot.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedSubsystems</span>
+  <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
+  <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:subsystem</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- involvedSubsystems-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- involvedSubsystems-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
