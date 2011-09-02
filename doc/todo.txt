@@ -19,4 +19,3 @@ Features:
   SRDG535 (no shots written yet)
   PH_PPPA_PowerUnit (add picture)
   PH_PPMA_PowerUnit (add picture)
--add customization possibility for shot index view

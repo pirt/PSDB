@@ -119,11 +119,13 @@ class ApplicationController < ActionController::Base
   def self.projectizeName(filename)
     projectName=PSDB_CONFIG["project"]["name"]
     dirname=File.dirname(filename)
-    basename=File.basename(filename)
+    extname=File.extname(filename)
+    basename=File.basename(filename,extname) #basename without extension
+    extname=File.extname(filename)
     if dirname=="."
-      return projectName+"_"+basename
+      return basename+"_"+projectName+extname
     else
-      return basename+"/"+projectName+"_"+basename
+      return dirname+"/"+basename+"_"+projectName+extname
     end
   end
 end

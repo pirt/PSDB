@@ -27,26 +27,20 @@
     <tr>
       <th class="span-1">Shot#</th>
       <th class="span-3">Date</th>
-      <th>fsFE<br/>WP</th>
-      <th>19_1</th>
-      <th>19_2</th>
-      <th>45</th>
-      <th>MA1</th>
-      <th>MA2</th>
-      <th>MA3</th>
-      <th>MA4</th>
-      <th>MA5</th>
-      <th>FR</th>
-      <th class="span-2">PA<br/>Energy</th>
-      <th class="span-2">MA<br/>Energy</th>
-      <th>Comment</th>
+      <%= render projectizeName("shotheader") %>
       <th></th>
     </tr>
   </thead>
   <tbody>
+  
   <% @shots.each do |shot| %>
-  <% cache "shotline#{shot.id}" do %> 
-    <%= render shot %>
+  <% cache "shotline#{shot.id}" do %>
+    <tr>
+      <td><%= link_to shot.id, shot %></td>
+      <td><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
+      <%= render projectizeName("shotline"), :shot=>shot %>
+      <td><%= displayAttachmentLabel(shot) %></td>
+    </tr>
   <% end %>
   <% end %>
   </tbody>
