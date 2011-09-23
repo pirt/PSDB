@@ -1,0 +1,5 @@
+<% if instanceValueSet.getBooleanParameter("Fill Factor: Analysis on?")==true %>
+Fill factor: <%= displayParameter(instanceValueSet,"Fill Factor: Fillfactor",{:precision=>1}) %>
+<% else %>
+<%= link_to "Details",instanceValueSet %>
+<% end %>
