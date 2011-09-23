@@ -46,15 +46,15 @@
       <% end %>
       <%= yield %>
     </section>
-  </div>
+ 
   <footer class="quiet">PSDB ( version <%= APP_VERSION %>) - <%= link_to "About","/pages/about" %> -
   <%= link_to "Version", "/pages/changelog" %></footer>
-</div>
 <%# The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
 <!--[if lt IE 9]>
   <script>$("tr:even").css("background-color", "#e5ecf9");</script>
 <![endif]-->
-<%= debug(params) if Rails.env.development? %>
+  <%= debug(params) if Rails.env.development? %>
+ </div>
 </body>
 </html>
 
