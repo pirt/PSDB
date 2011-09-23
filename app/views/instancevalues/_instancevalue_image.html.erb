@@ -4,7 +4,7 @@
   <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>
     <%= hidden_field_tag(:instanceValueId,instancevalue.id) %>
     <%= label_tag(:imageFormat, "Format:") %>
-    <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4], ['GIF',5], ['TXT',6]],2) %>
+    <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4], ['GIF',5], ['TXT',6]],4) %>
     <%= select_tag(:selectedExportFormat,possibleFormat) %>
     <%= label_tag(:withColorPalette, "Save with color palette:") %>
     <%= check_box_tag(:withColorPalette) %><br />
