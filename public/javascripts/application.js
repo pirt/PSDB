@@ -20,6 +20,13 @@ $(function (){
 			}
 		});
 });
+$(function (){
+  jQuery("#psdb_gauge").gauge('init',{
+    min: 0,
+    max: 45,
+    unitsLabel: '' + String.fromCharCode(186),
+    value: 10});
+});
 // error flash messages should nicely disappear after a while.
 $(function(){
   $('#errorflash').delay(5000).slideUp('slow');

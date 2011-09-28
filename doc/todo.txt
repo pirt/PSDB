@@ -3,10 +3,11 @@ Bugs:
 -some PH_Switch values wronly interpreted.
 -check missing index for instancevalues on column instancevalueset_id during next migration
 -add index for instances on name column
+-check writing of umlauts to shot comment (both from web interface and PCS)
+-correct Powerunit values in PCS.
 
 Features:
 -missing views:
-  PH_Sixpack
   SRDG535 (no shots written yet)
   PH_PPPA_PowerUnit (add picture)
   PH_PPMA_PowerUnit (add picture)
