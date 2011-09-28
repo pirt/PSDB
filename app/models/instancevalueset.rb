@@ -55,6 +55,18 @@ class Instancevalueset < ActiveRecord::Base
       return result
     end
   end
+  def getNumericParameter(parameterName,options={})
+    
+    parameterData=self.instancevalues.find_by_name(parameterName)
+    if (parameterData.nil?)
+      return nil
+    else
+      if parameterData.datatype.name!="numeric"
+        return nil
+      end
+      return parameterData.data_numeric
+    end
+  end
   def generatePlot(plotParameterNames,plotNr,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)

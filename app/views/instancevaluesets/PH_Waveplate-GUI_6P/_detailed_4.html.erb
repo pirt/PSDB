@@ -1,3 +1,22 @@
+<div class="span-24">
+<div class="span-8">
+
 <%= javascript_include_tag 'gauge.min','jquery.gauge.min' %>
-Test
+<script>$(function (){
+  $("#psdb_gauge").gauge('setValue', 
+  <%= instanceValueSet.getNumericParameter("Position") %> );
+}); </script>
 <canvas id="psdb_gauge" width="250" height="250"></canvas>
+<!--[if lt IE 9]>
+    Position: <%= displayParameter(instanceValueSet,"Position", :precision=>1) %>
+<![endif]-->
+</div>
+<div class="span-16 last">
+<ul>
+  <li>Sign change: <%= displayParameter(instanceValueSet,"Sign Change?") %></li>
+  <li>Calibration Factor: <%= displayParameter(instanceValueSet,"Calibration Factor") %></li>
+  <li>Motor Type: <%= displayParameter(instanceValueSet,"Motor Type") %></li>
+  <li>Sixpack: <%= displayParameter(instanceValueSet,"Sixpack") %> (Axis <%= displayParameter(instanceValueSet,"Axis", :precision=>0) %>)</li>
+</ul>
+</div>
+</div>

@@ -21,11 +21,15 @@ $(function (){
 		});
 });
 $(function (){
-  jQuery("#psdb_gauge").gauge('init',{
+  $("#psdb_gauge").gauge('init',{
     min: 0,
     max: 45,
-    unitsLabel: '' + String.fromCharCode(186),
-    value: 10});
+    unitsLabel: "°",
+    label: "Angle",
+    colorOfFill: [ '#06c', '#09f', '#d5edf8', '#e5ecf9' ],
+    colorOfPointerFill: '#09f',
+    colorOfPointerStroke: '#06c'
+    });
 });
 // error flash messages should nicely disappear after a while.
 $(function(){
