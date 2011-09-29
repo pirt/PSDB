@@ -5,10 +5,11 @@ Bugs:
 -add index for instances on name column
 -check writing of umlauts to shot comment (both from web interface and PCS)
 -correct Powerunit values in PCS.
-
+-MAS ImageOperator for shot #386 has EMPTY fillfactor value.
+-write test for getImageInfo
 Features:
 -missing views:
   SRDG535 (no shots written yet)
   PH_PPPA_PowerUnit (add picture)
   PH_PPMA_PowerUnit (add picture)
-  images: show bit depth and warn if 16bit images are saved in an 8bit format.
+  images: warn if 16bit images are saved in an 8bit format.

@@ -143,6 +143,14 @@ class Instancevalue < ActiveRecord::Base
     end
     return fileName.sub(Rails.root.to_s+"/public/images/","")
   end
+  def generateImageInfo(options = {})
+    imageInfo={}
+    imageData=trimBlob(self.data_binary)
+    myImage=Magick::Image.from_blob(imageData)
+    imageType=myImage[0].image_type
+    imageInfo[:bitdepth]=myImage[0].depth
+    return imageInfo
+  end
   def generate2dPlot(options={})
     plotOptions={}
     plotOptions=plotOptions.merge(options)

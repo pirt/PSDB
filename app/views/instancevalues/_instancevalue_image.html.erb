@@ -1,7 +1,12 @@
 <% imageFileName=instancevalue.generateImage(options) %>
 <%= image_tag imageFileName %>
+<% if options[:withInfo] %>
+<br />
+<% imageInfo=instancevalue.generateImageInfo() %>
+Colour depth: <%= imageInfo[:bitdepth] %> bit
+<% end %>
 <% if options[:withExport]==true %>
-  <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>
+    <%= form_tag({:controller => "instancevalues", :action => "exportImage"}, :method => "get") do %>
     <%= hidden_field_tag(:instanceValueId,instancevalue.id) %>
     <%= label_tag(:imageFormat, "Format:") %>
     <% possibleFormat=options_for_select([['BMP', 1], ['TIF', 2], ['JPG',3], ['PNG',4], ['GIF',5], ['TXT',6]],4) %>

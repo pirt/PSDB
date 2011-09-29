@@ -2,7 +2,8 @@
   <h3>Image</h3>
   <% camIsOn=instanceValueSet.getStringParameter("Camera State")=="on/true" ? true : false %>
   <% if camIsOn %>
-    <%= displayParameter(instanceValueSet,"Image",{:width=>450, :height=>800, :withExport=>true}) %>
+    <%= displayParameter(instanceValueSet,"Image",
+      {:width=>450, :height=>800, :withExport=>true, :withInfo=>true}) %>
   <% else %>
     <%= image_tag "icon_ERROR.png" %>
   <% end %>
