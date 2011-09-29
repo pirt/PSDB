@@ -11,7 +11,7 @@
 #
 
 class Shot < ActiveRecord::Base
-  attr_accessible :description, :experiment_id, :shottype_id
+  attr_accessible :description, :experiment_id, :shottype_id, :status
 
   belongs_to :experiment
   belongs_to :shottype

@@ -35,7 +35,11 @@
   
   <% @shots.each do |shot| %>
   <% cache "shotline#{shot.id}" do %>
+    <% if shot.status==1 %>
+    <tr class="failedshot">
+    <% else %>
     <tr>
+    <% end %>
       <td><%= link_to shot.id, shot %></td>
       <td><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
       <%= render projectizeName("shotline"), :shot=>shot %>

@@ -13,6 +13,10 @@
     <%= shot.label :description %><br />
     <%= shot.text_field :description %>
   </div>
+  <div class="field"><br />
+    <%= shot.label "Failed shot?" %>
+    <%= shot.check_box(:status) %>
+  </div>
   <div class="actions">
     <%= shot.submit "Update Shot" %>
     <%= shot.submit "Cancel", :name => "cancel" %>
