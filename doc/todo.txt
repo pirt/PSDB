@@ -11,3 +11,4 @@ Features:
   SRDG535 (no shots written yet)
   PH_PPPA_PowerUnit (add picture)
   PH_PPMA_PowerUnit (add picture)
+  images: show bit depth and warn if 16bit images are saved in an 8bit format.

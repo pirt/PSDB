@@ -67,6 +67,20 @@ class Instancevalueset < ActiveRecord::Base
       return parameterData.data_numeric
     end
   end
+  def getAxesNumbers
+    searchPattern=/^Axis[ ]*([0-5]):*/
+    foundAxes=Set.new
+    parameters=self.instancevalues.select(:name)
+    parameters.each do |parameter|
+      axisName=parameter.name
+      searchResult=searchPattern.match(axisName)
+      if (!searchResult.nil?)
+        axisNr=searchResult[1].to_i
+        foundAxes.add(axisNr)
+      end
+    end
+    return foundAxes
+  end
   def generatePlot(plotParameterNames,plotNr,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)

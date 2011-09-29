@@ -24,8 +24,8 @@
   </ul>
   <div id="gen">
     <ul>
-      <li>Serial Number: <%= displayParameter(instanceValueSet,"Serial Number") %></li>
-      <li>Firmware Version: <%= displayParameter(instanceValueSet,"Firmwareversion") %></li>
+      <li>Serial Number: <%= displayParameter(instanceValueSet,"Serial Number", :precision=>0) %></li>
+      <li>Firmware Version: <%= displayParameter(instanceValueSet,"Firmwareversion", :precision=>0) %></li>
       <li>Interface: <%= displayParameter(instanceValueSet,"Interface") %></li>
       <li>VISA or COM-Server: <%= displayParameter(instanceValueSet,"VISA or COM-Server") %></li>
     </ul>
