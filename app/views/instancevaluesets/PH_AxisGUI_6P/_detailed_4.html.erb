@@ -1,5 +1,15 @@
-
-<% axesNumbers=instanceValueSet.getAxesNumbers() %>
-<% axesNumbers.each do |axisNumber| %>
-Found Axis: <%= axisNumber %><br/>
-<% end %>
+<%= javascript_include_tag 'tabs' %>
+<% axisNames=instanceValueSet.getAxesNumbers() %>
+<div id="tabs">
+  <ul>
+  <% axisNames.each do |axisName| %>
+    <li><a href="#<%= axisName.tr(" ,","") %>" ><%= axisName %></li>
+  <% end %>
+  </ul>
+  <% axisNames.each do |axisName| %>
+    <div id="<%= axisName.tr(" ,","") %>">
+      <%= render 'instancevaluesets/PH_AxisGUI_6P/axis', 
+          :instanceValueSet=> instanceValueSet, :axisName=> axisName %>
+    </div>
+  <% end %>
+</div>

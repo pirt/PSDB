@@ -68,15 +68,12 @@ class Instancevalueset < ActiveRecord::Base
     end
   end
   def getAxesNumbers
-    searchPattern=/^Axis[ ]*([0-5]):*/
     foundAxes=Set.new
     parameters=self.instancevalues.select(:name)
     parameters.each do |parameter|
-      axisName=parameter.name
-      searchResult=searchPattern.match(axisName)
-      if (!searchResult.nil?)
-        axisNr=searchResult[1].to_i
-        foundAxes.add(axisNr)
+      axisName=parameter.name.split(":")[0]
+      if (!axisName.empty?)
+        foundAxes.add(axisName)
       end
     end
     return foundAxes

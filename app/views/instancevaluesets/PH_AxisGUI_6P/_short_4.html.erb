@@ -1,0 +1,4 @@
+<% axisNames=instanceValueSet.getAxesNumbers() %>
+<% axisNames.each do |axisName| %>
+<%= displayParameter(instanceValueSet,axisName+": Position", :precision=>1) %>
+<% end %>
