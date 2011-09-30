@@ -1,0 +1,10 @@
+<% chName="Channel "+channel+": " %>
+<ul>
+  <li class="PSDB_bold">Delay: <%= displayParameter(instanceValueSet,chName+"rel. to") %> + 
+  <%= displayParameter(instanceValueSet,chName+"Delay") %></li>
+  <li>Inverted?: <%= displayParameter(instanceValueSet,chName+"Inverted?") %></li>
+  <li>Amplitude: <%= displayParameter(instanceValueSet,chName+"Amplitude") %></li>
+  <li>Offset: <%= displayParameter(instanceValueSet,chName+"Offset") %></li>
+  <li>Mode: <%= displayParameter(instanceValueSet,chName+"Mode") %></li>
+  <li>Load: <%= displayParameter(instanceValueSet,chName+"Load") %></li>
+</ul>

@@ -1,0 +1,60 @@
+<%= javascript_include_tag 'tabs' %>
+<div class="span-24 last">
+  <div class="span-7">
+    <%= image_tag "srdg535.png" %>
+  </div>
+  <div class="span-16 last" id="tabs">
+    <ul>
+      <li><a href="#gen">General</a></li>
+      <li><a href="#chanA">Ch A</a></li>
+      <li><a href="#chanB">Ch B</a></li>
+      <li><a href="#chanC">Ch C</a></li>
+      <li><a href="#chanD">Ch D</a></li>
+      <li><a href="#chanAB">AB</a></li>
+      <li><a href="#chanCD">CD</a></li>
+    </ul>
+    <div id="gen">
+      <ul>
+        <li>Device status: <%= displayParameter(instanceValueSet,"Device Status") %></li>
+        <li>Trigger mode: <%= displayParameter(instanceValueSet,"Trigger Mode") %></li>
+        <li>Trigger slope: <%= displayParameter(instanceValueSet,"Trigger Slope") %></li>
+        <li>Trigger impedance: <%= displayParameter(instanceValueSet,"Trigger Impedance") %></li>
+        <li>Trigger level: <%= displayParameter(instanceValueSet,"external Trigger Level", :precision=>2) %></li>
+        <li>Internal/Burst Rate: <%= displayParameter(instanceValueSet,"Internal/Burst Rate") %></li>
+        <li>Burst Count: <%= displayParameter(instanceValueSet,"Burst Count",:precision=>0) %></li>
+        <li>Burst Period: <%= displayParameter(instanceValueSet,"Burst Period",:precision=>0) %></li>
+        <li>GPIB address: <%= displayParameter(instanceValueSet,"GPIB address") %></li>
+      </ul>
+    </div>
+    <div id="chanA">
+      <%= render "instancevaluesets/SRDG535/channel", {:instanceValueSet=> instanceValueSet,:channel=>"A"} %>
+    </div>
+    <div id="chanB">
+      <%= render "instancevaluesets/SRDG535/channel", {:instanceValueSet=> instanceValueSet,:channel=>"B"} %>
+    </div>
+    <div id="chanC">
+      <%= render "instancevaluesets/SRDG535/channel", {:instanceValueSet=> instanceValueSet,:channel=>"C"} %>
+    </div>
+    <div id="chanD">
+      <%= render "instancevaluesets/SRDG535/channel", {:instanceValueSet=> instanceValueSet,:channel=>"D"} %>
+    </div>
+    <div id="chanAB">
+      <ul>
+        <li>Mode: <%= displayParameter(instanceValueSet,"Channel AB: Mode") %></li>
+        <li>Load: <%= displayParameter(instanceValueSet,"Channel AB: Load") %></li>
+        <li>Inverted?: <%= displayParameter(instanceValueSet,"Channel AB: Inverted?") %></li>
+        <li>Amplitude: <%= displayParameter(instanceValueSet,"Channel AB: Amplitude") %></li>
+        <li>Offset: <%= displayParameter(instanceValueSet,"Channel AB: Offset") %></li>
+      </ul>
+    </div>
+    <div id="chanCD">
+      <ul>
+        <li>Mode: <%= displayParameter(instanceValueSet,"Channel CD: Mode") %></li>
+        <li>Load: <%= displayParameter(instanceValueSet,"Channel CD: Load") %></li>
+        <li>Inverted?: <%= displayParameter(instanceValueSet,"Channel CD: Inverted?") %></li>
+        <li>Amplitude: <%= displayParameter(instanceValueSet,"Channel CD: Amplitude") %></li>
+        <li>Offset: <%= displayParameter(instanceValueSet,"Channel CD: Offset") %></li>
+      </ul>
+    </div>
+  </div>
+</div>

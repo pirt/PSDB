@@ -1,0 +1,5 @@
+<% if instanceValueSet.getStringParameter("Status")=="on/true" %>
+<%= link_to "Details",instanceValueSet %>
+<% else %>
+<%= image_tag 'icon_ERROR.png', {:style=>"vertical-align:middle"} %>
+<% end %>
