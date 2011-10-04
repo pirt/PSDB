@@ -1,0 +1,86 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+*/
+//= require blueprint/screen
+//= require redmond/jquery-ui-1.8.14.custom
+//= require_self
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+.field_with_errors label {
+  color: #fff;
+}
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+div.justifyright {
+  text-align: right
+}
+div.justifycenter {
+  text-align: center
+}
+footer { 
+  text-align: center
+}
+#calendar table {  border-collapse: collapse;  width: 100%;}
+#calendar td,#calendar th {  font-family: "Lucida Grande",arial,helvetica,sans-serif;  font-size: 10px;  padding: 6px;  border: 1px solid #999;}
+#calendar th {  background: #c3d9ff;  color: #666;  text-align: center;  width: 14.2857142857143%;}
+#calendar td {  background: #FFF;  color: #777;  height: 60px;  vertical-align: top;  font-size: 16px;}
+#calendar .notmonth {  color: #CCC;}
+#calendar #month {  margin: 0;  padding-top: 10px;  padding-bottom: 10px;  text-align: center;}
+#calendar #month a, #calendar #month a:hover {  text-decoration: none;  padding: 0 10px;  color: #999;}
+#calendar .today {  background-color: #e5eCf9;}
+#calendar ul {  margin: 0;  margin-top: 5px;  padding: 0;  list-style: none;}
+#calendar li {  margin: 0;  padding: 0;  font-size: 16px;  text-align: center;}
+
+/* toplevel menu */
+.menu {display:inline;}
+.holder {display:table;}
+#wrapper3 {text-align:right;}
+#wrapper3 .holder {margin:0 0 0 auto;}
+
+.menu {
+  display:table-row;
+  padding:0;
+  margin:0;
+  list-style-type:none;
+  white-space:nowrap; 
+  }
+.menu li {display:inline;}
+.menu a, .menu a:visited {
+  display:block;
+  float:left;
+  padding:4px 16px;
+  color:#000; 
+  background:#e5eCf9; 
+  border:1px solid #fff; 
+  text-decoration:none;
+  }
+.menu a:hover {
+  color:#000; 
+  background:#c3d9ff;
+  }
+/* adjust table padding */
+th, td, caption {padding:2px 2px 2px 0px;}
+/* a bold style */
+.PSDB_bold {font-weight:bold; font-size:larger;}
+/* disable table striping */
+table.no-zebra tbody tr:nth-child(even) td,
+table.no-zebra tbody tr.even td { background: transparent;}
+/* colouring for failed shots in index */
+tr.failedshot {color: #f00; border: 10px solid #f00}
+

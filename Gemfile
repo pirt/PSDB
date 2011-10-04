@@ -1,9 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', "~> 3.0.7"
+gem 'rails' , "~> 3.1.0"
 gem 'gnuplot'       # Use plot package
-gem 'will_paginate', "~> 3.0.pre2" # Paginate result lists
+gem 'will_paginate', "~> 3.0.2" # Paginate result lists
 gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
+
+# Gems used only for assets and not required  
+# in production environments by default.  
+group :assets do  
+  gem 'sass-rails', " ~> 3.1.0"  
+  gem 'coffee-rails', " ~> 3.1.0"  
+  gem 'uglifier'  
+end  
+
 gem 'jquery-rails'  # jQuery integration
 
 # Add support for oracle database
@@ -14,7 +23,7 @@ group :oracle do
 end
 # Add support for mysql database
 group :mysql do
-  gem 'mysql2', "~> 0.2.7"
+  gem 'mysql2' #, "~> 0.2.7"
 end
 # Gems for the local environment only.
 group :development, :test do
