@@ -77,7 +77,7 @@ describe Instancevalueset do
         valueset.getStringParameter("wrong name").should eq(nil)
       end
       it "should return nil if parameter was not a string instancevalue" do
-        wrongTypeInstanceValue=Factory(:instancevalue_2dData,:name=>"wrongtype")
+        wrongTypeInstanceValue=Factory(:instancevalue_twod,:name=>"wrongtype")
         valueset=wrongTypeInstanceValue.instancevalueset
         valueset.getStringParameter("wrongtype").should eq(nil)
       end

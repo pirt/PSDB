@@ -46,13 +46,13 @@ Factory.define :instancevalue_image, :class=>Instancevalue do |instancevalue|
   instancevalue.association :datatype, :name=>"image"
   instancevalue.name "Test image"
   def getTestImageBlob
-    imagePath=Rails.root.to_s+"/public/images/Rainbow.png"
+    imagePath=Rails.root.to_s+"/app/assets/images/Rainbow.png"
     testImage=Magick::Image.read(imagePath)[0].to_blob  { self.format='PNG' }
     return "AAAA"+testImage
   end
   instancevalue.data_binary {getTestImageBlob}
 end
-Factory.define :instancevalue_2dData, :class=>Instancevalue do |instancevalue|
+Factory.define :instancevalue_twod, :class=>Instancevalue do |instancevalue|
   instancevalue.association :instancevalueset
   instancevalue.association :datatype, :name=>"2dData"
   instancevalue.name "Test data"

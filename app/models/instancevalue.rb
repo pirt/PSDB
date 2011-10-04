@@ -218,7 +218,7 @@ private
   def generatePlot(plotData,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions.merge!(options)
-    fileName=Rails.root.to_s+"/public/images/tmp/plot"+self.id.to_s+".#{plotOptions[:imagetype]}"
+    fileName=Rails.root.to_s+"/app/assets/images/tmp/plot"+self.id.to_s+".#{plotOptions[:imagetype]}"
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
@@ -228,7 +228,7 @@ private
         plot.data << plotData
       end
     end
-    return fileName.sub(Rails.root.to_s+"/public/images/","")
+    return fileName.sub(Rails.root.to_s+"/app/assets/images/","")
   end
 end
 

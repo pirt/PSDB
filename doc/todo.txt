@@ -13,3 +13,4 @@ Features:
   PH_PPPA_PowerUnit (add picture)
   PH_PPMA_PowerUnit (add picture)
   images: warn if 16bit images are saved in an 8bit format.
+  display environment (Test,development,production) on statistics/technical page

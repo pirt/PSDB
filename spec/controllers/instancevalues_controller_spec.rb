@@ -70,7 +70,7 @@ describe InstancevaluesController do
     end
     describe "for existing instancevalue of datatype '2dData'" do
       before(:each) do
-        @instVal2D=Factory(:instancevalue_2dData)
+        @instVal2D=Factory(:instancevalue_twod)
       end
       it "should be successful" do
         get :exportPlot, :instanceValueId=>@instVal2D.id

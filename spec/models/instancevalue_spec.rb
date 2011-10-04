@@ -114,7 +114,7 @@ describe Instancevalue do
     describe "'exportImage'" do
       before(:each) do
         datatypeImage=Factory(:datatype,:name=>"image")
-        imagePath=Rails.root.to_s+"/public/images/Rainbow.png"
+        imagePath=Rails.root.to_s+"/app/assets/images/Rainbow.png"
         @testImage=Magick::Image.read(imagePath)[0].to_blob
         dataImage="AAAA"+@testImage
         @attrImage=@attr.merge({:datatype_id=>datatypeImage.id,:name=>"image",:data_numeric=>nil,
@@ -161,7 +161,7 @@ describe Instancevalue do
         it "should generate an image" do
           @imageInstVal.generateImage
           File.exists?(Rails.root.to_s+
-            "/public/images/tmp/image"+@imageInstVal.id.to_s+"_320_200.png").should == true
+            "/app/assets/images/tmp/image"+@imageInstVal.id.to_s+"_320_200.png").should == true
         end
         it "should return a filename containing the instancevalue id" do
           result=@imageInstVal.generateImage
@@ -178,7 +178,7 @@ describe Instancevalue do
         it "should not generate an image" do
           expect {@wrongInstVal.generateImage}.to raise_error
           File.exists?(Rails.root.to_s+
-            "/public/images/tmp/image"+@wrongInstVal.id.to_s+"_320_200.png").should == false
+            "/app/assets/images/tmp/image"+@wrongInstVal.id.to_s+"_320_200.png").should == false
         end
         it "should raise a RuntimeError" do
           expect {@wrongInstVal.generateImage}.
@@ -189,11 +189,11 @@ describe Instancevalue do
     describe "'generate2dPlot'" do
       describe "for a 2dData instancevalue" do
         before(:each) do
-          @plotInstVal=Factory(:instancevalue_2dData, :instancevalueset_id=>@instancevalueset.id)
+          @plotInstVal=Factory(:instancevalue_twod, :instancevalueset_id=>@instancevalueset.id)
         end
         it "should generate a plot image" do
           @plotInstVal.generate2dPlot
-          File.exists?(Rails.root.to_s+"/public/images/tmp/plot"+@plotInstVal.id.to_s+".png").should == true
+          File.exists?(Rails.root.to_s+"/app/assets/images/tmp/plot"+@plotInstVal.id.to_s+".png").should == true
         end
         it "should return a filename containing the instancevalue id" do
           result=@plotInstVal.generate2dPlot
@@ -210,7 +210,7 @@ describe Instancevalue do
         it "should not generate a plot image" do
           expect {@wrongInstVal.generate2dPlot}.to raise_error
           File.exists?(Rails.root.to_s+
-            "/public/images/tmp/plot"+@wrongInstVal.id.to_s+".png").should == false
+            "/app/assets/images/tmp/plot"+@wrongInstVal.id.to_s+".png").should == false
         end
         it "should raise a RuntimeError" do
           expect {@wrongInstVal.generate2dPlot}.
@@ -221,7 +221,7 @@ describe Instancevalue do
     describe "'generatePlotDataSet'" do
       describe "for 2dData instancevalue" do
         before(:each) do
-          @plotInstVal=Factory(:instancevalue_2dData, :instancevalueset_id=>@instancevalueset.id)
+          @plotInstVal=Factory(:instancevalue_twod, :instancevalueset_id=>@instancevalueset.id)
         end
         it "should return a correct plot dataset" do
           result=@plotInstVal.generatePlotDataSet
@@ -269,7 +269,7 @@ describe Instancevalue do
         plotOptions[:ylabel].should == ""
       end
       it "should generate options list with empty axis labels if instancevalue has no data_string field" do
-        noStringInstValue=Instancevalue.new(:@attr)
+        noStringInstValue=Instancevalue.new(@attr)
         plotOptions=noStringInstValue.generatePlotAxisDescriptions()
         plotOptions[:xlabel].should == ""
         plotOptions[:ylabel].should == ""

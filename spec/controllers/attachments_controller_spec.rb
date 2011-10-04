@@ -6,7 +6,6 @@ class Mockfile
     @filename=filename
     @content=content
   end
-
   def original_filename
     @filename
   end

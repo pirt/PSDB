@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -103,10 +104,12 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
 
   create_table "shots", :force => true do |t|
     t.string   "description"
-    t.integer  "experiment_id", :precision => 38, :scale => 0, :null => false
-    t.integer  "shottype_id",   :precision => 38, :scale => 0, :null => false
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.integer  "experiment_id",       :precision => 38, :scale => 0, :null => false
+    t.integer  "shottype_id",         :precision => 38, :scale => 0, :null => false
+    t.integer  "configuration_id_id", :precision => 38, :scale => 0
+    t.integer  "status",              :precision => 38, :scale => 0
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
   end
 
   add_index "shots", ["experiment_id"], :name => "index_shots_on_experiment_id"
@@ -134,16 +137,16 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
 
   add_primary_key_trigger "subsystems"
 
-  add_foreign_key "instances", "classtypes", :name => "sys_c00411245"
-  add_foreign_key "instances", "subsystems", :name => "sys_c00411246"
+  add_foreign_key "instances", "classtypes", :name => "sys_c0029868"
+  add_foreign_key "instances", "subsystems", :name => "sys_c0029869"
 
-  add_foreign_key "instancevalues", "datatypes", :name => "sys_c00411262"
-  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c00411261"
+  add_foreign_key "instancevalues", "datatypes", :name => "sys_c0029885"
+  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c0029884"
 
-  add_foreign_key "instancevaluesets", "instances", :name => "sys_c00411253"
-  add_foreign_key "instancevaluesets", "shots", :name => "sys_c00411252"
+  add_foreign_key "instancevaluesets", "instances", :name => "sys_c0029876"
+  add_foreign_key "instancevaluesets", "shots", :name => "sys_c0029875"
 
-  add_foreign_key "shots", "experiments", :name => "sys_c00411221"
-  add_foreign_key "shots", "shottypes", :name => "sys_c00411222"
+  add_foreign_key "shots", "experiments", :name => "sys_c0029844"
+  add_foreign_key "shots", "shottypes", :name => "sys_c0029845"
 
 end
