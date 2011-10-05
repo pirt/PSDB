@@ -54,8 +54,8 @@ class ShotsController < ApplicationController
       availableInstanceValueSets=availableInstanceValueSets.where(:instance_id => selectedInstances)
     end
     @instanceValueSets=availableInstanceValueSets.order(:instance=>"name").paginate(:page => params[:page])
-    @usedClasses=@shot.involvedClasstypes
-    @usedSubsystems=@shot.involvedSubsystems
+    @usedClasses=@shot.involvedClasstypes.order("name asc")
+    @usedSubsystems=@shot.involvedSubsystems.order("name asc")
     @pageTitle="Shot #{@shot.id}"
   end
 
