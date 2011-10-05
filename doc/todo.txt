@@ -8,7 +8,7 @@ Bugs:
 -write test for getImageInfo
 Features:
 -missing views:
-  SRDG535 (no shots written yet)
+  SRDG535 (add picture)
   PH_PPPA_PowerUnit (add picture)
   PH_PPMA_PowerUnit (add picture)
   images: warn if 16bit images are saved in an 8bit format.
