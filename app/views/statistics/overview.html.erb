@@ -68,6 +68,10 @@
           <td><%= Attachment.count %></td>
         </tr>
         <tr>
+          <td>Environment:</td>
+          <td><%= Rails.env.to_s %></td>
+        </tr>
+        <tr>
           <td>Database type:</td>
           <td><%= @databaseType %></td>
         </tr>
