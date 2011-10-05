@@ -4,7 +4,8 @@
 <% elsif status=="ON/TRUE"
 timeoutState=instanceValueSet.getStringParameter("Timeout",:upcase=>true)
 if timeoutState=="NONE" %>
-<%= displayParameter(instanceValueSet,"Voltage") %>
+<% voltage=instanceValueSet.getNumericParameter("Voltage")/1000.0 %>
+<%= number_with_precision(voltage, :precision => 1) %> kV
 <% else %>
 <%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
 <% end %>
