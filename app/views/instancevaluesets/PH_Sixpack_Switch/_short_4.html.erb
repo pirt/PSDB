@@ -1,0 +1,12 @@
+<% status=instanceValueSet.getStringParameter("Status",:upcase=>true)
+case status
+  when "FAILURE"
+    iconName="icon_ERROR.png"
+  when "OFF/FALSE/OUT"
+    iconName="icon_OUT.png"
+  when "ON/TRUE/IN"
+    iconName="icon_IN.png"
+  else
+    iconName="icon_UNKNOWN.png"
+end %>
+<%= image_tag iconName, {:style=>"vertical-align:middle"} %>

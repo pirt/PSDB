@@ -1,0 +1,27 @@
+<div class="span-8">
+  <%= image_tag "electrical_switch.png" %>
+</div>
+<% status=instanceValueSet.getStringParameter("Status",:upcase=>true)
+case status
+  when "FAILURE"
+    iconName="icon_ERROR.png"
+  when "OFF/FALSE/OUT"
+    iconName="icon_OUT.png"
+  when "ON/TRUE/IN"
+    iconName="icon_IN.png"
+  else
+    iconName="icon_UNKNOWN.png"
+end %>
+<div class="span-16 last">
+  <ul>
+    <li>
+      <strong>Status:</strong>
+      <%= image_tag iconName, {:style=>"vertical-align:middle"} %>
+      <%= displayParameter(instanceValueSet,"Status") %>
+    </li>
+    <li>
+      <strong>Sixpack:</strong>
+      <%= displayParameter(instanceValueSet,"Sixpack") %> (Axis <%= displayParameter(instanceValueSet,"Axis") %>)
+    </li>
+  </ul>
+</div>
