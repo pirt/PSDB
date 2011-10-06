@@ -3,8 +3,6 @@ Bugs:
 -some PH_Switch values wronly interpreted.
 -check missing index for instancevalues on column instancevalueset_id during next migration
 -add index for instances on name column
--check writing of umlauts to shot comment (both from web interface and PCS)
--MAS ImageOperator for shot #386 has EMPTY fillfactor value.
 -write test for getImageInfo
 Features:
 -missing views:
