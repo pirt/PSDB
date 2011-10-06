@@ -3,6 +3,9 @@
 <% if options[:withInfo] %>
 <br />
 <% imageInfo=instancevalue.generateImageInfo() %>
+<% if imageInfo[:bitdepth]>8 %>
+<%= javascript_include_tag 'formvalidation' %>
+<% end %>
 Colour depth: <%= imageInfo[:bitdepth] %> bit
 <% end %>
 <% if options[:withExport]==true %>
