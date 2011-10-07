@@ -76,6 +76,13 @@ describe Instancevalueset do
         valueset=wrongNameInstanceValue.instancevalueset
         valueset.getStringParameter("wrong name").should eq(nil)
       end
+      it "should return nil if parameter has an empty string field and 'upcase' option is used" do
+        emptyStringInstanceValue=Factory(:instancevalue_string, :data_string=>nil, :data_numeric=>1.0)
+        # Note: the data_numeric field must be set in order to avoid ActiveRecord Validation failures
+        # (at least one data fiel must be set!!!)
+        valueset=emptyStringInstanceValue.instancevalueset
+        valueset.getStringParameter("string data", :upcase=>true).should eq(nil)
+      end
       it "should return nil if parameter was not a string instancevalue" do
         wrongTypeInstanceValue=Factory(:instancevalue_twod,:name=>"wrongtype")
         valueset=wrongTypeInstanceValue.instancevalueset
