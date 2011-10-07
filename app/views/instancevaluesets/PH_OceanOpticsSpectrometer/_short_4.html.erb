@@ -1,1 +1,10 @@
+<% status=instanceValueSet.getStringParameter("Status", :upcase=>true) %>
+<% if status=="FAILURE" %>
+<%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
+<% elsif status=="OFF/FALSE" %>
+<%= image_tag "icon_OFF.png", {:style=>"vertical-align:middle"} %>
+<% elsif status=="ON/TRUE" %>
 <%= displayParameter(instanceValueSet,"Spectrum") %>
+<% else %>
+<%= image_tag "icon_UNKNOWN.png", {:style=>"vertical-align:middle"} %>
+<% end %>

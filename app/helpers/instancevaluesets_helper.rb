@@ -27,7 +27,7 @@ module InstancevaluesetsHelper
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} small enhanced size #{plotOptions[:width]},#{plotOptions[:height]} crop"
-        plot.output "public/images/tmp/series"+fileId.to_s+".#{plotOptions[:imagetype]}"
+        plot.output Rails.root.to_s+"/app/assets/images/tmp/series"+fileId.to_s+".#{plotOptions[:imagetype]}"
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
         plot.boxwidth 0.5
