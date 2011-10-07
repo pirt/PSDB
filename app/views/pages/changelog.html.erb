@@ -1,5 +1,19 @@
 <h1>Version history</h1>
 <ul>
+  <li>0.5 (?): </li>
+  <ul>
+    <li>converted application to Rails 3.1 and amke use of the new asset pipeline (=performance gain).</li>
+    <li>fixed bug in views for OceanOptics Spectrometers for the case that no spectrum was delivered.</li>
+    <li>fixed bug while displaying numeric values for the case the database field is empty (=NaN).</li>
+    <li>added/improved views for the classes PH_Sixpack_Switch, SRDG535, PH_AxisGUI_6P, PH_Waveplate-GUI_6P, and  PH_Sixpack.</li>
+    <li>show colour bit depth for images and warn if a 16 bit image is exported to a file format which
+        only supports 8 bit.</li>
+    <li>flashlamp voltages are displayed in kV on shot index page.</li>
+    <li>added display of fsFE waveplate angle on shot index page.</li>
+    <li>added type of environment the application is running on (test/development/production) on statistics page.</li>
+    <li>class types and subsystems are now displayed in alphabetical order for a shot.</li>
+    <li>added possibility to mark a shot as "failed". It is then displayed with a red font colour on the shot index page.</li>
+  </ul>
   <li>0.4 (02.09.11):</li>
   <ul>
     <li>fixed bug in shot list caching which lead to a code cleanup.</li>

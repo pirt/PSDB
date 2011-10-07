@@ -33,6 +33,9 @@ class Instancevalueset < ActiveRecord::Base
         return nil
       end
       stringData=parameterData.data_string
+      if (stringData.nil?)
+        return nil
+      end
       if options[:strip]==true
         stringData.strip!
       end
