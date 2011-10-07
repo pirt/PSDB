@@ -1,25 +1,11 @@
 <div class="span-10">
   <%= image_tag "pppa.png" %><br>
 </div>
-<div class="span-14 last">
-  <% onState=instanceValueSet.getStringParameter("State",:upcase=>true)
-  if onState=="OFF/FALSE"
-   onoffIconName="icon_OFF.png"
-  elsif onState=="ON/TRUE"
-   onoffIconName="icon_ON.png"
-  else
-   onoffIconName="icon_UNKNOWN.png"
-  end
-  timeoutState=instanceValueSet.getStringParameter("Timeout",:upcase=>true)
-  if timeoutState=="NONE"
-    timeoutStateIconName="icon_OK.png"
-  else
-    timeoutStateIconName="icon_ERROR.png"
-  end
-%>
+<div id="Udo" class="span-14 last">
 <ul>
-  <li><strong>Device State:</strong> <%= image_tag onoffIconName, {:style=>"vertical-align:middle"} %></li>
-  <li><strong>Timeout State:</strong> <%= image_tag timeoutStateIconName, {:style=>"vertical-align:middle"} %> <%= timeoutState %></li>
+  <li><strong>PU in use?:</strong> <%= displayParameter(instanceValueSet,"PU in use?") %></li>
+  <li><strong>Machine State:</strong> <%= displayParameter(instanceValueSet,"Machine State") %></li>
+  <li><strong>Timeout State:</strong> <%= displayParameter(instanceValueSet,"Timeout") %></li>
   <li><strong>Voltage:</strong> <%= displayParameter(instanceValueSet,"Voltage") %></li>
 </ul>
 </div>

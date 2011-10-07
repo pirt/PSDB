@@ -1,14 +1,13 @@
-<% status=instanceValueSet.getStringParameter("State",:upcase=>true)
- if status=="OFF/FALSE" %>
-<%= image_tag "icon_OFF.png", {:style=>"vertical-align:middle"} %>
-<% elsif status=="ON/TRUE"
-timeoutState=instanceValueSet.getStringParameter("Timeout",:upcase=>true)
-if timeoutState=="NONE" %>
-<% voltage=instanceValueSet.getNumericParameter("Voltage")/1000.0 %>
-<%= number_with_precision(voltage, :precision => 1) %> kV
+<% puOn=instanceValueSet.getBooleanParameter("PU in use?")
+if puOn
+  puStatus=instanceValueSet.getStringParameter("Machine State",:upcase=>true)
+  if puStatus="STAND BY"
+    voltage=instanceValueSet.getNumericParameter("Voltage")/1000.0 %>
+    <%= number_with_precision(voltage, :precision => 1) %> kV
 <% else %>
 <%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
 <% end %>
 <% else %>
-<%= image_tag "icon_UNKNOWN.png", {:style=>"vertical-align:middle"} %>
+<%= image_tag "icon_OFF.png", {:style=>"vertical-align:middle"} %>
 <% end %>
+
