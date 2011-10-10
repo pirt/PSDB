@@ -84,7 +84,8 @@ class Instancevalueset < ActiveRecord::Base
   def generatePlot(plotParameterNames,plotNr,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)
-    fileName="public/images/tmp/plotseries"+self.id.to_s+"_"+plotNr.to_s+".#{plotOptions[:imagetype]}"
+    fileName=Rails.root.to_s+"/app/assets/images/tmp/plotseries"+
+          self.id.to_s+"_"+plotNr.to_s+".#{plotOptions[:imagetype]}"
     dataAvailable=false
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
@@ -108,7 +109,7 @@ class Instancevalueset < ActiveRecord::Base
       end
     end
     if dataAvailable
-      return fileName.sub("public/images/","")
+      return fileName.sub(Rails.root.to_s+"/app/assets/images/","")
     else
       return ""
     end

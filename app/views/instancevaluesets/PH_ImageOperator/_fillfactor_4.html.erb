@@ -1,0 +1,19 @@
+<% if instanceValueSet.getBooleanParameter("Fill Factor: Analysis on?")==true %>
+<div class="container">
+  <div class="span-14">
+    <%= displayParameter(instanceValueSet,"Fill Factor Image",{:width=>450, :height=>800, :withExport=>true}) %>
+  </div>
+  <div class="span-8 last">
+    <ul>
+      <li class="large">Fillfactor: <%= displayParameter(instanceValueSet,"Fill Factor: Fillfactor",{:precision=>3}) %></li>
+      <li>Filtered?: <%= displayParameter(instanceValueSet,"Fill Factor: Filter on?") %></li>
+      <li>Threshold: <%= displayParameter(instanceValueSet,"Fill Factor: Threshold",{:precision=>2}) %></li>
+      <li>Damage Threshold: <%= displayParameter(instanceValueSet,"Fill Factor: Damage Threshold") %></li>
+      <li>max. allowed Energy: <%= displayParameter(instanceValueSet,"Fill Factor: allowed Energy",{:precision=>4}) %></li>
+      <li>calculated: <%= displayParameter(instanceValueSet,"Fill Factor: calculated at") %></li>
+    </ul>
+  </div>
+</div>
+<% else %>
+  no data
+<% end %>

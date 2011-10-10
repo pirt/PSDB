@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="span-11">
+    <h3>Camera data</h3>
+    <ul>
+      <li>Info Failure?: <%= displayParameter(instanceValueSet,"Cam Settings: Information Failure?") %></li>
+      <li>Serial number: <%= displayParameter(instanceValueSet,"Cam Settings: Serial Number",{:precision=>0}) %></li>
+      <li>Brightness: <%= displayParameter(instanceValueSet,"Cam Settings: Brightness",{:precision=>0}) %></li>
+      <li>Shutter: <%= displayParameter(instanceValueSet,"Cam Settings: Shutter",{:precision=>0}) %></li>
+      <li>Gain: <%= displayParameter(instanceValueSet,"Cam Settings: Gain",{:precision=>0}) %></li>
+      <li>Mode: <%= displayParameter(instanceValueSet,"Cam Settings: Mode",{:precision=>0}) %></li>
+    </ul>
+  </div>
+  <div class="span-11 last">
+    <h3>Calibration data</h3>
+    <ul>
+      <li>Serial number: <%= displayParameter(instanceValueSet,"Calibration: Serial Number",{:precision=>0}) %></li>
+      <li>Brightness: <%= displayParameter(instanceValueSet,"Calibration: Brightness",{:precision=>0}) %></li>
+      <li>Shutter: <%= displayParameter(instanceValueSet,"Calibration: Shutter",{:precision=>0}) %></li>
+      <li>Gain: <%= displayParameter(instanceValueSet,"Calibration: Gain",{:precision=>0}) %></li>
+      <li>Mode: <%= displayParameter(instanceValueSet,"Calibration: Mode",{:precision=>0}) %></li>
+      <li>Energy Calibration Factor: <%= displayParameter(instanceValueSet,"Calibration: Energy Cali Factor",{:precision=>3}) %></li>
+      <li>Size Calibration Factor: <%= displayParameter(instanceValueSet,"Calibration: Linear Cali Factor",{:precision=>3}) %></li>
+      <li>Calibration Status: <%= displayParameter(instanceValueSet,"Calibration: Status") %></li>
+      <li>Calibration Date: <%= displayParameter(instanceValueSet,"Calibration: Date") %>,
+                                <%= displayParameter(instanceValueSet,"Calibration: Time") %></li>
+    </ul>
+  </div>
+</div>

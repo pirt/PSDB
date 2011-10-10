@@ -1,0 +1,42 @@
+<div class="container">
+      <div class="span-11">
+        <h3>Energy</h3>
+        <% if instanceValueSet.getBooleanParameter("Energy: Analysis on?")==true %>
+          <ul>
+            <li>Energy: <%= displayParameter(instanceValueSet,"Energy",{:precision=>2}) %></li>
+            <li>Expected Energy: <%= displayParameter(instanceValueSet,"expected Energy") %></li>
+            <li>Calculated at: <%= displayParameter(instanceValueSet,"Energy: calculated at") %></li>
+          </ul>
+        <% else %>
+          no data
+        <% end %>
+        <h3>Position Analysis</h3>
+        <% if instanceValueSet.getBooleanParameter("Position Analysis: Analysis on?")==true %>
+          <ul>
+            <li>expected X-Position: <%= displayParameter(instanceValueSet,"Position Analysis: Nearfield expected X-Position") %></li>
+            <li>expected Y-Position: <%= displayParameter(instanceValueSet,"Position Analysis: Nearfield expected Y-Position") %></li>
+            <li>Delta: <%= displayParameter(instanceValueSet,"Position Analysis: Nearfield Delta") %></li>
+            <li>Analyzed at: <%= displayParameter(instanceValueSet,"Position Analysis: analysed at") %></li>
+          </ul>
+        <% else %>
+          no data
+        <% end %>
+      </div>
+      <div class="span-11 last">
+        <h3>Beam Analysis</h3>
+        <% if instanceValueSet.getBooleanParameter("Beam Analysis: Analysis on?")==true %>
+          <ul>
+            <li>Azimuth angle relativ to major axis?: <%= displayParameter(instanceValueSet,"Beam Analysis: Azimuth angle relativ to major axis?") %></li>
+            <li>Center of gravity x: <%= displayParameter(instanceValueSet,"Beam Analysis: Center of gravity - x",{:precision=>1}) %></li>
+            <li>Center of gravity y: <%= displayParameter(instanceValueSet,"Beam Analysis: Center of gravity - y",{:precision=>1}) %></li>
+            <li>Major diameter: <%= displayParameter(instanceValueSet,"Beam Analysis: Major axis dimension", {:precision=>2}) %></li>
+            <li>Minor diameter: <%= displayParameter(instanceValueSet,"Beam Analysis: Minor axis dimension", {:precision=>2}) %></li>
+            <li>Azimuth angle: <%= displayParameter(instanceValueSet,"Beam Analysis: Azimuth angle",{:precision=>2}) %></li>
+            <li>Region of interest method: <%= displayParameter(instanceValueSet,"Beam Analysis: Region of interest") %></li>
+            <li>Analyzed at: <%= displayParameter(instanceValueSet,"Beam Analysis: Analysed at") %></li>
+          </ul>
+        <% else %>
+          no data
+        <% end %>
+      </div>
+    </div>

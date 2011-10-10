@@ -4,7 +4,11 @@ module InstancevaluesetsHelper
   def displayParameter(instanceValueSet,parameterName,options={})
     parameterData=instanceValueSet.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
-      return "parameter <#{parameterName}> not found"
+      if options[:iconIfNotFound]==true
+        return image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"}
+      else
+        return "parameter <#{parameterName}> not found"
+      end
     else
       displayValue(parameterData,options)
     end

@@ -146,8 +146,12 @@ class Instancevalue < ActiveRecord::Base
     plotOptions=plotOptions.merge(options)
     axisDescriptionOptions=generatePlotAxisDescriptions()
     plotOptions=plotOptions.merge(axisDescriptionOptions)
-    plotData=generatePlotDataSet(plotOptions)
-    generatePlot(plotData,plotOptions)
+    begin
+      plotData=generatePlotDataSet(plotOptions)
+      generatePlot(plotData,plotOptions)
+    rescue
+      return "PlotError"
+    end
   end
   def generatePlotDataSet(options={})
     if self.datatype.name!="2dData"
@@ -158,9 +162,10 @@ class Instancevalue < ActiveRecord::Base
     begin
       xyData=convert2D(self.data_binary)
     rescue
-      raise "cannot convert data"
+      #raise "cannot convert data"
+      return Gnuplot::DataSet.new
     end
-      dataSet=Gnuplot::DataSet.new(xyData) do |ds|
+    dataSet=Gnuplot::DataSet.new(xyData) do |ds|
       ds.with = "lines"
       ds.notitle
     end
