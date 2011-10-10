@@ -14,7 +14,7 @@
   <tbody>
     <% @experiments.each do |experiment| %>
       <tr>
-        <td><%= link_to experiment.name, experiment %></td>
+        <td><%= link_to experiment, experiment %></td>
         <td><% if experiment.attachments.present? %>
               <%= image_tag 'paperclip.png' %>
             <% end %></td>

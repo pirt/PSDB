@@ -27,9 +27,9 @@
         <tr>
           <td><%= link_to instanceValueSet.shot_id, instanceValueSet.shot %></td>
           <td><%= formatDate(instanceValueSet.shot.created_at) %></td>
-          <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
-          <td><%= render :partial => "instancevaluesets/instancevalueset_short",
-                        :locals => { :instanceValueSet => instanceValueSet} %></td>
+          <td><%= link_to instanceValueSet.instance, instanceValueSet %></td>
+          <td><%= render "instancevaluesets/instancevalueset_short",
+                        :instanceValueSet => instanceValueSet %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,7 +1,7 @@
-<h3>Details for instance <%= @instance.name %></h3>
+<h3>Details for instance <%= @instance %></h3>
 <ul>
-<li><strong>Classtype:</strong> <%= @instance.classtype.name %></li>
-<li><strong>Subsystem:</strong> <%= @instance.subsystem.name %></li>
+<li><strong>Classtype:</strong> <%= @instance.classtype %></li>
+<li><strong>Subsystem:</strong> <%= @instance.subsystem %></li>
 <li><strong>Created at:</strong> <%= formatDate(@instance.created_at) %></li>
 <li><strong>Updated at:</strong> <%= formatDate(@instance.updated_at) %></li>
 <li><strong># of available datasets for this instance:</strong> <%= @instance.instancevaluesets.count %></li>

@@ -3,7 +3,7 @@
   <div class="span-8" id="general">
     <div class="box">
       <strong>Timestamp:</strong> <%= formatDate(@shot.created_at) %><br />
-      <strong>Experiment:</strong> <%= @shot.experiment.name %><br />
+      <strong>Experiment:</strong> <%= @shot.experiment %><br />
       <strong>Shot type:</strong> <%= @shot.shottype %><br />
       <strong>Comment:</strong> <%= @shot.description %><br />
       <%= link_to "Edit", edit_shot_path(@shot) %>
@@ -62,7 +62,7 @@
       <tbody>
         <% @instanceValueSets.each do |instanceValueSet| %>
           <tr>
-            <td><%= link_to instanceValueSet.instance.name, instanceValueSet %></td>
+            <td><%= link_to instanceValueSet.instance, instanceValueSet %></td>
             <td><%= displayValueSetShort(instanceValueSet) %></td>
           </tr>
         <% end %>

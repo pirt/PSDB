@@ -11,7 +11,7 @@
           <% else %>
           <% selection="" %>
           <% end %>
-          <%= link_to subsystem.name, 
+          <%= link_to subsystem, 
           instances_path(:subsystemName => subsystem.name,:classtypeName => @selectedClasstypeName),
           :class => selection %><br />
         <% end %>
@@ -27,7 +27,7 @@
           <% else %>
           <% selection="" %>
           <% end %>
-          <%= link_to classtype.name, 
+          <%= link_to classtype, 
           instances_path(:classtypeName => classtype.name,:subsystemName => @selectedSubsystemName ),
           :class => selection %><br />
         <% end %>
@@ -48,7 +48,7 @@
       <tbody>
         <% @instances.each do |instance| %>
         <tr>
-          <td><%= link_to instance.name, instancevaluesets_path(:instance_id => instance) %></td>
+          <td><%= link_to instance, instancevaluesets_path(:instance_id => instance) %></td>
           <td><%= instance.classtype %></td>
           <td><%= instance.subsystem %></td>
           <td><%= link_to "Details", instance %></td>
