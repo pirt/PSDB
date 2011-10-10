@@ -268,13 +268,14 @@ describe Instancevalue do
         plotOptions[:xlabel].should == "A [C]"
         plotOptions[:ylabel].should == "B [D]"
       end
-      it "should generate correct options list with empty labels id string field is empty" do
+    
+      it "should generate correct options list with empty labels if string field is empty" do
         emptyStringInstValue=Instancevalue.new(@attr.merge(:data_string=>""))
         plotOptions=emptyStringInstValue.generatePlotAxisDescriptions()
         plotOptions[:xlabel].should == ""
         plotOptions[:ylabel].should == ""
       end
-      it "should generate correct options list with empty labels id string field has empty fields" do
+      it "should generate correct options list with empty labels if string field has empty fields" do
         emptyFieldsInstValue=Instancevalue.new(@attr.merge(:data_string=>",,,,"))
         plotOptions=emptyFieldsInstValue.generatePlotAxisDescriptions()
         plotOptions[:xlabel].should == ""
@@ -285,6 +286,18 @@ describe Instancevalue do
         plotOptions=noStringInstValue.generatePlotAxisDescriptions()
         plotOptions[:xlabel].should == ""
         plotOptions[:ylabel].should == ""
+      end
+      it "should generate options list with no x dimension if missing in data_string field" do
+        plotDescInstValue=Instancevalue.new(@attr.merge(:data_string=>"A,B,,D"))
+        plotOptions=plotDescInstValue.generatePlotAxisDescriptions()
+        plotOptions[:xlabel].should == "A"
+        plotOptions[:ylabel].should == "B [D]"
+      end
+      it "should generate options list with no y dimension if missing in data_string field" do
+        plotDescInstValue=Instancevalue.new(@attr.merge(:data_string=>"A,B,C,"))
+        plotOptions=plotDescInstValue.generatePlotAxisDescriptions()
+        plotOptions[:xlabel].should == "A [C]"
+        plotOptions[:ylabel].should == "B"
       end
     end
   end

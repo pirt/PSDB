@@ -41,25 +41,12 @@ class Instancevalue < ActiveRecord::Base
     if self.datatype.name!="2dData"
       raise "instancevalue has wrong datatype"
     end
-    axisDescription=self.data_string
     txtData=""
-    if (axisDescription)
-      descriptionParts=axisDescription.split(",")
-      if (descriptionParts[0])
-        txtData+=descriptionParts[0]
-      end
-        if (descriptionParts[2])
-        txtData+=" ["+descriptionParts[2]+"]"
-      end
-      txtData+="\t"
-      if (descriptionParts[1])
-        txtData+=descriptionParts[1]
-      end
-      if (descriptionParts[3])
-        txtData+=" ["+descriptionParts[3]+"]"
-      end
-      txtData+="\n"
+    if (self.data_string.present?)
+      axisTxt=generatePlotAxisDescriptions()
+      txtData+=axisTxt[:xlabel]+"\t"+axisTxt[:ylabel]+"\n"
     end
+
     plotBlob=trimBlob(self.data_binary)
     if !plotBlob.nil?
       splitData=CSV(plotBlob).read
@@ -186,16 +173,16 @@ class Instancevalue < ActiveRecord::Base
     axisDescription=self.data_string
     if (axisDescription)
       descriptionParts=axisDescription.split(",")
-      if (descriptionParts[0])
+      if (descriptionParts[0].present?)
         axisDescriptionOptions[:xlabel]+=descriptionParts[0]
       end
-      if (descriptionParts[1])
+      if (descriptionParts[1].present?)
         axisDescriptionOptions[:ylabel]+=descriptionParts[1]
       end
-      if (descriptionParts[2])
+      if (descriptionParts[2].present?)
         axisDescriptionOptions[:xlabel]+=" ["+descriptionParts[2]+"]"
       end
-      if (descriptionParts[3])
+      if (descriptionParts[3].present?)
         axisDescriptionOptions[:ylabel]+=" ["+descriptionParts[3]+"]"
       end
     end

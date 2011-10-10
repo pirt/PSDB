@@ -15,8 +15,8 @@ class InstancesController < ApplicationController
     end
     @instances=selectedInstances.order("name ASC").
        paginate(:page => params[:page])
-    @availableClasstypes=Classtype.all
-    @availableSubsystems=Subsystem.all
+    @availableClasstypes=Classtype.order("name ASC")
+    @availableSubsystems=Subsystem.order("name ASC")
     @pageTitle="Instance list"
   end
 
