@@ -67,5 +67,8 @@ class Experiment < ActiveRecord::Base
     beamtimes << beamtime
     return beamtimes
   end
+  def to_s
+    return self.name
+  end
 end
 

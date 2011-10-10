@@ -144,6 +144,9 @@ class Instancevalue < ActiveRecord::Base
     return fileName.sub(Rails.root.to_s+"/app/assets/images/","")
   end
   def generateImageInfo(options = {})
+    if self.datatype.name!="image"
+      raise "impossible to get image info from non-image instancevalue"
+    end
     imageInfo={}
     imageData=trimBlob(self.data_binary)
     myImage=Magick::Image.from_blob(imageData)

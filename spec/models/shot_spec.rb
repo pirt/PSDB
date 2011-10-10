@@ -31,6 +31,10 @@ describe Shot do
     shot=Shot.new(@attr)
     shot.should respond_to(:description)
   end
+  it "should have a status field" do
+    shot=Shot.new(@attr)
+    shot.should respond_to(:status)
+  end
   it "should reject descriptions longer than 255 characters" do
     shotWithLongComment=@experiment.shots.new(@attr.merge(:description => "a"*256))
     shotWithLongComment.should_not be_valid
@@ -67,6 +71,14 @@ describe Shot do
     lambda do
        @shot.destroy
     end.should_not change(Shot, :count)
+  end
+  describe "instance methods" do
+    describe "'involved subsystems'" do
+      it "should return a list of subsystem names from all instancevaluesets belonging to the shot"
+    end
+    describe "'involved classtypes'" do
+      it "should return a list of classtype names from all instancevaluesets belonging to the shot"
+    end
   end
 end
 

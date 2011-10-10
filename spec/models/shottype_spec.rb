@@ -47,5 +47,13 @@ describe Shottype do
       end.should_not change(Shottype, :count)
     end
   end
+  describe "instance method" do
+    describe "'to_s'" do
+      it "should return the name of the shot type" do
+        shottype=Shottype.create!(@attr)
+        shottype.to_s.should == "test shot"
+      end
+    end
+  end
 end
 

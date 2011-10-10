@@ -79,14 +79,14 @@ describe Instancevalueset do
       it "should return nil if parameter has an empty string field and 'upcase' option is used" do
         emptyStringInstanceValue=Factory(:instancevalue_string, :data_string=>nil, :data_numeric=>1.0)
         # Note: the data_numeric field must be set in order to avoid ActiveRecord Validation failures
-        # (at least one data fiel must be set!!!)
+        # (at least one data field must be set!!!)
         valueset=emptyStringInstanceValue.instancevalueset
-        valueset.getStringParameter("string data", :upcase=>true).should eq(nil)
+        valueset.getStringParameter("string data", :upcase=>true).should == nil
       end
       it "should return nil if parameter was not a string instancevalue" do
         wrongTypeInstanceValue=Factory(:instancevalue_twod,:name=>"wrongtype")
         valueset=wrongTypeInstanceValue.instancevalueset
-        valueset.getStringParameter("wrongtype").should eq(nil)
+        valueset.getStringParameter("wrongtype").should == nil
       end
     end
     describe "'getBooleanParameter'" do
@@ -103,8 +103,28 @@ describe Instancevalueset do
       it "should return nil if parameter was not a boolean parameter" do
         wrongTypeInstanceValue=Factory(:instancevalue,:name=>"wrongtype")
         valueset=wrongTypeInstanceValue.instancevalueset
-        valueset.getBooleanParameter("wrongtype").should eq(nil)
+        valueset.getBooleanParameter("wrongtype").should == nil
       end
+    end
+    describe "'getNumericParameter'" do
+      it "should return a numeric parameter of a given instancevalue name" do
+        correctInstanceValue=Factory(:instancevalue_numeric)
+        valueset=correctInstanceValue.instancevalueset
+        valueset.getNumericParameter("numeric data").should == 3.1415
+      end
+      it "should return nil if parameter was not found in the value set" do
+        correctInstanceValue=Factory(:instancevalue_numeric)
+        valueset=correctInstanceValue.instancevalueset
+        valueset.getNumericParameter("wrong name").should == nil
+      end
+      it "should return nil if parameter was not a boolean parameter" do
+        wrongTypeInstanceValue=Factory(:instancevalue_string,:name=>"wrongtype")
+        valueset=wrongTypeInstanceValue.instancevalueset
+        valueset.getNumericParameter("wrongtype").should == nil
+      end
+    end
+    describe "'getAxesNumbers'" do
+      it "should return a set of axes for a PH_sixpack instancevalueset"
     end
     describe "'generatePlot'" do
       it "should generate a plot"

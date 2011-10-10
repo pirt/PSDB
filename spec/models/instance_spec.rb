@@ -90,6 +90,12 @@ describe Instance do
         instance.interfaceVersionInfo.length.should eq(1)
       end
     end
+    describe "'to_s'" do
+      it "should return the name of the data type" do
+        instance=Instance.create!(@attr)
+        instance.to_s.should == "test instance"
+      end
+    end
   end
 end
 

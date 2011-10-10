@@ -123,7 +123,6 @@ describe Instancevalue do
       it "should return a string representing the bytestream of the image for an image instancevalue" do
         correctValue=Instancevalue.new(@attrImage)
         result=correctValue.exportImage
-        #result[:content].should eq(@testImage)
         result[:format].should eq("image/PNG")
         result[:filename].should eq(correctValue.instancevalueset.instance.name+"_"+
                                     correctValue.instancevalueset.shot.id.to_s+".png")
@@ -184,6 +183,19 @@ describe Instancevalue do
           expect {@wrongInstVal.generateImage}.
           to raise_error(RuntimeError, 'error converting instancevalue to image file')
         end
+      end
+    end
+    describe "'generateImageInfo'" do
+      it "should return the bit depth of an image instancevalue" do
+        imageValue=Factory(:instancevalue_image, :instancevalueset_id => @instancevalueset.id)
+        imageValue.generateImageInfo()[:bitdepth].should == 8
+      end
+      it "should raise a runtime error for non-image instancevalue" do
+        wrongDataType=Factory(:datatype,:name=>"wrongType")
+        wrongInstVal=Factory(:instancevalue,:instancevalueset_id => @instancevalueset.id,
+                             :datatype_id=>wrongDataType.id)
+        expect {wrongInstVal.generateImageInfo}.
+        to raise_error(RuntimeError, 'impossible to get image info from non-image instancevalue')
       end
     end
     describe "'generate2dPlot'" do

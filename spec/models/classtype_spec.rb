@@ -30,7 +30,7 @@ describe Classtype do
     before(:each) do
       @classtype = Classtype.create(@attr)
     end
-    it "should have a 'instances' attribute" do
+    it "should have an 'instances' attribute" do
       @classtype.should respond_to(:instances)
     end
     it "cannot be deleted if referenced by instance" do
@@ -39,6 +39,14 @@ describe Classtype do
       lambda do
          @classtype.destroy
       end.should_not change(Classtype, :count)
+    end
+  end
+  describe "instance method" do
+    describe "'to_s'" do
+      it "should return the name of the classtype" do
+        classtype=Classtype.create!(@attr)
+        classtype.to_s.should == "test class"
+      end
     end
   end
 end

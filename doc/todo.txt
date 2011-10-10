@@ -3,7 +3,6 @@ Bugs:
 -some PH_Switch values wronly interpreted.
 -check missing index for instancevalues on column instancevalueset_id during next migration
 -add index for instances on name column
--write test for getImageInfo
 -sometimes Cams do not send an image evene if cam status is "on/true"
 Features:
 -missing views:

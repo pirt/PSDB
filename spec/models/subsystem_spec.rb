@@ -46,5 +46,13 @@ describe Subsystem do
       end.should_not change(Subsystem, :count)
     end
   end
+  describe "instance method" do
+    describe "'to_s'" do
+      it "should return the name of the subsystem" do
+        subsystem=Subsystem.create!(@attr)
+        subsystem.to_s.should == "test system"
+      end
+    end
+  end
 end
 

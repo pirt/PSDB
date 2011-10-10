@@ -44,5 +44,13 @@ describe Datatype do
       end.should_not change(Datatype, :count)
     end
   end
+  describe "instance method" do
+    describe "'to_s'" do
+      it "should return the name of the data type" do
+        datatype=Datatype.create!(@attr)
+        datatype.to_s.should == "numeric"
+      end
+    end
+  end
 end
 

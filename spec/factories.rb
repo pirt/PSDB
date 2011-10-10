@@ -71,3 +71,10 @@ Factory.define :instancevalue_boolean, :class=>Instancevalue do |instancevalue|
   instancevalue.name "boolean data"
   instancevalue.data_numeric 1
 end
+Factory.define :instancevalue_numeric, :class=>Instancevalue do |instancevalue|
+  instancevalue.association :instancevalueset
+  instancevalue.association :datatype, :name=>"numeric"
+  instancevalue.name "numeric data"
+  instancevalue.data_numeric 3.1415
+  instancevalue.data_string "unit"
+end

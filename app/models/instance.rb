@@ -30,7 +30,6 @@ class Instance < ActiveRecord::Base
       self.classtype.name+viewType+interfaceVersion.to_s+".html.erb"
     return File.exists?(viewFileName)
   end
-
   def interfaceVersionInfo
     interfaceVersions=self.instancevaluesets.select(:version).group(:version)
     interfaceInfo=[]
@@ -40,5 +39,8 @@ class Instance < ActiveRecord::Base
       interfaceInfo << {:version => interfaceVersion.version, :shot_id => shotId, :shotDate => shotDate}
     end
     return interfaceInfo
+  end
+  def to_s
+    return self.name
   end
 end

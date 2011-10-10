@@ -73,7 +73,7 @@ describe Experiment do
       end.should_not change(Experiment, :count)
     end
   end
-  describe "method" do
+  describe "instance method" do
     describe "'getBeamtimes'" do
       it "should correctly work for experiments with only one shot" do
         shot=Factory(:shot)
@@ -122,6 +122,12 @@ describe Experiment do
       it "should return empty array if no shots are connected to an experiments" do
         experiment=Experiment.create(@attr)
         experiment.getBeamtimes.length.should == 0
+      end
+    end
+    describe "'to_s'" do
+      it "should return the name of the data type" do
+        experiment=Experiment.create!(@attr)
+        experiment.to_s.should == "P0038"
       end
     end
   end
