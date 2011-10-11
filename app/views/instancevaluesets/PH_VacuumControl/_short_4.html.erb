@@ -1,0 +1,15 @@
+<% channels=instanceValueSet.getVacuumChannels()
+statusOK=true
+channels.each do |channel|
+  pressure=instanceValueSet.getNumericParameter(channel+": Pressure")
+  limit=instanceValueSet.getNumericParameter(channel+": Upper Limit")
+  if pressure>=limit
+    statusOK=false
+  end
+end
+if statusOK==true
+  icon="icon_OK.png"
+else
+  icon="icon_ERROR.png"
+end %>
+<%= image_tag icon, {:style=>"vertical-align:middle"} %>

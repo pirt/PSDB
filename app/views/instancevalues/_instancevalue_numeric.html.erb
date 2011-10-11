@@ -1,8 +1,13 @@
 <% if instancevalue.data_numeric.present? %>
+<% if options[:scientific] %>
+<%= number_to_scientific(instancevalue.data_numeric) %>
+<% else %>
 <% if options[:precision].nil? %>
 <%= instancevalue.data_numeric %>
 <% else %>
-<%= number_with_precision(instancevalue.data_numeric, :precision =>options[:precision]) %>
+<%= number_with_precision(instancevalue.data_numeric, 
+  :precision =>options[:precision], :strip_insignificant_zeros => true) %>
+<% end %>
 <% end %>
 <% else %>
 ?

@@ -1,0 +1,35 @@
+<% channels=instanceValueSet.getVacuumChannels() %>
+<div class="span-24 last">
+  <div class="span-10">
+    <%= image_tag "vaccumcontrol.png" %>
+  </div>
+  <div class ="span-14 last">
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Pressure</th>
+          <th>Limit</th>
+          <th>Ok?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% channels.each do |channel| %>
+        <tr>
+          <td><%= channel %></td>
+          <td class="large PSDB_bold"><%= displayParameter(instanceValueSet,channel+": Pressure", :scientific=>true) %></td>
+          <td><%= displayParameter(instanceValueSet,channel+": Upper Limit", :scientific=>true) %></td>
+          <% pressure=instanceValueSet.getNumericParameter(channel+": Pressure")
+             limit=instanceValueSet.getNumericParameter(channel+": Upper Limit")
+             if pressure<limit
+               icon="icon_OK.png"
+             else
+               icon="icon_ERROR.png"
+             end %>
+          <td><%= image_tag icon, {:style=>"vertical-align:middle"} %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -32,7 +32,6 @@
     </tr>
   </thead>
   <tbody>
-  
   <% @shots.each do |shot| %>
   <% cache "shotline#{shot.id}" do %>
     <% if shot.status==1 %>

@@ -79,6 +79,26 @@ class Instancevalueset < ActiveRecord::Base
     end
     return foundAxes
   end
+  def getVacuumChannels
+    foundChannels=Set.new
+    parameters=self.instancevalues.select(:name)
+    parameters.each do |parameter|
+      parameterList=parameter.name.split(":")
+      channelNumber=parameterList[0]
+      channelName=parameterList[1]
+      channel=""
+      if channelNumber.present?
+        channel += channelNumber+":"
+      end
+      if channelName.present?
+        channel += channelName
+      end
+      if channel.present?
+        foundChannels.add(channel)
+      end
+    end
+    return foundChannels
+  end
   def generatePlot(plotParameterNames,plotNr,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)
