@@ -8,8 +8,8 @@
 #  shottype_id   :integer(38)     not null
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
+#  status        :integer(38)
 #
-
 class Shot < ActiveRecord::Base
   attr_accessible :description, :experiment_id, :shottype_id, :status
 

@@ -137,7 +137,6 @@ class Instancevalue < ActiveRecord::Base
     imageInfo={}
     imageData=trimBlob(self.data_binary)
     myImage=Magick::Image.from_blob(imageData)
-    imageType=myImage[0].image_type
     imageInfo[:bitdepth]=myImage[0].depth
     return imageInfo
   end
@@ -146,12 +145,8 @@ class Instancevalue < ActiveRecord::Base
     plotOptions=plotOptions.merge(options)
     axisDescriptionOptions=generatePlotAxisDescriptions()
     plotOptions=plotOptions.merge(axisDescriptionOptions)
-    begin
-      plotData=generatePlotDataSet(plotOptions)
-      generatePlot(plotData,plotOptions)
-    rescue
-      return "PlotError"
-    end
+    plotData=generatePlotDataSet(plotOptions)
+    generatePlot(plotData,plotOptions)
   end
   def generatePlotDataSet(options={})
     if self.datatype.name!="2dData"
@@ -159,14 +154,9 @@ class Instancevalue < ActiveRecord::Base
     end
     localOptions={:plotstyle=>"lines"}
     localOptions.merge!(options)
-    begin
-      xyData=convert2D(self.data_binary)
-    rescue
-      #raise "cannot convert data"
-      return Gnuplot::DataSet.new
-    end
+    xyData=convert2D(self.data_binary)
     dataSet=Gnuplot::DataSet.new(xyData) do |ds|
-      ds.with = "lines"
+      ds.with = localOptions[:plotstyle]
       ds.notitle
     end
     return dataSet
@@ -206,8 +196,12 @@ private
 
   # convert an 2dData instancevalue to a 2d array.
   def convert2D(data)
-    splitData=CSV(trimBlob(data),:converters=>:float).read
-    return splitData.transpose
+    begin
+      splitData=CSV(trimBlob(data),:converters=>:float).read
+      return splitData.transpose
+    rescue
+      return nil
+    end
   end
 
   def generatePlot(plotData,options={})

@@ -24,7 +24,6 @@ class Instancevalueset < ActiveRecord::Base
   validates :instance, :presence => true
 
   def getStringParameter(parameterName,options={})
-    
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
       return nil
@@ -46,7 +45,6 @@ class Instancevalueset < ActiveRecord::Base
     end
   end
   def getBooleanParameter(parameterName,options={})
-    
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
       return nil

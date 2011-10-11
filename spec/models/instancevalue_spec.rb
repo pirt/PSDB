@@ -242,10 +242,17 @@ describe Instancevalue do
           result.title.should == "notitle"
           result.data.should == [[1.0, 3.0], [2.0, 4.0]]
         end
-        it "should raise a RuntimeError if 2dData has illegal format" do
+        it "should return an empty plot data set if 2dData has illegal format" do
           @plotInstVal.data_binary="AAAA1,2,3\n4ab"
-          expect {@plotInstVal.generatePlotDataSet}.
-          to raise_error(RuntimeError,'cannot convert data')
+          result=@plotInstVal.generatePlotDataSet
+          result.class.should == Gnuplot::DataSet
+          result.data.should == nil
+        end
+        it "should return an empty plot data set if 2dData is empty" do
+          @plotInstVal.data_binary=nil
+          result=@plotInstVal.generatePlotDataSet
+          result.class.should == Gnuplot::DataSet
+          result.data.should == nil
         end
       end
       describe "for non-2dData instancevalue" do
