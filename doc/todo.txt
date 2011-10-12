@@ -6,5 +6,4 @@ Bugs:
 -sometimes Cams do not send an image evene if cam status is "on/true"
 Features:
 - add unit tests for getAxisNumbers, getVacuumChannels
--missing views: PH_PPPA_PowerUnit (add picture), PH_PPMA_PowerUnit (add picture),
-                PH_VacuumControl (add picture), PH_Sixpack (add picture)
+-missing views: PH_VacuumControl (add picture)
