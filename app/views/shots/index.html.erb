@@ -25,8 +25,8 @@
 <table cellspacing="0">
   <thead>
     <tr>
-      <th class="span-1">Shot#</th>
-      <th class="span-3">Date</th>
+      <th class="justifycenter span-1">Shot#</th>
+      <th class="justifycenter span-3">Date</th>
       <%= render projectizeName("shotheader") %>
       <th></th>
     </tr>
@@ -39,8 +39,8 @@
     <% else %>
     <tr>
     <% end %>
-      <td><%= link_to shot.id, shot %></td>
-      <td><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
+      <td class="justifyright"><%= link_to shot.id, shot %></td>
+      <td class="justifyright"><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
       <%= render projectizeName("shotline"), :shot=>shot %>
       <td><%= displayAttachmentLabel(shot) %></td>
     </tr>

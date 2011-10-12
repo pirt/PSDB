@@ -27,11 +27,14 @@
 div.field, div.actions {
   margin-bottom: 10px;
 }
-div.justifyright {
-  text-align: right
+.justifyright {
+  text-align: right;
 }
-div.justifycenter {
-  text-align: center
+.justifycenter {
+  text-align: center;
+}
+.justifyleft {
+  text-align: left;
 }
 footer { 
   text-align: center
