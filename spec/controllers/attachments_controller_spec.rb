@@ -1,22 +1,5 @@
 require 'spec_helper'
 
-# define a mock object representing an uploaded file
-class Mockfile
-  def initialize(filename="test.png",content="abcd")
-    @filename=filename
-    @content=content
-  end
-  def original_filename
-    @filename
-  end
-  def content_type
-    'image'
-  end
-  def read
-    @content
-  end
-end
-
 describe AttachmentsController do
   render_views
 
@@ -105,7 +88,9 @@ describe AttachmentsController do
       end
       describe "success" do
         before(:each) do
-          @attr = {:content => Mockfile.new, :description => ""}
+          @attr = {:content => fixture_file_upload(
+                      Rails.root.to_s+'/app/assets/images/logo_PHELIX.png', 'image/png', :binary), 
+                   :description => "a test picture"}
         end
         it "should create an attachment" do
           lambda do
@@ -199,7 +184,9 @@ describe AttachmentsController do
       end
       describe "success" do
         before(:each) do
-          @attr = {:content => Mockfile.new("test2.png","fghij"), :description => "abcd"}
+          @attr = {:content => fixture_file_upload(
+                      Rails.root.to_s+'/config.ru', 'text/plain', :binary),
+                   :description => "abcd"}
         end
         it "should update an attachment" do
           put :update, :experiment_id => @experiment, :id => @attachment, :attachment => @attr
@@ -207,7 +194,7 @@ describe AttachmentsController do
           mockfile=@attr[:content]
           @attachment.filename.should  == mockfile.original_filename
           @attachment.filetype.should == mockfile.content_type
-          @attachment.content.should == mockfile.read
+          @attachment.content.should == File.new(Rails.root.to_s+"/config.ru").read
           @attachment.description.should  == @attr[:description]
           @attachment.attachable_id.should == @experiment.id
         end

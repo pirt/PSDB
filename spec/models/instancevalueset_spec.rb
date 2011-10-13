@@ -126,6 +126,9 @@ describe Instancevalueset do
     describe "'getAxesNumbers'" do
       it "should return a set of axes for a PH_sixpack instancevalueset"
     end
+    describe "'getVacuumChannels'" do
+       it "should return a set of channels for a PH_VacuumControl instancevalueset"
+    end
     describe "'generatePlot'" do
       it "should generate a plot"
     end
