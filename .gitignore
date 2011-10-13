@@ -7,3 +7,4 @@ webrat.log
 config/psdbconfig.yml
 psdbconfig.yml.temp
 .sass-cache/
+public/assets/
