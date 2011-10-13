@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Class: TableBuilderTest</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>vendor/plugins/table_builder/test/table_builder_test.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActionView::TestCase
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">ActionView::Helpers::TextHelper</span>
+  
+  
+  
+    <li><span class="include">ActionView::Helpers::TagHelper</span>
+  
+  
+  
+    <li><a class="include" href="TableHelper.html">TableHelper</a>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-setup">#setup</a>
+    
+    <li><a href="#method-i-test_body">#test_body</a>
+    
+    <li><a href="#method-i-test_body_r">#test_body_r</a>
+    
+    <li><a href="#method-i-test_head">#test_head</a>
+    
+    <li><a href="#method-i-test_head_r">#test_head_r</a>
+    
+    <li><a href="#method-i-test_head_with_array">#test_head_with_array</a>
+    
+    <li><a href="#method-i-test_table_for">#test_table_for</a>
+    
+    <li><a href="#method-i-test_table_for_without_an_array_raises_error">#test_table_for_without_an_array_raises_error</a>
+    
+    <li><a href="#method-i-test_td_with_block">#test_td_with_block</a>
+    
+    <li><a href="#method-i-test_td_with_block_and_options">#test_td_with_block_and_options</a>
+    
+    <li><a href="#method-i-test_td_with_options">#test_td_with_options</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./README.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./doc/PSDB_Handbook_txt.html">PSDB_Handbook</a>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+    <li class="file"><a href="./doc/todo_txt.html">todo</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/VERSION.html">VERSION</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CalendarHelper.html">CalendarHelper</a>
+  
+    <li><a href="./CalendarHelper/Calendar.html">CalendarHelper::Calendar</a>
+  
+    <li><a href="./CalendarHelper/CalendarBuilder.html">CalendarHelper::CalendarBuilder</a>
+  
+    <li><a href="./PSDB.html">PSDB</a>
+  
+    <li><a href="./PSDB/Application.html">PSDB::Application</a>
+  
+    <li><a href="./TableHelper.html">TableHelper</a>
+  
+    <li><a href="./TableHelper/TableBuilder.html">TableHelper::TableBuilder</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="./AuthHelper.html">AuthHelper</a>
+  
+    <li><a href="./CalendarHelperTest.html">CalendarHelperTest</a>
+  
+    <li><a href="./Classtype.html">Classtype</a>
+  
+    <li><a href="./CreateAttachments.html">CreateAttachments</a>
+  
+    <li><a href="./CreateClasstypes.html">CreateClasstypes</a>
+  
+    <li><a href="./CreateDatatypes.html">CreateDatatypes</a>
+  
+    <li><a href="./CreateExperiments.html">CreateExperiments</a>
+  
+    <li><a href="./CreateInstances.html">CreateInstances</a>
+  
+    <li><a href="./CreateInstancevalues.html">CreateInstancevalues</a>
+  
+    <li><a href="./CreateInstancevaluesets.html">CreateInstancevaluesets</a>
+  
+    <li><a href="./CreateShots.html">CreateShots</a>
+  
+    <li><a href="./CreateShottypes.html">CreateShottypes</a>
+  
+    <li><a href="./CreateSubsystems.html">CreateSubsystems</a>
+  
+    <li><a href="./Datatype.html">Datatype</a>
+  
+    <li><a href="./Drummer.html">Drummer</a>
+  
+    <li><a href="./Event.html">Event</a>
+  
+    <li><a href="./Experiment.html">Experiment</a>
+  
+    <li><a href="./ExperimentsController.html">ExperimentsController</a>
+  
+    <li><a href="./Instance.html">Instance</a>
+  
+    <li><a href="./InstancesController.html">InstancesController</a>
+  
+    <li><a href="./Instancevalue.html">Instancevalue</a>
+  
+    <li><a href="./InstancevaluesController.html">InstancevaluesController</a>
+  
+    <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a>
+  
+    <li><a href="./Instancevalueset.html">Instancevalueset</a>
+  
+    <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a>
+  
+    <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./Shot.html">Shot</a>
+  
+    <li><a href="./ShotsController.html">ShotsController</a>
+  
+    <li><a href="./ShotsHelper.html">ShotsHelper</a>
+  
+    <li><a href="./Shottype.html">Shottype</a>
+  
+    <li><a href="./StatisticsController.html">StatisticsController</a>
+  
+    <li><a href="./Subsystem.html">Subsystem</a>
+  
+    <li><a href="./TableBuilderTest.html">TableBuilderTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class TableBuilderTest</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-output_buffer" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">output_buffer</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>
+  <span class="ruby-ivar">@drummer1</span> = <span class="ruby-constant">Drummer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>, <span class="ruby-string">'John &quot;Stumpy&quot; Pepys'</span>)
+  <span class="ruby-ivar">@drummer2</span> = <span class="ruby-constant">Drummer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>, <span class="ruby-string">'Eric &quot;Stumpy Joe&quot; Childs'</span>)
+  <span class="ruby-ivar">@drummer3</span> = <span class="ruby-constant">Drummer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">3</span>, <span class="ruby-string">'Peter &quot;James&quot; Bond'</span>)
+  <span class="ruby-ivar">@drummer4</span> = <span class="ruby-constant">Drummer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">4</span>, <span class="ruby-string">'Mick Shrimpton (R. J. &quot;Ric&quot; Parnell)'</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- setup-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- setup-method -->
+
+    
+      <div id="method-i-test_body" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_body</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_body-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_body</span>
+  <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([<span class="ruby-ivar">@drummer3</span>, <span class="ruby-ivar">@drummer4</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">body</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">t</span>.<span class="ruby-identifier">r</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">d</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">d</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;3&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;Peter &amp;quot;James&amp;quot; Bond&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;4&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;Mick Shrimpton (R. J. &amp;quot;Ric&amp;quot; Parnell)&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;/tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+    <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+  <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_body-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_body-method -->
+
+    
+      <div id="method-i-test_body_r" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_body_r</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_body_r-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_body_r</span>
+  <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([<span class="ruby-ivar">@drummer3</span>, <span class="ruby-ivar">@drummer4</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">body_r</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">d</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">id</span>)
+      <span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">d</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;3&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;Peter &amp;quot;James&amp;quot; Bond&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;4&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;td&gt;Mick Shrimpton (R. J. &amp;quot;Ric&amp;quot; Parnell)&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;/tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+    <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+  <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_body_r-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_body_r-method -->
+
+    
+      <div id="method-i-test_head" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_head</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_head-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_head</span>
+  <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">head</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">t</span>.<span class="ruby-identifier">r</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">output_buffer</span>.<span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">h</span>(<span class="ruby-string">'Id'</span>)
+        <span class="ruby-identifier">output_buffer</span>.<span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">h</span>(<span class="ruby-string">'Name'</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;thead&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;th&gt;Id&lt;/th&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;th&gt;Name&lt;/th&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;/thead&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+    <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+  <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_head-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_head-method -->
+
+    
+      <div id="method-i-test_head_r" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_head_r</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_head_r-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_head_r</span>
+  <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">head_r</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">output_buffer</span>.<span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">h</span>(<span class="ruby-string">'Id'</span>)
+      <span class="ruby-identifier">output_buffer</span>.<span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">h</span>(<span class="ruby-string">'Name'</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;thead&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;th&gt;Id&lt;/th&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;th&gt;Name&lt;/th&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;/thead&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+    <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+  <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_head_r-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_head_r-method -->
+
+    
+      <div id="method-i-test_head_with_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_head_with_array</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_head_with_array-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_head_with_array</span>
+  <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([<span class="ruby-ivar">@drummer1</span>, <span class="ruby-ivar">@drummer2</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">head</span>(<span class="ruby-string">'Id'</span>, <span class="ruby-string">'Name'</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;thead&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;th&gt;Id&lt;/th&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+          <span class="ruby-string">%Q(&lt;th&gt;Name&lt;/th&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+      <span class="ruby-string">%Q(&lt;/thead&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+    <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+  <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_head_with_array-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_head_with_array-method -->
+
+    
+      <div id="method-i-test_table_for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_table_for</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_table_for-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_table_for</span>
+  <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([], <span class="ruby-value">:html</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'id'</span>, <span class="ruby-value">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'style'</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'class'</span>}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table id=&quot;id&quot; style=&quot;style&quot; class=&quot;class&quot;&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+    <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+  <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_table_for-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_table_for-method -->
+
+    
+      <div id="method-i-test_table_for_without_an_array_raises_error" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_table_for_without_an_array_raises_error</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_table_for_without_an_array_raises_error-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_table_for_without_an_array_raises_error</span>
+  <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">ArgumentError</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">table_for</span>(<span class="ruby-string">'a'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_table_for_without_an_array_raises_error-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_table_for_without_an_array_raises_error-method -->
+
+    
+      <div id="method-i-test_td_with_block" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_td_with_block</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_td_with_block-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_td_with_block</span>
+   <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([<span class="ruby-ivar">@drummer1</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">body_r</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+       <span class="ruby-identifier">t</span>.<span class="ruby-identifier">d</span> <span class="ruby-keyword">do</span>
+         <span class="ruby-identifier">concat</span> <span class="ruby-string">'content'</span>
+       <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+       <span class="ruby-string">%Q(&lt;tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+         <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+           <span class="ruby-string">%Q(&lt;td&gt;content&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+         <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+       <span class="ruby-string">%Q(&lt;/tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+     <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+   <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+ <span class="ruby-keyword">end</span></pre>
+          </div><!-- test_td_with_block-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_td_with_block-method -->
+
+    
+      <div id="method-i-test_td_with_block_and_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_td_with_block_and_options</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_td_with_block_and_options-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 163</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_td_with_block_and_options</span>
+   <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([<span class="ruby-ivar">@drummer1</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">body_r</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+       <span class="ruby-identifier">t</span>.<span class="ruby-identifier">d</span>(<span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'class'</span>) <span class="ruby-keyword">do</span>
+         <span class="ruby-identifier">concat</span> <span class="ruby-string">'content'</span>
+       <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+       <span class="ruby-string">%Q(&lt;tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+         <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+           <span class="ruby-string">%Q(&lt;td class=&quot;class&quot;&gt;content&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+         <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+       <span class="ruby-string">%Q(&lt;/tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+     <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+   <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+ <span class="ruby-keyword">end</span></pre>
+          </div><!-- test_td_with_block_and_options-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_td_with_block_and_options-method -->
+
+    
+      <div id="method-i-test_td_with_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_td_with_options</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_td_with_options-source">
+            <pre><span class="ruby-comment"># File vendor/plugins/table_builder/test/table_builder_test.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_td_with_options</span>
+   <span class="ruby-identifier">output</span> = <span class="ruby-identifier">table_for</span>([<span class="ruby-ivar">@drummer1</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">body_r</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+       <span class="ruby-identifier">output_buffer</span>.<span class="ruby-identifier">concat</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">d</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">name</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'class'</span>)
+     <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-identifier">expected</span> = <span class="ruby-string">%Q(&lt;table&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+       <span class="ruby-string">%Q(&lt;tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+         <span class="ruby-string">%Q(&lt;tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+           <span class="ruby-string">%Q(&lt;td class=&quot;class&quot;&gt;John &amp;quot;Stumpy&amp;quot; Pepys&lt;/td&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+         <span class="ruby-string">%Q(&lt;/tr&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+       <span class="ruby-string">%Q(&lt;/tbody&gt;)</span> <span class="ruby-operator">&lt;&lt;</span>
+     <span class="ruby-string">%Q(&lt;/table&gt;)</span>
+   <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-identifier">expected</span>, <span class="ruby-identifier">output</span>
+ <span class="ruby-keyword">end</span></pre>
+          </div><!-- test_td_with_options-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_td_with_options-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails' , "~> 3.1.0"
+gem 'rack', '1.3.3' # the newer version produces some warnings...
 gem 'gnuplot'       # Use plot package
-gem 'will_paginate', "~> 3.0.2" # Paginate result lists
+gem 'will_paginate' #, "~> 3.0.2" # Paginate result lists
 gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
 
 # Gems used only for assets and not required  
@@ -23,9 +24,9 @@ group :oracle do
 end
 # Add support for mysql database
 group :mysql do
-  gem 'mysql2' #, "~> 0.2.7"
+  gem 'mysql2'
 end
-# Gems for the local environment only.
+# Gems for the local development/ test environment only.
 group :development, :test do
   gem 'rspec'		           # Use Rspec as testing framework
   gem 'rspec-rails'        # Use Rspec as testing framework
@@ -34,6 +35,3 @@ group :development, :test do
   gem 'factory_girl_rails' # generate model test instances (experiments, shots, users, ...)
   gem 'annotate'    # Annotate models with the fields of the database
 end
-
-# gem 'capistrano' # Deploy with Capistrano
-

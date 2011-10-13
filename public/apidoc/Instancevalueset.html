@@ -1,207 +1,200 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Class: Instancevalueset</title>
+<title>Class: Instancevalueset</title>
 
-  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
 <body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="./index.html">Home</a>
-          <a href="./index.html#classes">Classes</a>
-          <a href="./index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="./__/app/models/instancevalueset_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="../app/models/instancevalueset.rb">../app/models/instancevalueset.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link">ActiveRecord::Base</p>
-        
-      </div>
-      
 
-      
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/instancevalueset.rb
+  </ul>
+</nav>
 
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-i-generatePlot">#generatePlot</a></li>
-          
-          <li><a href="#method-i-getBooleanParameter">#getBooleanParameter</a></li>
-          
-          <li><a href="#method-i-getPlotDataSet">#getPlotDataSet</a></li>
-          
-          <li><a href="#method-i-getStringParameter">#getStringParameter</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="./images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="./ApplicationController.html">ApplicationController</a></li>
-        
-          <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
-        
-          <li><a href="./Attachment.html">Attachment</a></li>
-        
-          <li><a href="./AttachmentsController.html">AttachmentsController</a></li>
-        
-          <li><a href="./Classtype.html">Classtype</a></li>
-        
-          <li><a href="./Datatype.html">Datatype</a></li>
-        
-          <li><a href="./Experiment.html">Experiment</a></li>
-        
-          <li><a href="./ExperimentsController.html">ExperimentsController</a></li>
-        
-          <li><a href="./Instance.html">Instance</a></li>
-        
-          <li><a href="./InstancesController.html">InstancesController</a></li>
-        
-          <li><a href="./Instancevalue.html">Instancevalue</a></li>
-        
-          <li><a href="./InstancevaluesController.html">InstancevaluesController</a></li>
-        
-          <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a></li>
-        
-          <li><a href="./Instancevalueset.html">Instancevalueset</a></li>
-        
-          <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a></li>
-        
-          <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a></li>
-        
-          <li><a href="./PagesController.html">PagesController</a></li>
-        
-          <li><a href="./Shot.html">Shot</a></li>
-        
-          <li><a href="./ShotsController.html">ShotsController</a></li>
-        
-          <li><a href="./ShotsHelper.html">ShotsHelper</a></li>
-        
-          <li><a href="./Shottype.html">Shottype</a></li>
-        
-          <li><a href="./StatisticsController.html">StatisticsController</a></li>
-        
-          <li><a href="./Subsystem.html">Subsystem</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
+    
   </div>
 
-  <div id="documentation">
-    <h1 class="class">Instancevalueset</h1>
-
-    <div id="description" class="description">
-      
-    </div><!-- description -->
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
 
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-i-generatePlot">#generatePlot</a>
     
-    <div id="5Buntitled-5D" class="documentation-section">
-      
+    <li><a href="#method-i-getAxesNumbers">#getAxesNumbers</a>
+    
+    <li><a href="#method-i-getBooleanParameter">#getBooleanParameter</a>
+    
+    <li><a href="#method-i-getNumericParameter">#getNumericParameter</a>
+    
+    <li><a href="#method-i-getPlotDataSet">#getPlotDataSet</a>
+    
+    <li><a href="#method-i-getStringParameter">#getStringParameter</a>
+    
+    <li><a href="#method-i-getVacuumChannels">#getVacuumChannels</a>
+    
+  </ul>
+</nav>
 
-      
+  </div>
 
-      
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
 
-      
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="./Classtype.html">Classtype</a>
+  
+    <li><a href="./Datatype.html">Datatype</a>
+  
+    <li><a href="./Experiment.html">Experiment</a>
+  
+    <li><a href="./ExperimentsController.html">ExperimentsController</a>
+  
+    <li><a href="./Instance.html">Instance</a>
+  
+    <li><a href="./InstancesController.html">InstancesController</a>
+  
+    <li><a href="./Instancevalue.html">Instancevalue</a>
+  
+    <li><a href="./InstancevaluesController.html">InstancevaluesController</a>
+  
+    <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a>
+  
+    <li><a href="./Instancevalueset.html">Instancevalueset</a>
+  
+    <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a>
+  
+    <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./Shot.html">Shot</a>
+  
+    <li><a href="./ShotsController.html">ShotsController</a>
+  
+    <li><a href="./ShotsHelper.html">ShotsHelper</a>
+  
+    <li><a href="./Shottype.html">Shottype</a>
+  
+    <li><a href="./StatisticsController.html">StatisticsController</a>
+  
+    <li><a href="./Subsystem.html">Subsystem</a>
+  
+  </ul>
+</nav>
 
-      <!-- Methods -->
-      
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+  </div>
+</nav>
 
-      
-        <div id="generatePlot-method" class="method-detail ">
-          <a name="method-i-generatePlot"></a>
+<div id="documentation">
+  <h1 class="class">class Instancevalueset</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-generatePlot" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generatePlot</span><span
+            class="method-args">(plotParameterNames,plotNr,options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">generatePlot</span><span
-              class="method-args">(plotParameterNames,plotNr,options={})</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="generatePlot-source">
-<pre>
-<span class="ruby-comment"># File ../app/models/instancevalueset.rb, line 58</span>
+          <div class="method-source-code" id="generatePlot-source">
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlot</span>(<span class="ruby-identifier">plotParameterNames</span>,<span class="ruby-identifier">plotNr</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">plotOptions</span>={<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">200</span>, <span class="ruby-value">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">100</span>, <span class="ruby-value">:imagetype=</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;png&quot;</span>}
   <span class="ruby-identifier">plotOptions</span>=<span class="ruby-identifier">plotOptions</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
-  <span class="ruby-identifier">fileName</span>=<span class="ruby-string">&quot;public/images/tmp/plotseries&quot;</span><span class="ruby-operator">+</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">plotNr</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;.#{plotOptions[:imagetype]}&quot;</span>
+  <span class="ruby-identifier">fileName</span>=<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/tmp/plotseries&quot;</span><span class="ruby-operator">+</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">plotNr</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;.#{plotOptions[:imagetype]}&quot;</span>
   <span class="ruby-identifier">dataAvailable</span>=<span class="ruby-keyword">false</span>
   <span class="ruby-constant">Gnuplot</span>.<span class="ruby-identifier">open</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gp</span><span class="ruby-operator">|</span>
     <span class="ruby-constant">Gnuplot</span><span class="ruby-operator">::</span><span class="ruby-constant">Plot</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">gp</span> ) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plot</span><span class="ruby-operator">|</span>
@@ -225,43 +218,77 @@
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">dataAvailable</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">fileName</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">&quot;public/images/&quot;</span>,<span class="ruby-string">&quot;&quot;</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">fileName</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/&quot;</span>,<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- generatePlot-source -->
-            
-          </div>
+          </div><!-- generatePlot-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- generatePlot-method -->
+
+    
+      <div id="method-i-getAxesNumbers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getAxesNumbers</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- generatePlot-method -->
+          <div class="method-source-code" id="getAxesNumbers-source">
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getAxesNumbers</span>
+  <span class="ruby-identifier">foundAxes</span>=<span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">parameters</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:name</span>)
+  <span class="ruby-identifier">parameters</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">parameter</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">axisName</span>=<span class="ruby-identifier">parameter</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>)[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">axisName</span>.<span class="ruby-identifier">empty?</span>)
+      <span class="ruby-identifier">foundAxes</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">axisName</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">foundAxes</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- getAxesNumbers-source -->
+          
+        </div>
 
-      
-        <div id="getBooleanParameter-method" class="method-detail ">
-          <a name="method-i-getBooleanParameter"></a>
+        
+
+        
+      </div><!-- getAxesNumbers-method -->
+
+    
+      <div id="method-i-getBooleanParameter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getBooleanParameter</span><span
+            class="method-args">(parameterName,options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">getBooleanParameter</span><span
-              class="method-args">(parameterName,options={})</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="getBooleanParameter-source">
-<pre>
-<span class="ruby-comment"># File ../app/models/instancevalueset.rb, line 45</span>
+          <div class="method-source-code" id="getBooleanParameter-source">
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBooleanParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
-  
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -273,36 +300,72 @@
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getBooleanParameter-source -->
-            
-          </div>
+          </div><!-- getBooleanParameter-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- getBooleanParameter-method -->
+
+    
+      <div id="method-i-getNumericParameter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getNumericParameter</span><span
+            class="method-args">(parameterName,options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- getBooleanParameter-method -->
+          <div class="method-source-code" id="getNumericParameter-source">
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getNumericParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
+  
+  <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;numeric&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">data_numeric</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- getNumericParameter-source -->
+          
+        </div>
 
-      
-        <div id="getPlotDataSet-method" class="method-detail ">
-          <a name="method-i-getPlotDataSet"></a>
+        
+
+        
+      </div><!-- getNumericParameter-method -->
+
+    
+      <div id="method-i-getPlotDataSet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPlotDataSet</span><span
+            class="method-args">(parameterName,options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">getPlotDataSet</span><span
-              class="method-args">(parameterName,options={})</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="getPlotDataSet-source">
-<pre>
-<span class="ruby-comment"># File ../app/models/instancevalueset.rb, line 91</span>
+          <div class="method-source-code" id="getPlotDataSet-source">
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 136</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getPlotDataSet</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">instanceValue</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">instanceValue</span>.<span class="ruby-identifier">nil?</span>)
@@ -312,38 +375,34 @@
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">plotDataSet</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getPlotDataSet-source -->
-            
-          </div>
+          </div><!-- getPlotDataSet-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- getPlotDataSet-method -->
+
+    
+      <div id="method-i-getStringParameter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getStringParameter</span><span
+            class="method-args">(parameterName,options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- getPlotDataSet-method -->
-
-      
-        <div id="getStringParameter-method" class="method-detail ">
-          <a name="method-i-getStringParameter"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">getStringParameter</span><span
-              class="method-args">(parameterName,options={})</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="getStringParameter-source">
-<pre>
-<span class="ruby-comment"># File ../app/models/instancevalueset.rb, line 26</span>
+          <div class="method-source-code" id="getStringParameter-source">
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getStringParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
-  
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -352,6 +411,9 @@
       <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">stringData</span>=<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">data_string</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">stringData</span>.<span class="ruby-identifier">nil?</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:strip</span>]<span class="ruby-operator">==</span><span class="ruby-keyword">true</span>
       <span class="ruby-identifier">stringData</span>.<span class="ruby-identifier">strip!</span>
     <span class="ruby-keyword">end</span>
@@ -361,29 +423,73 @@
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">stringData</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getStringParameter-source -->
-            
-          </div>
-
+          </div><!-- getStringParameter-source -->
           
+        </div>
 
-          
-        </div><!-- getStringParameter-method -->
+        
 
-      
-      </div><!-- public-instance-method-details -->
+        
+      </div><!-- getStringParameter-method -->
+
     
-    </div><!-- 5Buntitled-5D -->
+      <div id="method-i-getVacuumChannels" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getVacuumChannels</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getVacuumChannels-source">
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getVacuumChannels</span>
+  <span class="ruby-identifier">foundChannels</span>=<span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">parameters</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:name</span>)
+  <span class="ruby-identifier">parameters</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">parameter</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">parameterList</span>=<span class="ruby-identifier">parameter</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>)
+    <span class="ruby-identifier">channelNumber</span>=<span class="ruby-identifier">parameterList</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">channelName</span>=<span class="ruby-identifier">parameterList</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-identifier">channel</span>=<span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">channelNumber</span>.<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">channel</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">channelNumber</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;:&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">channelName</span>.<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">channel</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">channelName</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">foundChannels</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">channel</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">foundChannels</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- getVacuumChannels-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- getVacuumChannels-method -->
+
+    
+    </section><!-- public-instance-method-details -->
   
+  </section><!-- 5Buntitled-5D -->
 
-  </div><!-- documentation -->
+</div><!-- documentation -->
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
 
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

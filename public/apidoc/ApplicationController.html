@@ -1,290 +1,272 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Class: ApplicationController</title>
+<title>Class: ApplicationController</title>
 
-  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
 <body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="./index.html">Home</a>
-          <a href="./index.html#classes">Classes</a>
-          <a href="./index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="./__/app/controllers/application_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="../app/controllers/application_controller.rb">../app/controllers/application_controller.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link">ActionController::Base</p>
-        
-      </div>
-      
 
-      
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/application_controller.rb
+  </ul>
+</nav>
 
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-c-projectizeName">::projectizeName</a></li>
-          
-          <li><a href="#method-i-authenticate">#authenticate</a></li>
-          
-          <li><a href="#method-i-convertUnitValue">#convertUnitValue</a></li>
-          
-          <li><a href="#method-i-getBaseUnit">#getBaseUnit</a></li>
-          
-          <li><a href="#method-i-getDBSize">#getDBSize</a></li>
-          
-          <li><a href="#method-i-getDatabaseType">#getDatabaseType</a></li>
-          
-          <li><a href="#method-i-projectizeName">#projectizeName</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="./images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="./ApplicationController.html">ApplicationController</a></li>
-        
-          <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
-        
-          <li><a href="./Attachment.html">Attachment</a></li>
-        
-          <li><a href="./AttachmentsController.html">AttachmentsController</a></li>
-        
-          <li><a href="./Classtype.html">Classtype</a></li>
-        
-          <li><a href="./Datatype.html">Datatype</a></li>
-        
-          <li><a href="./Experiment.html">Experiment</a></li>
-        
-          <li><a href="./ExperimentsController.html">ExperimentsController</a></li>
-        
-          <li><a href="./Instance.html">Instance</a></li>
-        
-          <li><a href="./InstancesController.html">InstancesController</a></li>
-        
-          <li><a href="./Instancevalue.html">Instancevalue</a></li>
-        
-          <li><a href="./InstancevaluesController.html">InstancevaluesController</a></li>
-        
-          <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a></li>
-        
-          <li><a href="./Instancevalueset.html">Instancevalueset</a></li>
-        
-          <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a></li>
-        
-          <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a></li>
-        
-          <li><a href="./PagesController.html">PagesController</a></li>
-        
-          <li><a href="./Shot.html">Shot</a></li>
-        
-          <li><a href="./ShotsController.html">ShotsController</a></li>
-        
-          <li><a href="./ShotsHelper.html">ShotsHelper</a></li>
-        
-          <li><a href="./Shottype.html">Shottype</a></li>
-        
-          <li><a href="./StatisticsController.html">StatisticsController</a></li>
-        
-          <li><a href="./Subsystem.html">Subsystem</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
+    
   </div>
 
-  <div id="documentation">
-    <h1 class="class">ApplicationController</h1>
-
-    <div id="description" class="description">
-      
-    </div><!-- description -->
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActionController::Base
+  
+</nav>
 
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-c-projectizeName">::projectizeName</a>
     
-    <div id="5Buntitled-5D" class="documentation-section">
-      
+    <li><a href="#method-i-authenticate">#authenticate</a>
+    
+    <li><a href="#method-i-convertUnitValue">#convertUnitValue</a>
+    
+    <li><a href="#method-i-getBaseUnit">#getBaseUnit</a>
+    
+    <li><a href="#method-i-getDBSize">#getDBSize</a>
+    
+    <li><a href="#method-i-getDatabaseType">#getDatabaseType</a>
+    
+    <li><a href="#method-i-projectizeName">#projectizeName</a>
+    
+  </ul>
+</nav>
 
-      
+  </div>
 
-      
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
 
-      
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="./Classtype.html">Classtype</a>
+  
+    <li><a href="./Datatype.html">Datatype</a>
+  
+    <li><a href="./Experiment.html">Experiment</a>
+  
+    <li><a href="./ExperimentsController.html">ExperimentsController</a>
+  
+    <li><a href="./Instance.html">Instance</a>
+  
+    <li><a href="./InstancesController.html">InstancesController</a>
+  
+    <li><a href="./Instancevalue.html">Instancevalue</a>
+  
+    <li><a href="./InstancevaluesController.html">InstancevaluesController</a>
+  
+    <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a>
+  
+    <li><a href="./Instancevalueset.html">Instancevalueset</a>
+  
+    <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a>
+  
+    <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./Shot.html">Shot</a>
+  
+    <li><a href="./ShotsController.html">ShotsController</a>
+  
+    <li><a href="./ShotsHelper.html">ShotsHelper</a>
+  
+    <li><a href="./Shottype.html">Shottype</a>
+  
+    <li><a href="./StatisticsController.html">StatisticsController</a>
+  
+    <li><a href="./Subsystem.html">Subsystem</a>
+  
+  </ul>
+</nav>
 
-      <!-- Methods -->
-      
-      <div id="public-class-method-details" class="method-section section">
-        <h3 class="section-header">Public Class Methods</h3>
+  </div>
+</nav>
 
-      
-        <div id="projectizeName-method" class="method-detail ">
-          <a name="method-c-projectizeName"></a>
+<div id="documentation">
+  <h1 class="class">class ApplicationController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-projectizeName" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">projectizeName</span><span
+            class="method-args">(filename)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">projectizeName</span><span
-              class="method-args">(filename)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="projectizeName-source">
-<pre>
-<span class="ruby-comment"># File ../app/controllers/application_controller.rb, line 118</span>
+          <div class="method-source-code" id="projectizeName-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-identifier">projectName</span>=<span class="ruby-constant">PSDB_CONFIG</span>[<span class="ruby-string">&quot;project&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>]
   <span class="ruby-identifier">dirname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">filename</span>)
-  <span class="ruby-identifier">basename</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-identifier">extname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-identifier">basename</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">filename</span>,<span class="ruby-identifier">extname</span>) <span class="ruby-comment">#basename without extension</span>
+  <span class="ruby-identifier">extname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">dirname</span><span class="ruby-operator">==</span><span class="ruby-string">&quot;.&quot;</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">projectName</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">basename</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">basename</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">projectName</span><span class="ruby-operator">+</span><span class="ruby-identifier">extname</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">basename</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">projectName</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">basename</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">dirname</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">basename</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">projectName</span><span class="ruby-operator">+</span><span class="ruby-identifier">extname</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- projectizeName-source -->
-            
-          </div>
-
+          </div><!-- projectizeName-source -->
           
+        </div>
 
-          
-        </div><!-- projectizeName-method -->
+        
 
-      
-      </div><!-- public-class-method-details -->
+        
+      </div><!-- projectizeName-method -->
+
     
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
-      
-        <div id="authenticate-method" class="method-detail ">
-          <a name="method-i-authenticate"></a>
+    
+      <div id="method-i-authenticate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">authenticate</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">authenticate</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="authenticate-source">
-<pre>
-<span class="ruby-comment"># File ../app/controllers/application_controller.rb, line 6</span>
+          <div class="method-source-code" id="authenticate-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticate</span>
   <span class="ruby-identifier">authenticate_or_request_with_http_basic</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user_name</span>, <span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">user_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'admin'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">==</span> <span class="ruby-string">'123123'</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- authenticate-source -->
-            
-          </div>
+          </div><!-- authenticate-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- authenticate-method -->
+
+    
+      <div id="method-i-convertUnitValue" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">convertUnitValue</span><span
+            class="method-args">(value,unit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- authenticate-method -->
-
-      
-        <div id="convertUnitValue-method" class="method-detail ">
-          <a name="method-i-convertUnitValue"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">convertUnitValue</span><span
-              class="method-args">(value,unit)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="convertUnitValue-source">
-<pre>
-<span class="ruby-comment"># File ../app/controllers/application_controller.rb, line 12</span>
+          <div class="method-source-code" id="convertUnitValue-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">convertUnitValue</span>(<span class="ruby-identifier">value</span>,<span class="ruby-identifier">unit</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unit</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
@@ -340,36 +322,33 @@
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>*<span class="ruby-identifier">mult</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- convertUnitValue-source -->
-            
-          </div>
+          </div><!-- convertUnitValue-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- convertUnitValue-method -->
+
+    
+      <div id="method-i-getBaseUnit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getBaseUnit</span><span
+            class="method-args">(unitString)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- convertUnitValue-method -->
-
-      
-        <div id="getBaseUnit-method" class="method-detail ">
-          <a name="method-i-getBaseUnit"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">getBaseUnit</span><span
-              class="method-args">(unitString)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="getBaseUnit-source">
-<pre>
-<span class="ruby-comment"># File ../app/controllers/application_controller.rb, line 67</span>
+          <div class="method-source-code" id="getBaseUnit-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBaseUnit</span>(<span class="ruby-identifier">unitString</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unitString</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">unitString</span>
@@ -382,36 +361,33 @@
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">matchSet</span>[<span class="ruby-value">2</span>]
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getBaseUnit-source -->
-            
-          </div>
+          </div><!-- getBaseUnit-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- getBaseUnit-method -->
+
+    
+      <div id="method-i-getDBSize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getDBSize</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- getBaseUnit-method -->
-
-      
-        <div id="getDBSize-method" class="method-detail ">
-          <a name="method-i-getDBSize"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">getDBSize</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="getDBSize-source">
-<pre>
-<span class="ruby-comment"># File ../app/controllers/application_controller.rb, line 82</span>
+          <div class="method-source-code" id="getDBSize-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDBSize</span>
   <span class="ruby-identifier">dbStats</span>={<span class="ruby-value">:bytesUsed=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>,<span class="ruby-value">:bytesFree=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>}
   <span class="ruby-keyword">case</span> (<span class="ruby-identifier">getDatabaseType</span>)
@@ -445,95 +421,86 @@
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">dbStats</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getDBSize-source -->
-            
-          </div>
+          </div><!-- getDBSize-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- getDBSize-method -->
+
+    
+      <div id="method-i-getDatabaseType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getDatabaseType</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- getDBSize-method -->
-
-      
-        <div id="getDatabaseType-method" class="method-detail ">
-          <a name="method-i-getDatabaseType"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">getDatabaseType</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="getDatabaseType-source">
-<pre>
-<span class="ruby-comment"># File ../app/controllers/application_controller.rb, line 79</span>
+          <div class="method-source-code" id="getDatabaseType-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDatabaseType</span>
   <span class="ruby-keyword">return</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">adapter_name</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getDatabaseType-source -->
-            
-          </div>
+          </div><!-- getDatabaseType-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- getDatabaseType-method -->
+
+    
+      <div id="method-i-projectizeName" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">projectizeName</span><span
+            class="method-args">(filename)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- getDatabaseType-method -->
-
-      
-        <div id="projectizeName-method" class="method-detail ">
-          <a name="method-i-projectizeName"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">projectizeName</span><span
-              class="method-args">(filename)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="projectizeName-source">
-<pre>
-<span class="ruby-comment"># File ../app/controllers/application_controller.rb, line 115</span>
+          <div class="method-source-code" id="projectizeName-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- projectizeName-source -->
-            
-          </div>
-
+          </div><!-- projectizeName-source -->
           
+        </div>
 
-          
-        </div><!-- projectizeName-method -->
+        
 
-      
-      </div><!-- public-instance-method-details -->
+        
+      </div><!-- projectizeName-method -->
+
     
-    </div><!-- 5Buntitled-5D -->
+    </section><!-- public-instance-method-details -->
   
+  </section><!-- 5Buntitled-5D -->
 
-  </div><!-- documentation -->
+</div><!-- documentation -->
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
 
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

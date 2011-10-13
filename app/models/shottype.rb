@@ -19,6 +19,11 @@ class Shottype < ActiveRecord::Base
 
   before_destroy :check_if_shots_associated
 
+  def to_s
+    return self.name
+  end
+
+private
   def check_if_shots_associated
     if (!shots.empty?)
       errors.add(:base, "cannot be deleted with shots associated")
@@ -26,9 +31,6 @@ class Shottype < ActiveRecord::Base
     else
       return true
     end
-  end
-  def to_s
-    return self.name
   end
 end
 

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Class: CreateInstances</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>db/migrate/20110216123146_create_instances.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Migration
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-down">::down</a>
+    
+    <li><a href="#method-c-up">::up</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./README.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./doc/PSDB_Handbook_txt.html">PSDB_Handbook</a>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+    <li class="file"><a href="./doc/todo_txt.html">todo</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./vendor/plugins/table_builder/VERSION.html">VERSION</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CalendarHelper.html">CalendarHelper</a>
+  
+    <li><a href="./CalendarHelper/Calendar.html">CalendarHelper::Calendar</a>
+  
+    <li><a href="./CalendarHelper/CalendarBuilder.html">CalendarHelper::CalendarBuilder</a>
+  
+    <li><a href="./PSDB.html">PSDB</a>
+  
+    <li><a href="./PSDB/Application.html">PSDB::Application</a>
+  
+    <li><a href="./TableHelper.html">TableHelper</a>
+  
+    <li><a href="./TableHelper/TableBuilder.html">TableHelper::TableBuilder</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="./AuthHelper.html">AuthHelper</a>
+  
+    <li><a href="./CalendarHelperTest.html">CalendarHelperTest</a>
+  
+    <li><a href="./Classtype.html">Classtype</a>
+  
+    <li><a href="./CreateAttachments.html">CreateAttachments</a>
+  
+    <li><a href="./CreateClasstypes.html">CreateClasstypes</a>
+  
+    <li><a href="./CreateDatatypes.html">CreateDatatypes</a>
+  
+    <li><a href="./CreateExperiments.html">CreateExperiments</a>
+  
+    <li><a href="./CreateInstances.html">CreateInstances</a>
+  
+    <li><a href="./CreateInstancevalues.html">CreateInstancevalues</a>
+  
+    <li><a href="./CreateInstancevaluesets.html">CreateInstancevaluesets</a>
+  
+    <li><a href="./CreateShots.html">CreateShots</a>
+  
+    <li><a href="./CreateShottypes.html">CreateShottypes</a>
+  
+    <li><a href="./CreateSubsystems.html">CreateSubsystems</a>
+  
+    <li><a href="./Datatype.html">Datatype</a>
+  
+    <li><a href="./Drummer.html">Drummer</a>
+  
+    <li><a href="./Event.html">Event</a>
+  
+    <li><a href="./Experiment.html">Experiment</a>
+  
+    <li><a href="./ExperimentsController.html">ExperimentsController</a>
+  
+    <li><a href="./Instance.html">Instance</a>
+  
+    <li><a href="./InstancesController.html">InstancesController</a>
+  
+    <li><a href="./Instancevalue.html">Instancevalue</a>
+  
+    <li><a href="./InstancevaluesController.html">InstancevaluesController</a>
+  
+    <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a>
+  
+    <li><a href="./Instancevalueset.html">Instancevalueset</a>
+  
+    <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a>
+  
+    <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./Shot.html">Shot</a>
+  
+    <li><a href="./ShotsController.html">ShotsController</a>
+  
+    <li><a href="./ShotsHelper.html">ShotsHelper</a>
+  
+    <li><a href="./Shottype.html">Shottype</a>
+  
+    <li><a href="./StatisticsController.html">StatisticsController</a>
+  
+    <li><a href="./Subsystem.html">Subsystem</a>
+  
+    <li><a href="./TableBuilderTest.html">TableBuilderTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class CreateInstances</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-down" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">down</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="down-source">
+            <pre><span class="ruby-comment"># File db/migrate/20110216123146_create_instances.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">down</span>
+  <span class="ruby-identifier">drop_table</span> <span class="ruby-value">:instances</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- down-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- down-method -->
+
+    
+      <div id="method-c-up" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">up</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="up-source">
+            <pre><span class="ruby-comment"># File db/migrate/20110216123146_create_instances.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">up</span>
+  <span class="ruby-identifier">create_table</span> <span class="ruby-value">:instances</span>, <span class="ruby-value">:primary_key_trigger</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
+               <span class="ruby-value">:comment</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;List of available instances (devices) (PA_Input_NF_Cam,...)&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">references</span> <span class="ruby-value">:classtype</span>, <span class="ruby-value">:null</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:foreign_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">references</span> <span class="ruby-value">:subsystem</span>, <span class="ruby-value">:null</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:foreign_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:name</span>, <span class="ruby-value">:null</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>, <span class="ruby-value">:comment</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;name of the instance&quot;</span>
+
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span> <span class="ruby-value">:null</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">add_index</span> <span class="ruby-value">:instances</span>, <span class="ruby-value">:name</span>, <span class="ruby-value">:unique</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">add_index</span> <span class="ruby-value">:instances</span>, <span class="ruby-value">:classtype_id</span>
+  <span class="ruby-identifier">add_index</span> <span class="ruby-value">:instances</span>, <span class="ruby-value">:subsystem_id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- up-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- up-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

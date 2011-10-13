@@ -31,11 +31,6 @@ class Instancevalue < ActiveRecord::Base
 
   validate :presence_of_at_least_one_field
 
-  def presence_of_at_least_one_field
-    errors.add(:data_fields, "at least one data field must not be empty") if
-      data_numeric.nil? and data_binary.nil? and data_string.nil?
-  end
-
   # convert instancevalue of type 2dData to a text string.
   def export2dData
     if self.datatype.name!="2dData"
@@ -185,6 +180,11 @@ class Instancevalue < ActiveRecord::Base
   end
 # -------------------------------------------------------------------------------------------------
 private
+  def presence_of_at_least_one_field
+    errors.add(:data_fields, "at least one data field must not be empty") if
+      data_numeric.nil? and data_binary.nil? and data_string.nil?
+  end
+
   # remove the first 4 bytes from a BLOB since it is always added by the LabVIEW interface.
   def trimBlob(blob)
     if !blob.nil?

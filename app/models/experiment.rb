@@ -28,15 +28,7 @@ class Experiment < ActiveRecord::Base
                           :length => { :maximum => 255 }
 
   before_destroy :check_if_shots_associated
-
-  def check_if_shots_associated
-    if (!shots.empty?)
-      errors.add(:base, "cannot be deleted with shots associated")
-      return false
-    else
-      return true
-    end
-  end
+  
   def getBeamtimes(minimumTimeBetweenBeamTimes=5.days)
     if self.shots.empty?
       return []
@@ -69,6 +61,16 @@ class Experiment < ActiveRecord::Base
   end
   def to_s
     return self.name
+  end
+
+private
+  def check_if_shots_associated
+    if (!shots.empty?)
+      errors.add(:base, "cannot be deleted with shots associated")
+      return false
+    else
+      return true
+    end
   end
 end
 

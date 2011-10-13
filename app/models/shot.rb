@@ -1,3 +1,5 @@
+#
+# This class represents a shot in the database.
 # == Schema Information
 #
 # Table name: shots
@@ -28,6 +30,23 @@ class Shot < ActiveRecord::Base
 
   before_destroy :check_if_instancevaluesets_associated
 
+  
+##
+# Return list of subsystems whose instances have written instancevaluesets which reference
+# this shot. This means a list of subsystems who participated during the measurement.
+  def involvedSubsystems
+    availableInstanceValueSets=self.instancevaluesets
+    availableInstanceValueSets.joins(:instance => :subsystem).select("subsystems.name").group("subsystems.name")
+  end
+##
+# Return list of class types whose instances have written instancevaluesets which reference
+# this shot. This means a list of class types who participated during the measurement.
+  def involvedClasstypes
+    availableInstanceValueSets=self.instancevaluesets
+    availableInstanceValueSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
+  end
+
+private
   def check_if_instancevaluesets_associated
     if (!instancevaluesets.empty?)
       errors.add(:base, "cannot be deleted with instancevaluesets associated")
@@ -36,14 +55,5 @@ class Shot < ActiveRecord::Base
       return true
     end
   end
-
-  def involvedSubsystems
-    availableInstanceValueSets=self.instancevaluesets
-    availableInstanceValueSets.joins(:instance => :subsystem).select("subsystems.name").group("subsystems.name")
-  end
-
-  def involvedClasstypes
-    availableInstanceValueSets=self.instancevaluesets
-    availableInstanceValueSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
-  end
 end
+

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Gemfile</title>
+
+<link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../../index.html">Home</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../../../README.html">README</a>
+  
+    <li class="file"><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../../../doc/PSDB_Handbook_txt.html">PSDB_Handbook</a>
+  
+    <li class="file"><a href="../../../doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+    <li class="file"><a href="../../../doc/todo_txt.html">todo</a>
+  
+    <li class="file"><a href="../../../public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="../../../vendor/plugins/table_builder/MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li class="file"><a href="../../../vendor/plugins/table_builder/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../../../vendor/plugins/table_builder/Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../../../vendor/plugins/table_builder/VERSION.html">VERSION</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../CalendarHelper.html">CalendarHelper</a>
+  
+    <li><a href="../../../CalendarHelper/Calendar.html">CalendarHelper::Calendar</a>
+  
+    <li><a href="../../../CalendarHelper/CalendarBuilder.html">CalendarHelper::CalendarBuilder</a>
+  
+    <li><a href="../../../PSDB.html">PSDB</a>
+  
+    <li><a href="../../../PSDB/Application.html">PSDB::Application</a>
+  
+    <li><a href="../../../TableHelper.html">TableHelper</a>
+  
+    <li><a href="../../../TableHelper/TableBuilder.html">TableHelper::TableBuilder</a>
+  
+    <li><a href="../../../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../../../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../../../Attachment.html">Attachment</a>
+  
+    <li><a href="../../../AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="../../../AuthHelper.html">AuthHelper</a>
+  
+    <li><a href="../../../CalendarHelperTest.html">CalendarHelperTest</a>
+  
+    <li><a href="../../../Classtype.html">Classtype</a>
+  
+    <li><a href="../../../CreateAttachments.html">CreateAttachments</a>
+  
+    <li><a href="../../../CreateClasstypes.html">CreateClasstypes</a>
+  
+    <li><a href="../../../CreateDatatypes.html">CreateDatatypes</a>
+  
+    <li><a href="../../../CreateExperiments.html">CreateExperiments</a>
+  
+    <li><a href="../../../CreateInstances.html">CreateInstances</a>
+  
+    <li><a href="../../../CreateInstancevalues.html">CreateInstancevalues</a>
+  
+    <li><a href="../../../CreateInstancevaluesets.html">CreateInstancevaluesets</a>
+  
+    <li><a href="../../../CreateShots.html">CreateShots</a>
+  
+    <li><a href="../../../CreateShottypes.html">CreateShottypes</a>
+  
+    <li><a href="../../../CreateSubsystems.html">CreateSubsystems</a>
+  
+    <li><a href="../../../Datatype.html">Datatype</a>
+  
+    <li><a href="../../../Drummer.html">Drummer</a>
+  
+    <li><a href="../../../Event.html">Event</a>
+  
+    <li><a href="../../../Experiment.html">Experiment</a>
+  
+    <li><a href="../../../ExperimentsController.html">ExperimentsController</a>
+  
+    <li><a href="../../../Instance.html">Instance</a>
+  
+    <li><a href="../../../InstancesController.html">InstancesController</a>
+  
+    <li><a href="../../../Instancevalue.html">Instancevalue</a>
+  
+    <li><a href="../../../InstancevaluesController.html">InstancevaluesController</a>
+  
+    <li><a href="../../../InstancevaluesHelper.html">InstancevaluesHelper</a>
+  
+    <li><a href="../../../Instancevalueset.html">Instancevalueset</a>
+  
+    <li><a href="../../../InstancevaluesetsController.html">InstancevaluesetsController</a>
+  
+    <li><a href="../../../InstancevaluesetsHelper.html">InstancevaluesetsHelper</a>
+  
+    <li><a href="../../../Object.html">Object</a>
+  
+    <li><a href="../../../PagesController.html">PagesController</a>
+  
+    <li><a href="../../../Shot.html">Shot</a>
+  
+    <li><a href="../../../ShotsController.html">ShotsController</a>
+  
+    <li><a href="../../../ShotsHelper.html">ShotsHelper</a>
+  
+    <li><a href="../../../Shottype.html">Shottype</a>
+  
+    <li><a href="../../../StatisticsController.html">StatisticsController</a>
+  
+    <li><a href="../../../Subsystem.html">Subsystem</a>
+  
+    <li><a href="../../../TableBuilderTest.html">TableBuilderTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-TableBuilder">TableBuilder</h1>
+
+<p>Rails builder for creating tables and calendars inspired by ActionView’s
+FormBuilder.</p>
+
+<h2 id="label-Examples">Examples</h2>
+
+<p>table_for has methods for each tag used in a table (&lt;table&gt;,
+&lt;thead&gt; &lt;tr&gt;, &lt;td&gt;, etc.)</p>
+
+<p>A basic example would look like this:</p>
+
+<pre class="ruby"><span class="ruby-ivar">@front_men</span> = [<span class="ruby-constant">FrontMan</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>, <span class="ruby-string">'David St. Hubbins'</span>), <span class="ruby-constant">FrontMan</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>, <span class="ruby-string">'David Lee Roth'</span>)]
+
+<span class="ruby-operator">&lt;</span><span class="ruby-string">%Qtable_for(@front_men) </span><span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+  &lt;% t.head do %&gt;
+    &lt;% t.r do %&gt;
+      &lt;%= t.h('Id') %&gt;
+      &lt;%= t.h('Name') %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+  &lt;% t.body do |front_man| %&gt;
+    &lt;% t.r do %&gt;
+      &lt;%= t.d(h(front_man.id)) %&gt;
+      &lt;%= t.d(h(front_man.name)) %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+</span></pre>
+
+<p>You can pass an array to the head method:</p>
+
+<pre>&lt;%= t.head('Id', 'Name') %&gt;</pre>
+
+<p>The body and r method can be combined for easier usage:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-string">%Qt.body_r </span><span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">front_man</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+  &lt;%= t.d(h(front_man.id)) %&gt;
+  &lt;%= t.d(h(front_man.name)) %&gt;
+&lt;% end %&gt;
+</span></pre>
+
+<p>You can also pass blocks to the d and h methods for more flexibility:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-string">%Q t.d(:class =</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">'name'</span>) <span class="ruby-keyword">do</span> <span class="ruby-string">%Q&lt;
+    &lt;%= link_to(h(front_man.name), front_man_url(front_man)) %&gt;
+&lt;% end %&gt;
+</span></pre>
+
+<p>All tag methods are rails tag methods, so they can have extra html options.</p>
+
+<pre class="ruby"><span class="ruby-ivar">@drummers</span> = [<span class="ruby-constant">Drummer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>, <span class="ruby-string">'John &quot;Stumpy&quot; Pepys'</span>), <span class="ruby-constant">Drummer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>, <span class="ruby-string">'Eric &quot;Stumpy Joe&quot; Childs'</span>)]
+
+<span class="ruby-operator">&lt;</span><span class="ruby-string">%Qtable_for(@drummers, </span><span class="ruby-operator">:</span><span class="ruby-identifier">html</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'spinal_tap'</span>, :<span class="ruby-keyword">class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'drummers'</span>}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+  &lt;% t.body_r(:class =&gt; 'row') do |e| %&gt;</span>
+    <span class="ruby-operator">&lt;</span><span class="ruby-string">%Q t.d(h(e.id), :title =</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">'id'</span>) <span class="ruby-operator">%</span><span class="ruby-operator">&gt;</span>
+    <span class="ruby-operator">&lt;</span><span class="ruby-string">%Q t.d(h(e.name)) %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+</span></pre>
+
+<p>… which produces the following html:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-identifier">table</span> <span class="ruby-keyword">class</span>=<span class="ruby-string">&quot;drummers&quot;</span> <span class="ruby-identifier">id</span>=<span class="ruby-string">&quot;spinal_tap&quot;</span><span class="ruby-operator">&gt;</span>
+  <span class="ruby-operator">&lt;</span><span class="ruby-identifier">tbody</span><span class="ruby-operator">&gt;</span>
+    <span class="ruby-operator">&lt;</span><span class="ruby-identifier">tr</span> <span class="ruby-keyword">class</span>=<span class="ruby-string">&quot;row&quot;</span><span class="ruby-operator">&gt;</span>
+      <span class="ruby-operator">&lt;</span><span class="ruby-identifier">td</span> <span class="ruby-identifier">title</span>=<span class="ruby-string">&quot;id&quot;</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1</span><span class="ruby-operator">&lt;</span><span class="ruby-regexp">/td&gt;
+      &lt;td&gt;John &amp;quot;Stumpy&amp;quot; Pepys&lt;/</span><span class="ruby-identifier">td</span><span class="ruby-operator">&gt;</span>
+    <span class="ruby-operator">&lt;</span><span class="ruby-regexp">/tr&gt;
+    &lt;tr class=&quot;row&quot;&gt;
+      &lt;td title=&quot;id&quot;&gt;2&lt;/</span><span class="ruby-identifier">td</span><span class="ruby-operator">&gt;</span>
+      <span class="ruby-operator">&lt;</span><span class="ruby-identifier">td</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">Eric</span> &amp;<span class="ruby-identifier">quot</span>;<span class="ruby-constant">Stumpy</span> <span class="ruby-constant">Joe</span>&amp;<span class="ruby-identifier">quot</span>; <span class="ruby-constant">Childs</span><span class="ruby-operator">&lt;</span><span class="ruby-regexp">/td&gt;
+    &lt;/</span><span class="ruby-identifier">tr</span><span class="ruby-operator">&gt;</span>
+  <span class="ruby-operator">&lt;</span><span class="ruby-regexp">/tbody&gt;
+&lt;/</span><span class="ruby-identifier">table</span><span class="ruby-operator">&gt;</span>
+</pre>
+
+<p>You can customize the table by creating your own TableBuilder:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-string">%Qtable_for(@drummers, </span><span class="ruby-operator">:</span><span class="ruby-identifier">builder</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">PagedTableBuilder</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+</span></pre>
+
+<h2 id="label-Calendar+Table">Calendar Table</h2>
+
+<p>calendar_for creates a table like table_for. All objects get sorted per day
+of the month</p>
+
+<p>A basic example would look like this:</p>
+
+<pre class="ruby"><span class="ruby-ivar">@tasks</span> = <span class="ruby-constant">Task</span>.<span class="ruby-identifier">this_month</span>
+
+<span class="ruby-operator">&lt;</span><span class="ruby-string">%Qcalendar_for(@tasks) </span><span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+  &lt;%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %&gt;
+  &lt;% t.day do |day, tasks| %&gt;
+    &lt;%= day.day %&gt;
+    &lt;% tasks.each do |task| %&gt;
+      &lt;%= h(task.name) %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+</span></pre>
+
+<p>To show a different month you can pass the :year and :month options:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-string">%Qcalendar_for(@tasks, </span><span class="ruby-operator">:</span><span class="ruby-identifier">year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2009</span>, :<span class="ruby-identifier">month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+</span></pre>
+
+<p>To highlight a different day you can pass the :today option:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-string">%Qcalendar_for(@tasks, </span><span class="ruby-operator">:</span><span class="ruby-identifier">today</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">civil</span>(<span class="ruby-value">2008</span>, <span class="ruby-value">12</span>, <span class="ruby-value">26</span>)) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+</span></pre>
+
+<p>By default the :date method is called on the objects for sorting. To use
+another method you can pass the :day_method option:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-string">%Qt.day(:day_method </span>=<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">calendar_date</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">day</span>, <span class="ruby-identifier">tasks</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+</span></pre>
+
+<p>If you want to add id’s to your td tag you can pass a pattern:</p>
+
+<pre class="ruby"><span class="ruby-operator">&lt;</span><span class="ruby-string">%Qt.day(:id </span>=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'day_%d'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">day</span>, <span class="ruby-identifier">tasks</span><span class="ruby-operator">|</span> <span class="ruby-string">%Q&lt;
+</span></pre>
+
+<h2 id="label-Install">Install</h2>
+
+<p>script/plugin install git://github.com/p8/table_builder.git</p>
+
+<p>For a pre rails 3.0 table_builder:</p>
+
+<pre>script/plugin install git://github.com/p8/table_builder.git
+cd vendor/plugins/table_builder/
+git checkout pre-rails-2.2</pre>
+
+<p>For a pre rails 2.2 table_builder:</p>
+
+<pre>script/plugin install git://github.com/p8/table_builder.git
+cd vendor/plugins/table_builder/
+git checkout pre-rails-2.2</pre>
+
+<h2 id="label-Contributors">Contributors</h2>
+
+<p>Thanks to Sean Dague, F. Kocherga, John Duff.</p>
+
+<p>Copyright © 2008 Petrik de Heus, released under the MIT license</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -18,7 +18,12 @@ class Datatype < ActiveRecord::Base
                    :uniqueness => { :case_sensitive => false }
 
   before_destroy :check_if_instancevalues_associated
+  
+  def to_s
+    return self.name
+  end
 
+private
   def check_if_instancevalues_associated
     if (!instancevalues.empty?)
       errors.add(:base, "cannot be deleted with instancevalues associated")
@@ -26,9 +31,6 @@ class Datatype < ActiveRecord::Base
     else
       return true
     end
-  end
-  def to_s
-    return self.name
   end
 end
 
