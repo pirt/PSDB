@@ -1,5 +1,5 @@
-<% imageFileName=instancevalue.generateImage(options) %>
-<%= image_tag imageFileName %>
+<% urlOptions={:controller => "dynamic_images", :action => "showImage", :id=>instancevalue.id}.merge(options) %>
+<img src="<%= url_for urlOptions %>"/>
 <% if options[:withInfo] %>
 <br />
 <% imageInfo=instancevalue.generateImageInfo() %>

@@ -1,4 +1,8 @@
 PSDB::Application.routes.draw do
+  get "dynamic_images/showImage"
+
+  get "dynamic_images/showPlot"
+
   resources :experiments do
     resources :attachments
   end

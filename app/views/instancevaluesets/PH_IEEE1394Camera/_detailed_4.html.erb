@@ -1,3 +1,4 @@
+<div class="span-24 last">
 <div class="span-12">
   <h3>Image</h3>
   <% camIsOn=instanceValueSet.getStringParameter("Camera State")=="on/true" ? true : false %>
@@ -30,4 +31,5 @@
     <li>Trigger Polarity: <%= image_tag polarityIcon, {:style=>"vertical-align:middle"} %></li>
     <li>Serial Number: <%= displayParameter(instanceValueSet,"Serial Number",{:precision=>0}) %></li>
   </ul>
+</div>
 </div>

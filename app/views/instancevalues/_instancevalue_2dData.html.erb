@@ -1,5 +1,5 @@
-<% instancevalue.generate2dPlot(options) %>
-<%= image_tag "tmp/plot#{instancevalue.id}.png" %>
+<% urlOptions={:controller => "dynamic_images", :action => "showPlot", :id=>instancevalue.id}.merge(options) %>
+<img src="<%= url_for urlOptions %>"/>
 <% if options[:withExport]==true %>
 <%= form_tag({:controller => "instancevalues", :action => "exportPlot"}, :method => "get") do %>
   <%= hidden_field_tag(:instanceValueId,instancevalue.id) %>

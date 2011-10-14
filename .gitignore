@@ -2,9 +2,9 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-app/assets/images/tmp/*.png
 webrat.log
 config/psdbconfig.yml
 psdbconfig.yml.temp
 .sass-cache/
 public/assets/
+public/tempPlot.png

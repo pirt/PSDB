@@ -96,7 +96,7 @@ class Instancevalue < ActiveRecord::Base
         exportFormat='PNG'
     end
     if localOptions[:withColorPalette]
-      paletteImg=Magick::Image.read("/app/assets/images/Rainbow.png")
+      paletteImg=Magick::Image.read(Rails.root.to_s+"/app/assets/images/Rainbow.png")
       myImage=myImage.clut_channel(paletteImg[0])
     end
     sendImage=myImage.to_blob { self.format=exportFormat }
@@ -105,25 +105,18 @@ class Instancevalue < ActiveRecord::Base
     fileName=instanceName+'_'+shotNr.to_s+'.'+exportFormat.downcase
     return {:content=>sendImage, :format=>'image/'+exportFormat, :filename=>fileName}
   end
-
   def generateImage(options = {})
     if self.datatype.name!="image"
       raise "error converting instancevalue to image file"
     end
     imageOptions={:width => 320, :height =>200}
     imageOptions.merge!(options)
-    fileName=Rails.root.to_s+"/app/assets/images/tmp/image"+self.id.to_s+"_"+
-        imageOptions[:width].to_s+"_"+imageOptions[:height].to_s+".png"
-    if !File.exists?(fileName)
-      imageData=trimBlob(self.data_binary)
-      myImage=Magick::Image.from_blob(imageData)
-      myImage=myImage[0]
-      paletteImg=Magick::Image.read(Rails.root.to_s+"/app/assets/images/Rainbow.png")
-      myImage=myImage.clut_channel(paletteImg[0])
-      myImage=myImage.resize_to_fit(imageOptions[:width],imageOptions[:height])
-      myImage.write fileName
-    end
-    return fileName.sub(Rails.root.to_s+"/app/assets/images/","")
+    imageData=trimBlob(self.data_binary)
+    myImage=Magick::Image.from_blob(imageData)[0]
+    paletteImg=Magick::Image.read(Rails.root.to_s+"/app/assets/images/Rainbow.png")
+    myImage=myImage.clut_channel(paletteImg[0])
+    myImage=myImage.resize_to_fit(imageOptions[:width],imageOptions[:height])
+    return myImage
   end
   def generateImageInfo(options = {})
     if self.datatype.name!="image"
@@ -142,6 +135,14 @@ class Instancevalue < ActiveRecord::Base
     plotOptions=plotOptions.merge(axisDescriptionOptions)
     plotData=generatePlotDataSet(plotOptions)
     generatePlot(plotData,plotOptions)
+  end
+  def generate2dPlot2(options={})
+    plotOptions={}
+    plotOptions=plotOptions.merge(options)
+    axisDescriptionOptions=generatePlotAxisDescriptions()
+    plotOptions=plotOptions.merge(axisDescriptionOptions)
+    plotData=generatePlotDataSet(plotOptions)
+    generatePlot2(plotData,plotOptions)
   end
   def generatePlotDataSet(options={})
     if self.datatype.name!="2dData"
@@ -218,6 +219,22 @@ private
       end
     end
     return fileName.sub(Rails.root.to_s+"/app/assets/images/","")
+  end
+
+  def generatePlot2(plotData,options={})
+    plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
+    plotOptions.merge!(options)
+    plot=Gnuplot.open do |gp|
+      Gnuplot::Plot.new( gp ) do |plot|
+        plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
+        plot.output Rails.root.to_s+"/public/tempPlot.png"
+        plot.ylabel plotOptions[:ylabel]
+        plot.xlabel plotOptions[:xlabel]
+        plot.data << plotData
+      end
+    end
+    returnImage=Magick::Image.read(Rails.root.to_s+"/public/tempPlot.png")[0]
+    return returnImage
   end
 end
 
