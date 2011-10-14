@@ -1,8 +1,5 @@
-<div class="span-24">
+<div class="span-24 last">
 <div class="span-8">
-
-<%= javascript_include_tag 'gauge.min','jquery.gauge.min','waveplate-gauge' %>
-
 <script>$(function (){
   $("#psdb_gauge").gauge('setValue', 
   <%= instanceValueSet.getNumericParameter("Position") %> );

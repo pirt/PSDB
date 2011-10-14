@@ -4,7 +4,7 @@
 <br />
 <% imageInfo=instancevalue.generateImageInfo() %>
 <% if imageInfo[:bitdepth]>8 %>
-<%= javascript_include_tag 'formvalidation' %>
+<%= javascript_include_tag assets_path('formvalidation') %>
 <% end %>
 Colour depth: <%= imageInfo[:bitdepth] %> bit
 <% end %>

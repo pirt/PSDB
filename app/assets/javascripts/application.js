@@ -1,6 +1,10 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require jquery-ui.min
+//= require tabs
+//= require gauge.min
+//= require jquery.gauge.min
+//= require waveplate-gauge
 //= require_self
 
 // Place your application-specific JavaScript functions and classes here
