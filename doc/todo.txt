@@ -4,6 +4,19 @@ Bugs:
 -check missing index for instancevalues on column instancevalueset_id during next migration
 -add index for instances on name column
 -sometimes Cams do not send an image evene if cam status is "on/true"
+-wrong labels:
+  MAS_Attenuator_123_BB
+  MA_Diffuser_Inject_in_BB
+-repair plot series
+  PP_CurrentMeasurement
+-repair "8bit warning" for image export.
+-repair 2dPlot: add width and height parameters
+-PPMA detailed view: show text after device state (not only logo)
+-PH_Switch: handle "OFF/FALSE" and "ON/TRUE" correctly.
+-PH_VacuumControl: treat negative pressure values as error.
+-SRDG535: short view: status wrongly interpreted??
+-Instances: plot series broken.
+
 Features:
 - add unit tests for getAxisNumbers, getVacuumChannels
 -missing views: PH_VacuumControl (add picture)
