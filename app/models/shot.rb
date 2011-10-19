@@ -18,6 +18,8 @@ class Shot < ActiveRecord::Base
   belongs_to :experiment
   belongs_to :shottype
   has_many :instancevaluesets
+  has_many :instances, :through => :instancevaluesets
+  has_many :subsystems, :through => :instances
   has_many :attachments, :as => :attachable, :dependent => :destroy
 
   validates :description, :length => { :maximum => 255 }
