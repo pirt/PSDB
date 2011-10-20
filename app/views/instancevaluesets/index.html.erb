@@ -47,8 +47,8 @@
           <%= submit_tag("Draw") %>
         <% end %>
       </div>
-    <% generateSeriesPlot(@xyValues,1,{:width=>450,:height=>300,:xlabel=>"shot#",:ylabel=>@yLabel}) %>
-    <%= image_tag "tmp/series1.png" %>
+    <% generateSeriesPlot(@xyValues,{:width=>450,:height=>300,:xlabel=>"shot#",:ylabel=>@yLabel}) %>
+    <img src= <%= url_for "dynamic_images/showSeriesPlot" %> />
   <% else %>
     No numerical data for plot available
   <% end %>

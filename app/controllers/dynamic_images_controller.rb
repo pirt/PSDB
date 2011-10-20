@@ -55,15 +55,7 @@ class DynamicImagesController < ApplicationController
   end
 
   def showSeriesPlot
-    instanceValue=Instancevalue.find(params[:id])
-    options={}
-    if params[:width].present?
-      options.merge!(:width=>params[:width])
-    end
-    if params[:height].present?
-      options.merge!(:height=>params[:height])
-    end
-    image=instanceValue.generate2dPlot2(options)
+    image=Magick::Image.read(Rails.root.to_s+"/public/series.png")[0]
     imageblob=image.to_blob
     send_data imageblob, :type => 'image/png',
                          :disposition => 'inline'

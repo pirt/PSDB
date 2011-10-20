@@ -25,13 +25,13 @@ module InstancevaluesetsHelper
       render partialName, :instanceValueSet => instanceValueSet
     end
   end
-  def generateSeriesPlot(xyData, fileId, options={})
+  def generateSeriesPlot(xyData, options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions=plotOptions.merge(options)
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} small enhanced size #{plotOptions[:width]},#{plotOptions[:height]} crop"
-        plot.output Rails.root.to_s+"/app/assets/images/tmp/series"+fileId.to_s+".#{plotOptions[:imagetype]}"
+        plot.output Rails.root.to_s+"/public/series.png"
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
         plot.boxwidth 0.5
