@@ -99,11 +99,10 @@ class Instancevalueset < ActiveRecord::Base
     end
     return foundChannels
   end
-  def generatePlot(plotParameterNames,plotNr,options={})
+  def generateMultiPlot(plotParameterNames,options={})
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)
-    fileName=Rails.root.to_s+"/app/assets/images/tmp/plotseries"+
-          self.id.to_s+"_"+plotNr.to_s+".#{plotOptions[:imagetype]}"
+    fileName=Rails.root.to_s+"/public/tempSeriesPlot.png"
     dataAvailable=false
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
@@ -127,7 +126,8 @@ class Instancevalueset < ActiveRecord::Base
       end
     end
     if dataAvailable
-      return fileName.sub(Rails.root.to_s+"/app/assets/images/","")
+      returnImage=Magick::Image.read(Rails.root.to_s+"/public/tempSeriesPlot.png")[0]
+      return returnImage
     else
       return ""
     end

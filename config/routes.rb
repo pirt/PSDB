@@ -1,7 +1,8 @@
 PSDB::Application.routes.draw do
   get "dynamic_images/showImage"
-
   get "dynamic_images/showPlot"
+  get "dynamic_images/showMultiPlot"
+  get "dynamic_images/showSeriesPlot"
 
   resources :experiments do
     resources :attachments

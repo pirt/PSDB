@@ -8,3 +8,4 @@ psdbconfig.yml.temp
 .sass-cache/
 public/assets/
 public/tempPlot.png
+public/tempSeriesPlot.png

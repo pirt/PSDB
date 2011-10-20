@@ -3,14 +3,15 @@ Bugs:
 -some PH_Switch values wronly interpreted.
 -check missing index for instancevalues on column instancevalueset_id during next migration
 -add index for instances on name column
--sometimes Cams do not send an image evene if cam status is "on/true"
+-sometimes Cams do not send an image even if cam status is "on/true"
+-interpret PPPA/MA status correctly
+
 -wrong labels:
   MAS_Attenuator_123_BB
   MA_Diffuser_Inject_in_BB
 -repair plot series
   PP_CurrentMeasurement
 -repair "8bit warning" for image export.
--repair 2dPlot: add width and height parameters
 -PPMA detailed view: show text after device state (not only logo)
 -PH_Switch: handle "OFF/FALSE" and "ON/TRUE" correctly.
 -PH_VacuumControl: treat negative pressure values as error.
@@ -18,5 +19,6 @@ Bugs:
 -Instances: plot series broken.
 
 Features:
-- add unit tests for getAxisNumbers, getVacuumChannels
+-add unit tests for getAxisNumbers, getVacuumChannels
 -missing views: PH_VacuumControl (add picture)
+-missing view: BackreflectionMeasurement

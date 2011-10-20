@@ -63,8 +63,7 @@ class InstancevaluesetsController < ApplicationController
         yValues << convertUnitValue(parameterValue.data_numeric,parameterValue.data_string)
       end
       @yLabel=selectedPlotParameter
-      baseUnit=getBaseUnit(parameterValues.last.data_string)# .gsub("\302\263","^3")
-      #baseUnit=parameterValues.last.data_string.force_encoding('UTF-8').gsub("\302\263","^3")
+      baseUnit=getBaseUnit(parameterValues.last.data_string)
       if (!baseUnit.nil?)
         if (!baseUnit.empty?)
           @yLabel+=" ["+baseUnit+"]"

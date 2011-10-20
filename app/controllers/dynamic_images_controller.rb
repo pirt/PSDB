@@ -24,10 +24,47 @@ class DynamicImagesController < ApplicationController
     if (not imageblob)
       instanceValue=Instancevalue.find(params[:id])
       options={}
+      if params[:width].present?
+        options.merge!(:width=>params[:width])
+      end
+      if params[:height].present?
+        options.merge!(:height=>params[:height])
+      end
       image=instanceValue.generate2dPlot2(options)
       imageblob=image.to_blob
       write_fragment("plot"+Hash[params.sort].to_s,imageblob)
     end
+    send_data imageblob, :type => 'image/png',
+                         :disposition => 'inline'
+  end
+
+  def showMultiPlot
+    instanceValueSet=Instancevalueset.find(params[:id])
+    parameterNames=params[:parameterNames].split(",")
+    options={}
+    if params[:width].present?
+        options.merge!(:width=>params[:width])
+    end
+    if params[:height].present?
+      options.merge!(:height=>params[:height])
+    end
+    image=instanceValueSet.generateMultiPlot(parameterNames,options)
+    imageblob=image.to_blob
+    send_data imageblob, :type => 'image/png',
+                         :disposition => 'inline'
+  end
+
+  def showSeriesPlot
+    instanceValue=Instancevalue.find(params[:id])
+    options={}
+    if params[:width].present?
+      options.merge!(:width=>params[:width])
+    end
+    if params[:height].present?
+      options.merge!(:height=>params[:height])
+    end
+    image=instanceValue.generate2dPlot2(options)
+    imageblob=image.to_blob
     send_data imageblob, :type => 'image/png',
                          :disposition => 'inline'
   end
