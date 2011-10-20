@@ -3,7 +3,7 @@ statusOK=true
 channels.each do |channel|
   pressure=instanceValueSet.getNumericParameter(channel+": Pressure")
   limit=instanceValueSet.getNumericParameter(channel+": Upper Limit")
-  if pressure>=limit
+  if pressure>=limit or pressure<0
     statusOK=false
   end
 end

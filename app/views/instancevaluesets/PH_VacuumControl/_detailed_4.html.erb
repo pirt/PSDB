@@ -21,7 +21,7 @@
           <td><%= displayParameter(instanceValueSet,channel+": Upper Limit", :scientific=>true) %></td>
           <% pressure=instanceValueSet.getNumericParameter(channel+": Pressure")
              limit=instanceValueSet.getNumericParameter(channel+": Upper Limit")
-             if pressure<limit
+             if pressure<limit and pressure>0
                icon="icon_OK.png"
              else
                icon="icon_ERROR.png"

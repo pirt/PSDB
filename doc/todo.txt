@@ -10,9 +10,6 @@ Bugs:
   MAS_Attenuator_123_BB
   MA_Diffuser_Inject_in_BB
 -repair "8bit warning" for image export.
--PPMA detailed view: show text after device state (not only logo)
--PH_Switch: handle "OFF/FALSE" and "ON/TRUE" correctly.
--PH_VacuumControl: treat negative pressure values as error.
 -Instances: plot series broken.
 
 Features:

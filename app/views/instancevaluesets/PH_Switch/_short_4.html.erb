@@ -1,6 +1,6 @@
 <%=
   status=instanceValueSet.getStringParameter("Status",:upcase=>true)
-  closedRegEx=/^(.* )?(IN|CLOSED)(.)*/
+  closedRegEx=/^(.*)?(IN|CLOSED)(.)*/
   openRegEx=/^(.* )?(OUT|OPEN)(.)*/
   if !closedRegEx.match(status).nil?
     iconName="icon_IN.png"
@@ -10,6 +10,10 @@
     case status
       when "FAILURE"
         iconName="icon_ERROR.png"
+      when "ON/TRUE"
+        iconName="icon_IN.png"
+      when "OFF/FALSE"
+        iconName="icon_OUT.png"
       else
         iconName="icon_UNKNOWN.png"
     end
