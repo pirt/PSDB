@@ -9,13 +9,10 @@ Bugs:
 -wrong labels:
   MAS_Attenuator_123_BB
   MA_Diffuser_Inject_in_BB
--repair plot series
-  PP_CurrentMeasurement
 -repair "8bit warning" for image export.
 -PPMA detailed view: show text after device state (not only logo)
 -PH_Switch: handle "OFF/FALSE" and "ON/TRUE" correctly.
 -PH_VacuumControl: treat negative pressure values as error.
--SRDG535: short view: status wrongly interpreted??
 -Instances: plot series broken.
 
 Features:
