@@ -18,7 +18,7 @@ class Datatype < ActiveRecord::Base
                    :uniqueness => { :case_sensitive => false }
 
   before_destroy :check_if_instancevalues_associated
-  
+
   def to_s
     return self.name
   end
@@ -33,4 +33,3 @@ private
     end
   end
 end
-

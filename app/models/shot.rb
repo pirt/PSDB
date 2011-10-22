@@ -32,7 +32,6 @@ class Shot < ActiveRecord::Base
 
   before_destroy :check_if_instancevaluesets_associated
 
-  
 ##
 # Return list of subsystems whose instances have written instancevaluesets which reference
 # this shot. This means a list of subsystems who participated during the measurement.

@@ -1,7 +1,7 @@
 <div class="span-24 last">
 <div class="span-8">
 <script>$(function (){
-  $("#psdb_gauge").gauge('setValue', 
+  $("#psdb_gauge").gauge('setValue',
   <%= instanceValueSet.getNumericParameter("Position") %> );
 }); </script>
 <canvas id="psdb_gauge" width="250" height="250"></canvas>

@@ -57,7 +57,6 @@ class Instancevalueset < ActiveRecord::Base
     end
   end
   def getNumericParameter(parameterName,options={})
-    
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
       return nil

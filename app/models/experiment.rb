@@ -28,7 +28,7 @@ class Experiment < ActiveRecord::Base
                           :length => { :maximum => 255 }
 
   before_destroy :check_if_shots_associated
-  
+
   def getBeamtimes(minimumTimeBetweenBeamTimes=5.days)
     if self.shots.empty?
       return []

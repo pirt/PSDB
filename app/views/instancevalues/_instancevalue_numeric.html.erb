@@ -5,7 +5,7 @@
 <% if options[:precision].nil? %>
 <%= instancevalue.data_numeric %>
 <% else %>
-<%= number_with_precision(instancevalue.data_numeric, 
+<%= number_with_precision(instancevalue.data_numeric,
   :precision =>options[:precision], :strip_insignificant_zeros => true) %>
 <% end %>
 <% end %>

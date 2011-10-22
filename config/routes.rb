@@ -11,8 +11,8 @@ PSDB::Application.routes.draw do
     resources :attachments
   end
 
-  resources :instances
-  resources :instancevaluesets
+  resources :instances, :only => [:show, :index]
+  resources :instancevaluesets, :only => [:show, :index]
 
   get "instancevalues/exportImage"
   get "instancevalues/exportPlot"

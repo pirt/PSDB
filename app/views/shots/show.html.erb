@@ -28,7 +28,7 @@
         <% selection="" %>
         <% end %>
           <%= link_to usedSubsystem.name, shot_path(@shot,
-              {:subsystemName => usedSubsystem.name, :classtypeName => @selectedClasstypeName }), 
+              {:subsystemName => usedSubsystem.name, :classtypeName => @selectedClasstypeName }),
               :class=> selection %><br />
         <% end %>
       </div>
@@ -43,7 +43,7 @@
         <% else %>
         <% selection="" %>
         <% end %>
-           <%= link_to usedClass.name, shot_path(@shot, 
+           <%= link_to usedClass.name, shot_path(@shot,
                {:classtypeName => usedClass.name, :subsystemName => @selectedSubsystemName }),
                :class=> selection %><br />
         <% end %>

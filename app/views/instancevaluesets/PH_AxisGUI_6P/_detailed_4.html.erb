@@ -7,7 +7,7 @@
   </ul>
   <% axisNames.each do |axisName| %>
     <div id="<%= axisName.tr(" ,","") %>">
-      <%= render 'instancevaluesets/PH_AxisGUI_6P/axis', 
+      <%= render 'instancevaluesets/PH_AxisGUI_6P/axis',
           :instanceValueSet=> instanceValueSet, :axisName=> axisName %>
     </div>
   <% end %>

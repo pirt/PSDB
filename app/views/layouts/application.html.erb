@@ -9,7 +9,7 @@
   <meta name="copyright" content="2011© GSI Helmholtzzentrum für Schwerionenforschung" />
   <title><%= pageTitle %></title>
   <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag "application" %> 
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tag %>
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +46,6 @@
       <% end %>
       <%= yield %>
     </section>
- 
   <footer class="quiet">PSDB ( version <%= APP_VERSION %>) - <%= link_to "About","/pages/about" %> -
   <%= link_to "Version", "/pages/changelog" %></footer>
 <%# The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
