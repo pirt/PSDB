@@ -1,5 +1,5 @@
 class CreateExperiments < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :experiments, :primary_key_trigger => true,
                  :comment => "Available PHELIX Experiments" do |t|
       t.string :name, :comment => "Short name of experiment (such as P039)", :null => false, :limit => 30
@@ -9,9 +9,5 @@ class CreateExperiments < ActiveRecord::Migration
       t.timestamps :null => false
     end
     add_index :experiments, :name, :unique => true
-  end
-
-  def self.down
-    drop_table :experiments
   end
 end
