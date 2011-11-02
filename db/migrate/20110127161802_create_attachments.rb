@@ -1,5 +1,5 @@
 class CreateAttachments < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :attachments, :comment => "table for storing file attachements to experiments and shots" do |t|
       t.string :filename, :null => false, :limit => 255, :comment => "A unique filename"
       t.string :filetype, :null => false, :limit => 50, :comment => "The MIME type of the file"
@@ -12,9 +12,5 @@ class CreateAttachments < ActiveRecord::Migration
     end
     add_index :attachments, :attachable_id
     add_index :attachments, :attachable_type
-  end
-
-  def self.down
-    drop_table :attachments
   end
 end

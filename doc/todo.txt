@@ -1,8 +1,6 @@
 Bugs: 
 -fix class PH_MercuryMonitor: check display of concentration unit in plot label.
 -some PH_Switch values wronly interpreted.
--check missing index for instancevalues on column instancevalueset_id during next migration
--add index for instances on name column
 -sometimes Cams do not send an image even if cam status is "on/true"
 -interpret PPPA/MA status correctly
 
@@ -16,3 +14,4 @@ Features:
 -add unit tests for getAxisNumbers, getVacuumChannels
 -missing views: PH_VacuumControl (add picture)
 -missing view: BackreflectionMeasurement
+-missing view: SSAC

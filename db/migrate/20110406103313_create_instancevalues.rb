@@ -1,5 +1,5 @@
 class CreateInstancevalues < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :instancevalues, :primary_key_trigger => true,
                  :comment => "Actual measurement values of the PCS instances" do |t|
       t.references :instancevalueset, :null => false, :foreign_key => true
@@ -12,9 +12,5 @@ class CreateInstancevalues < ActiveRecord::Migration
     end
     add_index :instancevalues, :instancevalueset_id, :name => "valueset_index"
     add_index :instancevalues, :datatype_id
-  end
-
-  def self.down
-    drop_table :instancevalues
   end
 end

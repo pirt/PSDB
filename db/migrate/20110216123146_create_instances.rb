@@ -1,5 +1,5 @@
 class CreateInstances < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :instances, :primary_key_trigger => true,
                  :comment => "List of available instances (devices) (PA_Input_NF_Cam,...)" do |t|
       t.references :classtype, :null => false, :foreign_key => true
@@ -11,9 +11,5 @@ class CreateInstances < ActiveRecord::Migration
     add_index :instances, :name, :unique => true
     add_index :instances, :classtype_id
     add_index :instances, :subsystem_id
-  end
-
-  def self.down
-    drop_table :instances
   end
 end

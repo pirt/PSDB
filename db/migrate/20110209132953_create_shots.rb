@@ -1,5 +1,5 @@
 class CreateShots < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :shots, :primary_key_trigger => true,
                  :comment => "A PHELIX shot belonging to an experiment. All mesurement data reference this" do |t|
       t.string :description, :limit => 255, :comment => "Description of a PHELIX shot"
@@ -12,9 +12,5 @@ class CreateShots < ActiveRecord::Migration
 
     add_index :shots, :experiment_id
     add_index :shots, :shottype_id
-  end
-
-  def self.down
-    drop_table :shots
   end
 end
