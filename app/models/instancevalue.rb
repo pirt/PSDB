@@ -16,6 +16,7 @@
 require 'csv'
 require "gnuplot"
 require "RMagick"
+require 'tempfile'
 
 class Instancevalue < ActiveRecord::Base
   attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :datatype_id
@@ -136,14 +137,6 @@ class Instancevalue < ActiveRecord::Base
     plotData=generatePlotDataSet(plotOptions)
     generatePlot(plotData,plotOptions)
   end
-  def generate2dPlot2(options={})
-    plotOptions={}
-    plotOptions=plotOptions.merge(options)
-    axisDescriptionOptions=generatePlotAxisDescriptions()
-    plotOptions=plotOptions.merge(axisDescriptionOptions)
-    plotData=generatePlotDataSet(plotOptions)
-    generatePlot2(plotData,plotOptions)
-  end
   def generatePlotDataSet(options={})
     if self.datatype.name!="2dData"
       raise "instancevalue has wrong data type"
@@ -204,36 +197,23 @@ private
       return nil
     end
   end
-
   def generatePlot(plotData,options={})
-    plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
-    plotOptions.merge!(options)
-    fileName=Rails.root.to_s+"/app/assets/images/tmp/plot"+self.id.to_s+".#{plotOptions[:imagetype]}"
-    Gnuplot.open do |gp|
-      Gnuplot::Plot.new( gp ) do |plot|
-        plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
-        plot.output fileName
-        plot.ylabel plotOptions[:ylabel]
-        plot.xlabel plotOptions[:xlabel]
-        plot.data << plotData
-      end
-    end
-    return fileName.sub(Rails.root.to_s+"/app/assets/images/","")
-  end
-
-  def generatePlot2(plotData,options={})
+    tempFile = Tempfile.new(['plotImage','.png'])
     plotOptions={:width=>200, :height=>100, :imagetype=> "png", :xlabel=> "", :ylabel=> ""}
     plotOptions.merge!(options)
     plot=Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} tiny size #{plotOptions[:width]},#{plotOptions[:height]}"
-        plot.output Rails.root.to_s+"/public/tempPlot.png"
+        plot.output tempFile.path
         plot.ylabel plotOptions[:ylabel]
         plot.xlabel plotOptions[:xlabel]
         plot.data << plotData
       end
     end
-    returnImage=Magick::Image.read(Rails.root.to_s+"/public/tempPlot.png")[0]
+    tempFile.rewind
+    returnImage=Magick::Image.read(tempFile.path)[0]
+    tempFile.close
+    tempFile.unlink
     return returnImage
   end
 end

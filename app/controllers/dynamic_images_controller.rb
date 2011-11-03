@@ -30,7 +30,7 @@ class DynamicImagesController < ApplicationController
       if params[:height].present?
         options.merge!(:height=>params[:height])
       end
-      image=instanceValue.generate2dPlot2(options)
+      image=instanceValue.generate2dPlot(options)
       imageblob=image.to_blob
       write_fragment("plot"+Hash[params.sort].to_s,imageblob)
     end

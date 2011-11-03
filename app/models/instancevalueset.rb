@@ -11,6 +11,7 @@
 #
 
 require 'gnuplot'
+require 'tempfile'
 
 class Instancevalueset < ActiveRecord::Base
   attr_accessible :shot_id, :instance_id, :version
@@ -99,14 +100,14 @@ class Instancevalueset < ActiveRecord::Base
     return foundChannels
   end
   def generateMultiPlot(plotParameterNames,options={})
+    tempFile=Tempfile.new(['multiplotImage','.png'])
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}
     plotOptions=plotOptions.merge(options)
-    fileName=Rails.root.to_s+"/public/tempSeriesPlot.png"
     dataAvailable=false
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
         plot.terminal "#{plotOptions[:imagetype]} small size #{plotOptions[:width]},#{plotOptions[:height]}"
-        plot.output fileName
+        plot.output tempFile.path
         if (plotParameterNames.length!=0)
           instanceValue=self.instancevalues.find_by_name(plotParameterNames[0])
           if instanceValue
@@ -124,10 +125,15 @@ class Instancevalueset < ActiveRecord::Base
         end
       end
     end
+    tempFile.rewind
     if dataAvailable
-      returnImage=Magick::Image.read(Rails.root.to_s+"/public/tempSeriesPlot.png")[0]
+      returnImage=Magick::Image.read(tempFile.path)[0]
+      tempFile.close
+      tempFile.unlink
       return returnImage
     else
+      tempFile.close
+      tempFile.unlink
       return ""
     end
   end
