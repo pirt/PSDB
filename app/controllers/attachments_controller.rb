@@ -1,3 +1,5 @@
+# This restful controller handles upload, download, modification and deletion
+# of file attachments. Currently attachments can be used for experiments and shots.
 class AttachmentsController < ApplicationController
   def show
     attachment=Attachment.find_by_id(params[:id])

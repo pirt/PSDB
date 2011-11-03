@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Class: DynamicImagesController</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/dynamic_images_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-showImage">#showImage</a>
+    
+    <li><a href="#method-i-showMultiPlot">#showMultiPlot</a>
+    
+    <li><a href="#method-i-showPlot">#showPlot</a>
+    
+    <li><a href="#method-i-showSeriesPlot">#showSeriesPlot</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="./Classtype.html">Classtype</a>
+  
+    <li><a href="./Datatype.html">Datatype</a>
+  
+    <li><a href="./DynamicImagesController.html">DynamicImagesController</a>
+  
+    <li><a href="./Experiment.html">Experiment</a>
+  
+    <li><a href="./ExperimentsController.html">ExperimentsController</a>
+  
+    <li><a href="./Instance.html">Instance</a>
+  
+    <li><a href="./InstancesController.html">InstancesController</a>
+  
+    <li><a href="./Instancevalue.html">Instancevalue</a>
+  
+    <li><a href="./InstancevaluesController.html">InstancevaluesController</a>
+  
+    <li><a href="./InstancevaluesHelper.html">InstancevaluesHelper</a>
+  
+    <li><a href="./Instancevalueset.html">Instancevalueset</a>
+  
+    <li><a href="./InstancevaluesetsController.html">InstancevaluesetsController</a>
+  
+    <li><a href="./InstancevaluesetsHelper.html">InstancevaluesetsHelper</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./Shot.html">Shot</a>
+  
+    <li><a href="./ShotsController.html">ShotsController</a>
+  
+    <li><a href="./ShotsHelper.html">ShotsHelper</a>
+  
+    <li><a href="./Shottype.html">Shottype</a>
+  
+    <li><a href="./StatisticsController.html">StatisticsController</a>
+  
+    <li><a href="./Subsystem.html">Subsystem</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class DynamicImagesController</h1>
+
+  <div id="description" class="description">
+    
+<p>This controller is responsible for delivering images which are dynimcally
+created from <a href="Instancevalue.html">Instancevalue</a> data. The
+images are generated using RMagick (for camera images) or using Gnuplot
+(for xy plots derived from 2D data).</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-showImage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">showImage</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="showImage-source">
+            <pre><span class="ruby-comment"># File app/controllers/dynamic_images_controller.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">showImage</span>
+  <span class="ruby-identifier">imageblob</span> = <span class="ruby-identifier">read_fragment</span>(<span class="ruby-string">&quot;image&quot;</span><span class="ruby-operator">+</span><span class="ruby-constant">Hash</span>[<span class="ruby-identifier">params</span>.<span class="ruby-identifier">sort</span>].<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">not</span> <span class="ruby-identifier">imageblob</span>)
+    <span class="ruby-identifier">instanceValue</span>=<span class="ruby-constant">Instancevalue</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+    <span class="ruby-identifier">options</span>={}
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:width</span>].<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:width</span>])
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:height</span>].<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:height</span>])
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">image</span>=<span class="ruby-identifier">instanceValue</span>.<span class="ruby-identifier">generateImage</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-identifier">imageblob</span>=<span class="ruby-identifier">image</span>.<span class="ruby-identifier">to_blob</span>
+    <span class="ruby-identifier">write_fragment</span>(<span class="ruby-string">&quot;image&quot;</span><span class="ruby-operator">+</span><span class="ruby-constant">Hash</span>[<span class="ruby-identifier">params</span>.<span class="ruby-identifier">sort</span>].<span class="ruby-identifier">to_s</span>,<span class="ruby-identifier">imageblob</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">send_data</span> <span class="ruby-identifier">imageblob</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'image/png'</span>,
+                       <span class="ruby-value">:disposition</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'inline'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- showImage-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- showImage-method -->
+
+    
+      <div id="method-i-showMultiPlot" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">showMultiPlot</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="showMultiPlot-source">
+            <pre><span class="ruby-comment"># File app/controllers/dynamic_images_controller.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">showMultiPlot</span>
+  <span class="ruby-identifier">instanceValueSet</span>=<span class="ruby-constant">Instancevalueset</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">parameterNames</span>=<span class="ruby-identifier">params</span>[<span class="ruby-value">:parameterNames</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>)
+  <span class="ruby-identifier">options</span>={}
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:width</span>].<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:width</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:height</span>].<span class="ruby-identifier">present?</span>
+    <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:height</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">image</span>=<span class="ruby-identifier">instanceValueSet</span>.<span class="ruby-identifier">generateMultiPlot</span>(<span class="ruby-identifier">parameterNames</span>,<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">imageblob</span>=<span class="ruby-identifier">image</span>.<span class="ruby-identifier">to_blob</span>
+  <span class="ruby-identifier">send_data</span> <span class="ruby-identifier">imageblob</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'image/png'</span>,
+                       <span class="ruby-value">:disposition</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'inline'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- showMultiPlot-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- showMultiPlot-method -->
+
+    
+      <div id="method-i-showPlot" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">showPlot</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="showPlot-source">
+            <pre><span class="ruby-comment"># File app/controllers/dynamic_images_controller.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">showPlot</span>
+  <span class="ruby-identifier">imageblob</span> = <span class="ruby-identifier">read_fragment</span>(<span class="ruby-string">&quot;plot&quot;</span><span class="ruby-operator">+</span><span class="ruby-constant">Hash</span>[<span class="ruby-identifier">params</span>.<span class="ruby-identifier">sort</span>].<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">not</span> <span class="ruby-identifier">imageblob</span>)
+    <span class="ruby-identifier">instanceValue</span>=<span class="ruby-constant">Instancevalue</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+    <span class="ruby-identifier">options</span>={}
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:width</span>].<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:width</span>])
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:height</span>].<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:height</span>])
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">image</span>=<span class="ruby-identifier">instanceValue</span>.<span class="ruby-identifier">generate2dPlot</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-identifier">imageblob</span>=<span class="ruby-identifier">image</span>.<span class="ruby-identifier">to_blob</span>
+    <span class="ruby-identifier">write_fragment</span>(<span class="ruby-string">&quot;plot&quot;</span><span class="ruby-operator">+</span><span class="ruby-constant">Hash</span>[<span class="ruby-identifier">params</span>.<span class="ruby-identifier">sort</span>].<span class="ruby-identifier">to_s</span>,<span class="ruby-identifier">imageblob</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">send_data</span> <span class="ruby-identifier">imageblob</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'image/png'</span>,
+                       <span class="ruby-value">:disposition</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'inline'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- showPlot-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- showPlot-method -->
+
+    
+      <div id="method-i-showSeriesPlot" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">showSeriesPlot</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="showSeriesPlot-source">
+            <pre><span class="ruby-comment"># File app/controllers/dynamic_images_controller.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">showSeriesPlot</span>
+  <span class="ruby-identifier">image</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/public/series.png&quot;</span>)[<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">imageblob</span>=<span class="ruby-identifier">image</span>.<span class="ruby-identifier">to_blob</span>
+  <span class="ruby-identifier">send_data</span> <span class="ruby-identifier">imageblob</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'image/png'</span>,
+                       <span class="ruby-value">:disposition</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'inline'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- showSeriesPlot-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- showSeriesPlot-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -106,6 +106,8 @@
   
     <li><a href="./Datatype.html">Datatype</a>
   
+    <li><a href="./DynamicImagesController.html">DynamicImagesController</a>
+  
     <li><a href="./Experiment.html">Experiment</a>
   
     <li><a href="./ExperimentsController.html">ExperimentsController</a>
@@ -151,6 +153,10 @@
 
   <div id="description" class="description">
     
+<p>This restful controller handles upload, download, modification and deletion
+of file attachments. Currently attachments can be used for experiments and
+shots.</p>
+
   </div><!-- description -->
 
   
@@ -187,7 +193,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 20</span>
+            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>]
     <span class="ruby-ivar">@parent</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>])
@@ -256,7 +262,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 118</span>
+            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>]
     <span class="ruby-ivar">@parent</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>])
@@ -301,7 +307,7 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 62</span>
+            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>]
     <span class="ruby-ivar">@parent</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>])
@@ -342,7 +348,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 11</span>
+            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>]
       <span class="ruby-ivar">@parent</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>])
@@ -378,7 +384,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 4</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-identifier">attachment</span>=<span class="ruby-constant">Attachment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attachment</span>
@@ -414,7 +420,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 76</span>
+            <pre><span class="ruby-comment"># File app/controllers/attachments_controller.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>]
     <span class="ruby-ivar">@parent</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:experiment_id</span>])
@@ -476,7 +482,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

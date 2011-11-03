@@ -1,3 +1,5 @@
+# This controller is repsonsible for handling "export" request for downloading
+# images and 2d data.
 class InstancevaluesController < ApplicationController
   def exportImage
     instanceValue=Instancevalue.find_by_id(params[:instanceValueId])

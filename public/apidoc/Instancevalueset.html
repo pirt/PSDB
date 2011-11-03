@@ -70,7 +70,7 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-generatePlot">#generatePlot</a>
+    <li><a href="#method-i-generateMultiPlot">#generateMultiPlot</a>
     
     <li><a href="#method-i-getAxesNumbers">#getAxesNumbers</a>
     
@@ -107,6 +107,8 @@
     <li><a href="./Classtype.html">Classtype</a>
   
     <li><a href="./Datatype.html">Datatype</a>
+  
+    <li><a href="./DynamicImagesController.html">DynamicImagesController</a>
   
     <li><a href="./Experiment.html">Experiment</a>
   
@@ -173,11 +175,11 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-generatePlot" class="method-detail ">
+      <div id="method-i-generateMultiPlot" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">generatePlot</span><span
-            class="method-args">(plotParameterNames,plotNr,options={})</span>
+          <span class="method-name">generateMultiPlot</span><span
+            class="method-args">(plotParameterNames,options={})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -188,18 +190,17 @@
           
 
           
-          <div class="method-source-code" id="generatePlot-source">
+          <div class="method-source-code" id="generateMultiPlot-source">
             <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 102</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlot</span>(<span class="ruby-identifier">plotParameterNames</span>,<span class="ruby-identifier">plotNr</span>,<span class="ruby-identifier">options</span>={})
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generateMultiPlot</span>(<span class="ruby-identifier">plotParameterNames</span>,<span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">tempFile</span>=<span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>([<span class="ruby-string">'multiplotImage'</span>,<span class="ruby-string">'.png'</span>])
   <span class="ruby-identifier">plotOptions</span>={<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">200</span>, <span class="ruby-value">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">100</span>, <span class="ruby-value">:imagetype=</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;png&quot;</span>}
   <span class="ruby-identifier">plotOptions</span>=<span class="ruby-identifier">plotOptions</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
-  <span class="ruby-identifier">fileName</span>=<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/tmp/plotseries&quot;</span><span class="ruby-operator">+</span>
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">plotNr</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;.#{plotOptions[:imagetype]}&quot;</span>
   <span class="ruby-identifier">dataAvailable</span>=<span class="ruby-keyword">false</span>
   <span class="ruby-constant">Gnuplot</span>.<span class="ruby-identifier">open</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gp</span><span class="ruby-operator">|</span>
     <span class="ruby-constant">Gnuplot</span><span class="ruby-operator">::</span><span class="ruby-constant">Plot</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">gp</span> ) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plot</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">plot</span>.<span class="ruby-identifier">terminal</span> <span class="ruby-node">&quot;#{plotOptions[:imagetype]} small size #{plotOptions[:width]},#{plotOptions[:height]}&quot;</span>
-      <span class="ruby-identifier">plot</span>.<span class="ruby-identifier">output</span> <span class="ruby-identifier">fileName</span>
+      <span class="ruby-identifier">plot</span>.<span class="ruby-identifier">output</span> <span class="ruby-identifier">tempFile</span>.<span class="ruby-identifier">path</span>
       <span class="ruby-keyword">if</span> (<span class="ruby-identifier">plotParameterNames</span>.<span class="ruby-identifier">length!</span>=<span class="ruby-value">0</span>)
         <span class="ruby-identifier">instanceValue</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">plotParameterNames</span>[<span class="ruby-value">0</span>])
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">instanceValue</span>
@@ -217,20 +218,26 @@
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">tempFile</span>.<span class="ruby-identifier">rewind</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">dataAvailable</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">fileName</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/&quot;</span>,<span class="ruby-string">&quot;&quot;</span>)
+    <span class="ruby-identifier">returnImage</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">tempFile</span>.<span class="ruby-identifier">path</span>)[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">tempFile</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-identifier">tempFile</span>.<span class="ruby-identifier">unlink</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">returnImage</span>
   <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">tempFile</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-identifier">tempFile</span>.<span class="ruby-identifier">unlink</span>
     <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- generatePlot-source -->
+          </div><!-- generateMultiPlot-source -->
           
         </div>
 
         
 
         
-      </div><!-- generatePlot-method -->
+      </div><!-- generateMultiPlot-method -->
 
     
       <div id="method-i-getAxesNumbers" class="method-detail ">
@@ -287,7 +294,7 @@
 
           
           <div class="method-source-code" id="getBooleanParameter-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 47</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBooleanParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
@@ -326,9 +333,8 @@
 
           
           <div class="method-source-code" id="getNumericParameter-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 59</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getNumericParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
-  
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -365,7 +371,7 @@
 
           
           <div class="method-source-code" id="getPlotDataSet-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 136</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 141</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getPlotDataSet</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">instanceValue</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">instanceValue</span>.<span class="ruby-identifier">nil?</span>)
@@ -401,7 +407,7 @@
 
           
           <div class="method-source-code" id="getStringParameter-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getStringParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
@@ -489,7 +495,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

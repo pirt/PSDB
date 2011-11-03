@@ -7,7 +7,7 @@ PSDB::Application.routes.draw do
   resources :experiments do
     resources :attachments
   end
-  resources :shots do
+  resources :shots, :only => [:show, :edit, :update, :index] do
     resources :attachments
   end
 
@@ -60,6 +60,5 @@ PSDB::Application.routes.draw do
   #   end
 
   root :to => "pages#start"
-
   # See how all your routes lay out with "rake routes"
 end

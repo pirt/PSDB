@@ -1,3 +1,9 @@
+# This restful controller handles the Experiment resources.
+# Experiments can be displayed, created, and modified. Deletion of Experiments
+# is only possible if no shots are related to it.
+#
+# In addition it is possible to add file attachments to a particular experiment. This
+# functionality is handles by the AttachmentsController.
 class ExperimentsController < ApplicationController
 
   def index

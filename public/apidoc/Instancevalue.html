@@ -84,8 +84,6 @@
     
     <li><a href="#method-i-generatePlotDataSet">#generatePlotDataSet</a>
     
-    <li><a href="#method-i-presence_of_at_least_one_field">#presence_of_at_least_one_field</a>
-    
   </ul>
 </nav>
 
@@ -109,6 +107,8 @@
     <li><a href="./Classtype.html">Classtype</a>
   
     <li><a href="./Datatype.html">Datatype</a>
+  
+    <li><a href="./DynamicImagesController.html">DynamicImagesController</a>
   
     <li><a href="./Experiment.html">Experiment</a>
   
@@ -191,7 +191,7 @@
 
           
           <div class="method-source-code" id="export2dData-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 40</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">export2dData</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;2dData&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong datatype&quot;</span>
@@ -248,7 +248,7 @@
 
           
           <div class="method-source-code" id="exportImage-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 72</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">exportImage</span>(<span class="ruby-identifier">options</span>={})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong data type&quot;</span>
@@ -281,7 +281,7 @@
       <span class="ruby-identifier">exportFormat</span>=<span class="ruby-string">'PNG'</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">localOptions</span>[<span class="ruby-value">:withColorPalette</span>]
-    <span class="ruby-identifier">paletteImg</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&quot;/app/assets/images/Rainbow.png&quot;</span>)
+    <span class="ruby-identifier">paletteImg</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/Rainbow.png&quot;</span>)
     <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">clut_channel</span>(<span class="ruby-identifier">paletteImg</span>[<span class="ruby-value">0</span>])
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">sendImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">to_blob</span> { <span class="ruby-keyword">self</span>.<span class="ruby-identifier">format</span>=<span class="ruby-identifier">exportFormat</span> }
@@ -316,7 +316,7 @@
 
           
           <div class="method-source-code" id="generate2dPlot-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 143</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generate2dPlot</span>(<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">plotOptions</span>={}
   <span class="ruby-identifier">plotOptions</span>=<span class="ruby-identifier">plotOptions</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
@@ -351,25 +351,19 @@
 
           
           <div class="method-source-code" id="generateImage-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 114</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generateImage</span>(<span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;error converting instancevalue to image file&quot;</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">imageOptions</span>={<span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">320</span>, <span class="ruby-value">:height</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">200</span>}
   <span class="ruby-identifier">imageOptions</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
-  <span class="ruby-identifier">fileName</span>=<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/tmp/image&quot;</span><span class="ruby-operator">+</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span>
-      <span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:width</span>].<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:height</span>].<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;.png&quot;</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">fileName</span>)
-    <span class="ruby-identifier">imageData</span>=<span class="ruby-identifier">trimBlob</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_binary</span>)
-    <span class="ruby-identifier">myImage</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">from_blob</span>(<span class="ruby-identifier">imageData</span>)
-    <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>[<span class="ruby-value">0</span>]
-    <span class="ruby-identifier">paletteImg</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/Rainbow.png&quot;</span>)
-    <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">clut_channel</span>(<span class="ruby-identifier">paletteImg</span>[<span class="ruby-value">0</span>])
-    <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">resize_to_fit</span>(<span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:width</span>],<span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:height</span>])
-    <span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">fileName</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fileName</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/&quot;</span>,<span class="ruby-string">&quot;&quot;</span>)
+  <span class="ruby-identifier">imageData</span>=<span class="ruby-identifier">trimBlob</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_binary</span>)
+  <span class="ruby-identifier">myImage</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">from_blob</span>(<span class="ruby-identifier">imageData</span>)[<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">paletteImg</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/assets/images/Rainbow.png&quot;</span>)
+  <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">clut_channel</span>(<span class="ruby-identifier">paletteImg</span>[<span class="ruby-value">0</span>])
+  <span class="ruby-identifier">myImage</span>=<span class="ruby-identifier">myImage</span>.<span class="ruby-identifier">resize_to_fit</span>(<span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:width</span>],<span class="ruby-identifier">imageOptions</span>[<span class="ruby-value">:height</span>])
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">myImage</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- generateImage-source -->
           
@@ -397,7 +391,7 @@
 
           
           <div class="method-source-code" id="generateImageInfo-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 133</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generateImageInfo</span>(<span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;impossible to get image info from non-image instancevalue&quot;</span>
@@ -435,7 +429,7 @@ the axis labels.</p>
 
           
           <div class="method-source-code" id="generatePlotAxisDescriptions-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 166</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 155</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlotAxisDescriptions</span>
   <span class="ruby-identifier">axisDescriptionOptions</span>={<span class="ruby-value">:xlabel=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">:ylabel=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>}
   <span class="ruby-identifier">axisDescription</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_string</span>
@@ -482,7 +476,7 @@ the axis labels.</p>
 
           
           <div class="method-source-code" id="generatePlotDataSet-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 151</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlotDataSet</span>(<span class="ruby-identifier">options</span>={})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;2dData&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong data type&quot;</span>
@@ -506,37 +500,6 @@ the axis labels.</p>
       </div><!-- generatePlotDataSet-method -->
 
     
-      <div id="method-i-presence_of_at_least_one_field" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">presence_of_at_least_one_field</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="presence_of_at_least_one_field-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">presence_of_at_least_one_field</span>
-  <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:data_fields</span>, <span class="ruby-string">&quot;at least one data field must not be empty&quot;</span>) <span class="ruby-keyword">if</span>
-    <span class="ruby-identifier">data_numeric</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">data_binary</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">data_string</span>.<span class="ruby-identifier">nil?</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- presence_of_at_least_one_field-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- presence_of_at_least_one_field-method -->
-
-    
     </section><!-- public-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
@@ -546,7 +509,7 @@ the axis labels.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

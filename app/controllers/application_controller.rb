@@ -1,4 +1,5 @@
 # coding: utf-8
+# General controller for the entire application.
 class ApplicationController < ActionController::Base
   protect_from_forgery
 

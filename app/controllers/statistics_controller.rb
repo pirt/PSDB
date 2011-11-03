@@ -1,4 +1,6 @@
+# This controller is repsonsible for displaying statics information of PSDB.
 class StatisticsController < ApplicationController
+  # Render the overview page of PSDB.
   def overview
     nrOfExps=Experiment.count
     nrOfExpShots=Shot.where(:shottype_id=>1).count
@@ -17,9 +19,10 @@ class StatisticsController < ApplicationController
     @pageTitle="Statistics overview"
   end
 
+  # Render the shot calendar.
   def calendar
     selectedShots=Shot.all
-    if (params[:shotType] and params[:shotType]!="0")
+    if (params[:shotType].present?)
       selectedShots=Shot.where(:shottype_id => params[:shotType].to_i).to_a
     end
     @shots=selectedShots
@@ -27,5 +30,4 @@ class StatisticsController < ApplicationController
     @formData=params
     @pageTitle="Shot calendar"
   end
-
 end

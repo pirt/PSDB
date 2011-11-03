@@ -1,3 +1,6 @@
+# This controller is responsible for delivering images which are dynimcally
+# created from Instancevalue data. The images are generated using RMagick (for camera images)
+# or using Gnuplot (for xy plots derived from 2D data).
 class DynamicImagesController < ApplicationController
 
   def showImage

@@ -1,3 +1,4 @@
+# This controller ist repsonsible for serving (mostly) static pages.
 class PagesController < ApplicationController
   def start
     @pageTitle=""

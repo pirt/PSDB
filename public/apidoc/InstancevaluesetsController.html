@@ -98,6 +98,8 @@
   
     <li><a href="./Datatype.html">Datatype</a>
   
+    <li><a href="./DynamicImagesController.html">DynamicImagesController</a>
+  
     <li><a href="./Experiment.html">Experiment</a>
   
     <li><a href="./ExperimentsController.html">ExperimentsController</a>
@@ -179,14 +181,14 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/instancevaluesets_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/instancevaluesets_controller.rb, line 3</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">selectedValueSets</span>=<span class="ruby-constant">Instancevalueset</span>
-  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:instance_id</span>] <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:instance_id</span>].<span class="ruby-identifier">blank?</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:instance_id</span>].<span class="ruby-identifier">present?</span>)
     <span class="ruby-identifier">selectedValueSets</span>=<span class="ruby-identifier">selectedValueSets</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:instance_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:instance_id</span>])
     <span class="ruby-ivar">@instanceId</span>=<span class="ruby-identifier">params</span>[<span class="ruby-value">:instance_id</span>]
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:from_date</span>] <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:from_date</span>].<span class="ruby-identifier">blank?</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:from_date</span>].<span class="ruby-identifier">present?</span>)
     <span class="ruby-keyword">begin</span>
      <span class="ruby-identifier">startDate</span>=<span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from_date</span>]).<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; 00:00:00&quot;</span>
       <span class="ruby-identifier">selectedValueSets</span>=<span class="ruby-identifier">selectedValueSets</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;instancevaluesets.created_at &gt;= ?&quot;</span>,<span class="ruby-identifier">startDate</span>)
@@ -195,7 +197,7 @@
       <span class="ruby-identifier">params</span>[<span class="ruby-value">:from_date</span>]=<span class="ruby-string">&quot;&quot;</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:to_date</span>] <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:to_date</span>].<span class="ruby-identifier">blank?</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:to_date</span>].<span class="ruby-identifier">present?</span>)
     <span class="ruby-keyword">begin</span>
       <span class="ruby-identifier">endDate</span>=<span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:to_date</span>]).<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot; 23:59:59&quot;</span>
       <span class="ruby-identifier">selectedValueSets</span>=<span class="ruby-identifier">selectedValueSets</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;instancevaluesets.created_at &lt;= ?&quot;</span>,<span class="ruby-identifier">endDate</span>)
@@ -222,7 +224,7 @@
       <span class="ruby-ivar">@parameterArray</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">availableParameter</span>.<span class="ruby-identifier">name</span>,<span class="ruby-identifier">count</span>]
       <span class="ruby-identifier">count</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:plotParameter</span>] <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-value">:plotParameter</span>].<span class="ruby-identifier">blank?</span>)
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:plotParameter</span>].<span class="ruby-identifier">present?</span>)
       <span class="ruby-comment"># check if parameterNr still valid</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:plotParameter</span>].<span class="ruby-identifier">to_i</span><span class="ruby-operator">&lt;</span><span class="ruby-ivar">@parameterArray</span>.<span class="ruby-identifier">length</span>
         <span class="ruby-identifier">selectedPlotParameter</span>=<span class="ruby-ivar">@parameterArray</span>[<span class="ruby-identifier">params</span>[<span class="ruby-value">:plotParameter</span>].<span class="ruby-identifier">to_i</span>][<span class="ruby-value">0</span>]
@@ -244,8 +246,7 @@
       <span class="ruby-identifier">yValues</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">convertUnitValue</span>(<span class="ruby-identifier">parameterValue</span>.<span class="ruby-identifier">data_numeric</span>,<span class="ruby-identifier">parameterValue</span>.<span class="ruby-identifier">data_string</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@yLabel</span>=<span class="ruby-identifier">selectedPlotParameter</span>
-    <span class="ruby-identifier">baseUnit</span>=<span class="ruby-identifier">getBaseUnit</span>(<span class="ruby-identifier">parameterValues</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">data_string</span>)<span class="ruby-comment"># .gsub(&quot;\302\263&quot;,&quot;^3&quot;)</span>
-    <span class="ruby-comment">#baseUnit=parameterValues.last.data_string.force_encoding('UTF-8').gsub(&quot;\302\263&quot;,&quot;^3&quot;)</span>
+    <span class="ruby-identifier">baseUnit</span>=<span class="ruby-identifier">getBaseUnit</span>(<span class="ruby-identifier">parameterValues</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">data_string</span>)
     <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">baseUnit</span>.<span class="ruby-identifier">nil?</span>)
       <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">baseUnit</span>.<span class="ruby-identifier">empty?</span>)
         <span class="ruby-ivar">@yLabel</span><span class="ruby-operator">+=</span><span class="ruby-string">&quot; [&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">baseUnit</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;]&quot;</span>
@@ -305,7 +306,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

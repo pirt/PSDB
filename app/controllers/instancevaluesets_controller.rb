@@ -1,3 +1,4 @@
+#
 class InstancevaluesetsController < ApplicationController
   def index
     selectedValueSets=Instancevalueset
@@ -41,7 +42,7 @@ class InstancevaluesetsController < ApplicationController
         @parameterArray << [availableParameter.name,count]
         count+=1
       end
-      if (params[:plotParameter] and !params[:plotParameter].blank?)
+      if (params[:plotParameter].present?)
         # check if parameterNr still valid
         if params[:plotParameter].to_i<@parameterArray.length
           selectedPlotParameter=@parameterArray[params[:plotParameter].to_i][0]

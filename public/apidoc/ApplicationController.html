@@ -108,6 +108,8 @@
   
     <li><a href="./Datatype.html">Datatype</a>
   
+    <li><a href="./DynamicImagesController.html">DynamicImagesController</a>
+  
     <li><a href="./Experiment.html">Experiment</a>
   
     <li><a href="./ExperimentsController.html">ExperimentsController</a>
@@ -153,6 +155,8 @@
 
   <div id="description" class="description">
     
+<p>General controller for the entire application.</p>
+
   </div><!-- description -->
 
   
@@ -189,7 +193,7 @@
 
           
           <div class="method-source-code" id="projectizeName-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 118</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-identifier">projectName</span>=<span class="ruby-constant">PSDB_CONFIG</span>[<span class="ruby-string">&quot;project&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>]
   <span class="ruby-identifier">dirname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">filename</span>)
@@ -234,7 +238,7 @@
 
           
           <div class="method-source-code" id="authenticate-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticate</span>
   <span class="ruby-identifier">authenticate_or_request_with_http_basic</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user_name</span>, <span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">user_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'admin'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">==</span> <span class="ruby-string">'123123'</span>
@@ -266,7 +270,7 @@
 
           
           <div class="method-source-code" id="convertUnitValue-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">convertUnitValue</span>(<span class="ruby-identifier">value</span>,<span class="ruby-identifier">unit</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unit</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
@@ -348,7 +352,7 @@
 
           
           <div class="method-source-code" id="getBaseUnit-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 67</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBaseUnit</span>(<span class="ruby-identifier">unitString</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unitString</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">unitString</span>
@@ -387,7 +391,7 @@
 
           
           <div class="method-source-code" id="getDBSize-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 82</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDBSize</span>
   <span class="ruby-identifier">dbStats</span>={<span class="ruby-value">:bytesUsed=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>,<span class="ruby-value">:bytesFree=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>}
   <span class="ruby-keyword">case</span> (<span class="ruby-identifier">getDatabaseType</span>)
@@ -447,7 +451,7 @@
 
           
           <div class="method-source-code" id="getDatabaseType-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 79</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDatabaseType</span>
   <span class="ruby-keyword">return</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">adapter_name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -477,7 +481,7 @@
 
           
           <div class="method-source-code" id="projectizeName-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 115</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -500,7 +504,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

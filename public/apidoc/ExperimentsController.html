@@ -108,6 +108,8 @@
   
     <li><a href="./Datatype.html">Datatype</a>
   
+    <li><a href="./DynamicImagesController.html">DynamicImagesController</a>
+  
     <li><a href="./Experiment.html">Experiment</a>
   
     <li><a href="./ExperimentsController.html">ExperimentsController</a>
@@ -153,6 +155,15 @@
 
   <div id="description" class="description">
     
+<p>This restful controller handles the <a
+href="Experiment.html">Experiment</a> resources. Experiments can be
+displayed, created, and modified. Deletion of Experiments is only possible
+if no shots are related to it.</p>
+
+<p>In addition it is possible to add file attachments to a particular
+experiment. This functionality is handles by the <a
+href="AttachmentsController.html">AttachmentsController</a>.</p>
+
   </div><!-- description -->
 
   
@@ -189,7 +200,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 23</span>
+            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:cancel</span>]
     <span class="ruby-identifier">flash</span>[<span class="ruby-value">:info</span>] = <span class="ruby-string">&quot;Experiment creation cancelled&quot;</span>
@@ -231,7 +242,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 70</span>
+            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">experiment</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">experiment</span>
@@ -271,7 +282,7 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 38</span>
+            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-ivar">@experiment</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@experiment</span>
@@ -307,7 +318,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 3</span>
+            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@experiments</span> = <span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">select</span>([<span class="ruby-value">:id</span>, <span class="ruby-value">:name</span>, <span class="ruby-value">:description</span>, <span class="ruby-value">:active</span>]).
     <span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-value">:include=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value">:attachments</span>])
@@ -339,7 +350,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@experiment</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:active</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
   <span class="ruby-ivar">@pageTitle</span>=<span class="ruby-string">&quot;Add new experiment&quot;</span>
@@ -370,7 +381,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 8</span>
+            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@experiment</span>=<span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@experiment</span>
@@ -407,7 +418,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 48</span>
+            <pre><span class="ruby-comment"># File app/controllers/experiments_controller.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-ivar">@experiment</span> = <span class="ruby-constant">Experiment</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@experiment</span>
@@ -448,7 +459,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.10.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 
