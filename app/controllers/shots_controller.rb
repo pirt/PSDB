@@ -1,13 +1,13 @@
 class ShotsController < ApplicationController
   def index
     selectedShots=Shot
-    if (params[:selectedExp] and params[:selectedExp]!="0")
+    if (params[:selectedExp].present?)
       selectedShots=selectedShots.where(:experiment_id => params[:selectedExp].to_i)
     end
-    if (params[:shotType] and params[:shotType]!="0")
+    if (params[:shotType].present?)
       selectedShots=selectedShots.where(:shottype_id => params[:shotType].to_i)
     end
-    if (params[:from_date] and !params[:from_date].blank?)
+    if (params[:from_date].present?)
       begin
         startDate=Date.parse(params[:from_date]).to_s+" 00:00:00"
         selectedShots=selectedShots.where("created_at >= ?",startDate)
@@ -16,7 +16,7 @@ class ShotsController < ApplicationController
         params[:from_date]=""
       end
     end
-    if (params[:to_date] and !params[:to_date].blank?)
+    if (params[:to_date].present?)
       begin
         endDate=Date.parse(params[:to_date]).to_s+" 23:59:59"
         selectedShots=selectedShots.where("created_at <= ?",endDate)

@@ -44,7 +44,6 @@ class ExperimentsController < ApplicationController
       redirect_to experiments_path
     end
   end
-
   def update
     @experiment = Experiment.find_by_id(params[:id])
     if !@experiment
@@ -66,7 +65,6 @@ class ExperimentsController < ApplicationController
        render 'edit'
     end
   end
-
   def destroy
     experiment=Experiment.find_by_id(params[:id])
     if experiment

@@ -1,11 +1,11 @@
 class InstancevaluesetsController < ApplicationController
   def index
     selectedValueSets=Instancevalueset
-    if (params[:instance_id] and !params[:instance_id].blank?)
+    if (params[:instance_id].present?)
       selectedValueSets=selectedValueSets.where(:instance_id => params[:instance_id])
       @instanceId=params[:instance_id]
     end
-    if (params[:from_date] and !params[:from_date].blank?)
+    if (params[:from_date].present?)
       begin
        startDate=Date.parse(params[:from_date]).to_s+" 00:00:00"
         selectedValueSets=selectedValueSets.where("instancevaluesets.created_at >= ?",startDate)
@@ -14,7 +14,7 @@ class InstancevaluesetsController < ApplicationController
         params[:from_date]=""
       end
     end
-    if (params[:to_date] and !params[:to_date].blank?)
+    if (params[:to_date].present?)
       begin
         endDate=Date.parse(params[:to_date]).to_s+" 23:59:59"
         selectedValueSets=selectedValueSets.where("instancevaluesets.created_at <= ?",endDate)
