@@ -11,7 +11,6 @@ Bugs:
 -Instances: plot series broken.
 
 Features:
--add unit tests for getAxisNumbers, getVacuumChannels
 -missing views: PH_VacuumControl (add picture)
 -missing view: BackreflectionMeasurement
 -missing view: SSAC

@@ -89,7 +89,7 @@ describe AttachmentsController do
       describe "success" do
         before(:each) do
           @attr = {:content => fixture_file_upload(
-                      Rails.root.to_s+'/app/assets/images/logo_PHELIX.png', 'image/png', :binary), 
+                      '/testfile1.txt', 'text/plain', :binary), 
                    :description => "a test picture"}
         end
         it "should create an attachment" do
@@ -185,7 +185,7 @@ describe AttachmentsController do
       describe "success" do
         before(:each) do
           @attr = {:content => fixture_file_upload(
-                      Rails.root.to_s+'/config.ru', 'text/plain', :binary),
+                      '/testfile2.txt', 'text/plain', :binary),
                    :description => "abcd"}
         end
         it "should update an attachment" do
@@ -194,7 +194,7 @@ describe AttachmentsController do
           mockfile=@attr[:content]
           @attachment.filename.should  == mockfile.original_filename
           @attachment.filetype.should == mockfile.content_type
-          @attachment.content.should == File.new(Rails.root.to_s+"/config.ru").read
+          @attachment.content.should == File.new(Rails.root.to_s+"/spec/fixtures/testfile2.txt").read
           @attachment.description.should  == @attr[:description]
           @attachment.attachable_id.should == @experiment.id
         end
