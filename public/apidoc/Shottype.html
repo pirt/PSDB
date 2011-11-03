@@ -152,6 +152,23 @@ name       :string(30)      not null
 created_at :datetime        not null
 updated_at :datetime        not null</pre>
 
+<p>This model represents a shot type. It is referenced by a <a
+href="Shot.html">Shot</a>. Currently the following shot types are defined:</p>
+
+<pre>1. experiment shot
+2. test shot
+3. snap shot
+4. other</pre>
+
+<p>Note that these shot types are set once in the database using the command
+<code>rake db:seed</code>. The LabVIEW interface relies on the id values!
+It is possible to extend it but one should not mix them up.</p>
+
+<h2 id="label-Validations">Validations</h2>
+
+<p>A shot type cannot be deleted if a <a href="Shot.html">Shot</a> still
+refers to it.</p>
+
   </div><!-- description -->
 
   
@@ -188,7 +205,7 @@ updated_at :datetime        not null</pre>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/shottype.rb, line 22</span>
+            <pre><span class="ruby-comment"># File app/models/shottype.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>

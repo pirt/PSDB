@@ -152,6 +152,16 @@ name       :string(255)     not null
 created_at :datetime        not null
 updated_at :datetime        not null</pre>
 
+<p>This model represents a subsystem of the laser such as
+<code>PreAmplifier</code> or <code>MainAmplifier</code>. An <a
+href="Instance.html">Instance</a> refers to it. Subsystems are normally
+used as filter creteria for an <a href="Instance.html">Instance</a>.</p>
+
+<h2 id="label-Validations">Validations</h2>
+
+<p>A subsystem cannot be deleted if an <a href="Instance.html">Instance</a>
+still refers to it.</p>
+
   </div><!-- description -->
 
   
@@ -188,7 +198,7 @@ updated_at :datetime        not null</pre>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/subsystem.rb, line 22</span>
+            <pre><span class="ruby-comment"># File app/models/subsystem.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>

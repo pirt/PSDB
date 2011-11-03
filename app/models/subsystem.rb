@@ -7,7 +7,11 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
-
+# This model represents a subsystem of the laser such as <tt>PreAmplifier</tt> or
+# <tt>MainAmplifier</tt>. An Instance refers to it. Subsystems are normally used as
+# filter creteria for an Instance.
+# == Validations
+# A subsystem cannot be deleted if an Instance still refers to it.
 class Subsystem < ActiveRecord::Base
   attr_accessible :name
 

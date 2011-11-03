@@ -7,7 +7,13 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
-
+# This model represents a data type such as numeric, image or 2dData.
+# The data type is referenced by an Instancevalue and is used to determine
+# the right partial to be used to display the data (e.g. display a string or
+# generate an image and show it...).
+#
+# == Validations
+# A data type cannot be deleted if an Instancevalue refers to it.
 class Datatype < ActiveRecord::Base
   attr_accessible :name
 
@@ -19,6 +25,7 @@ class Datatype < ActiveRecord::Base
 
   before_destroy :check_if_instancevalues_associated
 
+# Return the name of the data type. This is defined in order to simplify views.
   def to_s
     return self.name
   end

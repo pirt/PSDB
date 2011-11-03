@@ -7,7 +7,17 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
-
+# This model represents a shot type. It is referenced by a Shot. Currently the following shot types
+# are defined:
+#   1. experiment shot
+#   2. test shot
+#   3. snap shot
+#   4. other
+#
+# Note that these shot types are set once in the database using the command <tt>rake db:seed</tt>. The LabVIEW
+# interface relies on the id values! It is possible to extend it but one should not mix them up.
+# == Validations
+# A shot type cannot be deleted if a Shot still refers to it.
 class Shottype < ActiveRecord::Base
   attr_accessible :name
 

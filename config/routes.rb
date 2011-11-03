@@ -5,10 +5,10 @@ PSDB::Application.routes.draw do
   get "dynamic_images/showSeriesPlot"
 
   resources :experiments do
-    resources :attachments
+    resources :attachments, :only => [:show, :new, :create, :edit, :update, :destroy]
   end
   resources :shots, :only => [:show, :edit, :update, :index] do
-    resources :attachments
+    resources :attachments, :only => [:show, :new, :create, :edit, :update, :destroy]
   end
 
   resources :instances, :only => [:show, :index]
