@@ -2,6 +2,7 @@
 # General controller for the entire application.
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
   before_filter :authenticate
 
 # Convert a numeric value and a unit with prefix to the numerical value of the base.
@@ -120,6 +121,7 @@ class ApplicationController < ActionController::Base
         end
         dbStats[:bytesUsed]=bytesUsed
         dbStats[:bytesFree]=bytesFree
+      end
     end
     return dbStats
   end
@@ -145,7 +147,6 @@ class ApplicationController < ActionController::Base
       return dirname+"/"+basename+"_"+projectName+extname
     end
   end
-
 private
   def authenticate
     authenticate_or_request_with_http_basic do |user_name, password|

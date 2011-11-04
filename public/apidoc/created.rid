@@ -1,4 +1,4 @@
-Fri, 04 Nov 2011 15:25:30 +0100
+Fri, 04 Nov 2011 15:38:25 +0100
 app/models/classtype.rb	Fri, 04 Nov 2011 12:48:21 +0100
 app/models/experiment.rb	Fri, 04 Nov 2011 13:17:05 +0100
 app/models/attachment.rb	Fri, 04 Nov 2011 12:41:09 +0100
@@ -17,7 +17,7 @@ app/controllers/attachments_controller.rb	Thu, 03 Nov 2011 14:56:03 +0100
 app/controllers/instancevaluesets_controller.rb	Fri, 04 Nov 2011 15:23:38 +0100
 app/controllers/dynamic_images_controller.rb	Thu, 03 Nov 2011 15:02:59 +0100
 app/controllers/experiments_controller.rb	Thu, 03 Nov 2011 14:54:16 +0100
-app/controllers/application_controller.rb	Fri, 04 Nov 2011 14:52:58 +0100
+app/controllers/application_controller.rb	Fri, 04 Nov 2011 15:37:54 +0100
 app/controllers/instancevalues_controller.rb	Fri, 04 Nov 2011 15:23:56 +0100
 app/helpers/application_helper.rb	Thu, 13 Oct 2011 14:53:43 +0200
 app/helpers/instancevalues_helper.rb	Tue, 01 Nov 2011 16:37:22 +0100

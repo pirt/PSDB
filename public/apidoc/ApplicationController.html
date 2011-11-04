@@ -72,8 +72,6 @@
     
     <li><a href="#method-c-projectizeName">::projectizeName</a>
     
-    <li><a href="#method-i-authenticate">#authenticate</a>
-    
     <li><a href="#method-i-convertUnitValue">#convertUnitValue</a>
     
     <li><a href="#method-i-getBaseUnit">#getBaseUnit</a>
@@ -203,7 +201,7 @@ different files which are project specific. Example:</p>
 
           
           <div class="method-source-code" id="projectizeName-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 135</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 136</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-identifier">projectName</span>=<span class="ruby-constant">PSDB_CONFIG</span>[<span class="ruby-string">&quot;project&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>]
   <span class="ruby-identifier">dirname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">filename</span>)
@@ -230,38 +228,6 @@ different files which are project specific. Example:</p>
   
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-authenticate" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">authenticate</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="authenticate-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 149</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticate</span>
-  <span class="ruby-identifier">authenticate_or_request_with_http_basic</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user_name</span>, <span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">user_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'admin'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">==</span> <span class="ruby-string">'123123'</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- authenticate-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- authenticate-method -->
 
     
       <div id="method-i-convertUnitValue" class="method-detail ">
@@ -401,39 +367,10 @@ prefix value.</p>
         <span class="ruby-keyword">end</span>
         <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">bytesUsed</span>
         <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">bytesFree</span>
+      <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">dbStats</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
-    <span class="ruby-keyword">return</span> <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-comment"># Return a filename which contains the project name as defined in &lt;tt&gt;config/psdbconfig.yml&lt;/tt&gt;</span>
-<span class="ruby-comment"># This function can be used to call different files which are project specific.</span>
-<span class="ruby-comment"># Example:</span>
-<span class="ruby-comment">#   projectizeName(&quot;logo.png&quot;) =&gt; logo_PHELIX.png (for project name PHELIX)</span>
-<span class="ruby-comment">#   projectizeName(&quot;logo.png&quot;) =&gt; logo_POLARIS.png (for project name POLARIS)</span>
-<span class="ruby-comment"># filename::</span>
-<span class="ruby-comment"># the filename where the project name should be inserted.</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
-    <span class="ruby-identifier">projectName</span>=<span class="ruby-constant">PSDB_CONFIG</span>[<span class="ruby-string">&quot;project&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>]
-    <span class="ruby-identifier">dirname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">filename</span>)
-    <span class="ruby-identifier">extname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">filename</span>)
-    <span class="ruby-identifier">basename</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">filename</span>,<span class="ruby-identifier">extname</span>) <span class="ruby-comment">#basename without extension</span>
-    <span class="ruby-identifier">extname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">filename</span>)
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">dirname</span><span class="ruby-operator">==</span><span class="ruby-string">&quot;.&quot;</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">basename</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">projectName</span><span class="ruby-operator">+</span><span class="ruby-identifier">extname</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">dirname</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">basename</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">projectName</span><span class="ruby-operator">+</span><span class="ruby-identifier">extname</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-
-<span class="ruby-identifier">private</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticate</span>
-    <span class="ruby-identifier">authenticate_or_request_with_http_basic</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user_name</span>, <span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">user_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'admin'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">==</span> <span class="ruby-string">'123123'</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+  <span class="ruby-keyword">end</span></pre>
           </div><!-- convertUnitValue-source -->
           
         </div>
@@ -542,9 +479,8 @@ hashes are set to -1.</p>
       <span class="ruby-keyword">end</span>
       <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">bytesUsed</span>
       <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">bytesFree</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dbStats</span>
-<span class="ruby-keyword">end</span></pre>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span></pre>
           </div><!-- getDBSize-source -->
           
         </div>
@@ -602,7 +538,7 @@ hashes are set to -1.</p>
 
           
           <div class="method-source-code" id="projectizeName-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 125</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
 <span class="ruby-keyword">end</span></pre>
