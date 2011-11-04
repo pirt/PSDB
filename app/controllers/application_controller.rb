@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
       unit.strip!
     else
       return value
+    end
     unitRegEx=/^([afpnu\xC2\xB5\316\274mcdhkMGTPE]?)[ ]*(.+)/
     matchSet=unitRegEx.match(unit)
     if (matchSet.nil?)
@@ -92,36 +93,38 @@ class ApplicationController < ActionController::Base
 # Example of a return value:
 #   dbStats={:bytesUsed=>1234556,:bytesFree=>76544321}
   def getDBSize
-    dbStats={:bytesUsed=>-1,:bytesFree=>-1}
+    dbStats={}
     case (getDatabaseType)
-      when "OracleEnhanced"
-        if (!Rails.env.test?) # avoid problems while unit testing
-          queryString="Select MAX(d.bytes) total_bytes,
-                          nvl(SUM(f.Bytes), 0) free_bytes,
-                          d.file_name,
-                          MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
-                          ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx
-                          from   DBA_FREE_SPACE f , DBA_DATA_FILES d
-                          where  f.tablespace_name(+) = d.tablespace_name
-                            and    f.file_id(+) = d.file_id
-                            and    d.tablespace_name = 'PHELIX'
-                          group by d.file_name"
-          stats=Shot.find_by_sql(queryString).last
-          dbStats[:bytesUsed]=stats.used_bytes
-          dbStats[:bytesFree]=stats.free_bytes
-        end
-      when "Mysql2"
-        bytesUsed=0
-        bytesFree=0
-        stats=Shot.find_by_sql("SHOW TABLE STATUS")
-        stats.each do |status|
-          bytesUsed+=status.Data_length
-          bytesUsed+=status.Index_length
-          bytesFree+=status.Data_free
-        end
-        dbStats[:bytesUsed]=bytesUsed
-        dbStats[:bytesFree]=bytesFree
+    when "OracleEnhanced"
+      if (!Rails.env.test?) # avoid problems while unit testing
+        queryString="Select MAX(d.bytes) total_bytes,
+                        nvl(SUM(f.Bytes), 0) free_bytes,
+                        d.file_name,
+                        MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
+                        ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx
+                        from   DBA_FREE_SPACE f , DBA_DATA_FILES d
+                        where  f.tablespace_name(+) = d.tablespace_name
+                          and    f.file_id(+) = d.file_id
+                          and    d.tablespace_name = 'PHELIX'
+                        group by d.file_name"
+        stats=Shot.find_by_sql(queryString).last
+        dbStats[:bytesUsed]=stats.used_bytes
+        dbStats[:bytesFree]=stats.free_bytes
       end
+    when "Mysql2"
+      bytesUsed=0
+      bytesFree=0
+      stats=Shot.find_by_sql("SHOW TABLE STATUS")
+      stats.each do |status|
+        bytesUsed+=status.Data_length
+        bytesUsed+=status.Index_length
+        bytesFree+=status.Data_free
+      end
+      dbStats[:bytesUsed]=bytesUsed
+      dbStats[:bytesFree]=bytesFree
+    else
+      dbStats[:bytesUsed]=-1
+      dbStats[:bytesFree]=-1
     end
     return dbStats
   end
