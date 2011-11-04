@@ -1,3 +1,7 @@
+require 'csv'
+require "gnuplot"
+require "RMagick"
+require 'tempfile'
 # == Schema Information
 #
 # Table name: instancevalues
@@ -12,12 +16,6 @@
 #  created_at          :datetime        not null
 #  updated_at          :datetime        not null
 #
-
-require 'csv'
-require "gnuplot"
-require "RMagick"
-require 'tempfile'
-
 class Instancevalue < ActiveRecord::Base
   attr_accessible :instancevalueset_id, :name, :data_numeric, :data_binary, :data_string, :datatype_id
 

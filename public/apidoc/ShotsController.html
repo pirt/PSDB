@@ -149,6 +149,8 @@
 
   <div id="description" class="description">
     
+<p>This restful controller is responsible for handling shots.</p>
+
   </div><!-- description -->
 
   
@@ -185,7 +187,7 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 62</span>
+            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-ivar">@shot</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@shot</span>
@@ -221,7 +223,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 3</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">selectedShots</span>=<span class="ruby-constant">Shot</span>
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:selectedExp</span>].<span class="ruby-identifier">present?</span>)
@@ -279,7 +281,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 34</span>
+            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@shot</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@shot</span>
@@ -333,7 +335,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 72</span>
+            <pre><span class="ruby-comment"># File app/controllers/shots_controller.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-ivar">@shot</span> = <span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@shot</span>

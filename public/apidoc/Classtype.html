@@ -143,6 +143,12 @@
 
   <div id="description" class="description">
     
+<p>This model represents a class type (= device type of an <a
+href="Instance.html">Instance</a>) such as <code>PH_gentecPowermeter</code>
+or <code>PH_Sixpack</code>. The class type determines which view will be
+used to display measurement data. Furthermore the class type is used as
+filter criteria for listing instances.</p>
+
 <h2 id="label-Schema+Information">Schema Information</h2>
 
 <p>Table name: classtypes</p>
@@ -151,6 +157,18 @@
 name       :string(256)     not null
 created_at :datetime        not null
 updated_at :datetime        not null</pre>
+
+<h2 id="label-Validations">Validations</h2>
+
+<p>The following validations exist:</p>
+<ul><li>
+<p>It must have a unique name.</p>
+</li><li>
+<p>The name must not exceed 255 characters.</p>
+</li><li>
+<p>It cannot be deleted if an <a href="Instance.html">Instance</a> refers to
+it.</p>
+</li></ul>
 
   </div><!-- description -->
 
@@ -183,12 +201,12 @@ updated_at :datetime        not null</pre>
 
         <div class="method-description">
           
-          
+          <p>Return name of class type. This function was added to simplify views.</p>
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/classtype.rb, line 22</span>
+            <pre><span class="ruby-comment"># File app/models/classtype.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>

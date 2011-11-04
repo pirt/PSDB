@@ -2,24 +2,21 @@
 # General controller for the entire application.
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
   before_filter :authenticate
 
-  def authenticate
-    authenticate_or_request_with_http_basic do |user_name, password|
-      user_name == 'admin' && password == '123123'
-    end
-  end
-
+# Convert a numeric value and a unit with prefix to the numerical value of the base.
+# This functions extracts the unit prefix and multiplies it by its prefix value.
+#
+# Example: 10 km => 10000, 123 cm => 1.23
+# value::
+# numeric value to be converted
+# unit::
+# unit string with prefix such as "cm" or "mBar"
   def convertUnitValue(value,unit)
-    if (unit.nil?)
-      return value
-    end
-    if (unit.empty?)
-      return value
-    else
+    if (unit.present?)
       unit.strip!
-    end
+    else
+      return value
     unitRegEx=/^([afpnu\xC2\xB5\316\274mcdhkMGTPE]?)[ ]*(.+)/
     matchSet=unitRegEx.match(unit)
     if (matchSet.nil?)
@@ -66,21 +63,33 @@ class ApplicationController < ActionController::Base
       return value*mult
     end
   end
+# Return the physical dimension by stripping away any prefix.
+#
+# Example: "mBar" -> "Bar", "km" -> "m"
+#
+# unitString::
+# the string to be converted.
   def getBaseUnit(unitString)
-    if (unitString.nil?)
-      return unitString
-    elsif (unitString.empty?)
-      return unitString
-    else
+    if (unitString.present?)
       unitString.strip!
       unitRegEx=/^([afpnumcdhkMGTPE]?)[ ]*([\w%]+)/
       matchSet=unitRegEx.match(unitString)
       return matchSet[2]
+    else
+      return unitString
     end
   end
+# Return name of underlying database system (adaptor type) such as +OracleEnhanced+
+# or +Mysql2+.
   def getDatabaseType
     return ActiveRecord::Base.connection.adapter_name
   end
+# Return size information of the database as hash list. The way this information is retrieved
+# is database specific. There currently exist methods for oracle and mysql. If the size could not
+# be retrieved both hashes are set to -1.
+#
+# Example of a return value:
+#   dbStats={:bytesUsed=>1234556,:bytesFree=>76544321}
   def getDBSize
     dbStats={:bytesUsed=>-1,:bytesFree=>-1}
     case (getDatabaseType)
@@ -117,6 +126,13 @@ class ApplicationController < ActionController::Base
   def projectizeName(filename)
     return ApplicationController.projectizeName(filename)
   end
+# Return a filename which contains the project name as defined in <tt>config/psdbconfig.yml</tt>
+# This function can be used to call different files which are project specific.
+# Example:
+#   projectizeName("logo.png") => logo_PHELIX.png (for project name PHELIX)
+#   projectizeName("logo.png") => logo_POLARIS.png (for project name POLARIS)
+# filename::
+# the filename where the project name should be inserted.
   def self.projectizeName(filename)
     projectName=PSDB_CONFIG["project"]["name"]
     dirname=File.dirname(filename)
@@ -129,5 +145,11 @@ class ApplicationController < ActionController::Base
       return dirname+"/"+basename+"_"+projectName+extname
     end
   end
-end
 
+private
+  def authenticate
+    authenticate_or_request_with_http_basic do |user_name, password|
+      user_name == 'admin' && password == '123123'
+    end
+  end
+end

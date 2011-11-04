@@ -145,6 +145,10 @@
 
   <div id="description" class="description">
     
+<p>This controller is responsible for handling Instancevaluesets. The index
+action allows for displaying a list of measurement data of a particular
+device for a set of shots.</p>
+
   </div><!-- description -->
 
   
@@ -181,7 +185,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/instancevaluesets_controller.rb, line 3</span>
+            <pre><span class="ruby-comment"># File app/controllers/instancevaluesets_controller.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">selectedValueSets</span>=<span class="ruby-constant">Instancevalueset</span>
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:instance_id</span>].<span class="ruby-identifier">present?</span>)
@@ -282,7 +286,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/instancevaluesets_controller.rb, line 78</span>
+            <pre><span class="ruby-comment"># File app/controllers/instancevaluesets_controller.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@showRaw</span>=<span class="ruby-identifier">params</span>[<span class="ruby-value">:rawView</span>]<span class="ruby-operator">==</span><span class="ruby-string">&quot;true&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@instanceValueSet</span>=<span class="ruby-constant">Instancevalueset</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])

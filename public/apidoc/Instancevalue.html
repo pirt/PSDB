@@ -155,6 +155,20 @@
 
   <div id="description" class="description">
     
+<h2 id="label-Schema+Information">Schema Information</h2>
+
+<p>Table name: instancevalues</p>
+
+<pre>id                  :integer(38)     not null, primary key
+instancevalueset_id :integer(38)     not null
+datatype_id         :integer(38)     not null
+name                :string(256)     not null
+data_numeric        :decimal(, )
+data_string         :string(255)
+data_binary         :binary
+created_at          :datetime        not null
+updated_at          :datetime        not null</pre>
+
   </div><!-- description -->
 
   
@@ -191,7 +205,7 @@
 
           
           <div class="method-source-code" id="export2dData-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 36</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">export2dData</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;2dData&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong datatype&quot;</span>
@@ -248,7 +262,7 @@
 
           
           <div class="method-source-code" id="exportImage-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 68</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">exportImage</span>(<span class="ruby-identifier">options</span>={})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong data type&quot;</span>
@@ -316,7 +330,7 @@
 
           
           <div class="method-source-code" id="generate2dPlot-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 132</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generate2dPlot</span>(<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">plotOptions</span>={}
   <span class="ruby-identifier">plotOptions</span>=<span class="ruby-identifier">plotOptions</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
@@ -351,7 +365,7 @@
 
           
           <div class="method-source-code" id="generateImage-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 109</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generateImage</span>(<span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;error converting instancevalue to image file&quot;</span>
@@ -391,7 +405,7 @@
 
           
           <div class="method-source-code" id="generateImageInfo-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 122</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generateImageInfo</span>(<span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;image&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;impossible to get image info from non-image instancevalue&quot;</span>
@@ -429,7 +443,7 @@ the axis labels.</p>
 
           
           <div class="method-source-code" id="generatePlotAxisDescriptions-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 155</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 153</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlotAxisDescriptions</span>
   <span class="ruby-identifier">axisDescriptionOptions</span>={<span class="ruby-value">:xlabel=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">:ylabel=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>}
   <span class="ruby-identifier">axisDescription</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_string</span>
@@ -476,7 +490,7 @@ the axis labels.</p>
 
           
           <div class="method-source-code" id="generatePlotDataSet-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 140</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalue.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generatePlotDataSet</span>(<span class="ruby-identifier">options</span>={})
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datatype</span>.<span class="ruby-identifier">name!</span>=<span class="ruby-string">&quot;2dData&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;instancevalue has wrong data type&quot;</span>

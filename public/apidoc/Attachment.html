@@ -143,6 +143,10 @@
 
   <div id="description" class="description">
     
+<p>This model represents a file attachment. It is connected to a <a
+href="Shot.html">Shot</a> or an <a href="Experiment.html">Experiment</a>
+using a polymorphic index.</p>
+
 <h2 id="label-Schema+Information">Schema Information</h2>
 
 <p>Table name: attachments</p>
@@ -156,6 +160,17 @@ attachable_id   :integer(38)
 attachable_type :string(255)
 created_at      :datetime        not null
 updated_at      :datetime        not null</pre>
+
+<h2 id="label-Validations">Validations</h2>
+
+<p>The following validations exist:</p>
+<ul><li>
+<p>The filename (without the file path) must not exceed 255 characters.</p>
+</li><li>
+<p>The description must not exceed 255 characters.</p>
+</li><li>
+<p>The maximum file size is 5 Mb.</p>
+</li></ul>
 
   </div><!-- description -->
 
@@ -188,13 +203,13 @@ updated_at      :datetime        not null</pre>
 
         <div class="method-description">
           
-          <p>Get size limitations of the content field (=file size) of the Attachments
-table</p>
+          <p>Get size limitations (in bytes) of the content field (=file size) of the
+Attachments table</p>
           
 
           
           <div class="method-source-code" id="maxContentSize-source">
-            <pre><span class="ruby-comment"># File app/models/attachment.rb, line 36</span>
+            <pre><span class="ruby-comment"># File app/models/attachment.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">maxContentSize</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@maxContentSize</span>
 <span class="ruby-keyword">end</span></pre>

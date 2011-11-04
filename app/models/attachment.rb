@@ -1,3 +1,6 @@
+# This model represents a file attachment. It is connected to a Shot
+# or an Experiment using a polymorphic index.
+#
 # == Schema Information
 #
 # Table name: attachments
@@ -12,7 +15,11 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #
-
+# == Validations
+# The following validations exist:
+# * The filename (without the file path) must not exceed 255 characters.
+# * The description must not exceed 255 characters.
+# * The maximum file size is 5 Mb.
 class Attachment < ActiveRecord::Base
   attr_accessible :filename, :filetype, :description, :content, :attachable_id, :attachable_type
 
@@ -32,7 +39,7 @@ class Attachment < ActiveRecord::Base
   validates :content, :presence => true,
                       :length => { :maximum => @@maxContentSize }
 
-  # Get size limitations of the content field (=file size) of the Attachments table
+  # Get size limitations (in bytes) of the content field (=file size) of the Attachments table
   def self.maxContentSize()
     return @@maxContentSize
   end

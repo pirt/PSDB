@@ -1,5 +1,5 @@
-#
 # This class represents a shot in the database.
+#
 # == Schema Information
 #
 # Table name: shots
@@ -12,6 +12,14 @@
 #  updated_at    :datetime        not null
 #  status        :integer(38)
 #
+# == Validations
+# The following validations exist:
+# * It cannot be deleted if an Instancevalueset refers to it.
+# * The description field must not exceed 255 characters.
+# * It must refer to a valid experiment id.
+# * It must refer to a valid shot type id.
+# *Note:* It is acutally not forseen to delete a shot. However if a shot is deleted all
+# file attachments refering to it are also deleted for consistency.
 class Shot < ActiveRecord::Base
   attr_accessible :description, :experiment_id, :shottype_id, :status
 

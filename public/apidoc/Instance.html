@@ -147,6 +147,14 @@
 
   <div id="description" class="description">
     
+<p>This class represents an instance which is most cases (but not
+necessarily!) a  physical device such as
+<code>PA_Nearfield_Input_Cam</code>. An <a
+href="Instance.html">Instance</a> belongs to a <a
+href="Subsystem.html">Subsystem</a> (e.g. <code>PreAmp</code>) and has a
+certain <a href="Classtype.html">Classtype</a> (e.g.
+<code>PH_IEEE1394_Cam</code>).</p>
+
 <h2 id="label-Schema+Information">Schema Information</h2>
 
 <p>Table name: instances</p>
@@ -157,6 +165,19 @@ subsystem_id :integer(38)     not null
 name         :string(255)     not null
 created_at   :datetime        not null
 updated_at   :datetime        not null</pre>
+
+<h2 id="label-Validations">Validations</h2>
+
+<p>The following validations exist:</p>
+<ul><li>
+<p>The instance name must be unique.</p>
+</li><li>
+<p>The instance name must not exceed 255 characters.</p>
+</li><li>
+<p>It must refer to a valid classtype</p>
+</li><li>
+<p>It must refer to a valid subsystem.</p>
+</li></ul>
 
   </div><!-- description -->
 
@@ -189,12 +210,21 @@ updated_at   :datetime        not null</pre>
 
         <div class="method-description">
           
-          
+          <p>Return information about exisiting interface versions of measurement data.
+The return value is an array of hashes of all found interface version,
+their shot id in which this version appeared first and the respective shot
+date.</p>
+
+<p>Example of a return value:</p>
+
+<pre class="ruby"><span class="ruby-identifier">interfaceInfo</span>=[{:<span class="ruby-identifier">version=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>,:<span class="ruby-identifier">shot_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">123</span>,:<span class="ruby-identifier">shotDate=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1.1</span><span class="ruby-value">.2010</span>},
+               {:<span class="ruby-identifier">version=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">3</span>,:<span class="ruby-identifier">shot_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">345</span>,:<span class="ruby-identifier">shotDate=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">2.2</span><span class="ruby-value">.2011</span>}]
+</pre>
           
 
           
           <div class="method-source-code" id="interfaceVersionInfo-source">
-            <pre><span class="ruby-comment"># File app/models/instance.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/models/instance.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">interfaceVersionInfo</span>
   <span class="ruby-identifier">interfaceVersions</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:version</span>).<span class="ruby-identifier">group</span>(<span class="ruby-value">:version</span>)
   <span class="ruby-identifier">interfaceInfo</span>=[]
@@ -226,12 +256,12 @@ updated_at   :datetime        not null</pre>
 
         <div class="method-description">
           
-          
+          <p>Return the name of the instance. This function was added to simplify views.</p>
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/instance.rb, line 43</span>
+            <pre><span class="ruby-comment"># File app/models/instance.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -256,12 +286,24 @@ updated_at   :datetime        not null</pre>
 
         <div class="method-description">
           
-          
+          <p>Check if a view for the given instance and the given interface version
+exists. Returns true if successful and false otherwise.</p>
+<dl class="rdoc-list note-list"><dt>interfaceVersion
+<dd>
+<p>check for a view with this API version number. This version number is part
+of the view’s filename (e.g.
+<code>views/instancevaluesets/&lt;classname&gt;/<em>short</em>&lt;interfaceVersion&gt;.html.erb</code>)</p>
+<dl class="rdoc-list note-list"><dt>detailed
+<dd>
+<p>if false it checks whether if a short view exists otherwise it checks for
+the existence of a detailed view.</p>
+</dd></dl>
+</dd></dl>
           
 
           
           <div class="method-source-code" id="viewExists-3F-source">
-            <pre><span class="ruby-comment"># File app/models/instance.rb, line 27</span>
+            <pre><span class="ruby-comment"># File app/models/instance.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">viewExists?</span>(<span class="ruby-identifier">interfaceVersion</span>,<span class="ruby-identifier">detailed</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">viewType</span>= <span class="ruby-identifier">detailed</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;/_detailed_&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;/_short_&quot;</span>
   <span class="ruby-identifier">viewFileName</span>=<span class="ruby-operator">::</span><span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/app/views/instancevaluesets/&quot;</span><span class="ruby-operator">+</span>

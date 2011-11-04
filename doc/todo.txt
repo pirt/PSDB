@@ -14,3 +14,4 @@ Features:
 -missing views: PH_VacuumControl (add picture)
 -missing view: BackreflectionMeasurement
 -missing view: SSAC
+-missing validation: instance cannto be deleted if instancevaluesets refer to it.

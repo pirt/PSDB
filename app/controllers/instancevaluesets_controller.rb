@@ -1,4 +1,6 @@
-#
+# This controller is responsible for handling Instancevaluesets.
+# The index action allows for displaying a list of measurement data of a
+# particular device for a set of shots.
 class InstancevaluesetsController < ApplicationController
   def index
     selectedValueSets=Instancevalueset

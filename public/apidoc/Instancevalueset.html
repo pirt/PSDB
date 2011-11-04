@@ -155,6 +155,37 @@
 
   <div id="description" class="description">
     
+<p>This model represents a set of measurement data (represented by <a
+href="Instancevalue.html">Instancevalue</a>) of a particular <a
+href="Instance.html">Instance</a> for a certain <a
+href="Shot.html">Shot</a>. In addition this model contains a version number
+which is used to identify a certain API version of the underlying
+Instancevalues. It is set by the LabVIEW interface. The web applicataion
+uses this number to correctly display / interpret the measurement data in
+the class-specific views (e.g. found in
+<code>views/instancevaluesets/&lt;classtype&gt;/<em>short</em>&lt;version
+number&gt;.html.erb</code>).</p>
+
+<h2 id="label-Schema+Information">Schema Information</h2>
+
+<p>Table name: instancevaluesets</p>
+
+<pre>id          :integer(38)     not null, primary key
+shot_id     :integer(38)     not null
+instance_id :integer(38)     not null
+version     :integer(38)     not null
+created_at  :datetime
+updated_at  :datetime</pre>
+
+<h2 id="label-Validations">Validations</h2>
+
+<p>The following validations exist:</p>
+<ul><li>
+<p>It must refer to a valid shot id.</p>
+</li><li>
+<p>It must refer to a valid instance id.</p>
+</li></ul>
+
   </div><!-- description -->
 
   
@@ -191,7 +222,7 @@
 
           
           <div class="method-source-code" id="generateMultiPlot-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 102</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generateMultiPlot</span>(<span class="ruby-identifier">plotParameterNames</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">tempFile</span>=<span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>([<span class="ruby-string">'multiplotImage'</span>,<span class="ruby-string">'.png'</span>])
   <span class="ruby-identifier">plotOptions</span>={<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">200</span>, <span class="ruby-value">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">100</span>, <span class="ruby-value">:imagetype=</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;png&quot;</span>}
@@ -256,7 +287,7 @@
 
           
           <div class="method-source-code" id="getAxesNumbers-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 71</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getAxesNumbers</span>
   <span class="ruby-identifier">foundAxes</span>=<span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">parameters</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:name</span>)
@@ -289,12 +320,24 @@
 
         <div class="method-description">
           
-          
+          <p>Return a boolean value from an <a
+href="Instancevalue.html">Instancevalue</a> of a given name which is
+associated to the <a href="Instancevalueset.html">Instancevalueset</a>. If
+the name is not found or the <a href="Instancevalue.html">Instancevalue</a>
+of with this name is not a boolean value, nil is returned.</p>
+<dl class="rdoc-list note-list"><dt>parameterName
+<dd>
+<p>name of the parameter (= name field of the <a
+href="Instancevalue.html">Instancevalue</a>) to be returned</p>
+</dd><dt>options
+<dd>
+<p>currently none</p>
+</dd></dl>
           
 
           
           <div class="method-source-code" id="getBooleanParameter-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 48</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBooleanParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
@@ -328,12 +371,24 @@
 
         <div class="method-description">
           
-          
+          <p>Return a numeric value from an <a
+href="Instancevalue.html">Instancevalue</a> of a given name which is
+associated to the <a href="Instancevalueset.html">Instancevalueset</a>. If
+the name is not found or the <a href="Instancevalue.html">Instancevalue</a>
+of with this name is not a numeric value, nil is returned.</p>
+<dl class="rdoc-list note-list"><dt>parameterName
+<dd>
+<p>name of the parameter (= name field of the <a
+href="Instancevalue.html">Instancevalue</a>) to be returned</p>
+</dd><dt>options
+<dd>
+<p>currently none</p>
+</dd></dl>
           
 
           
           <div class="method-source-code" id="getNumericParameter-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 60</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getNumericParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
@@ -371,7 +426,7 @@
 
           
           <div class="method-source-code" id="getPlotDataSet-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 141</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 167</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getPlotDataSet</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">instanceValue</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">instanceValue</span>.<span class="ruby-identifier">nil?</span>)
@@ -402,12 +457,29 @@
 
         <div class="method-description">
           
-          
+          <p>Return a string value from an <a
+href="Instancevalue.html">Instancevalue</a> of a given name which is
+associated to the <a href="Instancevalueset.html">Instancevalueset</a>. If
+the name is not found or the <a href="Instancevalue.html">Instancevalue</a>
+of with this name is not a string value, nil is returned.</p>
+<dl class="rdoc-list note-list"><dt>parameterName
+<dd>
+<p>name of the parameter (= name field of the <a
+href="Instancevalue.html">Instancevalue</a>) to be returned</p>
+</dd><dt>options
+<dd></dd></dl>
+<dl class="rdoc-list label-list"><dt>:strip=&gt;true
+<dd>
+<p>remove leading and trailing whitespaces of the string.</p>
+</dd><dt>:upcase=&gt;true
+<dd>
+<p>return the upcase version of the string.</p>
+</dd></dl>
           
 
           
           <div class="method-source-code" id="getStringParameter-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 27</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getStringParameter</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parameterData</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">parameterData</span>.<span class="ruby-identifier">nil?</span>)
@@ -455,7 +527,7 @@
 
           
           <div class="method-source-code" id="getVacuumChannels-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 82</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getVacuumChannels</span>
   <span class="ruby-identifier">foundChannels</span>=<span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">parameters</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:name</span>)

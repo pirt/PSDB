@@ -1,3 +1,8 @@
+# This model represents a data type such as numeric, image or 2dData.
+# The data type is referenced by an Instancevalue and is used to determine
+# the right partial to be used to display the data (e.g. display a string or
+# generate an image and show it...).
+#
 # == Schema Information
 #
 # Table name: datatypes
@@ -6,11 +11,6 @@
 #  name       :string(30)      not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#
-# This model represents a data type such as numeric, image or 2dData.
-# The data type is referenced by an Instancevalue and is used to determine
-# the right partial to be used to display the data (e.g. display a string or
-# generate an image and show it...).
 #
 # == Validations
 # A data type cannot be deleted if an Instancevalue refers to it.

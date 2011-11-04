@@ -1,3 +1,7 @@
+# This model represents an experiment to which a Shot can refer to.
+# Experiments can only be created, modified, and deleted using the web
+# interface. Furthermore file attachments can be added.
+#
 # == Schema Information
 #
 # Table name: experiments
@@ -9,7 +13,13 @@
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
-
+# == Validations
+# The following validations exist:
+# * The name (such as +P043+) must be unique.
+# * The name must not exceed 30 characters.
+# * The description must not exceed 255 characters.
+# * It cannot be deleted if a Shot refers to it.
+#
 class Experiment < ActiveRecord::Base
   attr_accessible :name, :description, :active
 
@@ -28,7 +38,20 @@ class Experiment < ActiveRecord::Base
                           :length => { :maximum => 255 }
 
   before_destroy :check_if_shots_associated
-
+# Return a list of beam times. A beam time is a period of time in which shots
+# are refered to this experiment. The beam time start with the date of the first
+# shot referring this experiment. If two shots are more than a given time separated
+# from each other this is interpreted as a new beam time of the same experiment.
+# This functions returns an array of hash lists of the found beam times.
+#
+# Example of a return value:
+#  beamtimes=[{:firstId=1,:lastId=>10,:firstDate=>1.1.2010,:lastDate=>4.1.2010},
+#             {:firstId=20,:lastId=>25, :firstDate=>8.2.2010,:lastDate=>9.2.2010}]
+# This experiment would have two beam times. One in january and one in february 2010.
+#
+# minimumTimeBetweenBeamTimes::
+# if two shot dates are separated more than this time they are accounted to a new
+# beam time.
   def getBeamtimes(minimumTimeBetweenBeamTimes=5.days)
     if self.shots.empty?
       return []
@@ -59,6 +82,7 @@ class Experiment < ActiveRecord::Base
     beamtimes << beamtime
     return beamtimes
   end
+# Return the name of the experiment. This function was added to simplify views.
   def to_s
     return self.name
   end

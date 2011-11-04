@@ -1,3 +1,12 @@
+require 'gnuplot'
+require 'tempfile'
+# This model represents a set of measurement data (represented by Instancevalue)
+# of a particular Instance for a certain Shot. In addition this model contains a
+# version number which is used to identify a certain API version of the underlying
+# Instancevalues. It is set by the LabVIEW interface. The web applicataion uses this
+# number to correctly display / interpret the measurement data in the class-specific
+# views (e.g. found in <tt>views/instancevaluesets/<classtype>/_short_<version number>.html.erb</tt>).
+#
 # == Schema Information
 #
 # Table name: instancevaluesets
@@ -9,9 +18,10 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #
-
-require 'gnuplot'
-require 'tempfile'
+# == Validations
+# The following validations exist:
+# * It must refer to a valid shot id.
+# * It must refer to a valid instance id.
 
 class Instancevalueset < ActiveRecord::Base
   attr_accessible :shot_id, :instance_id, :version
@@ -23,7 +33,13 @@ class Instancevalueset < ActiveRecord::Base
 
   validates :shot, :presence => true
   validates :instance, :presence => true
-
+# Return a string value from an Instancevalue of a given name which is associated to
+# the Instancevalueset. If the name is not found or the Instancevalue of with this name is
+# not a string value, nil is returned.
+# parameterName:: name of the parameter (= name field of the Instancevalue) to be returned
+# options:: 
+# [:strip=>true] remove leading and trailing whitespaces of the string.
+# [:upcase=>true] return the upcase version of the string.
   def getStringParameter(parameterName,options={})
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
@@ -45,6 +61,11 @@ class Instancevalueset < ActiveRecord::Base
       return stringData
     end
   end
+# Return a boolean value from an Instancevalue of a given name which is associated to
+# the Instancevalueset. If the name is not found or the Instancevalue of with this name is
+# not a boolean value, nil is returned.
+# parameterName:: name of the parameter (= name field of the Instancevalue) to be returned
+# options:: currently none
   def getBooleanParameter(parameterName,options={})
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)
@@ -57,6 +78,11 @@ class Instancevalueset < ActiveRecord::Base
       return result
     end
   end
+# Return a numeric value from an Instancevalue of a given name which is associated to
+# the Instancevalueset. If the name is not found or the Instancevalue of with this name is
+# not a numeric value, nil is returned.
+# parameterName:: name of the parameter (= name field of the Instancevalue) to be returned
+# options:: currently none
   def getNumericParameter(parameterName,options={})
     parameterData=self.instancevalues.find_by_name(parameterName)
     if (parameterData.nil?)

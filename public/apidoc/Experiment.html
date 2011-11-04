@@ -145,6 +145,10 @@
 
   <div id="description" class="description">
     
+<p>This model represents an experiment to which a <a href="Shot.html">Shot</a>
+can refer to. Experiments can only be created, modified, and deleted using
+the web interface. Furthermore file attachments can be added.</p>
+
 <h2 id="label-Schema+Information">Schema Information</h2>
 
 <p>Table name: experiments</p>
@@ -155,6 +159,19 @@ active      :boolean(1)      default(TRUE)
 description :string(255)     not null
 created_at  :datetime        not null
 updated_at  :datetime        not null</pre>
+
+<h2 id="label-Validations">Validations</h2>
+
+<p>The following validations exist:</p>
+<ul><li>
+<p>The name (such as <code>P043</code>) must be unique.</p>
+</li><li>
+<p>The name must not exceed 30 characters.</p>
+</li><li>
+<p>The description must not exceed 255 characters.</p>
+</li><li>
+<p>It cannot be deleted if a <a href="Shot.html">Shot</a> refers to it.</p>
+</li></ul>
 
   </div><!-- description -->
 
@@ -187,12 +204,31 @@ updated_at  :datetime        not null</pre>
 
         <div class="method-description">
           
-          
+          <p>Return a list of beam times. A beam time is a period of time in which shots
+are refered to this experiment. The beam time start with the date of the
+first shot referring this experiment. If two shots are more than a given
+time separated from each other this is interpreted as a new beam time of
+the same experiment. This functions returns an array of hash lists of the
+found beam times.</p>
+
+<p>Example of a return value:</p>
+
+<pre class="ruby"><span class="ruby-identifier">beamtimes</span>=[{:<span class="ruby-identifier">firstId=</span><span class="ruby-value">1</span>,:<span class="ruby-identifier">lastId=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10</span>,:<span class="ruby-identifier">firstDate=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1.1</span><span class="ruby-value">.2010</span>,:<span class="ruby-identifier">lastDate=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">4.1</span><span class="ruby-value">.2010</span>},
+           {:<span class="ruby-identifier">firstId=</span><span class="ruby-value">20</span>,:<span class="ruby-identifier">lastId=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">25</span>, :<span class="ruby-identifier">firstDate=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">8.2</span><span class="ruby-value">.2010</span>,:<span class="ruby-identifier">lastDate=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">9.2</span><span class="ruby-value">.2010</span>}]
+</pre>
+
+<p>This experiment would have two beam times. One in january and one in
+february 2010.</p>
+<dl class="rdoc-list note-list"><dt>minimumTimeBetweenBeamTimes
+<dd>
+<p>if two shot dates are separated more than this time they are accounted to a
+new beam time.</p>
+</dd></dl>
           
 
           
           <div class="method-source-code" id="getBeamtimes-source">
-            <pre><span class="ruby-comment"># File app/models/experiment.rb, line 32</span>
+            <pre><span class="ruby-comment"># File app/models/experiment.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBeamtimes</span>(<span class="ruby-identifier">minimumTimeBetweenBeamTimes</span>=<span class="ruby-value">5</span>.<span class="ruby-identifier">days</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">shots</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-keyword">return</span> []
@@ -244,12 +280,13 @@ updated_at  :datetime        not null</pre>
 
         <div class="method-description">
           
-          
+          <p>Return the name of the experiment. This function was added to simplify
+views.</p>
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/experiment.rb, line 62</span>
+            <pre><span class="ruby-comment"># File app/models/experiment.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>

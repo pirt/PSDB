@@ -1,3 +1,4 @@
+# This restful controller is responsible for handling shots.
 class ShotsController < ApplicationController
   def index
     selectedShots=Shot

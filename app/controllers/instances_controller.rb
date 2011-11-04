@@ -1,3 +1,6 @@
+# This controller handles the display of information about Instances
+# either as a list which can be filtered by a given class type and
+# subsystem or showing details of a particular instance.
 class InstancesController < ApplicationController
   def index
     selectedInstances=Instance.includes(:classtype, :subsystem)

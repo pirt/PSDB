@@ -159,6 +159,24 @@ created_at    :datetime        not null
 updated_at    :datetime        not null
 status        :integer(38)</pre>
 
+<h2 id="label-Validations">Validations</h2>
+
+<p>The following validations exist:</p>
+<ul><li>
+<p>It cannot be deleted if an <a
+href="Instancevalueset.html">Instancevalueset</a> refers to it.</p>
+</li><li>
+<p>The description field must not exceed 255 characters.</p>
+</li><li>
+<p>It must refer to a valid experiment id.</p>
+</li><li>
+<p>It must refer to a valid shot type id.</p>
+</li></ul>
+
+<p><strong>Note:</strong> It is acutally not forseen to delete a shot. However
+if a shot is deleted all file attachments refering to it are also deleted
+for consistency.</p>
+
   </div><!-- description -->
 
   
@@ -197,7 +215,7 @@ participated during the measurement.</p>
 
           
           <div class="method-source-code" id="involvedClasstypes-source">
-            <pre><span class="ruby-comment"># File app/models/shot.rb, line 45</span>
+            <pre><span class="ruby-comment"># File app/models/shot.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedClasstypes</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:classtype</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>)
@@ -230,7 +248,7 @@ during the measurement.</p>
 
           
           <div class="method-source-code" id="involvedSubsystems-source">
-            <pre><span class="ruby-comment"># File app/models/shot.rb, line 38</span>
+            <pre><span class="ruby-comment"># File app/models/shot.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedSubsystems</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:subsystem</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>)

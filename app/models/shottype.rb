@@ -1,3 +1,13 @@
+# This model represents a shot type. It is referenced by a Shot. Currently the following shot types
+# are defined:
+# 1. experiment shot
+# 2. test shot
+# 3. snap shot
+# 4. other
+#
+# Note that these shot types are set once in the database using the command <tt>rake db:seed</tt>. *Note:*
+# The LabVIEW interface relies on the id values! It is possible to extend it but one should not mix them up.
+#
 # == Schema Information
 #
 # Table name: shottypes
@@ -7,17 +17,11 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
-# This model represents a shot type. It is referenced by a Shot. Currently the following shot types
-# are defined:
-#   1. experiment shot
-#   2. test shot
-#   3. snap shot
-#   4. other
-#
-# Note that these shot types are set once in the database using the command <tt>rake db:seed</tt>. The LabVIEW
-# interface relies on the id values! It is possible to extend it but one should not mix them up.
 # == Validations
-# A shot type cannot be deleted if a Shot still refers to it.
+# The following validations exist:
+# * A shot type cannot be deleted if a Shot still refers to it.
+# * The name must be unique.
+# * The maximum length of the name is 30 characters.
 class Shottype < ActiveRecord::Base
   attr_accessible :name
 
@@ -28,7 +32,7 @@ class Shottype < ActiveRecord::Base
                    :length => { :maximum => 30 }
 
   before_destroy :check_if_shots_associated
-
+# Return the name of the shot type. This function is added to simplify views.
   def to_s
     return self.name
   end

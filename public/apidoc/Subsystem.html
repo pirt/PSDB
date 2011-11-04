@@ -143,6 +143,13 @@
 
   <div id="description" class="description">
     
+<p>This model represents a subsystem of the laser such as
+<code>PreAmplifier</code> or <code>MainAmplifier</code>. An <a
+href="Instance.html">Instance</a> refers to it. Subsystems are normally
+used as filter criteria for an <a href="Instance.html">Instance</a>. New
+entries are automatically added by the LabVIEW interface if a new subsystem
+is found by the control system.</p>
+
 <h2 id="label-Schema+Information">Schema Information</h2>
 
 <p>Table name: subsystems</p>
@@ -152,15 +159,17 @@ name       :string(255)     not null
 created_at :datetime        not null
 updated_at :datetime        not null</pre>
 
-<p>This model represents a subsystem of the laser such as
-<code>PreAmplifier</code> or <code>MainAmplifier</code>. An <a
-href="Instance.html">Instance</a> refers to it. Subsystems are normally
-used as filter creteria for an <a href="Instance.html">Instance</a>.</p>
-
 <h2 id="label-Validations">Validations</h2>
 
+<p>The following validations exist:</p>
+<ul><li>
 <p>A subsystem cannot be deleted if an <a href="Instance.html">Instance</a>
 still refers to it.</p>
+</li><li>
+<p>The subsystem name must be unique.</p>
+</li><li>
+<p>The maximum length of the name must be 255 characters.</p>
+</li></ul>
 
   </div><!-- description -->
 
@@ -193,12 +202,13 @@ still refers to it.</p>
 
         <div class="method-description">
           
-          
+          <p>Return the name of the subsystem. This function was added to simplify
+views.</p>
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/subsystem.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/models/subsystem.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
