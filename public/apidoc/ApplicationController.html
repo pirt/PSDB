@@ -201,7 +201,7 @@ different files which are project specific. Example:</p>
 
           
           <div class="method-source-code" id="projectizeName-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 136</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-identifier">projectName</span>=<span class="ruby-constant">PSDB_CONFIG</span>[<span class="ruby-string">&quot;project&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>]
   <span class="ruby-identifier">dirname</span>=<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">filename</span>)
@@ -258,119 +258,59 @@ prefix value.</p>
 
           
           <div class="method-source-code" id="convertUnitValue-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 14</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">convertUnitValue</span>(<span class="ruby-identifier">value</span>,<span class="ruby-identifier">unit</span>)
-    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unit</span>.<span class="ruby-identifier">present?</span>)
-      <span class="ruby-identifier">unit</span>.<span class="ruby-identifier">strip!</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
-    <span class="ruby-identifier">unitRegEx</span>=<span class="ruby-regexp">/^([afpnu\xC2\xB5\3316\2274mcdhkMGTPE]?)[ ]*(.+)/</span>
-    <span class="ruby-identifier">matchSet</span>=<span class="ruby-identifier">unitRegEx</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">unit</span>)
-    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">matchSet</span>.<span class="ruby-identifier">nil?</span>)
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">prefix</span>=<span class="ruby-identifier">matchSet</span>[<span class="ruby-value">1</span>]
-      <span class="ruby-identifier">baseUnit</span>=<span class="ruby-identifier">matchSet</span>[<span class="ruby-value">2</span>]
-      <span class="ruby-keyword">case</span> <span class="ruby-identifier">prefix</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;a&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-18</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;f&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-15</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;p&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-12</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;n&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-9</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;u&quot;</span>,<span class="ruby-string">&quot;\3316\2274&quot;</span>,<span class="ruby-string">&quot;\xC2\xB5&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-6</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;m&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-3</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;c&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-2</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;d&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-1</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;h&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E2</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;k&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E3</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;M&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E6</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;G&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E9</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;T&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E12</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;P&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1</span>.<span class="ruby-constant">E15</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;E&quot;</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E18</span>
-      <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0</span>
-      <span class="ruby-keyword">end</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>*<span class="ruby-identifier">mult</span>
-    <span class="ruby-keyword">end</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">convertUnitValue</span>(<span class="ruby-identifier">value</span>,<span class="ruby-identifier">unit</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unit</span>.<span class="ruby-identifier">present?</span>)
+    <span class="ruby-identifier">unit</span>.<span class="ruby-identifier">strip!</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
   <span class="ruby-keyword">end</span>
-<span class="ruby-comment"># Return the physical dimension by stripping away any prefix.</span>
-<span class="ruby-comment">#</span>
-<span class="ruby-comment"># Example: &quot;mBar&quot; -&gt; &quot;Bar&quot;, &quot;km&quot; -&gt; &quot;m&quot;</span>
-<span class="ruby-comment">#</span>
-<span class="ruby-comment"># unitString::</span>
-<span class="ruby-comment"># the string to be converted.</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBaseUnit</span>(<span class="ruby-identifier">unitString</span>)
-    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unitString</span>.<span class="ruby-identifier">present?</span>)
-      <span class="ruby-identifier">unitString</span>.<span class="ruby-identifier">strip!</span>
-      <span class="ruby-identifier">unitRegEx</span>=<span class="ruby-regexp">/^([afpnumcdhkMGTPE]?)[ ]*([\w%]+)/</span>
-      <span class="ruby-identifier">matchSet</span>=<span class="ruby-identifier">unitRegEx</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">unitString</span>)
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">matchSet</span>[<span class="ruby-value">2</span>]
+  <span class="ruby-identifier">unitRegEx</span>=<span class="ruby-regexp">/^([afpnu\xC2\xB5\3316\2274mcdhkMGTPE]?)[ ]*(.+)/</span>
+  <span class="ruby-identifier">matchSet</span>=<span class="ruby-identifier">unitRegEx</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">unit</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">matchSet</span>.<span class="ruby-identifier">nil?</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">prefix</span>=<span class="ruby-identifier">matchSet</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-identifier">baseUnit</span>=<span class="ruby-identifier">matchSet</span>[<span class="ruby-value">2</span>]
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">prefix</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;a&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-18</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;f&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-15</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;p&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-12</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;n&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-9</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;u&quot;</span>,<span class="ruby-string">&quot;\3316\2274&quot;</span>,<span class="ruby-string">&quot;\xC2\xB5&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-6</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;m&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-3</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;c&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-2</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;d&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E-1</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;h&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E2</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;k&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E3</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;M&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E6</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;G&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E9</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;T&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E12</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;P&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1</span>.<span class="ruby-constant">E15</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;E&quot;</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0E18</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">unitString</span>
+      <span class="ruby-identifier">mult</span>=<span class="ruby-value">1.0</span>
     <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>*<span class="ruby-identifier">mult</span>
   <span class="ruby-keyword">end</span>
-<span class="ruby-comment"># Return name of underlying database system (adaptor type) such as +OracleEnhanced+</span>
-<span class="ruby-comment"># or +Mysql2+.</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDatabaseType</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">adapter_name</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-comment"># Return size information of the database as hash list. The way this information is retrieved</span>
-<span class="ruby-comment"># is database specific. There currently exist methods for oracle and mysql. If the size could not</span>
-<span class="ruby-comment"># be retrieved both hashes are set to -1.</span>
-<span class="ruby-comment">#</span>
-<span class="ruby-comment"># Example of a return value:</span>
-<span class="ruby-comment">#   dbStats={:bytesUsed=&gt;1234556,:bytesFree=&gt;76544321}</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDBSize</span>
-    <span class="ruby-identifier">dbStats</span>={<span class="ruby-value">:bytesUsed=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>,<span class="ruby-value">:bytesFree=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>}
-    <span class="ruby-keyword">case</span> (<span class="ruby-identifier">getDatabaseType</span>)
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;OracleEnhanced&quot;</span>
-        <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>.<span class="ruby-identifier">test?</span>) <span class="ruby-comment"># avoid problems while unit testing</span>
-          <span class="ruby-identifier">queryString</span>=<span class="ruby-string">&quot;Select MAX(d.bytes) total_bytes,
-                          nvl(SUM(f.Bytes), 0) free_bytes,
-                          d.file_name,
-                          MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
-                          ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx
-                          from   DBA_FREE_SPACE f , DBA_DATA_FILES d
-                          where  f.tablespace_name(+) = d.tablespace_name
-                            and    f.file_id(+) = d.file_id
-                            and    d.tablespace_name = 'PHELIX'
-                          group by d.file_name&quot;</span>
-          <span class="ruby-identifier">stats</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-identifier">queryString</span>).<span class="ruby-identifier">last</span>
-          <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">stats</span>.<span class="ruby-identifier">used_bytes</span>
-          <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">stats</span>.<span class="ruby-identifier">free_bytes</span>
-        <span class="ruby-keyword">end</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Mysql2&quot;</span>
-        <span class="ruby-identifier">bytesUsed</span>=<span class="ruby-value">0</span>
-        <span class="ruby-identifier">bytesFree</span>=<span class="ruby-value">0</span>
-        <span class="ruby-identifier">stats</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-string">&quot;SHOW TABLE STATUS&quot;</span>)
-        <span class="ruby-identifier">stats</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">status</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">bytesUsed</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Data_length</span>
-          <span class="ruby-identifier">bytesUsed</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Index_length</span>
-          <span class="ruby-identifier">bytesFree</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Data_free</span>
-        <span class="ruby-keyword">end</span>
-        <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">bytesUsed</span>
-        <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">bytesFree</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">dbStats</span>
-  <span class="ruby-keyword">end</span></pre>
+<span class="ruby-keyword">end</span></pre>
           </div><!-- convertUnitValue-source -->
           
         </div>
@@ -403,7 +343,7 @@ prefix value.</p>
 
           
           <div class="method-source-code" id="getBaseUnit-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 71</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getBaseUnit</span>(<span class="ruby-identifier">unitString</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unitString</span>.<span class="ruby-identifier">present?</span>)
     <span class="ruby-identifier">unitString</span>.<span class="ruby-identifier">strip!</span>
@@ -448,39 +388,43 @@ hashes are set to -1.</p>
 
           
           <div class="method-source-code" id="getDBSize-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 92</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDBSize</span>
-  <span class="ruby-identifier">dbStats</span>={<span class="ruby-value">:bytesUsed=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>,<span class="ruby-value">:bytesFree=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">-1</span>}
+  <span class="ruby-identifier">dbStats</span>={}
   <span class="ruby-keyword">case</span> (<span class="ruby-identifier">getDatabaseType</span>)
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;OracleEnhanced&quot;</span>
-      <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>.<span class="ruby-identifier">test?</span>) <span class="ruby-comment"># avoid problems while unit testing</span>
-        <span class="ruby-identifier">queryString</span>=<span class="ruby-string">&quot;Select MAX(d.bytes) total_bytes,
-                        nvl(SUM(f.Bytes), 0) free_bytes,
-                        d.file_name,
-                        MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
-                        ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx
-                        from   DBA_FREE_SPACE f , DBA_DATA_FILES d
-                        where  f.tablespace_name(+) = d.tablespace_name
-                          and    f.file_id(+) = d.file_id
-                          and    d.tablespace_name = 'PHELIX'
-                        group by d.file_name&quot;</span>
-        <span class="ruby-identifier">stats</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-identifier">queryString</span>).<span class="ruby-identifier">last</span>
-        <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">stats</span>.<span class="ruby-identifier">used_bytes</span>
-        <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">stats</span>.<span class="ruby-identifier">free_bytes</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Mysql2&quot;</span>
-      <span class="ruby-identifier">bytesUsed</span>=<span class="ruby-value">0</span>
-      <span class="ruby-identifier">bytesFree</span>=<span class="ruby-value">0</span>
-      <span class="ruby-identifier">stats</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-string">&quot;SHOW TABLE STATUS&quot;</span>)
-      <span class="ruby-identifier">stats</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">status</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">bytesUsed</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Data_length</span>
-        <span class="ruby-identifier">bytesUsed</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Index_length</span>
-        <span class="ruby-identifier">bytesFree</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Data_free</span>
-      <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">bytesUsed</span>
-      <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">bytesFree</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;OracleEnhanced&quot;</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>.<span class="ruby-identifier">test?</span>) <span class="ruby-comment"># avoid problems while unit testing</span>
+      <span class="ruby-identifier">queryString</span>=<span class="ruby-string">&quot;Select MAX(d.bytes) total_bytes,
+                      nvl(SUM(f.Bytes), 0) free_bytes,
+                      d.file_name,
+                      MAX(d.bytes) - nvl(SUM(f.bytes), 0) used_bytes,
+                      ROUND(SQRT(MAX(f.BLOCKS)/SUM(f.BLOCKS))*(100/SQRT(SQRT(COUNT(f.BLOCKS)))), 2) frag_idx
+                      from   DBA_FREE_SPACE f , DBA_DATA_FILES d
+                      where  f.tablespace_name(+) = d.tablespace_name
+                        and    f.file_id(+) = d.file_id
+                        and    d.tablespace_name = 'PHELIX'
+                      group by d.file_name&quot;</span>
+      <span class="ruby-identifier">stats</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-identifier">queryString</span>).<span class="ruby-identifier">last</span>
+      <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">stats</span>.<span class="ruby-identifier">used_bytes</span>
+      <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">stats</span>.<span class="ruby-identifier">free_bytes</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span></pre>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Mysql2&quot;</span>
+    <span class="ruby-identifier">bytesUsed</span>=<span class="ruby-value">0</span>
+    <span class="ruby-identifier">bytesFree</span>=<span class="ruby-value">0</span>
+    <span class="ruby-identifier">stats</span>=<span class="ruby-constant">Shot</span>.<span class="ruby-identifier">find_by_sql</span>(<span class="ruby-string">&quot;SHOW TABLE STATUS&quot;</span>)
+    <span class="ruby-identifier">stats</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">status</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">bytesUsed</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Data_length</span>
+      <span class="ruby-identifier">bytesUsed</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Index_length</span>
+      <span class="ruby-identifier">bytesFree</span><span class="ruby-operator">+=</span><span class="ruby-identifier">status</span>.<span class="ruby-constant">Data_free</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-identifier">bytesUsed</span>
+    <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-identifier">bytesFree</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesUsed</span>]=<span class="ruby-value">-1</span>
+    <span class="ruby-identifier">dbStats</span>[<span class="ruby-value">:bytesFree</span>]=<span class="ruby-value">-1</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dbStats</span>
+<span class="ruby-keyword">end</span></pre>
           </div><!-- getDBSize-source -->
           
         </div>
@@ -508,7 +452,7 @@ hashes are set to -1.</p>
 
           
           <div class="method-source-code" id="getDatabaseType-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 83</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getDatabaseType</span>
   <span class="ruby-keyword">return</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">adapter_name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -538,7 +482,7 @@ hashes are set to -1.</p>
 
           
           <div class="method-source-code" id="projectizeName-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 126</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-constant">ApplicationController</span>.<span class="ruby-identifier">projectizeName</span>(<span class="ruby-identifier">filename</span>)
 <span class="ruby-keyword">end</span></pre>

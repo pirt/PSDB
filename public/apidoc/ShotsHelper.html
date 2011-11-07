@@ -174,11 +174,15 @@ information (e.g. for the table of shotsindex).</p>
         <div class="method-description">
           
           <p>Display an icon if a shot object has one or more attachments.</p>
+<dl class="rdoc-list note-list"><dt>shot
+<dd>
+<p>the shot object</p>
+</dd></dl>
           
 
           
           <div class="method-source-code" id="displayAttachmentLabel-source">
-            <pre><span class="ruby-comment"># File app/helpers/shots_helper.rb, line 23</span>
+            <pre><span class="ruby-comment"># File app/helpers/shots_helper.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">displayAttachmentLabel</span>(<span class="ruby-identifier">shot</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">shot</span>.<span class="ruby-identifier">attachments</span>.<span class="ruby-identifier">present?</span>
     <span class="ruby-identifier">image_tag</span> <span class="ruby-string">'paperclip.png'</span>

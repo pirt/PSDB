@@ -139,6 +139,9 @@
 
   <div id="description" class="description">
     
+<p>This module contains helper functions for displaying Instancevalues in
+views.</p>
+
   </div><!-- description -->
 
   
@@ -170,12 +173,18 @@
 
         <div class="method-description">
           
-          
+          <p>Display an instancevalue.</p>
+
+<p>This function calls the right view depending on the data type of the
+instancevalue. This ist done lookking for the right partial following the
+naming scheme <code>/app/views/instancevalues/_&lt;data
+type&gt;.html.erb</code>. An error message is returned if the partial for
+the particular data type is not found.</p>
           
 
           
           <div class="method-source-code" id="displayValue-source">
-            <pre><span class="ruby-comment"># File app/helpers/instancevalues_helper.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/helpers/instancevalues_helper.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">displayValue</span> (<span class="ruby-identifier">instancevalue</span>, <span class="ruby-identifier">options</span>={})
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">instancevalue</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;parameter does not exist!&quot;</span>
@@ -213,12 +222,22 @@
 
         <div class="method-description">
           
-          
+          <p>Display a numerical value in scientific notation.</p>
+
+<p>Returns a HTML representation of the numerical value in scientific
+notation.</p>
+<dl class="rdoc-list note-list"><dt>num
+<dd>
+<p>Numerical value to be displayed.</p>
+</dd><dt>precision
+<dd>
+<p>Number of digits to be displayed after the separator.</p>
+</dd></dl>
           
 
           
           <div class="method-source-code" id="number_to_scientific-source">
-            <pre><span class="ruby-comment"># File app/helpers/instancevalues_helper.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/helpers/instancevalues_helper.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">number_to_scientific</span>(<span class="ruby-identifier">num</span>,<span class="ruby-identifier">precision</span>=<span class="ruby-value">1</span>)
   <span class="ruby-identifier">numberString</span>=<span class="ruby-node">&quot;%.#{precision}e&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">num</span>
   <span class="ruby-identifier">splitString</span>=<span class="ruby-identifier">numberString</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;e&quot;</span>)

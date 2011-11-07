@@ -94,6 +94,11 @@ class Instancevalueset < ActiveRecord::Base
       return parameterData.data_numeric
     end
   end
+# Helper function for handling instances of the class type PH_Sixpack.
+#
+# The parameter names of of a Sixpack have a syntax such as <tt>Axis 0:Position</tt>.
+# This function looks for all parameter names and returns a list of found axes such as
+# <tt>["Axis 1","Axis 3","Axis4"]</tt>.
   def getAxesNumbers
     foundAxes=Set.new
     parameters=self.instancevalues.select(:name)
@@ -105,6 +110,11 @@ class Instancevalueset < ActiveRecord::Base
     end
     return foundAxes
   end
+# Helper function fo handling instances of the class type PH_VacuumControl.
+#
+# The parameter names of of a VacuumControl have a syntax such as <tt>Channel 0:<Name>:<Parameter></tt>.
+# This function looks for all parameter names and returns a list of found channels such as
+# <tt>["Channel 1:Telescope 1","Channel 4:PA Exit"]</tt>.
   def getVacuumChannels
     foundChannels=Set.new
     parameters=self.instancevalues.select(:name)

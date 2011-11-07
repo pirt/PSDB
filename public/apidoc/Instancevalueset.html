@@ -222,7 +222,7 @@ updated_at  :datetime</pre>
 
           
           <div class="method-source-code" id="generateMultiPlot-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 128</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generateMultiPlot</span>(<span class="ruby-identifier">plotParameterNames</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">tempFile</span>=<span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>([<span class="ruby-string">'multiplotImage'</span>,<span class="ruby-string">'.png'</span>])
   <span class="ruby-identifier">plotOptions</span>={<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">200</span>, <span class="ruby-value">:height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">100</span>, <span class="ruby-value">:imagetype=</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;png&quot;</span>}
@@ -282,12 +282,17 @@ updated_at  :datetime</pre>
 
         <div class="method-description">
           
-          
+          <p>Helper function for handling instances of the class type PH_Sixpack.</p>
+
+<p>The parameter names of of a Sixpack have a syntax such as <code>Axis
+0:Position</code>. This function looks for all parameter names and returns
+a list of found axes such as <code>[&quot;Axis 1&quot;,&quot;Axis
+3&quot;,&quot;Axis4&quot;]</code>.</p>
           
 
           
           <div class="method-source-code" id="getAxesNumbers-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 97</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getAxesNumbers</span>
   <span class="ruby-identifier">foundAxes</span>=<span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">parameters</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:name</span>)
@@ -426,7 +431,7 @@ href="Instancevalue.html">Instancevalue</a>) to be returned</p>
 
           
           <div class="method-source-code" id="getPlotDataSet-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 167</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 177</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getPlotDataSet</span>(<span class="ruby-identifier">parameterName</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">instanceValue</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">parameterName</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">instanceValue</span>.<span class="ruby-identifier">nil?</span>)
@@ -522,12 +527,18 @@ href="Instancevalue.html">Instancevalue</a>) to be returned</p>
 
         <div class="method-description">
           
-          
+          <p>Helper function fo handling instances of the class type PH_VacuumControl.</p>
+
+<p>The parameter names of of a VacuumControl have a syntax such as
+<code>Channel 0:&lt;Name&gt;:&lt;Parameter&gt;</code>. This function looks
+for all parameter names and returns a list of found channels such as
+<code>[&quot;Channel 1:Telescope 1&quot;,&quot;Channel 4:PA
+Exit&quot;]</code>.</p>
           
 
           
           <div class="method-source-code" id="getVacuumChannels-source">
-            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 108</span>
+            <pre><span class="ruby-comment"># File app/models/instancevalueset.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getVacuumChannels</span>
   <span class="ruby-identifier">foundChannels</span>=<span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">parameters</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevalues</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:name</span>)

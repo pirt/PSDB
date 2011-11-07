@@ -20,6 +20,8 @@ module ShotsHelper
   end
 ##
 # Display an icon if a shot object has one or more attachments.
+#
+# shot:: the shot object
   def displayAttachmentLabel(shot)
     if shot.attachments.present?
       image_tag 'paperclip.png'
