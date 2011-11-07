@@ -4,14 +4,10 @@ Bugs:
 -sometimes Cams do not send an image even if cam status is "on/true"
 -interpret PPPA/MA status correctly
 
--wrong labels:
-  MAS_Attenuator_123_BB
-  MA_Diffuser_Inject_in_BB
 -repair "8bit warning" for image export.
 -Instances: plot series broken.
 
 Features:
--missing views: PH_VacuumControl (add picture)
 -missing view: BackreflectionMeasurement
 -missing view: SSAC
--missing validation: instance cannto be deleted if instancevaluesets refer to it.
+-missing validation: instance cannot be deleted if instancevaluesets refer to it.
