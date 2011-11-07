@@ -4,7 +4,17 @@
 <br />
 <% imageInfo=instancevalue.generateImageInfo() %>
 <% if imageInfo[:bitdepth]>8 %>
-<%= javascript_include_tag assets_path('formvalidation') %>
+<script type="text/javascript">
+$(function(is16Bit) {
+  // when the #search field changes
+  $("#selectedExportFormat").change(function() {
+    var str=$("#selectedExportFormat option:selected").text();
+    if (str != "PNG" && str!="TXT" && str!="TIF") {
+      alert("You are trying to export am image with a bit depth of more than 8 bit. The selected file format does not support this. You might loose information!! Possible formats are 'PNG', 'TIF' and 'TXT'");
+    }
+  });
+})
+</script>
 <% end %>
 Colour depth: <%= imageInfo[:bitdepth] %> bit
 <% end %>

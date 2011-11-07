@@ -1,5 +1,5 @@
 // Append the function to the "document ready" chain
-jQuery(function($) {
+$(function(is16Bit) {
   // when the #search field changes
   $("#selectedExportFormat").change(function() {
     var str=$("#selectedExportFormat option:selected").text();

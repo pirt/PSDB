@@ -3,8 +3,6 @@ Bugs:
 -some PH_Switch values wronly interpreted.
 -sometimes Cams do not send an image even if cam status is "on/true"
 -interpret PPPA/MA status correctly
-
--repair "8bit warning" for image export.
 -Instances: plot series broken.
 
 Features:
