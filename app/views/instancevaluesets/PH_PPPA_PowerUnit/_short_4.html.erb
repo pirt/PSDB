@@ -1,13 +1,15 @@
 <% puOn=instanceValueSet.getBooleanParameter("PU in use?")
-if puOn
-  puStatus=instanceValueSet.getStringParameter("Machine State",:upcase=>true)
-  if puStatus="STAND BY"
-    voltage=instanceValueSet.getNumericParameter("Voltage")/1000.0 %>
-    <%= number_with_precision(voltage, :precision => 1) %> kV
-<% else %>
-<%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
-<% end %>
-<% else %>
+voltage=instanceValueSet.getNumericParameter("Voltage")
+timeout=instanceValueSet.getStringParameter("Timeout",:upcase=>true)
+machineState=instanceValueSet.getStringParameter("Machine State",:upcase=>true) %>
+<% if !puOn and voltage==-1.0 and timeout=="NONE" and machineState=="STAND BY" %>
 <%= image_tag "icon_OFF.png", {:style=>"vertical-align:middle"} %>
+<% elsif puOn and voltage!=-1.0 and timeout=="NONE" and machineState=="WAIT FOR SHOT CMD" %>
+<%= number_with_precision(voltage/1000.0, :precision => 1) %> kV
+<% elsif puOn and voltage!=-1.0 and timeout!="NONE" and machineState=="SWITCH PU ON" %>
+<%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
+<% elsif !puOn and voltage!=-1.0 and timeout=="NONE" and machineState=="STAND BY" %>
+<%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
+<% else %>
+<%= image_tag "icon_UNKNOWN.png", {:style=>"vertical-align:middle"} %>
 <% end %>
-

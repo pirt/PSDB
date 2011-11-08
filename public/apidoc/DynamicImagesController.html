@@ -352,13 +352,14 @@ displayed.</p>
 
 <p><strong>Note:</strong> This function is currently only a hack. It simply
 returns the file <code>public/series.png</code> as inline graphics. The
-image file needs to be generated first by a separate command.
-(URL-)Parameters: none</p>
+image file needs to be generated first by a separate command.</p>
+
+<p>(URL-)Parameters: none</p>
           
 
           
           <div class="method-source-code" id="showSeriesPlot-source">
-            <pre><span class="ruby-comment"># File app/controllers/dynamic_images_controller.rb, line 69</span>
+            <pre><span class="ruby-comment"># File app/controllers/dynamic_images_controller.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">showSeriesPlot</span>
   <span class="ruby-identifier">image</span>=<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/public/series.png&quot;</span>)[<span class="ruby-value">0</span>]
   <span class="ruby-identifier">imageblob</span>=<span class="ruby-identifier">image</span>.<span class="ruby-identifier">to_blob</span>

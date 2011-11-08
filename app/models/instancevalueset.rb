@@ -135,6 +135,19 @@ class Instancevalueset < ActiveRecord::Base
     end
     return foundChannels
   end
+  def hasPPFailure?
+    hasFailure=false
+    puOn=getBooleanParameter("PU in use?")
+    voltage=getNumericParameter("Voltage")
+    timeout=getStringParameter("Timeout",:upcase=>true)
+    machineState=getStringParameter("Machine State",:upcase=>true)
+    if puOn and voltage!=-1.0 and timeout!="NONE" and machineState=="SWITCH PU ON"
+      hasFailure=true
+    elsif !puOn and voltage!=-1.0 and timeout=="NONE" and machineState=="STAND BY"
+      hasFailure=true
+    end
+    return hasFailure
+  end
   def generateMultiPlot(plotParameterNames,options={})
     tempFile=Tempfile.new(['multiplotImage','.png'])
     plotOptions={:width=>200, :height=>100, :imagetype=> "png"}

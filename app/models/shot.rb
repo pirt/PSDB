@@ -1,5 +1,11 @@
 # This class represents a shot in the database.
 #
+# *Note:* The *status* field has a project-specific meaning. For PHELIX
+# the status field is bitwise interpreted:
+#  bit 0:: true if shot was analyzed (defaults to false)
+#  bit 1:: true if failed shot because of machine error (pulsed power)
+#  bit 2:: true if failed shot because of handling error (e.g. forgotten shutter)
+#
 # == Schema Information
 #
 # Table name: shots
@@ -54,7 +60,34 @@ class Shot < ActiveRecord::Base
     availableInstanceValueSets=self.instancevaluesets
     availableInstanceValueSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
   end
-
+##
+# Analyze the shot.
+#
+# This function analyzes the machine state and writes its result in the status field. It also sets the
+# "analyzed" bit to true.
+  def analyzePHELIX
+    if (self.status.nil?) or ((self.status & 1) == 0)
+      machineError=false
+      instanceNames=["PPPA_19mm_1_PU","PPPA_19mm_2_PU","PPPA_45mm_MAIN_PU",
+                 "PPMA_PU1","PPMA_PU2","PPMA_PU3","PPMA_PU4","PPMA_PU5"]
+      instanceValueSets=self.instancevaluesets
+      instanceNames.each do |instanceName|
+        instanceId=Instance.find_by_name(instanceName)
+        if instanceId.present?
+          instanceValueSet=instanceValueSets.find_by_instance_id(instanceId)
+          if instanceValueSet.present?
+            machineError |= instanceValueSet.hasPPFailure?
+          end
+        end
+      end
+      self.status |= 1 # set "analyzed" bit
+      if machineError
+        self.status |= 2
+      end
+      self.save!
+    end
+    return (self.status & 2) != 0
+  end
 private
   def check_if_instancevaluesets_associated
     if (!instancevaluesets.empty?)

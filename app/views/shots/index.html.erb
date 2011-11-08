@@ -34,7 +34,7 @@
   <tbody>
   <% @shots.each do |shot| %>
   <% cache "shotline#{shot.id}" do %>
-    <% if shot.status==1 %>
+    <% if shot.analyzePHELIX==true %>
     <tr class="failedshot">
     <% else %>
     <tr>

@@ -147,6 +147,16 @@
     
 <p>This class represents a shot in the database.</p>
 
+<p><strong>Note:</strong> The <strong>status</strong> field has a
+project-specific meaning. For PHELIX the folllowing convention is used:</p>
+
+<pre>0:: successful shot
+1:: failed shot because of machine error (pulsed power)
+2:: failed shot because of handling error (e.g. forgotten shutter)</pre>
+
+<p>The above info it bitwise interpreted (e.g. 3=failed shot because of
+machine and handling)</p>
+
 <h2 id="label-Schema+Information">Schema Information</h2>
 
 <p>Table name: shots</p>
@@ -215,7 +225,7 @@ participated during the measurement.</p>
 
           
           <div class="method-source-code" id="involvedClasstypes-source">
-            <pre><span class="ruby-comment"># File app/models/shot.rb, line 53</span>
+            <pre><span class="ruby-comment"># File app/models/shot.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedClasstypes</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:classtype</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>)
@@ -248,7 +258,7 @@ during the measurement.</p>
 
           
           <div class="method-source-code" id="involvedSubsystems-source">
-            <pre><span class="ruby-comment"># File app/models/shot.rb, line 46</span>
+            <pre><span class="ruby-comment"># File app/models/shot.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedSubsystems</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:subsystem</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>)
