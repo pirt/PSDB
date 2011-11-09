@@ -66,10 +66,10 @@ class Shot < ActiveRecord::Base
 # This function analyzes the machine state and writes its result in the status field. It also sets the
 # "analyzed" bit to true.
   def analyzePHELIX
-    if (self.status.nil?) or ((self.status & 1) == 0)
+    # if (self.status.nil?) or ((self.status & 1) == 0)
       machineError=false
       instanceNames=["PPPA_19mm_1_PU","PPPA_19mm_2_PU","PPPA_45mm_MAIN_PU",
-                 "PPMA_PU1","PPMA_PU2","PPMA_PU3","PPMA_PU4","PPMA_PU5"]
+                     "PPMA_PU1","PPMA_PU2","PPMA_PU3","PPMA_PU4","PPMA_PU5"]
       instanceValueSets=self.instancevaluesets
       instanceNames.each do |instanceName|
         instanceId=Instance.find_by_name(instanceName)
@@ -83,9 +83,11 @@ class Shot < ActiveRecord::Base
       self.status |= 1 # set "analyzed" bit
       if machineError
         self.status |= 2
+      else
+        self.status &= ~2
       end
       self.save!
-    end
+    # end
     return (self.status & 2) != 0
   end
 private

@@ -137,13 +137,12 @@ class Instancevalueset < ActiveRecord::Base
   end
   def hasPPFailure?
     hasFailure=false
-    puOn=getBooleanParameter("PU in use?")
     voltage=getNumericParameter("Voltage")
     timeout=getStringParameter("Timeout",:upcase=>true)
     machineState=getStringParameter("Machine State",:upcase=>true)
-    if puOn and voltage!=-1.0 and timeout!="NONE" and machineState=="SWITCH PU ON"
+    if voltage!=-1.0 and timeout!="NONE" and machineState=="SWITCH PU ON"
       hasFailure=true
-    elsif !puOn and voltage!=-1.0 and timeout=="NONE" and machineState=="STAND BY"
+    elsif voltage!=-1.0 and timeout=="NONE" and machineState=="STAND BY"
       hasFailure=true
     end
     return hasFailure
