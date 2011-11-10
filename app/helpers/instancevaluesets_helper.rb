@@ -28,7 +28,7 @@ module InstancevaluesetsHelper
 #
 # This functions calls the corresponding partial depending on the class type of the instance following
 # the naming scheme <tt>/app/views/instancevaluesets/<classType>/_short_<versionNumber>.html.erb</tt>
-  def displayValueSetShort(instanceValueSet)
+  def displayValueSetShort(instanceValueSet,options={})
     classType=instanceValueSet.instance.classtype.name
     valueSetVersion=instanceValueSet.version
     partialName="/instancevaluesets/#{classType}/short_#{valueSetVersion}"
@@ -37,7 +37,7 @@ module InstancevaluesetsHelper
     if !File.exists?(partialFileName)
       return "no view defined"
     else
-      render partialName, :instanceValueSet => instanceValueSet
+      render partialName, :instanceValueSet => instanceValueSet, :options=>options
     end
   end
 # Generate an xy plot from an array of data sets.

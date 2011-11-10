@@ -14,7 +14,7 @@ module ShotsHelper
       if (instanceValueSet.nil?)
         return "?"
       else
-        displayValueSetShort(instanceValueSet)
+        displayValueSetShort(instanceValueSet,options)
       end
     end
   end
