@@ -1,6 +1,10 @@
 <% deviceStatus=instanceValueSet.getStringParameter("Device State",:upcase=>true)
   if deviceStatus=="ON/TRUE" %>
+<% if instanceValueSet.getNumericParameter("Energy")!=-1.0 %>
 <%= displayParameter(instanceValueSet,"Energy",:precision=>1) %>
+<% else %>
+OUT
+<% end %>
 <% else %>
 <%= image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"} %>
 <% end %>
