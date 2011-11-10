@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="PHELIX shot database" />
+  <meta name="keywords" content="PHELIX,Laser,GSI" />
+  <meta name="author" content="Udo Eisenbarth" />
+  <meta name="distribution" content="intranet" />
+  <meta name="copyright" content="2011© GSI Helmholtzzentrum für Schwerionenforschung" />
+  <title><%= pageTitle %></title>
+  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application" %> #, :media=>"screen,print" %>
+  <%= csrf_meta_tag %>
+  <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+  <%= favicon_link_tag %>
+</head>
+<body>
+<div class="container">
+  <div id="header" class="span-24 last">
+    <h1>
+      <%= link_to image_tag(projectizeName("logo.png")), shots_path %> Report for Shot #<%= @shot.id %>
+    </h1>
+  </div>
+  <div id="reportbody" class="span-24 last">
+    <div id="shotinfo" class="span-12" >
+      <h3>General</h3>
+      <div class="box">
+        <strong>Timestamp:</strong> <%= formatDate(@shot.created_at) %><br />
+        <strong>Experiment:</strong> <%= @shot.experiment %><br />
+        <strong>Shot type:</strong> <%= @shot.shottype %><br />
+        <strong>Comment:</strong> <%= @shot.description %><br />
+      </div>
+    </div>
+    <div id="result" class="span-12 last">
+      <h3>Results</h3>
+      <table>
+        <thead>
+          <tr>
+            <th class="span-4">Device</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="justifyright">fsFE Waveplate:</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"fs_WP_Exit_6PWpGUI") %></td>
+          </tr>
+          <tr>
+            <td class="justifyright">fsFE Waveplate:</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"ns_WP_RR_6PWpGUI") %></td>
+          </tr>
+          <tr>
+            <td class="justifyright">MainAmp Sensor Energy:</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"MAS_Powermeter") %></td>
+          </tr>
+          <tr>
+            <td class="justifyright">Z6 Infrared Energy (1w):</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"Z6_IR_Powermeter") %></td>
+          </tr>
+          <tr>
+            <td class="justifyright">Z6 Green Energy (2w):</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"Z6_green_Powermeter") %></td>
+          </tr>
+          <tr>
+            <td class="justifyright">Z6 SHG Rotation:</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"Z6_SHG_ROT_6PGUI") %></td>
+          </tr>
+          <tr>
+            <td class="justifyright">Z6 SHG Tip/Tilt:</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"Z6_SHG_TIP-TILT_6PGUI") %></td>
+          </tr>
+          <tr>
+            <td class="justifyright">Z6 MM11 Position:</td>
+            <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"Z6_MM11_6PGUI") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<footer class="quiet">PSDB ( version <%= APP_VERSION %>)</footer>
+</body>
+</html>

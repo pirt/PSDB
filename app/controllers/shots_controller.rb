@@ -92,4 +92,16 @@ class ShotsController < ApplicationController
       render 'edit'
     end
   end
+
+  def report
+    @shot=Shot.find_by_id(params[:id])
+    if !@shot
+      flash[:error]="Shot not found."
+      redirect_to shots_path
+      return
+    end
+    @pageTitle="Shot report for shot #{@shot.id}"
+    @instanceValueSets=@shot.instancevaluesets
+    render :layout => false
+  end
 end

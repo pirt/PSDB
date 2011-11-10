@@ -1,18 +1,14 @@
 <h2>Shot #<%= @shot.id %></h2>
 <div class="span-24 last" id="topbox">
-  <div class="span-8" id="general">
-    <div class="box">
-      <strong>Timestamp:</strong> <%= formatDate(@shot.created_at) %><br />
-      <strong>Experiment:</strong> <%= @shot.experiment %><br />
-      <strong>Shot type:</strong> <%= @shot.shottype %><br />
-      <strong>Comment:</strong> <%= @shot.description %><br />
-      <%= link_to "Edit", edit_shot_path(@shot) %>
-    </div>
+  <div class="span-8 box" id="general">
+    <strong>Timestamp:</strong> <%= formatDate(@shot.created_at) %><br />
+    <strong>Experiment:</strong> <%= @shot.experiment %><br />
+    <strong>Shot type:</strong> <%= @shot.shottype %><br />
+    <strong>Comment:</strong> <%= @shot.description %><br />
+    <%= link_to "Edit", edit_shot_path(@shot) %>
   </div>
-  <div class="span-16 last" id="attachments">
-    <div class="box">
-      <%= render 'attachments/index',:parent => @shot %>
-    </div>
+  <div class="span-16 box last" id="attachments">
+    <%= render 'attachments/index',:parent => @shot %>
   </div>
 </div>
 <div class="span-24 last" id="databox">
