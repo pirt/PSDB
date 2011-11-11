@@ -54,7 +54,9 @@ PSDB::Application.configure do
 
   # Don't fallback to assets pipeline
   config.assets.compile = false
-  config.assets.precompile += ['blueprint/ie.css','formvalidation.js']
+  config.assets.precompile +=  %w( application-all.css application-print.css application-ie.css formvalidataion.js )
+
+#['blueprint/ie.css','formvalidation.js']
 
   # Generate digests for assets URLs
   config.assets.digest = true

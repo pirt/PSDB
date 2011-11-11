@@ -8,10 +8,10 @@
   <meta name="distribution" content="intranet" />
   <meta name="copyright" content="2011© GSI Helmholtzzentrum für Schwerionenforschung" />
   <title><%= pageTitle %></title>
-  <%# = javascript_include_tag "application" %>
-  <%= stylesheet_link_tag "application", :media=>"screen,print" %>
+  <%= stylesheet_link_tag "application-all", :media=>"all" %>
+  <%= stylesheet_link_tag "application-print", :media=>"print" %>
   <%= csrf_meta_tag %>
-  <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+  <!--[if lt IE 8]><%= stylesheet_link_tag "application-ie", :media=>"all" %><![endif]-->
   <%= favicon_link_tag %>
 </head>
 <body>
@@ -21,8 +21,8 @@
       <%= link_to image_tag(projectizeName("logo.png")), shots_path %> Report for Shot #<%= @shot.id %>
     </h1>
   </div>
-  <div id="reportbody" class="span-24">
-    <div id="shotinfo" class="span-12" >
+  <div id="generalinfo" class="span-24">
+    <div id="shotinfo" class="span-8" >
       <h3>General</h3>
       <div class="box">
         <strong>Timestamp:</strong> <%= formatDate(@shot.created_at) %><br />
@@ -31,12 +31,20 @@
         <strong>Comment:</strong> <%= @shot.description %><br />
       </div>
     </div>
+    <div id="usercomment" class="span-16 last">
+      <h3>User comment:</h3>
+      <%= form_tag do %>
+        <%= text_area_tag 'message' %>
+      <% end %>
+    </div>
+  </div>
+  <div id="results" class="span-24">
     <div id="result" class="span-12 last">
-      <h3>Results</h3>
+      <h3>Laser parameters</h3>
       <table>
         <thead>
           <tr>
-            <th class="span-4">Device</th>
+            <th class="span-5">Device</th>
             <th>Result</th>
           </tr>
         </thead>
@@ -76,12 +84,6 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <div id="usercomment" class="span-24">
-  <h3>User comment:</h3>
-  <%= form_tag do %>
-     <%= text_area_tag 'message',nil,:rows=>2 %>
-  <% end %>
   </div>
 </div>
 <footer class="quiet">PSDB ( version <%= APP_VERSION %>)</footer>
