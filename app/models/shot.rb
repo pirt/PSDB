@@ -65,8 +65,8 @@ class Shot < ActiveRecord::Base
 #
 # This function analyzes the machine state and writes its result in the status field. It also sets the
 # "analyzed" bit to true.
-  def analyzePHELIX
-    if (self.status.nil?) or ((self.status & 1) == 0)
+  def analyzePHELIX(options={})
+    if ((options[:nocache]==true) or (self.status.nil?) or ((self.status & 1) == 0))
       machineError=false
       instanceNames=["PPPA_19mm_1_PU","PPPA_19mm_2_PU","PPPA_45mm_MAIN_PU",
                      "PPMA_PU1","PPMA_PU2","PPMA_PU3","PPMA_PU4","PPMA_PU5"]
@@ -76,7 +76,9 @@ class Shot < ActiveRecord::Base
         if instanceId.present?
           instanceValueSet=instanceValueSets.find_by_instance_id(instanceId)
           if instanceValueSet.present?
-            machineError |= instanceValueSet.hasPPFailure?
+            if (instanceValueSet.analyzePulsedPowerStatus==:error)
+              machineError=true
+            end
           end
         end
       end

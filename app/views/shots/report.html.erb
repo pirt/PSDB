@@ -8,20 +8,20 @@
   <meta name="distribution" content="intranet" />
   <meta name="copyright" content="2011© GSI Helmholtzzentrum für Schwerionenforschung" />
   <title><%= pageTitle %></title>
-  <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag "application" %> #, :media=>"screen,print" %>
+  <%# = javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application", :media=>"screen,print" %>
   <%= csrf_meta_tag %>
   <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
   <%= favicon_link_tag %>
 </head>
 <body>
 <div class="container">
-  <div id="header" class="span-24 last">
+  <div id="header" class="span-24">
     <h1>
       <%= link_to image_tag(projectizeName("logo.png")), shots_path %> Report for Shot #<%= @shot.id %>
     </h1>
   </div>
-  <div id="reportbody" class="span-24 last">
+  <div id="reportbody" class="span-24">
     <div id="shotinfo" class="span-12" >
       <h3>General</h3>
       <div class="box">
@@ -46,7 +46,7 @@
             <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"fs_WP_Exit_6PWpGUI") %></td>
           </tr>
           <tr>
-            <td class="justifyright">fsFE Waveplate:</td>
+            <td class="justifyright">nsFE Waveplate:</td>
             <td class="PSDB_bold"><%= displayShotInstance(@instanceValueSets,"ns_WP_RR_6PWpGUI") %></td>
           </tr>
           <tr>
@@ -76,6 +76,12 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div id="usercomment" class="span-24">
+  <h3>User comment:</h3>
+  <%= form_tag do %>
+     <%= text_area_tag 'message',nil,:rows=>2 %>
+  <% end %>
   </div>
 </div>
 <footer class="quiet">PSDB ( version <%= APP_VERSION %>)</footer>

@@ -34,7 +34,7 @@
   <tbody>
   <% @shots.each do |shot| %>
   <% cache "shotline#{shot.id}" do %>
-    <% if shot.analyzePHELIX==true %>
+    <% if shot.analyzePHELIX(:nocache=>false)==true %>
     <tr class="failedshot">
     <% else %>
     <tr>

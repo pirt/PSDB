@@ -135,17 +135,23 @@ class Instancevalueset < ActiveRecord::Base
     end
     return foundChannels
   end
-  def hasPPFailure?
-    hasFailure=false
+  def analyzePulsedPowerStatus
+    currentState=:unknown
     voltage=getNumericParameter("Voltage")
     timeout=getStringParameter("Timeout",:upcase=>true)
     machineState=getStringParameter("Machine State",:upcase=>true)
-    if voltage!=-1.0 and timeout!="NONE" and machineState=="SWITCH PU ON"
-      hasFailure=true
+    if voltage==-1.0 and timeout=="NONE" and machineState=="STAND BY"
+      currentState=:off
+    elsif voltage!=-1.0 and timeout=="NONE" and machineState=="WAIT FOR SHOT CMD"
+      currentState=:on
     elsif voltage!=-1.0 and timeout=="NONE" and machineState=="STAND BY"
-      hasFailure=true
+      currentState=:error
+    elsif voltage!=-1.0 and timeout!="NONE" and machineState=="STAND BY"
+      currentState=:error
+    elsif voltage!=-1.0 and machineState!="STAND BY"
+      currentState=:error
     end
-    return hasFailure
+    return currentState
   end
   def generateMultiPlot(plotParameterNames,options={})
     tempFile=Tempfile.new(['multiplotImage','.png'])

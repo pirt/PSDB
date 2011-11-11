@@ -89,9 +89,9 @@ table.no-zebra tbody tr.even td { background: transparent;}
 /* colouring for failed shots 2nd try */
 tbody tr.failedshot:nth-child(even) td,
 tbody tr.failedshot.even td {
-    background: #fbb;
+    background: #eaa;
 }
 tbody tr.failedshot:nth-child(odd) td,
 tbody tr.failedshot.odd td {
-    background: #eaa;
+    background: #fbb;
 }  
