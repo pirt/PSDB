@@ -157,14 +157,9 @@ describe Instancevalue do
         before(:each) do
           @imageInstVal=Factory(:instancevalue_image,:instancevalueset_id => @instancevalueset.id)
         end
-        it "should generate an image" do
-          @imageInstVal.generateImage
-          File.exists?(Rails.root.to_s+
-            "/app/assets/images/tmp/image"+@imageInstVal.id.to_s+"_320_200.png").should == true
-        end
-        it "should return a filename containing the instancevalue id" do
-          result=@imageInstVal.generateImage
-          result.should =="tmp/image"+@imageInstVal.id.to_s+"_320_200.png"
+        it "should return an image" do
+          image=@imageInstVal.generateImage
+          image.class.should == Magick::Image
         end
       end
       describe "for a non-image instancevalue" do
@@ -204,12 +199,8 @@ describe Instancevalue do
           @plotInstVal=Factory(:instancevalue_twod, :instancevalueset_id=>@instancevalueset.id)
         end
         it "should generate a plot image" do
-          @plotInstVal.generate2dPlot
-          File.exists?(Rails.root.to_s+"/app/assets/images/tmp/plot"+@plotInstVal.id.to_s+".png").should == true
-        end
-        it "should return a filename containing the instancevalue id" do
-          result=@plotInstVal.generate2dPlot
-          result.should == "tmp/plot"+@plotInstVal.id.to_s+".png"
+          image=@plotInstVal.generate2dPlot
+          image.class.should == Magick::Image
         end
       end
       describe "for a non-2dData instancevalue" do
