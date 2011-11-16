@@ -2,13 +2,10 @@
 <div class="container">
   <div class="span-22">
     <div class="span-14">
-      <% fileName=instanceValueSet.generatePlot(["Trace Analysis: Maj Trace","Trace Analysis: Maj Gauss Fit"],
-                                                  1,{:width=>550, :height=>200}) %>
-      <% if fileName.blank? %>
-        no data
-      <% else %>
-        <%= image_tag fileName %>
-      <% end %>
+      <% urlOptions={:controller => "dynamic_images", :action => "showMultiPlot", :id=>instanceValueSet.id,
+                  :parameterNames=>"Trace Analysis: Maj Trace,Trace Analysis: Maj Gauss Fit",
+                  :width=>550, :height=>200} %>
+      <img src="<%= url_for urlOptions %>"/>
     </div>
     <div class="span-8 last">
       <h3>Major Axis</h3>
@@ -24,13 +21,10 @@
   </div>
   <div class="span-22">
     <div class="span-14">
-      <% fileName=instanceValueSet.generatePlot(["Trace Analysis: Min Trace","Trace Analysis: Min Gauss Fit"],
-                                               2,{:width=>550, :height=>200}) %>
-      <% if fileName.blank? %>
-        no data
-      <% else %>
-        <%= image_tag fileName %>
-      <% end %>
+      <% urlOptions={:controller => "dynamic_images", :action => "showMultiPlot", :id=>instanceValueSet.id,
+                  :parameterNames=>"Trace Analysis: Min Trace,Trace Analysis: Min Gauss Fit",
+                  :width=>550, :height=>200} %>
+      <img src="<%= url_for urlOptions %>"/>
     </div>
     <div class="span-8 last">
       <h3>Minor Axis</h3>
