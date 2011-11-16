@@ -84,9 +84,7 @@ th, td, caption {padding:2px 2px 2px 0px;}
 /* disable table striping */
 table.no-zebra tbody tr:nth-child(even) td,
 table.no-zebra tbody tr.even td { background: transparent;}
-/* colouring for failed shots in index */
-/* tr.failedshot {color: #f00; border: 10px solid #f00} */
-/* colouring for failed shots 2nd try */
+/* colouring for failed shots */
 tbody tr.failedshot:nth-child(even) td,
 tbody tr.failedshot.even td {
     background: #eaa;
@@ -94,4 +92,5 @@ tbody tr.failedshot.even td {
 tbody tr.failedshot:nth-child(odd) td,
 tbody tr.failedshot.odd td {
     background: #fbb;
-}  
+}
+ 

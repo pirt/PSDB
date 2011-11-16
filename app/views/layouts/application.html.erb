@@ -12,9 +12,6 @@
   <%= stylesheet_link_tag "application-all", :media=>"all" %>
   <%= stylesheet_link_tag "application-print", :media=>"print" %>
   <%= csrf_meta_tag %>
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
   <!--[if lt IE 8]><%= stylesheet_link_tag "application-ie", :media=>"all" %><![endif]-->
   <%= favicon_link_tag %>
 </head>
@@ -51,8 +48,12 @@
   <%= link_to "Version", "/pages/changelog" %></footer>
 <%# The following line is a hack for IE since it does not support "zebra" table colouring CSS :-( %>
 <!--[if lt IE 9] >
-<script>$("tr:even").css("background-color", "#e5ecf9");</script>
-<![endif]-- >
+<script>
+$("tr:even").css("background-color", "#e5ecf9");
+$("tr:even.failedshot").css("background-color","#fbb");
+$("tr:odd.failedshot").css("background-color","#eaa");
+</script>
+<![endif]-->
   <%= debug(params) if Rails.env.development? %>
  </div>
 </body>
