@@ -28,8 +28,7 @@
           <td><%= link_to instanceValueSet.shot_id, instanceValueSet.shot %></td>
           <td><%= formatDate(instanceValueSet.shot.created_at) %></td>
           <td><%= link_to instanceValueSet.instance, instanceValueSet %></td>
-          <td><%= render "instancevaluesets/instancevalueset_short",
-                        :instanceValueSet => instanceValueSet %></td>
+          <td><%= displayValueSetShort(instanceValueSet) %></td>
         </tr>
       <% end %>
     </tbody>

@@ -13,6 +13,7 @@ class StatisticsController < ApplicationController
     yearBegin=Time.parse("1/1")
     yearEnd=yearBegin+1.year
     shotsOfTheYear=Shot.where(:shottype_id=>1,:created_at=>yearBegin..yearEnd)
+    @nrOfFailedShots=getNumberOfFailedShots(shotsOfTheYear)
     @nrOfShotDays=shotsOfTheYear.group_by {|s| s.created_at.yday}.length
     @databaseType=getDatabaseType()
     @dbStats=getDBSize()
@@ -28,5 +29,15 @@ class StatisticsController < ApplicationController
     @date=params[:month] ? Date.parse(params[:month]) : Date.today
     @formData=params
     @pageTitle="Shot calendar"
+  end
+private
+  def getNumberOfFailedShots(shots)
+    failedShots=0
+    Shot.all.each do |shot|
+      if shot.getShotStatus=="failedshot"
+        failedShots+=1
+      end
+    end
+    return failedShots
   end
 end

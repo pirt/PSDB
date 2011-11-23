@@ -19,6 +19,10 @@
           <td><%= Shot.where(:shottype_id=>1).count %></td>
         </tr>
         <tr>
+          <td>Number of failed shots:</td>
+          <td><%= @nrOfFailedShots %></td>
+        </tr>
+        <tr>
           <td>Total number of experiments:</td>
           <td><%= Experiment.count %></td>
         </tr>
