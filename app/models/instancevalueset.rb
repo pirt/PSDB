@@ -139,16 +139,11 @@ class Instancevalueset < ActiveRecord::Base
     currentState=:unknown
     voltage=getNumericParameter("Voltage")
     timeout=getStringParameter("Timeout",:upcase=>true)
-    machineState=getStringParameter("Machine State",:upcase=>true)
-    if voltage==-1.0 and timeout=="NONE" and machineState=="STAND BY"
+    if voltage==-1.0
       currentState=:off
-    elsif voltage!=-1.0 and timeout=="NONE" and machineState=="WAIT FOR SHOT CMD"
+    elsif timeout=="NONE"
       currentState=:on
-    elsif voltage!=-1.0 and timeout=="NONE" and machineState=="STAND BY"
-      currentState=:error
-    elsif voltage!=-1.0 and timeout!="NONE" and machineState=="STAND BY"
-      currentState=:error
-    elsif voltage!=-1.0 and machineState!="STAND BY"
+    else
       currentState=:error
     end
     return currentState

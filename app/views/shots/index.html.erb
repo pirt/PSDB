@@ -25,26 +25,14 @@
 <table cellspacing="0">
   <thead>
     <tr>
-      <th class="justifycenter span-1">Shot#</th>
-      <th class="justifycenter span-3">Date</th>
       <%= render projectizeName("shotheader") %>
-      <th></th>
     </tr>
   </thead>
   <tbody>
   <% @shots.each do |shot| %>
-  <% cache "shotline#{shot.id}" do %>
-    <% if shot.analyzePHELIX(:nocache=>false)==true %>
-    <tr class="failedshot">
-    <% else %>
-    <tr>
-    <% end %>
-      <td class="justifyright"><%= link_to shot.id, shot %></td>
-      <td class="justifyright"><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
+    <% cache "shotline#{shot.id}" do %>
       <%= render projectizeName("shotline"), :shot=>shot %>
-      <td><%= displayAttachmentLabel(shot) %></td>
-    </tr>
-  <% end %>
+    <% end %>
   <% end %>
   </tbody>
 </table>

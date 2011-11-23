@@ -1,15 +1,20 @@
 <% instanceValueSets=shot.instancevaluesets %>
-<td class="justifyright"><%= displayShotInstance(instanceValueSets,"fs_WP_Exit_6PWpGUI") %></td>
-<td class="justifyright"><%= displayShotInstance(instanceValueSets,"ns_WP_RR_6PWpGUI") %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_19mm_1_PU",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_19mm_2_PU",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_45mm_MAIN_PU",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU1",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU2",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU3",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU4",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU5",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_FR",{:noIcon=>true,:noUnit=>true}) %></td>
-<td class="justifyright PSDB_bold"><%= displayShotInstance(instanceValueSets,"PA_Exit_Powermeter") %></td>
-<td class="justifyright PSDB_bold"><%= displayShotInstance(instanceValueSets,"MAS_Powermeter") %></td>
-<td class="justifyleft"><%= shot.description %></td>
+<tr class="<%= shot.getShotStatus %>" >
+  <td class="justifyright"><%= link_to shot.id, shot %></td>
+  <td class="justifyright"><%= formatDate(shot.created_at, :showSeconds=>false) %></td>
+  <td class="justifyright"><%= displayShotInstance(instanceValueSets,"fs_WP_Exit_6PWpGUI") %></td>
+  <td class="justifyright"><%= displayShotInstance(instanceValueSets,"ns_WP_RR_6PWpGUI") %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_19mm_1_PU",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_19mm_2_PU",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_45mm_MAIN_PU",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU1",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU2",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU3",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU4",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU5",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_FR",{:noIcon=>true,:noUnit=>true}) %></td>
+  <td class="justifyright PSDB_bold"><%= displayShotInstance(instanceValueSets,"PA_Exit_Powermeter") %></td>
+  <td class="justifyright PSDB_bold"><%= displayShotInstance(instanceValueSets,"MAS_Powermeter") %></td>
+  <td class="justifyleft"><%= shot.description %></td>
+  <td><%= displayAttachmentLabel(shot) %></td>
+</tr>

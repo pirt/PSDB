@@ -61,10 +61,27 @@ class Shot < ActiveRecord::Base
     availableInstanceValueSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
   end
 ##
-# Analyze the shot.
+# Return shot status. Check the "Shot passed?" field of the PH_Sequencer instance.
+# The functions returns the string "failedshot" if "Shot passed?==false" and an empty string
+# otherwise
 #
-# This function analyzes the machine state and writes its result in the status field. It also sets the
-# "analyzed" bit to true.
+# shot:: the shot object
+  def getShotStatus
+    shotStatus=""
+    if (self.status & 1)== 1
+      shotStatus="failedshot"
+    else
+      instanceId=Instance.find_by_name("PHELIX_Sequencer_1")
+      if instanceId
+        sequencerValueSet=self.instancevaluesets.find_by_instance_id(instanceId)
+        if sequencerValueSet.present?
+          shotStatus=sequencerValueSet.getBooleanParameter("Shot passed?")==false ? "failedshot" : ""
+        end
+      end
+    end
+    return shotStatus
+  end
+
   def analyzePHELIX(options={})
     if ((options[:nocache]==true) or (self.status.nil?) or ((self.status & 1) == 0))
       machineError=false
