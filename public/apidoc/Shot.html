@@ -70,6 +70,8 @@
 
   <ul class="link-list">
     
+    <li><a href="#method-i-getShotStatus">#getShotStatus</a>
+    
     <li><a href="#method-i-involvedClasstypes">#involvedClasstypes</a>
     
     <li><a href="#method-i-involvedSubsystems">#involvedSubsystems</a>
@@ -148,14 +150,12 @@
 <p>This class represents a shot in the database.</p>
 
 <p><strong>Note:</strong> The <strong>status</strong> field has a
-project-specific meaning. For PHELIX the folllowing convention is used:</p>
+project-specific meaning. For PHELIX the status field is bitwise
+interpreted:</p>
 
-<pre>0:: successful shot
-1:: failed shot because of machine error (pulsed power)
-2:: failed shot because of handling error (e.g. forgotten shutter)</pre>
-
-<p>The above info it bitwise interpreted (e.g. 3=failed shot because of
-machine and handling)</p>
+<pre>bit 0:: true if shot was analyzed (defaults to false)
+bit 1:: true if failed shot because of machine error (pulsed power)
+bit 2:: true if failed shot because of handling error (e.g. forgotten shutter)</pre>
 
 <h2 id="label-Schema+Information">Schema Information</h2>
 
@@ -207,6 +207,55 @@ for consistency.</p>
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-getShotStatus" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getShotStatus</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return shot status. Check the “<a href="Shot.html">Shot</a> passed?” field
+of the PH_Sequencer instance and the status field of the shot (bit 0). The
+functions returns the string “failedshot”  if “<a href="Shot.html">Shot</a>
+passed?==false” or status bit 0 == 1 and an empty string otherwise</p>
+<dl class="rdoc-list note-list"><dt>shot
+<dd>
+<p>the shot object</p>
+</dd></dl>
+          
+
+          
+          <div class="method-source-code" id="getShotStatus-source">
+            <pre><span class="ruby-comment"># File app/models/shot.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getShotStatus</span>
+  <span class="ruby-identifier">shotStatus</span>=<span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">status</span> &amp; <span class="ruby-value">1</span>)<span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">shotStatus</span>=<span class="ruby-string">&quot;failedshot&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">instanceId</span>=<span class="ruby-constant">Instance</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-string">&quot;PHELIX_Sequencer_1&quot;</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">instanceId</span>
+      <span class="ruby-identifier">sequencerValueSet</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>.<span class="ruby-identifier">find_by_instance_id</span>(<span class="ruby-identifier">instanceId</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">sequencerValueSet</span>.<span class="ruby-identifier">present?</span>
+        <span class="ruby-identifier">shotStatus</span>=<span class="ruby-identifier">sequencerValueSet</span>.<span class="ruby-identifier">getBooleanParameter</span>(<span class="ruby-string">&quot;Shot passed?&quot;</span>)<span class="ruby-operator">==</span><span class="ruby-keyword">false</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;failedshot&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">shotStatus</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- getShotStatus-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- getShotStatus-method -->
+
+    
       <div id="method-i-involvedClasstypes" class="method-detail ">
         
         <div class="method-heading">
@@ -225,7 +274,7 @@ participated during the measurement.</p>
 
           
           <div class="method-source-code" id="involvedClasstypes-source">
-            <pre><span class="ruby-comment"># File app/models/shot.rb, line 60</span>
+            <pre><span class="ruby-comment"># File app/models/shot.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedClasstypes</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:classtype</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;classtypes.name&quot;</span>)
@@ -258,7 +307,7 @@ during the measurement.</p>
 
           
           <div class="method-source-code" id="involvedSubsystems-source">
-            <pre><span class="ruby-comment"># File app/models/shot.rb, line 53</span>
+            <pre><span class="ruby-comment"># File app/models/shot.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">involvedSubsystems</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">instancevaluesets</span>
   <span class="ruby-identifier">availableInstanceValueSets</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:instance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:subsystem</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;subsystems.name&quot;</span>)

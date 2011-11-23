@@ -1,9 +1,9 @@
-Tue, 08 Nov 2011 14:52:59 +0100
+Wed, 23 Nov 2011 14:11:02 +0100
 app/models/classtype.rb	Fri, 04 Nov 2011 15:59:43 +0100
 app/models/experiment.rb	Fri, 04 Nov 2011 15:59:43 +0100
 app/models/attachment.rb	Fri, 04 Nov 2011 15:59:43 +0100
-app/models/shot.rb	Tue, 08 Nov 2011 14:52:49 +0100
-app/models/instancevalueset.rb	Mon, 07 Nov 2011 14:40:07 +0100
+app/models/shot.rb	Wed, 23 Nov 2011 14:10:33 +0100
+app/models/instancevalueset.rb	Wed, 23 Nov 2011 12:56:37 +0100
 app/models/subsystem.rb	Fri, 04 Nov 2011 15:59:43 +0100
 app/models/datatype.rb	Fri, 04 Nov 2011 15:59:43 +0100
 app/models/instancevalue.rb	Fri, 04 Nov 2011 15:59:43 +0100
@@ -11,7 +11,7 @@ app/models/shottype.rb	Fri, 04 Nov 2011 15:59:43 +0100
 app/models/instance.rb	Fri, 04 Nov 2011 15:59:43 +0100
 app/controllers/instances_controller.rb	Fri, 04 Nov 2011 15:59:43 +0100
 app/controllers/statistics_controller.rb	Fri, 04 Nov 2011 15:59:43 +0100
-app/controllers/shots_controller.rb	Fri, 04 Nov 2011 15:59:43 +0100
+app/controllers/shots_controller.rb	Thu, 10 Nov 2011 16:43:39 +0100
 app/controllers/pages_controller.rb	Thu, 03 Nov 2011 15:10:20 +0100
 app/controllers/attachments_controller.rb	Thu, 03 Nov 2011 14:56:03 +0100
 app/controllers/instancevaluesets_controller.rb	Fri, 04 Nov 2011 15:59:43 +0100
@@ -21,5 +21,5 @@ app/controllers/application_controller.rb	Fri, 04 Nov 2011 16:11:16 +0100
 app/controllers/instancevalues_controller.rb	Fri, 04 Nov 2011 15:23:56 +0100
 app/helpers/application_helper.rb	Thu, 13 Oct 2011 14:53:43 +0200
 app/helpers/instancevalues_helper.rb	Mon, 07 Nov 2011 14:01:52 +0100
-app/helpers/shots_helper.rb	Mon, 07 Nov 2011 14:22:13 +0100
-app/helpers/instancevaluesets_helper.rb	Mon, 07 Nov 2011 14:19:06 +0100
+app/helpers/shots_helper.rb	Wed, 23 Nov 2011 13:18:24 +0100
+app/helpers/instancevaluesets_helper.rb	Wed, 09 Nov 2011 13:32:27 +0100

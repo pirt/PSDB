@@ -228,7 +228,7 @@ found.</p>
         
         <div class="method-heading">
           <span class="method-name">displayValueSetShort</span><span
-            class="method-args">(instanceValueSet)</span>
+            class="method-args">(instanceValueSet,options={})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -246,7 +246,7 @@ of the instance following the naming scheme
           
           <div class="method-source-code" id="displayValueSetShort-source">
             <pre><span class="ruby-comment"># File app/helpers/instancevaluesets_helper.rb, line 31</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">displayValueSetShort</span>(<span class="ruby-identifier">instanceValueSet</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">displayValueSetShort</span>(<span class="ruby-identifier">instanceValueSet</span>,<span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">classType</span>=<span class="ruby-identifier">instanceValueSet</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">classtype</span>.<span class="ruby-identifier">name</span>
   <span class="ruby-identifier">valueSetVersion</span>=<span class="ruby-identifier">instanceValueSet</span>.<span class="ruby-identifier">version</span>
   <span class="ruby-identifier">partialName</span>=<span class="ruby-node">&quot;/instancevaluesets/#{classType}/short_#{valueSetVersion}&quot;</span>
@@ -255,7 +255,7 @@ of the instance following the naming scheme
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">partialFileName</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;no view defined&quot;</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">render</span> <span class="ruby-identifier">partialName</span>, <span class="ruby-value">:instanceValueSet</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">instanceValueSet</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">partialName</span>, <span class="ruby-value">:instanceValueSet</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">instanceValueSet</span>, <span class="ruby-value">:options=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">options</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- displayValueSetShort-source -->

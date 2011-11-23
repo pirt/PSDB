@@ -61,9 +61,9 @@ class Shot < ActiveRecord::Base
     availableInstanceValueSets.joins(:instance => :classtype).select("classtypes.name").group("classtypes.name")
   end
 ##
-# Return shot status. Check the "Shot passed?" field of the PH_Sequencer instance.
-# The functions returns the string "failedshot" if "Shot passed?==false" and an empty string
-# otherwise
+# Return shot status. Check the "Shot passed?" field of the PH_Sequencer instance and
+# the status field of the shot (bit 0). The functions returns the string "failedshot" 
+# if "Shot passed?==false" or status bit 0 == 1 and an empty string otherwise
 #
 # shot:: the shot object
   def getShotStatus
@@ -80,34 +80,6 @@ class Shot < ActiveRecord::Base
       end
     end
     return shotStatus
-  end
-
-  def analyzePHELIX(options={})
-    if ((options[:nocache]==true) or (self.status.nil?) or ((self.status & 1) == 0))
-      machineError=false
-      instanceNames=["PPPA_19mm_1_PU","PPPA_19mm_2_PU","PPPA_45mm_MAIN_PU",
-                     "PPMA_PU1","PPMA_PU2","PPMA_PU3","PPMA_PU4","PPMA_PU5"]
-      instanceValueSets=self.instancevaluesets
-      instanceNames.each do |instanceName|
-        instanceId=Instance.find_by_name(instanceName)
-        if instanceId.present?
-          instanceValueSet=instanceValueSets.find_by_instance_id(instanceId)
-          if instanceValueSet.present?
-            if (instanceValueSet.analyzePulsedPowerStatus==:error)
-              machineError=true
-            end
-          end
-        end
-      end
-      self.status |= 1 # set "analyzed" bit
-      if machineError
-        self.status |= 2
-      else
-        self.status &= ~2
-      end
-      self.save!
-    end
-    return (self.status & 2) != 0
   end
 private
   def check_if_instancevaluesets_associated
