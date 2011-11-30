@@ -1,8 +1,33 @@
 <h1>Version history</h1>
 <ul>
-  <li>0.5 (13.10.11): </li>
+  <li>0.6 (??.??.??):</li>
   <ul>
-    <li>converted application to Rails 3.1 and make use of the new asset pipeline (=performance improvement.</li>
+    <li>fix several issues with asset pipeline.</li>
+    <li>added handling of "failed" shots in index list.</li>
+    <li>implemented dynamic image controller which improves caching and allows for delayed loading of images after
+        the web page is loaded.</li>
+    <li>add possibility to display shot reports (= summary of most important shot values).</li>
+    <li>fix handling of "out of range" values for gentech energy meters.</li>
+    <li>fix wrong interpretation of "ok" status and "negative" pressure values in PH_VacuumControl.</li>
+    <li>improved table layout for PHELIX shot list.</li>
+    <li>fix layout of shot calendar.</li>
+    <li>heavily improved and extended API documentation</li>
+    <li>add new rake task (rake rdoc) for automatic generation of API documentation.</li>
+    <li>additional fixes for "8-bit warning" in image export.</li>
+    <li>use combinded index for attachments table which improves database performance a bit.</li>
+    <li>use Ruby's tempfile system while generating plot images. Temporary files are thus automatically deleted afterwards.</li>
+    <li>updated and extended several unit tests for controllers and models.</li>
+    <li>simplified database migration methods introduced in Rails 3.1.</li>
+    <li>correct display of status icon for some instances of PH_Switch.</li>
+    <li>fix wrongly interpreted status in short view of SRDG535.</li>
+    <li>fix wrong value name for BNC555 detailed view.
+    <li>update jQuery UI library.</li>
+    <li>small improvements of the PHELIX logo.</li>
+    <li>various code cleanups and optimizations.</li>
+  </ul>
+  <li>0.5 (13.10.11):</li>
+  <ul>
+    <li>converted application to Rails 3.1 and make use of the new asset pipeline (=performance improvement).</li>
     <li>automatic documentation of the application's API using the URL: http://hostname/apidoc/</li>
     <li>improved number justification on shot index page.</li>
     <li>fixed bug in views for OceanOptics Spectrometers for the case that no spectrum was delivered.</li>
