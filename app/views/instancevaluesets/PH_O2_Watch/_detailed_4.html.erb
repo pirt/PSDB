@@ -18,27 +18,28 @@
     failureIcon="icon_ERROR.png"
   end
 %>
-<div class="span-8">
-  <%#= image_tag "o2sensor.png" %>
+<div class="span-24">
+  <div class="span-8">
+    <%= image_tag "o2watch.png" %>
+  </div>
+  <div class="span-16 last">
+    <ul>
+      <li>
+        <strong>Prealert:</strong> <%= image_tag prealertIcon,{:style=>"vertical-align:middle"} %>
+        <%= prealertState %>
+      </li>
+      <li>
+        <strong>Alert:</strong> <%= image_tag alertIcon,{:style=>"vertical-align:middle"} %>
+        <%= alertState %>
+      </li>
+      <li>
+        <strong>Failure:</strong> <%= image_tag failureIcon,{:style=>"vertical-align:middle"} %>
+        <%= failureState %>
+      </li>
+      <li>
+        <strong>Concentration:</strong>
+        <%= displayParameter(instanceValueSet,"Concentration", :precision => 2) %>
+      </li>
+    </ul>
+  </div>
 </div>
-<div class="span-16 last">
-  <ul>
-    <li>
-      <strong>Prealert:</strong> <%= image_tag prealertIcon,{:style=>"vertical-align:middle"} %>
-      <%= prealertState %>
-    </li>
-    <li>
-      <strong>Alert:</strong> <%= image_tag alertIcon,{:style=>"vertical-align:middle"} %>
-      <%= alertState %>
-    </li>
-    <li>
-      <strong>Failure:</strong> <%= image_tag failureIcon,{:style=>"vertical-align:middle"} %>
-      <%= failureState %>
-    </li>
-    <li>
-      <strong>Concentration:</strong>
-      <%= displayParameter(instanceValueSet,"Concentration", :precision => 2) %>
-    </li>
-  </ul>
-</div>
-
