@@ -6,7 +6,11 @@
       <strong>Experiment:</strong> <%= @shot.experiment %><br />
       <strong>Shot type:</strong> <%= @shot.shottype %><br />
       <strong>Comment:</strong> <%= @shot.description %><br />
-      <%= link_to "Edit", edit_shot_path(@shot) %>
+      <%= link_to "Edit", edit_shot_path(@shot) %><br />
+      <%= form_tag("report/#{@shot.id}", :method => "get") do %>
+        <%= select_tag(:reportType,options_for_select(@reportTypes)) %>
+        <%= submit_tag("Generate Report") %>
+      <% end %>
     </div>
   </div>
   <div class="span-16 last" id="attachments">

@@ -58,6 +58,7 @@ class ShotsController < ApplicationController
     @usedClasses=@shot.involvedClasstypes.order("name asc")
     @usedSubsystems=@shot.involvedSubsystems.order("name asc")
     @pageTitle="Shot #{@shot.id}"
+    @reportTypes=getAvailableReportTypes() # [["z6","z6"]]
   end
 
   def edit
@@ -95,6 +96,9 @@ class ShotsController < ApplicationController
 
   def report
     @shot=Shot.find_by_id(params[:id])
+    if params[:reportType].present?
+      @reportName=params[:reportType]
+    end
     if !@shot
       flash[:error]="Shot not found."
       redirect_to shots_path
@@ -104,4 +108,16 @@ class ShotsController < ApplicationController
     @instanceValueSets=@shot.instancevaluesets
     render :layout => false
   end
+private
+  def getAvailableReportTypes
+    reportsPath=Rails.root.to_s+"/app/views/shots/"+projectizeName("reports")+"/*"
+    files=Dir.glob(reportsPath)
+    reportTypes=[]
+    files.each do |file|
+      reportType=File.basename(file,".html.erb").sub("_","")
+      reportTypes << [reportType,reportType]
+    end
+    return reportTypes
+  end
+  
 end

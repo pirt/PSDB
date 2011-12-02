@@ -18,10 +18,14 @@
 <div class="container">
   <div id="header" class="span-24">
     <h1>
-      <%= link_to image_tag(projectizeName("logo.png")), shots_path %> Z6 Report for Shot #<%= @shot.id %>
+      <%= link_to image_tag(projectizeName("logo.png")), shots_path %> <%= @reportName %> Report for Shot #<%= @shot.id %>
     </h1>
   </div>
-  <%= render 'shots/reports/z6', :shot=>@shot, :instanceValueSets=>@instanceValueSets %>
+  <% if File.exists?(Rails.root.to_s+"/app/views/shots/#{projectizeName("reports")}/_#{@reportName}.html.erb") %>
+    <%= render "shots/#{projectizeName("reports")}/#{@reportName}", :shot=>@shot, :instanceValueSets=>@instanceValueSets %>
+  <% else %>
+    <h3>Report type <%= @reportName %> does not exist!</h3>
+  <% end %>
 </div>
 <footer class="quiet">PSDB ( version <%= APP_VERSION %>)</footer>
 </body>

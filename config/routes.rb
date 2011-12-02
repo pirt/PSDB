@@ -9,7 +9,7 @@ PSDB::Application.routes.draw do
   end
 
   match 'shots/report/:id' => 'shots#report'
-
+ 
   resources :shots, :only => [:show, :edit, :update, :index] do
     resources :attachments, :only => [:show, :new, :create, :edit, :update, :destroy]
   end
