@@ -1,10 +1,12 @@
 source 'http://rubygems.org'
 
 gem 'rails' , "~> 3.1.0"
-gem 'rack', '1.3.3' # the newer version produces some warnings...
-gem 'gnuplot'       # Use plot package
-gem 'will_paginate' #, "~> 3.0.2" # Paginate result lists
-gem 'rmagick'       # Bitmap graphics handling (e.g. scaling, false colour,...)
+gem 'rack', '1.3.3'     # the newer version produces some warnings...
+gem 'gnuplot'           # Use plot package
+gem 'will_paginate'     # Paginate result lists
+gem 'rmagick'           # Bitmap graphics handling (e.g. scaling, false colour,...)
+gem 'authlogic'         # Authentication system
+gem 'rails3-generators' # necessary for 'session' generator of Authlogic
 
 # Gems used only for assets and not required  
 # in production environments by default.  

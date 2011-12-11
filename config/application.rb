@@ -49,5 +49,8 @@ module PSDB
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Config Authlogic
+    config.gem "authlogic"
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110406103313) do
+ActiveRecord::Schema.define(:version => 20111210164038) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -24,15 +24,14 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "updated_at",                                                   :null => false
   end
 
-  add_index "attachments", ["attachable_id", "attachable_type"], :name => "i_att_att_id_att_typ"
+  add_index "attachments", ["attachable_id"], :name => "i_attachments_attachable_id"
+  add_index "attachments", ["attachable_type"], :name => "i_attachments_attachable_type"
 
   create_table "classtypes", :force => true do |t|
     t.string   "name",       :limit => 256, :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
-
-  add_index "classtypes", ["name"], :name => "index_classtypes_on_name", :unique => true
 
   add_primary_key_trigger "classtypes"
 
@@ -41,8 +40,6 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
-
-  add_index "datatypes", ["name"], :name => "index_datatypes_on_name", :unique => true
 
   add_primary_key_trigger "datatypes"
 
@@ -67,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
   end
 
   add_index "instances", ["classtype_id"], :name => "i_instances_classtype_id"
-  add_index "instances", ["name"], :name => "index_instances_on_name", :unique => true
+  add_index "instances", ["name"], :name => "ind_inst_on_name", :unique => true
   add_index "instances", ["subsystem_id"], :name => "i_instances_subsystem_id"
 
   add_primary_key_trigger "instances"
@@ -84,7 +81,7 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
   end
 
   add_index "instancevalues", ["datatype_id"], :name => "i_instancevalues_datatype_id"
-  add_index "instancevalues", ["instancevalueset_id"], :name => "valueset_index"
+  add_index "instancevalues", ["instancevalueset_id"], :name => "index_instancevaluesets"
 
   add_primary_key_trigger "instancevalues"
 
@@ -103,12 +100,11 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
 
   create_table "shots", :force => true do |t|
     t.string   "description"
-    t.integer  "experiment_id",       :precision => 38, :scale => 0, :null => false
-    t.integer  "shottype_id",         :precision => 38, :scale => 0, :null => false
-    t.integer  "configuration_id_id", :precision => 38, :scale => 0
-    t.integer  "status",              :precision => 38, :scale => 0
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.integer  "experiment_id", :precision => 38, :scale => 0, :null => false
+    t.integer  "shottype_id",   :precision => 38, :scale => 0, :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.integer  "status",        :precision => 38, :scale => 0
   end
 
   add_index "shots", ["experiment_id"], :name => "index_shots_on_experiment_id"
@@ -122,8 +118,6 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "updated_at",               :null => false
   end
 
-  add_index "shottypes", ["name"], :name => "index_shottypes_on_name", :unique => true
-
   add_primary_key_trigger "shottypes"
 
   create_table "subsystems", :force => true do |t|
@@ -132,20 +126,35 @@ ActiveRecord::Schema.define(:version => 20110406103313) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "subsystems", ["name"], :name => "index_subsystems_on_name", :unique => true
+  add_index "subsystems", ["name"], :name => "subsystems_u01", :unique => true
 
   add_primary_key_trigger "subsystems"
 
-  add_foreign_key "instances", "classtypes", :name => "sys_c0038728"
-  add_foreign_key "instances", "subsystems", :name => "sys_c0038729"
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
-  add_foreign_key "instancevalues", "datatypes", :name => "sys_c0038745"
-  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c0038744"
+  add_index "users", ["persistence_token"], :name => "i_users_persistence_token"
+  add_index "users", ["username"], :name => "index_users_on_username"
 
-  add_foreign_key "instancevaluesets", "instances", :name => "sys_c0038736"
-  add_foreign_key "instancevaluesets", "shots", :name => "sys_c0038735"
+  add_primary_key_trigger "users"
 
-  add_foreign_key "shots", "experiments", :name => "sys_c0038704"
-  add_foreign_key "shots", "shottypes", :name => "sys_c0038705"
+  add_foreign_key "instances", "classtypes", :name => "sys_c0023497"
+  add_foreign_key "instances", "subsystems", :name => "sys_c0023496"
+
+  add_foreign_key "instancevalues", "datatypes", :name => "sys_c0023500"
+  add_foreign_key "instancevalues", "instancevaluesets", :name => "sys_c0023501"
+
+  add_foreign_key "instancevaluesets", "instances", :name => "sys_c0023498"
+  add_foreign_key "instancevaluesets", "shots", :name => "sys_c0023499"
+
+  add_foreign_key "shots", "experiments", :name => "sys_c0023494"
+  add_foreign_key "shots", "shottypes", :name => "sys_c0023495"
 
 end

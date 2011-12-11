@@ -1,4 +1,9 @@
 PSDB::Application.routes.draw do
+
+  match 'login' => 'user_sessions#new'
+  match 'logout' => 'user_sessions#destroy'
+  resources :user_sessions
+
   get "dynamic_images/showImage"
   get "dynamic_images/showPlot"
   get "dynamic_images/showMultiPlot"
@@ -16,6 +21,7 @@ PSDB::Application.routes.draw do
 
   resources :instances, :only => [:show, :index]
   resources :instancevaluesets, :only => [:show, :index]
+  resources :users
 
   get "instancevalues/exportImage"
   get "instancevalues/exportPlot"

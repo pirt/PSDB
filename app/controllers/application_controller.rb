@@ -1,9 +1,12 @@
 # coding: utf-8
 # General controller for the entire application.
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :authenticate
+
+  helper_method :current_user
 
 # Convert a numeric value and a unit with prefix to the numerical value of the base.
 # This functions extracts the unit prefix and multiplies it by its prefix value.
@@ -155,5 +158,13 @@ private
     authenticate_or_request_with_http_basic do |user_name, password|
       user_name == 'admin' && password == '123123'
     end
+  end
+
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
+  end
+  def current_user
+    @current_user = current_user_session && current_user_session.record
   end
 end
