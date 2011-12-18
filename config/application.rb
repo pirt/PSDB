@@ -52,5 +52,8 @@ module PSDB
 
     # Config Authlogic
     config.gem "authlogic"
+
+    # Config declarative_authorization
+    config.gem "declarative_authorization"
   end
 end

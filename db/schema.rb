@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111210164038) do
+ActiveRecord::Schema.define(:version => 20111218164850) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -97,6 +97,11 @@ ActiveRecord::Schema.define(:version => 20111210164038) do
   add_index "instancevaluesets", ["shot_id"], :name => "i_instancevaluesets_shot_id"
 
   add_primary_key_trigger "instancevaluesets"
+
+  create_table "roles", :force => true do |t|
+    t.string  "title"
+    t.integer "user_id", :precision => 38, :scale => 0
+  end
 
   create_table "shots", :force => true do |t|
     t.string   "description"

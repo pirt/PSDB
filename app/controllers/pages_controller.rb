@@ -1,5 +1,7 @@
 # This controller ist repsonsible for serving (mostly) static pages.
 class PagesController < ApplicationController
+  filter_access_to :all
+
   def start
     @pageTitle=""
   end

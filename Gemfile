@@ -7,6 +7,8 @@ gem 'will_paginate'     # Paginate result lists
 gem 'rmagick'           # Bitmap graphics handling (e.g. scaling, false colour,...)
 gem 'authlogic'         # Authentication system
 gem 'rails3-generators' # necessary for 'session' generator of Authlogic
+gem 'declarative_authorization'
+gem 'ruby_parser'
 
 # Gems used only for assets and not required  
 # in production environments by default.  
@@ -20,7 +22,7 @@ gem 'jquery-rails'  # jQuery integration
 
 # Add support for oracle database
 group :oracle do
-  gem 'ruby-oci8'
+  gem 'ruby-oci8', "~> 2.0.6"
   gem 'activerecord-oracle_enhanced-adapter'
   gem 'ruby-plsql'
 end

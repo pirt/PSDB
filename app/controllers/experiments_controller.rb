@@ -5,7 +5,7 @@
 # In addition it is possible to add file attachments to a particular experiment. This
 # functionality is handles by the AttachmentsController.
 class ExperimentsController < ApplicationController
-
+  filter_access_to :all
   def index
     @experiments = Experiment.select([:id, :name, :description, :active]).
       paginate(:page => params[:page], :include=>[:attachments])
