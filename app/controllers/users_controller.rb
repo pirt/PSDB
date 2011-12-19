@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  filter_access_to :all
+  def index
+    @users=User.all
+    @pageTitle="Users"
+  end
   def new
     @user=User.new
     @pageTitle="Register new user"
