@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111218164850) do
+ActiveRecord::Schema.define(:version => 20111220184209) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename",                                                     :null => false
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(:version => 20111218164850) do
   end
 
   add_primary_key_trigger "datatypes"
+
+  create_table "experiment_owners", :force => true do |t|
+    t.integer "experiment_id", :precision => 38, :scale => 0
+    t.integer "user_id",       :precision => 38, :scale => 0
+  end
 
   create_table "experiments", :force => true do |t|
     t.string   "name",        :limit => 30,                                                 :null => false
