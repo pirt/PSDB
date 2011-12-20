@@ -34,8 +34,15 @@ class ExperimentsController < ApplicationController
     end
     @experiment = Experiment.new(params[:experiment])
     if @experiment.save
-      flash[:success] = "Experiment successfully created"
-      redirect_to experiments_path
+      user=User.new(:username=>@experiment.name, :email=>"dummy@email.com", :password=>"abcabc", :password_confirmation=>"abcabc")
+      role=user.roles.new(:title=>"experimentalist")
+      if user.save && role.save
+        flash[:success] = "Experiment and user account successfully created"
+        redirect_to experiments_path
+      else
+        flash[:error] = "Error setting up user account for experiment"
+        redirect_to experiments_path
+      end
     else
       @pageTitle = "Add new experiment"
       render 'new'

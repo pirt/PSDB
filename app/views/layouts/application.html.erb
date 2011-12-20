@@ -40,6 +40,9 @@
             <li><%= link_to "Shots",shots_path %></li>
             <li><%= link_to "Instances",instances_path %></li>
             <li><%= link_to "Statistics", :controller => "statistics", :action => "overview" %></li>
+            <% permitted_to? :index, :users do %>
+              <li><%= link_to "Administration", users_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
