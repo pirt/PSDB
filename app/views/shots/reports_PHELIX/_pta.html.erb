@@ -1,0 +1,17 @@
+<div id="generalinfo" class="span-24">
+  <div id="shotinfo" class="span-8" >
+    <h3>General</h3>
+    <div class="box">
+      <strong>Timestamp:</strong> <%= formatDate(shot.created_at) %><br />
+      <strong>Experiment:</strong> <%= shot.experiment %><br />
+      <strong>Shot type:</strong> <%= shot.shottype %><br />
+      <strong>Comment:</strong> <%= shot.description %><br />
+    </div>
+  </div>
+  <div id="usercomment" class="span-16 last">
+    <h3>User comment:</h3>
+    <%= form_tag do %>
+      <%= text_area_tag 'message' %>
+    <% end %>
+  </div>
+</div>
