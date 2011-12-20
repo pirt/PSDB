@@ -1,1 +1,25 @@
-<h2>Users</h2>
+<h2>User accounts</h2>
+<%= link_to 'Add new user account', new_user_path %>
+<%= will_paginate @users %>
+<table border="0" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th class="span-5">Name</th>
+      <th class="span-5">email</th>
+      <th class="span-3">Role</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user %></td>
+        <td><%= user.email %></td>
+        <td><%= user.roles.to_s %></td>
+        <td><%= link_to "Delete", user,{:method => :delete, :confirm=> "Are you sure?",:title => "Delete #{user.username}"} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @users %>

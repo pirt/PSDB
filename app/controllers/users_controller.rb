@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   filter_access_to :all
   def index
-    @users=User.all
+    @users=User.paginate(:page => params[:page])
     @pageTitle="Users"
   end
   def new
