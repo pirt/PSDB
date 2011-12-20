@@ -15,3 +15,121 @@
     <% end %>
   </div>
 </div>
+<div id="operation mode" class="span-24">
+  <h3>Operation mode</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="span-1 justifycenter">19_1<br/>[kV]</th>
+        <th class="span-1 justifycenter">19_2<br/>[kV]</th>
+        <th class="span-1 justifycenter">45<br/>[kV]</th>
+        <th class="span-1 justifycenter">MA1<br/>[kV]</th>
+        <th class="span-1 justifycenter">MA2<br/>[kV]</th>
+        <th class="span-1 justifycenter">MA3<br/>[kV]</th>
+        <th class="span-1 justifycenter">MA4<br/>[kV]</th>
+        <th class="span-1 justifycenter">MA5<br/>[kV]</th>
+        <th class="span-1 justifycenter">FR<br/>[kV]</th>
+      </tr>
+    </thead>
+      <tr>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_19mm_1_PU",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_19mm_2_PU",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPPA_45mm_MAIN_PU",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU1",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU2",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU3",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU4",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_PU5",{:noUnit=>true}) %></td>
+        <td class="justifycenter"><%= displayShotInstance(instanceValueSets,"PPMA_FR",{:noUnit=>true}) %></td>
+      </tr>
+    </table>
+</div>
+<div id="results1" class="span-24">
+  <h3>Laser parameters</h3>
+  <div id="energies" class="span-8">
+    <h4>Energy</h4>
+    <table>
+      <thead>
+        <tr>
+          <th class="span-5">Parameter</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="justifyright">fsFE Waveplate:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"fs_WP_Exit_6PWpGUI") %></td>
+        </tr>
+        <tr>
+          <td class="justifyright">nsFE Waveplate:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"ns_WP_RR_6PWpGUI") %></td>
+        </tr>
+        <tr>
+          <td class="justifyright">PreAmp Energy:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"PA_Exit_Powermeter") %></td>
+        </tr>
+        <tr>
+          <td class="justifyright">MainAmp Energy:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"MAS_Powermeter") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="temporal" class="span-8">
+    <h4>Pulse Width / Spectrum</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="justifyright">Pulse length:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"COS-SSAC") %></td>
+        </tr>
+        <tr>
+          <td class="justifyright">Spectrum:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"MAS_OO_Spectrometer") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span-8 last">
+    <h4>PreAmp Double beam operation</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="justifyright">Beam delay:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"PA_Input_Delay_6PGUI") %></td>
+        </tr>
+        <tr>
+          <td class="justifyright">Shutter delayed beam:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"PA_delayed_BB") %></td>
+        </tr>
+        <tr>
+          <td class="justifyright">Shutter non-delayed beam:</td>
+          <td class="PSDB_bold"><%= displayShotInstance(instanceValueSets,"PA_non_delayed_BB") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div id="results2" class="span-24">
+  <h3>Beam profiles</h3>
+  <div id="nearfield" class="span-12">
+    <h4>COS Nearfield</h4>
+    <%= displayShotInstance(instanceValueSets,"COS_NF_Cam", {:width=>400, :height=>400}) %>
+  </div>
+  <div id="farfield" class="span-12 last">
+    <h4>COS Farfield</h4>
+    <%= displayShotInstance(instanceValueSets,"COS_FF_Cam", {:width=>400, :height=>400}) %>
+  </div>
+</div>
