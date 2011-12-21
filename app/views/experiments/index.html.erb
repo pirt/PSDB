@@ -1,5 +1,5 @@
 <h2>Available Experiments</h2>
-<%= link_to 'Add new experiment', new_experiment_path %>
+<%= link_to 'Add new experiment', new_experiment_path if permitted_to? :create, :experiments %>
 <%= will_paginate @experiments %>
 <table border="0" cellspacing="0" cellpadding="0">
   <thead>
@@ -32,14 +32,14 @@
         <td><% if experiment.attachments.present? %>
               <%= image_tag 'paperclip.png' %>
         <% end %></td>
-        <td><%= link_to 'Edit', edit_experiment_path(experiment) %>
+        <td><%= link_to 'Edit', edit_experiment_path(experiment) if permitted_to? :update, experiment %>
             <% if experiment.attachments.present?
               @confirmation="There are documents attached to the experiment, which WILL BE LOST if the experiment is deleted. Are You sure you want to do this?"
                else
               @confirmation="Are You sure?"
               end %>
-              <%= link_to_if(experiment.shots.empty?,"Delete",
-                             experiment,{:method => :delete, :confirm=> @confirmation,:title => "Delete #{experiment.name}"}) %>
+              <%= link_to "Delete", experiment, :confirm => @confirmation, :method => :delete if (permitted_to? :destroy, experiment) && (experiment.shots.empty?) %>
+
         </td>
       </tr>
     <% end %>
