@@ -4,12 +4,10 @@ class ExperimentOwner < ActiveRecord::Base
   belongs_to :experiment
   belongs_to :user
 
+  validates :user_id, :uniqueness => {:scope => :experiment_id}
   # check for reference to an existing experiment / user
   # this also checks the presence of experiment_id and shottype_id
 
   validates :experiment, :presence => true
-
   validates :user, :presence => true
-
-  validates :user_id, :uniqueness => {:scope => :experiment_id}
 end

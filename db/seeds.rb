@@ -17,4 +17,10 @@ puts "Initializing PSDB..."
     Shottype.create!(:name => shottype)
   end
   puts "done"
+  print "  Creating admin user... "
+  STDOUT.flush
+  user=User.create!(:login => "admin", :realname=>"Administrator", :email=>"psdb@gsi.de",
+                    :password=>"admin", password_confirmation=>"admin")
+  user.roles.create!(:title=>"admin")
+  puts "done"
 puts "Done."

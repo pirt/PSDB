@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(:version => 20111220184209) do
     t.integer "user_id", :precision => 38, :scale => 0
   end
 
+  add_primary_key_trigger "roles"
+
   create_table "shots", :force => true do |t|
     t.string   "description"
     t.integer  "experiment_id", :precision => 38, :scale => 0, :null => false
@@ -141,8 +143,9 @@ ActiveRecord::Schema.define(:version => 20111220184209) do
   add_primary_key_trigger "subsystems"
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "email"
+    t.string   "login",             :limit => 50, :null => false
+    t.string   "realname",          :limit => 50, :null => false
+    t.string   "email",                           :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
@@ -150,8 +153,8 @@ ActiveRecord::Schema.define(:version => 20111220184209) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["persistence_token"], :name => "i_users_persistence_token"
-  add_index "users", ["username"], :name => "index_users_on_username"
 
   add_primary_key_trigger "users"
 

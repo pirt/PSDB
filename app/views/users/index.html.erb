@@ -4,6 +4,7 @@
 <table border="0" cellspacing="0" cellpadding="0">
   <thead>
     <tr>
+      <th class="span-5">Login</th>
       <th class="span-5">Name</th>
       <th class="span-5">email</th>
       <th class="span-3">Role</th>
@@ -13,10 +14,11 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.username, user %></td>
+        <td><%= link_to user.login, user %></td>
+        <td><%= user.realname %></td>
         <td><%= user.email %></td>
         <td><%= user.roles_to_s %></td>
-        <td><%= link_to "Delete", user,{:method => :delete, :confirm=> "Are you sure?",:title => "Delete #{user.username}"} %>
+        <td><%= link_to "Delete", user,{:method => :delete, :confirm=> "Are you sure?",:title => "Delete #{user.login}"} %>
         </td>
       </tr>
     <% end %>

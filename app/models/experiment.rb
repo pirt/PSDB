@@ -29,8 +29,8 @@ class Experiment < ActiveRecord::Base
 
   has_many :shots
   has_many :attachments, :as => :attachable, :dependent => :destroy
-  has_many :users, :through=> :experiment_owners
   has_many :experiment_owners, :dependent => :destroy
+  has_many :users, :through => :experiment_owners
 
   validates :name, :presence => true,
                    :length => { :maximum => 30 },

@@ -1,8 +1,8 @@
 <h2>User login</h2>
 <%= form_for @user_session do |form| %>
   <%= render 'shared/error_messages', :object => form.object %>
-  <%= form.label :username, "Username" %><br/>
-  <%= form.text_field :username %><br/>
+  <%= form.label :login, "Login" %><br/>
+  <%= form.text_field :login %><br/>
   <%= form.label :password, "Password" %><br/>
   <%= form.password_field :password %><br/>
   <%= form.submit "Submit" %>

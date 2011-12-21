@@ -1,14 +1,2 @@
 <h2>Experiment <%= @experiment.name %></h1>
-<%= form_for(@experiment) do |e| %>
-  <%= render 'shared/error_messages', :object => e.object %>
-  <%= e.label :name %><br/>
-  <%= e.text_field :name %><br/>
-  <%= e.label :description %><br/>
-  <%= e.text_area :description %><br/>
-  <%= e.label :active, "Active Experiment?" %>
-  <%= e.check_box(:active) %><br/>
-  <div class="actions">
-    <%= e.submit "Update Experiment" %>
-    <%= e.submit "Cancel", :name => "cancel" %>
-  </div>
-<% end %>
+<%= render @experiment, :user=>@user %>

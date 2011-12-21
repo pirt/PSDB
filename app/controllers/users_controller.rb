@@ -30,7 +30,20 @@ class UsersController < ApplicationController
       flash[:success] = "Successfully updated profile."
       redirect_to root_url
     else
-      render 'edit'  
-    end  
-  end  
+      render 'edit'
+    end
+  end
+  def destroy
+    user=User.find_by_id(params[:id])
+    if user
+      if user.destroy
+        flash[:success] = "User account successfully deleted"
+      else
+        flash[:error] = "Error while deleting user account"
+      end
+    else
+      flash[:error] = "User account not found"
+    end
+    redirect_to users_path
+  end
 end
