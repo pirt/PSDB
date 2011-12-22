@@ -42,8 +42,6 @@ class Experiment < ActiveRecord::Base
 
   before_destroy :check_if_shots_associated
 
-  scope :allowed, with_permissions_to(:read)
-
 # Return a list of beam times. A beam time is a period of time in which shots
 # are refered to this experiment. The beam time start with the date of the first
 # shot referring this experiment. If two shots are more than a given time separated

@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails' , "~> 3.1.0"
-gem 'rack', '1.3.3'     # the newer version produces some warnings...
+gem 'rack'
+gem 'jquery-rails'      # jQuery integration
 gem 'gnuplot'           # Use plot package
 gem 'will_paginate'     # Paginate result lists
 gem 'rmagick'           # Bitmap graphics handling (e.g. scaling, false colour,...)
@@ -17,8 +18,6 @@ group :assets do
   gem 'coffee-rails', " ~> 3.1.0"  
   gem 'uglifier'  
 end  
-
-gem 'jquery-rails'  # jQuery integration
 
 # Add support for oracle database
 group :oracle do
