@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
- 
+  acts_as_authentic do |c|
+    # remove uniqueness constraint for email field
+    c.validates_uniqueness_of_email_field_options :on => []
+  end
+
   has_many :roles
   has_many :experiment_owners, :dependent => :destroy
   has_many :experiments, :through=> :experiment_owners
