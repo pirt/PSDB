@@ -22,7 +22,7 @@ gem 'jquery-rails'  # jQuery integration
 
 # Add support for oracle database
 group :oracle do
-  gem 'ruby-oci8', "~> 2.0.6"
+  gem 'ruby-oci8'
   gem 'activerecord-oracle_enhanced-adapter'
   gem 'ruby-plsql'
 end

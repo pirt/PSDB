@@ -3,12 +3,9 @@ authorization do
     has_omnipotence
   end
   role :experimentalist do
-    has_permission_on :experiments, :to => :read
- 
-   # has_permission_on :experiments, :to => :show do
-   #   if_attribute :users => contains {user}
-   # end
-
+    has_permission_on :experiments, :to => :read do
+      if_attribute :users => contains {user}
+    end
     has_permission_on :authorization_usages, :to => :read
     includes :guest
   end

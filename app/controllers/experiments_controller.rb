@@ -6,9 +6,10 @@
 # functionality is handles by the AttachmentsController.
 class ExperimentsController < ApplicationController
   filter_access_to :all, :attribute_check => true
+  filter_access_to :index, :attribute_check => false
 
   def index
-    @experiments = Experiment.select([:id, :name, :description, :active]).
+    @experiments = Experiment.with_permissions_to(:read).
       paginate(:page => params[:page], :include=>[:attachments])
     @pageTitle="Experiments"
   end

@@ -1,0 +1,20 @@
+<%= form_for @experiment do |e| %>
+  <%= render 'shared/error_messages', :object => e.object %>
+  
+  <%= e.label :name %><br/>
+  <%= e.text_field :name %><br/>
+  <%= e.label :description %><br/>
+  <%= e.text_area :description %><br/>
+  <%= e.fields_for(user) do |u| %>
+    <%= u.label :realname, "Contact person" %><br/>
+    <%= u.text_field :realname %><br/>
+    <%= u.label :email %><br/>
+    <%= u.email_field :email %><br/>
+  <% end %>
+  <%= e.label :active, "Active Experiment?" %>
+  <%= e.check_box(:active) %><br/>
+  <div class="actions">
+    <%= e.submit "Save Experiment" %>
+    <%= e.submit "Cancel", :name => "cancel" %>
+  </div>
+<% end %>
