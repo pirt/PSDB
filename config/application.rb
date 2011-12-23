@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -7,8 +6,17 @@ require 'rails/all'
 if defined?(Bundler)
 # If you precompile assets before deploying to production, use this line
 Bundler.require *Rails.groups(:assets => %w(development test))
-# If you want your assets lazily compiled in production, use this line
-# Bundler.require(:default, :assets, Rails.env)
+end
+
+# Load PSDB_CONFIG
+begin
+  raw_config = File.read(File.expand_path('../psdbconfig.yml', __FILE__))
+  PSDB_CONFIG = YAML.load(raw_config)
+rescue
+  puts
+  puts "Error while trying to read config/psdbconfig.yml"
+  puts "Try to run 'ruby ./lib/configPSDB.rb' first and follow the instructions there."
+  exit!
 end
 
 module PSDB
@@ -16,7 +24,7 @@ module PSDB
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
@@ -49,11 +57,11 @@ module PSDB
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    # Config Authlogic
-    config.gem "authlogic"
-
-    # Config declarative_authorization
-    config.gem "declarative_authorization"
+ 
+    # Mailer configuration
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => Object::PSDB_CONFIG["mailer"]["address"] 
+    }
   end
 end

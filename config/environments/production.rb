@@ -34,9 +34,4 @@ PSDB::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
-
-  # Mailer configuration
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address => "smtp1.gsi.de" }
 end
