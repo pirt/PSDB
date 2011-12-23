@@ -156,6 +156,10 @@ describe Instancevalueset do
         instanceValue2=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 3:position")
         valueSet.getAxesNumbers.should == ["Axis 2","Axis 3"]
       end
+      it "should return empty array if instancevalueset hat no related instancevalues" do
+        emptyInstanceValueSet=Factory(:instancevalueset)
+        emptyInstanceValueSet.getAxesNumbers.should == []
+      end
     end
     describe "'getVacuumChannels'" do
        it "should return a set of channels for a PH_VacuumControl instancevalueset"
