@@ -97,8 +97,8 @@ class Instancevalueset < ActiveRecord::Base
 # Helper function for handling instances of the class type PH_Sixpack.
 #
 # The parameter names of of a Sixpack have a syntax such as <tt>Axis 0:Position</tt>.
-# This function looks for all parameter names and returns a list of found axes such as
-# <tt>["Axis 1","Axis 3","Axis4"]</tt>.
+# This function looks for all parameter names and returns a (sorted) list of found axes
+# such as <tt>["Axis 1","Axis 3","Axis4"]</tt>.
   def getAxesNumbers
     foundAxes=Set.new
     parameters=self.instancevalues.select(:name)
@@ -108,7 +108,7 @@ class Instancevalueset < ActiveRecord::Base
         foundAxes.add(axisName)
       end
     end
-    return foundAxes
+    return foundAxes.sort.to_a
   end
 # Helper function fo handling instances of the class type PH_VacuumControl.
 #

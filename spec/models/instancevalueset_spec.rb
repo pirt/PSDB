@@ -1,4 +1,3 @@
-
 # == Schema Information
 #
 # Table name: instancevaluesets
@@ -125,7 +124,38 @@ describe Instancevalueset do
       end
     end
     describe "'getAxesNumbers'" do
-      it "should return a set of axes for a PH_sixpack instancevalueset"
+      it "should return a set of axes for a PH_sixpack instancevalueset" do
+        instanceValue1=Factory(:instancevalue_string, :name=>"Axis 0:position")
+        valueSet=instanceValue1.instancevalueset
+        dataType=instanceValue1.datatype
+        instanceValue1=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 1:position")
+        instanceValue2=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 2:position")
+        valueSet.getAxesNumbers.should == ["Axis 0","Axis 1","Axis 2"]
+      end
+      it "should not list one axis twice" do
+        instanceValue1=Factory(:instancevalue_string, :name=>"Axis 1:position")
+        valueSet=instanceValue1.instancevalueset
+        dataType=instanceValue1.datatype
+        instanceValue1=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 1:stepsize")
+        instanceValue2=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 2:position")
+        valueSet.getAxesNumbers.should == ["Axis 1","Axis 2"]
+      end
+      it "should list axes in correct order" do
+        instanceValue1=Factory(:instancevalue_string, :name=>"Axis 2:position")
+        valueSet=instanceValue1.instancevalueset
+        dataType=instanceValue1.datatype
+        instanceValue1=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 2:stepsize")
+        instanceValue2=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 1:position")
+        valueSet.getAxesNumbers.should == ["Axis 1","Axis 2"]
+      end
+      it "should not list axes with empty name" do
+        instanceValue1=Factory(:instancevalue_string, :name=>":wrong format")
+        valueSet=instanceValue1.instancevalueset
+        dataType=instanceValue1.datatype
+        instanceValue1=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 2:stepsize")
+        instanceValue2=Factory(:instancevalue_string, :instancevalueset_id=>valueSet.id, :datatype_id=>dataType.id, :name=>"Axis 3:position")
+        valueSet.getAxesNumbers.should == ["Axis 2","Axis 3"]
+      end
     end
     describe "'getVacuumChannels'" do
        it "should return a set of channels for a PH_VacuumControl instancevalueset"
