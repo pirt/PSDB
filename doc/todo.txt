@@ -4,7 +4,6 @@ Bugs:
 -sometimes Cams do not send an image even if cam status is "on/true"
 -interpret PPPA/MA status correctly
 -Instances: plot series broken.
--invalidate cache of shotline after attaching files to a shot (in order to show paperclip icon in shot list).
 
 Features:
 -missing view: BackreflectionMeasurement

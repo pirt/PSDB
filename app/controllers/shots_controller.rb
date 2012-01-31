@@ -58,7 +58,7 @@ class ShotsController < ApplicationController
     @usedClasses=@shot.involvedClasstypes.order("name asc")
     @usedSubsystems=@shot.involvedSubsystems.order("name asc")
     @pageTitle="Shot #{@shot.id}"
-    @reportTypes=getAvailableReportTypes() # [["z6","z6"]]
+    @reportTypes=getAvailableReportTypes()
   end
 
   def edit

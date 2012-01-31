@@ -53,7 +53,10 @@ class AttachmentsController < ApplicationController
         @attachment.content=uploaded_content.read
       end
     end
-      if @attachment.save
+    if @attachment.save
+      if params[:shot_id]
+        expire_fragment('shotline'+params[:shot_id].to_s)
+      end
       flash[:success]="Attachment created"
       redirect_to polymorphic_path(@parent)
     else
