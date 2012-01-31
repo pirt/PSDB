@@ -1,0 +1,43 @@
+<%
+  laserIcon="laser_"+instanceValueSet.getBooleanParameter("Laser enabled?").to_s+".png"
+  preAmpIcon="preamp_"+instanceValueSet.getBooleanParameter("PreAmp enabled?").to_s+".png"
+  mainAmpIcon="mainamp_"+instanceValueSet.getBooleanParameter("MainAmp enabled?").to_s+".png"
+
+  exp1Icon="exp1_"+instanceValueSet.getBooleanParameter("Exp. 1 enabled?").to_s+".png"
+  exp2Icon="exp2_"+instanceValueSet.getBooleanParameter("Exp. 2 enabled?").to_s+".png"
+  exp3Icon="exp3_"+instanceValueSet.getBooleanParameter("Exp. 3 enabled?").to_s+".png"
+  exp4Icon="exp4_"+instanceValueSet.getBooleanParameter("Exp. 4 enabled?").to_s+".png"
+
+  mainOffIcon="mainoff_"+instanceValueSet.getBooleanParameter("Main Off?").to_s+".png"
+  emergencyIcon="emergency_"+instanceValueSet.getBooleanParameter("Emergency Off?").to_s+".png"
+  shotPassedIcon="shotpassed_"+instanceValueSet.getBooleanParameter("Shot passed?").to_s+".png"
+%>
+<table>
+  <tr>
+    <th class="span-3"></th>
+    <th class="span-3"></th>
+    <th class="span-3"></th>
+    <th class="span-3"></th>
+  </tr>
+  <tr>
+    <td class="large PSDB_bold">Used Systems</td>
+    <td><%= image_tag laserIcon %></td>
+    <td><%= image_tag preAmpIcon %></td>
+    <td><%= image_tag mainAmpIcon %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="large PSDB_bold">Experiments</td>
+      <td><%= image_tag exp1Icon %></td>
+      <td><%= image_tag exp2Icon %></td>
+      <td><%= image_tag exp3Icon %></td>
+      <td><%= image_tag exp4Icon %></td>
+  </tr>
+  <tr>
+    <td class="large PSDB_bold">Operation</td>
+    <td><%= image_tag shotPassedIcon %></td>
+    <td><%= image_tag mainOffIcon %></td>
+    <td><%= image_tag emergencyIcon %></td>
+    <td>Seq. length: <%= displayParameter(instanceValueSet,"Sequence Length",:precision=>1) %></td>
+  </tr>
+</table>
