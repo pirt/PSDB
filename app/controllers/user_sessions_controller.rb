@@ -8,8 +8,9 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:success] = "Successfully logged in."
-      redirect_to root_url
+      redirect_to "/pages/start"
     else
+      flash[:error] = "Login/password incorrect"
       render 'new'
     end
   end
@@ -18,6 +19,6 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.find
     @user_session.destroy
     flash[:success] = "Successfully logged out."
-    redirect_to root_url
+    redirect_to :login
   end  
 end

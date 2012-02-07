@@ -93,4 +93,11 @@ tbody tr.failedshot:nth-child(odd) td,
 tbody tr.failedshot.odd td {
     background: #fbb;
 }
- 
+#signin { 
+  text-align: center
+}
+#loginform {
+  background:#e5eCf9;
+  border:1px solid #000; 
+}
+

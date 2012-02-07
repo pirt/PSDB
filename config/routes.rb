@@ -68,6 +68,6 @@ PSDB::Application.routes.draw do
   #     resources :products
   #   end
 
-  root :to => "pages#start"
+  root :to => 'user_sessions#new' #"pages#start"
   # See how all your routes lay out with "rake routes"
 end

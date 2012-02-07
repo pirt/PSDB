@@ -18,28 +18,10 @@
 <body>
   <div class="container">
     <div id="header" class="span-24 last">
-      <div id="user_nav">
-          <%= link_to "#{current_user.login}'s profile", edit_user_path(:current) %>
-          <%= link_to "Logout", logout_path %>
       <h1>
         <%= link_to image_tag(projectizeName("logo.png")), shots_path %>
         Shot database
       </h1>
-    </div>
-    <div class="span-24 last">
-      <div id="wrapper3">
-        <div class="holder">
-          <ul class="menu">
-            <li><%= link_to "Experiments",experiments_path %></li>
-            <li><%= link_to "Shots",shots_path %></li>
-            <li><%= link_to "Instances",instances_path %></li>
-            <li><%= link_to "Statistics", :controller => "statistics", :action => "overview" %></li>
-            <% permitted_to? :index, :users do %>
-              <li><%= link_to "Administration", users_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
     </div>
     <hr />
     <section>
@@ -52,14 +34,6 @@
     </section>
   <footer class="quiet">PSDB ( version <%= APP_VERSION %>) - <%= link_to "About","/pages/about" %> -
   <%= link_to "Version", "/pages/changelog" %></footer>
-<%# The following lines are a hack for IE since it does not support "zebra" table colouring CSS :-( %>
-<!--[if lt IE 9]>
-<script>
-$("tr:even").css("background-color", "#e5ecf9");
-$("tr:even.failedshot").css("background-color","#fbb");
-$("tr:odd.failedshot").css("background-color","#eaa");
-</script>
-<![endif]-->
   <%= debug(params) if Rails.env.development? %>
  </div>
 </body>
