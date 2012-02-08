@@ -12,7 +12,10 @@ class User < ActiveRecord::Base
                        :length => { :maximum => 50 }
 
   # Do not allow destruction of standard admin 
-  before_destroy :check_if_admin
+  before_destroy :check_if_admin_deleted
+
+  # Do not allow change of login field
+  before_update :check_if_login_changed
 
   def role_symbols
     (roles || []).map {|r| r.title.to_sym}
@@ -25,9 +28,18 @@ class User < ActiveRecord::Base
   end
 
 private
-  def check_if_admin
+  def check_if_admin_deleted
     if (self.login=="admin")
       errors.add(:base, "cannot delete administrator account")
+      return false
+    else
+      return true
+    end
+  end
+
+  def check_if_login_changed
+    if (self.login=="admin" and self.changed? and self.changed.find_index("login")!=nil)
+      errors.add(:base, "cannot change login field")
       return false
     else
       return true
