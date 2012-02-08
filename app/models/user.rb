@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   validates :realname, :presence => true,
                        :length => { :maximum => 50 }
 
+  # Do not allow destruction of standard admin 
+  before_destroy :check_if_admin
+
   def role_symbols
     (roles || []).map {|r| r.title.to_sym}
   end
@@ -19,5 +22,15 @@ class User < ActiveRecord::Base
   def roles_to_s
     rolesArray=(roles || []).map {|r| r.title}
     return rolesArray.join(sep=$,)
+  end
+
+private
+  def check_if_admin
+    if (self.login=="admin")
+      errors.add(:base, "cannot delete administrator account")
+      return false
+    else
+      return true
+    end
   end
 end

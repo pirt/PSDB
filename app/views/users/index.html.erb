@@ -18,7 +18,9 @@
         <td><%= user.realname %></td>
         <td><%= user.email %></td>
         <td><%= user.roles_to_s %></td>
-        <td><%= link_to "Delete", user,{:method => :delete, :confirm=> "Are you sure?",:title => "Delete #{user.login}"} %>
+        <td><%= if (user.login!="admin")
+ link_to "Delete", user,{:method => :delete, :confirm=> "Are you sure?",:title => "Delete #{user.login}"} 
+end %>
         </td>
       </tr>
     <% end %>
