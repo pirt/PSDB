@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
       redirect_to "/pages/start"
     else
       flash[:error] = "Login/password incorrect"
-      render 'new'
+      redirect_to new_user_session_path
     end
   end
 

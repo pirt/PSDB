@@ -2,7 +2,8 @@ PSDB::Application.routes.draw do
 
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
-  resources :user_sessions
+
+  resources :user_sessions, :only=> [:new, :create, :destroy]
 
   get "dynamic_images/showImage"
   get "dynamic_images/showPlot"

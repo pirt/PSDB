@@ -13,6 +13,7 @@
   <%= stylesheet_link_tag "application-print", :media=>"print" %>
   <%= csrf_meta_tag %>
   <!--[if lt IE 8]><%= stylesheet_link_tag "application-ie", :media=>"all" %><![endif]-->
+  <%= stylesheet_link_tag params[:controller] %>
   <%= favicon_link_tag %>
 </head>
 <body>
