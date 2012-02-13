@@ -1,0 +1,33 @@
+<div class="span-24">
+  <ul>
+    <li class="PSDB_bold">FWHM: <%= displayParameter(instanceValueSet,"FWHM") %></li>
+    <li>Calibration Factor: <%= displayParameter(instanceValueSet,"Calibration Factor", :precision=>3) %></li>
+    <li>Position: <%= displayParameter(instanceValueSet,"Position", :precision=>0) %></li>
+    <li>Status: <%= displayParameter(instanceValueSet,"Status") %></li>
+  </ul>
+  <div class="span-24">
+    <div class="span-8">
+      <h3>Autocorrelation</h3>
+      <%= displayParameter(instanceValueSet,"Data",{:width=>310,:height=>240,:withExport=>true}) %>
+    </div>
+    <div class="span-8">
+      <h3>Operation Image</h3>
+      <%= displayParameter(instanceValueSet,"Operation Image",{:width=>310,:height=>300,:withExport=>true}) %><br/>
+      <ul>
+        <li>Main Frame (x/y): <%= displayParameter(instanceValueSet,"Main Frame x", :precision=>0) %> / 
+<%= displayParameter(instanceValueSet,"Main Frame y", :precision=>0) %></li>
+        <li>Main Frame (dx/dy): <%= displayParameter(instanceValueSet,"Main Frame dx", :precision=>0) %> / 
+<%= displayParameter(instanceValueSet,"Main Frame dy", :precision=>0) %></li>
+        <li>Background Frame (x/y): <%= displayParameter(instanceValueSet,"Background Frame x", :precision=>0) %> / 
+<%= displayParameter(instanceValueSet,"Background Frame y", :precision=>0) %></li>
+        <li>Background Frame (dx/dy): <%= displayParameter(instanceValueSet,"Background Frame dx", :precision=>0) %> / 
+<%= displayParameter(instanceValueSet,"Background Frame dy", :precision=>0) %></li>
+      </ul>
+    </div>
+    <div class="span-8 last">
+      <h3>Time evolution</h3>
+      <%= displayParameter(instanceValueSet,"Time Evolution of Mean Pulse Duration",{:width=>310,:height=>240,:withExport=>true}) %><br/>
+      Nr. for Averages: <%= displayParameter(instanceValueSet,"# for Averages", :precision=>0) %>
+    </div>
+  </div>
+</div>
