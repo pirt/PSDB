@@ -1,0 +1,11 @@
+<div class="span-24">
+  <div class="span-12">
+<%= status=instanceValueSet.getStringParameter("Status",:upcase=>true)
+if (status=="OFF/FALSE/OUT")
+  displayParameter(instanceValueSet,"Data", {:width=>480, :height=>300, :withExport=>true})
+end %>
+  </div>
+  <div class="span-12 last">
+    Status: <%= displayParameter(instanceValueSet,"Status") %>
+  </div>
+</div>

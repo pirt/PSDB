@@ -1,0 +1,6 @@
+<%= status=instanceValueSet.getStringParameter("Status",:upcase=>true)
+if (status=="OFF/FALSE/OUT")
+  displayParameter(instanceValueSet,"Data")
+else
+  image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"}
+end %>
