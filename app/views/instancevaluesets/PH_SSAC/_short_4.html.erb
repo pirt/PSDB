@@ -1,1 +1,10 @@
-<%= displayParameter(instanceValueSet,"FWHM",:precision=>1) %>
+<%= status=instanceValueSet.getStringParameter("Status",:upcase=>true)
+case status
+  when "ON AND PROCESSED"
+    displayParameter(instanceValueSet,"FWHM",:precision=>1)
+  when "ON, BUT NOT PROCESSED"
+    "not processed"
+  else
+    image_tag "icon_ERROR.png", {:style=>"vertical-align:middle"}
+end
+%>
