@@ -5,4 +5,4 @@ Bugs:
 -plot of instance view broken (cache not correctly refreshed).
 
 Features:
-
+-missing view PH_VacuumControl (version 5)
