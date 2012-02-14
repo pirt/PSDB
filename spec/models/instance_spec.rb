@@ -55,6 +55,14 @@ describe Instance do
       instance=Instance.new(@attr)
       instance.should respond_to(:instancevaluesets)
     end
+    it "cannot be deleted if still referenced by instancevaluesets" do
+      instance=Instance.new(@attr)
+      @instancevalueset=Factory(:instancevalueset, :instance=>instance)
+      @instance=@instancevalueset.instance
+      lambda do
+         @instance.destroy
+      end.should_not change(Instance, :count)
+    end
   end
   describe "instance method" do
     it "should have 'viewExists?'"

@@ -2,10 +2,7 @@ Bugs:
 -fix class PH_MercuryMonitor: check display of concentration unit in plot label.
 -some PH_Switch values wronly interpreted.
 -sometimes Cams do not send an image even if cam status is "on/true"
--interpret PPPA/MA status correctly
--Instances: plot series broken.
+-plot of instance view broken (cache not correctly refreshed).
 
 Features:
--missing view: BackreflectionMeasurement
--missing view: SSAC
--missing validation: instance cannot be deleted if instancevaluesets refer to it.
+

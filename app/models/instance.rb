@@ -32,6 +32,9 @@ class Instance < ActiveRecord::Base
 
   validates :classtype, :presence => true
   validates :subsystem, :presence => true
+
+  before_destroy :check_if_instancevaluesets_associated
+
 # Check if a view for the given instance and the given interface version exists.
 # Returns true if successful and false otherwise.
 # interfaceVersion:: 
@@ -67,5 +70,15 @@ class Instance < ActiveRecord::Base
 # Return the name of the instance. This function was added to simplify views.
   def to_s
     return self.name
+  end
+
+private
+  def check_if_instancevaluesets_associated
+    if (instancevaluesets.present?)
+      errors.add(:base, "cannot be deleted with instancevaluesets associated")
+      return false
+    else
+      return true
+    end
   end
 end
