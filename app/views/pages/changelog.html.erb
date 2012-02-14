@@ -1,6 +1,12 @@
 <%= link_to "API documentation", "/apidoc/" %>
 <h1>Version history</h1>
+
 <ul>
+  <li>0.6.2 (14.02.12):</li>
+  <ul>
+    <li>added views for PH_SSAC and PH_BackreflectionMeas.</li>
+    <li>add before_destroy filter to instance model whicl disallows destroying instances with instancevaluesets referring to it.</li>
+  </ul>
   <li>0.6.1 (31.01.12):</li>
   <ul>
     <li>added short report view for the Petawatt target area</li>
